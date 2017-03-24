@@ -5,35 +5,46 @@ import QtQuick 2.0
 Rectangle{
 	id: delegatebar
 	property alias bookmarkname: textfield.text
-	
-	
+	property alias iconSize:iconcontainer.iconSize
+	height: iconcontainer.iconSize
 	RowLayout{
 		id:	internlayout	
 		anchors.left: parent.left
+		
+		Layout.minimumHeight: 16
+		Layout.minimumWidth: 100
+		Layout.preferredWidth: 200
+		Layout.maximumWidth: 400
+		
 		Rectangle{	//The container of the text	
 			id: textcontainer
-			Layout.maximumHeight: 32
-			Layout.maximumWidth: 400
+			Layout.minimumWidth: 16
+			Layout.minimumHeight: 16
+			Layout.preferredWidth: 16
+			Layout.preferredHeight: 16
 			anchors.left: iconcontainer.right
+			anchors.right: parent.right
 			Text{
 				id: textfield
 // 				anchors.right: textcontainer.right
-				text: "start"				
+				text: "Bookmark"				
 			}
 		}
 		Rectangle{	//The container of the icon
 			id: iconcontainer
 			anchors.left: parent.left
-			Layout.minimumWidth: 16
-			Layout.minimumHeight: 16
-			Layout.preferredWidth: 32
-			Layout.maximumWidth: 32
-			Layout.maximumHeight: 32
+			Layout.minimumWidth: iconSize
+			Layout.minimumHeight: iconSize
+			property int iconSize:16
+// 			Layout.preferredWidth: 50
+// 			Layout.preferredHeight: 16
 			Image{
+				id: icon
 				anchors.left: parent.left
+				anchors.right: parent.right
 // 				anchors.ho
-				height: parent.height
-				width: parent.height
+				height: parent.iconSize
+				width: parent.iconSize
 				source: "/home/max/Pictures/icone/Png/1371178312_linux.png"
 			}
 		}

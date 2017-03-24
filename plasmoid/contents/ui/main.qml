@@ -141,7 +141,7 @@ Item{
 // 			}
 			delegate: DelegateBar{
 				width: mainlistview.width 
-				height:32
+				iconSize:16
 				bookmarkname: name			
 			}
 			
