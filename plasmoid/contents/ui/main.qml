@@ -4,13 +4,10 @@ import QtQuick.Layouts 1.3
 import QtQuick.XmlListModel 2.0
 import org.kde.plasma.plasmoid 2.0 //needed to give the Plasmoid attached properties
 import org.kde.plasma.components 2.0 as PlasmaComponents
-
+// import DelegateBar.qml
 Item{
 	id: root
 	Plasmoid.title: "Bookmarks plasmoid"
-	
-
-
 	PlasmaComponents.Button {
 	id: mainbutton
 	anchors.bottom: parent.bottom
@@ -122,26 +119,32 @@ Item{
 			model:  xmlModel
 			currentIndex: 4
 			focus:true
-			delegate: PlasmaComponents.Button {
-				onClicked: {console.log("clicked",name)
-					pagerectangle.x=200
-					pagerectangle.width=500
-					pagerectangle.y=500
-					if (pagerectangle.state=="invisible"){
-					pagerectangle.state="displaced"
-					}
-					else
-					{
-					pagerectangle.state="invisible"
-					}
-
-				}
-				//                         iconName: icon
-				width: mainlistview.width
-				height: 30
-				text: name + " " + href
-				tooltip: href                    
+// 			delegate: PlasmaComponents.Button {
+// 				onClicked: {console.log("clicked",name)
+// 					pagerectangle.x=200
+// 					pagerectangle.width=500
+// 					pagerectangle.y=500
+// 					if (pagerectangle.state=="invisible"){
+// 					pagerectangle.state="displaced"
+// 					}
+// 					else
+// 					{
+// 					pagerectangle.state="invisible"
+// 					}
+// 
+// 				}
+// 				//                         iconName: icon
+// 				width: mainlistview.width
+// 				height: 30
+// 				text: name + " " + href
+// 				tooltip: href                    
+// 			}
+			delegate: DelegateBar{
+				width: mainlistview.width 
+				height:32
+				bookmarkname: name			
 			}
+			
 			visible: true
 			highlight: highlightBar
 			highlightFollowsCurrentItem: false
