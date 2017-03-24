@@ -147,7 +147,7 @@ Item{
 			
 			visible: true
 			highlight: highlightBar
-			highlightFollowsCurrentItem: false
+			highlightFollowsCurrentItem: true
 		}
 		}
 		Connections{
