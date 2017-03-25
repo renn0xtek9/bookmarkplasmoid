@@ -4,11 +4,15 @@ import QtQuick.Layouts 1.3
 import QtQuick.XmlListModel 2.0
 import org.kde.plasma.plasmoid 2.0 //needed to give the Plasmoid attached properties
 import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.core 2.0
+
 // import DelegateBar.qml
-Item{
-	id: root
-	Plasmoid.title: "Bookmarks plasmoid"
-	PlasmaComponents.Button {
+
+
+PlasmaComponents.Dialog {
+        visible: true
+        Plasmoid.title: "Bookmarks plasmoid"
+        PlasmaComponents.Button {
 	id: mainbutton
 	anchors.bottom: parent.bottom
 	anchors.horizontalCenter: parent.horizontalCenter
@@ -141,7 +145,7 @@ Item{
 // 			}
 			delegate: DelegateBar{
 				width: mainlistview.width 
-				iconSize:16
+				iconSize:smallMediumIconSize
 				bookmarkname: name			
 			}
 			
@@ -164,4 +168,5 @@ Item{
 		}
 	}
 	}
+
 }

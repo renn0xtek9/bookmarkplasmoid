@@ -1,6 +1,7 @@
 import QtQuick.Layouts 1.3
 import QtQuick 2.0
 import QtQuick.XmlListModel 2.0
+
 //DelegateBar.qml
 //This file provides that components that constitute the "bar" in the List view that represent element from bookmarks.
 Rectangle{
