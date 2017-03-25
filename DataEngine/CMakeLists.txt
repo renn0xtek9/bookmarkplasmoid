@@ -1,5 +1,7 @@
 # A name for the project
-project(plasma-testtime)
+
+set(ENGINE_NAME bookmarkengine)
+project(${ENGINE_NAME})
 
 cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 set(QT_MIN_VERSION "5.3.0")
@@ -23,17 +25,17 @@ add_definitions (${QT_DEFINITIONS} )
 include_directories(${CMAKE_SOURCE_DIR}${CMAKE_BINARY_DIR} ${QT_INCLUDES} /usr/include/KF5/KDELibs4Support/ )
 
 # We add our source code here
-set(testtime_engine_SRCS testtimeengine.cpp)
+file (GLOB ".src" ${ENGINE_SRCs}) 
 message(STATUS "DATAENGINE: KDE_INSTALL_PLUGINDIR------------------------------------------------\n" "${KDE_INSTALL_PLUGINDIR}")
 message(STATUS "DATAENGINE: KDE_INSTALL_KSERVICES5DIR------------------------------------------------\n" "${KDE_INSTALL_KSERVICES5DIR}")
 
 # Now make sure all files get to the right place
-add_library(plasma_engine_testtime ${testtime_engine_SRCS})
-target_link_libraries(plasma_engine_testtime Qt5::Gui  KF5::KDELibs4Support  KF5::Plasma  KF5::Service  KF5::I18n)
+add_library(${ENGINE_NAME} ${ENGINE_SRCs})
+target_link_libraries(${ENGINE_NAME} Qt5::Gui  KF5::KDELibs4Support  KF5::Plasma  KF5::Service  KF5::I18n)
 
-kcoreaddons_desktop_to_json(plasma_engine_testtime plasma-engine-testtime.desktop SERVICE_TYPES plasma-dataengine.desktop)
+kcoreaddons_desktop_to_json(${ENGINE_NAME} bookmarkengine.desktop SERVICE_TYPES plasma-dataengine.desktop)
 
-install(TARGETS plasma_engine_testtime DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/dataengine)
-install(FILES plasma-engine-testtime.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+install(TARGETS ${ENGINE_NAME} DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/dataengine)
+install(FILES bookmarkengine.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 
 
