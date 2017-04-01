@@ -1,10 +1,14 @@
 #ifndef XBELREADER_HPP
 #define XBELREADER_HPP
 
+#include <qt5/QtCore/QIODevice>
+#include <qt5/QtCore/QString>
+#include <qt5/QtCore/QXmlStreamReader>
+
 class XbelReader
 {
 public:
-    XbelReader(QTreeWidget *treeWidget);
+    XbelReader();
 
     bool read(QIODevice *device);
 
@@ -12,10 +16,10 @@ public:
 
 private:
     void readXBEL();
-//     void readTitle(QTreeWidgetItem *item);
-//     void readSeparator(QTreeWidgetItem *item);
-//     void readFolder(QTreeWidgetItem *item);
-//     void readBookmark(QTreeWidgetItem *item);
+    void readTitle();
+    void readSeparator();
+    void readFolder();
+    void readBookmark();
 
     QXmlStreamReader xml;
 };
