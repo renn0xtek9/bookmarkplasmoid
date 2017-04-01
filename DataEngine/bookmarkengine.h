@@ -23,23 +23,23 @@
  *   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SIMPLEENGINE_H
-#define SIMPLEENGINE_H
+#ifndef BOOKMARKENGINE_H
+#define BOOKMARKENGINE_H
 
-#include <KF5/plasma/dataengine.h>
-#include <KF5/plasma/datacontainer.h>
+// #include <KF5/plasma/dataengine.h>
+// // #include <KF5/plasma/datacontainer.h>
+#include <Plasma/DataEngine>
 
-
-class SimpleEngine : public Plasma::DataEngine
+class Bookmarkengine : public Plasma::DataEngine
 {
     Q_OBJECT
 
 public:
-    SimpleEngine(QObject *parent, const QVariantList &args);
+    Bookmarkengine(QObject *parent, const QVariantList &args);
 
     void init();
 private:
 	
 };
 
-#endif
+#endif //BOOKMARKENGINE_H

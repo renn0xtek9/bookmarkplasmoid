@@ -6,75 +6,131 @@ XbelReader::XbelReader()
 
 bool XbelReader::read(QIODevice *device)
 {
-    xml.setDevice(device);
+	m_bookmarks.clear();
+	xml.setDevice(device);
 
-    if (xml.readNextStartElement()) {
-        if (xml.name() == "xbel" && xml.attributes().value("version") == "1.0")
-            readXBEL();
-        else
-            xml.raiseError(QObject::tr("The file is not an XBEL version 1.0 file."));
-    }
+	if (xml.readNextStartElement()) {
+		if (xml.name() == "xbel" && xml.attributes().value("version") == "1.0")
+		readXBEL();
+		else
+		xml.raiseError(QObject::tr("The file is not an XBEL version 1.0 file."));
+	}
 
-    return !xml.error();
+	return !xml.error();
 }
 QString XbelReader::errorString() const
 {
-    return QObject::tr("%1\nLine %2, column %3")
-            .arg(xml.errorString())
-            .arg(xml.lineNumber())
-            .arg(xml.columnNumber());
+	return QObject::tr("%1\nLine %2, column %3")
+		.arg(xml.errorString())
+		.arg(xml.lineNumber())
+		.arg(xml.columnNumber());
 }
 void XbelReader::readXBEL()
 {
-    Q_ASSERT(xml.isStartElement() && xml.name() == "xbel");
+	Q_ASSERT(xml.isStartElement() && xml.name() == "xbel");
 
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "folder")
-            readFolder(0);
-        else if (xml.name() == "bookmark")
-            readBookmark(0);
-        else if (xml.name() == "separator")
-            readSeparator(0);
-        else
-            xml.skipCurrentElement();
-    }
+	while (xml.readNextStartElement()) {
+		if (xml.name() == "folder")
+		readFolder();
+		else if (xml.name() == "bookmark")
+		readBookmark();
+		else if (xml.name() == "separator")
+		readSeparator();
+		else
+		xml.skipCurrentElement();
+	}
 }
-void XbelReader::readFolder(QTreeWidgetItem *item)
+void XbelReader::readFolder()
 {
-    Q_ASSERT(xml.isStartElement() && xml.name() == "folder");
-
-    QTreeWidgetItem *folder = createChildItem(item);
-    bool folded = (xml.attributes().value("folded") != "no");
-    treeWidget->setItemExpanded(folder, !folded);
-
-    while (xml.readNextStartElement()) {
-        if (xml.name() == "title")
-            readTitle(folder);
-        else if (xml.name() == "folder")
-            readFolder(folder);
-        else if (xml.name() == "bookmark")
-            readBookmark(folder);
-        else if (xml.name() == "separator")
-            readSeparator(folder);
-        else
-            xml.skipCurrentElement();
-    }
+	Q_ASSERT(xml.isStartElement() && xml.name() == "folder");
+	Bookmark l_bookmark;
+	l_bookmark.setPath(s_currentpath);
+	l_bookmark.setType(true);
+	m_bookmarks.append(l_bookmark);
+	while (xml.readNextStartElement()) 
+	{
+		if (xml.name() == "title")
+		{	
+			QString title=readTitle();
+			s_currentpath+="/"+title;	
+			m_bookmarks.last().setName(title);
+		}
+		else{
+			if (xml.name() == "folder")
+			{
+				readFolder();
+			}
+			else {
+				if (xml.name() == "bookmark")
+				{
+					readBookmark();
+				}
+				else 
+				{
+					if (xml.name() == "separator")
+					{
+						readSeparator();
+					}
+				
+					else
+					{
+						xml.skipCurrentElement();
+					}
+				}		
+			}
+		}
+	}
 }
-void XbelReader::readTitle(QTreeWidgetItem *item)
+void XbelReader::readInfoAndMetadata(QString p_blockname)
 {
-    Q_ASSERT(xml.isStartElement() && xml.name() == "title");
-
-    QString title = xml.readElementText();
-    item->setText(0, title);
+	Q_ASSERT(xml.isStartElement() && xml.name() == p_blockname);
+	while(xml.readNextStartElement())
+	{
+		if(xml.name()=="icon"&&xml.namespaceUri()=="bookmark")	//we are at bookmark::icon
+		{
+			if(m_bookmarks.length()>0)
+   			{
+				m_bookmarks.last().setIconPath(xml.attributes().value("name").toString());
+			}
+		}
+		readInfoAndMetadata(xml.name().toString());	 
+	}
+}
+void XbelReader::readBookmark()
+{
+	Q_ASSERT(xml.isStartElement() && xml.name() == "bookmark");
+	Bookmark l_bookmark;
+	l_bookmark.setPath(s_currentpath);
+	l_bookmark.setType(false);
+	l_bookmark.setURL(xml.attributes().value("href").toString());
+	
+	while (xml.readNextStartElement()) {
+		if (xml.name() == "title")
+		{
+			readTitle();
+		}
+		if (xml.name()=="info")
+		{
+			readInfoAndMetadata("info");
+		}
+		else
+		{
+			xml.skipCurrentElement();
+		}
+	}
+	m_bookmarks.append(l_bookmark);
 }
 
-void XbelReader::readSeparator(QTreeWidgetItem *item)
+QString XbelReader::readTitle()
 {
-    Q_ASSERT(xml.isStartElement() && xml.name() == "separator");
+	Q_ASSERT(xml.isStartElement() && xml.name() == "title");
 
-    QTreeWidgetItem *separator = createChildItem(item);
-    separator->setFlags(item->flags() & ~Qt::ItemIsSelectable);
-    separator->setText(0, QString(30, 0xB7));
-    xml.skipCurrentElement();
+	QString title = xml.readElementText();
+	return title;
+}
+void XbelReader::readSeparator()
+{
+	Q_ASSERT(xml.isStartElement() && xml.name() == "separator");
+	xml.skipCurrentElement();
 }
 

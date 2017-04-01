@@ -13,7 +13,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_S
 # Find KDE modules
 find_package(KF5Plasma REQUIRED)
 find_package(KF5I18n NO_MODULE)
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core  )
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets )
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
@@ -25,7 +25,7 @@ add_definitions (${QT_DEFINITIONS} )
 include_directories(${CMAKE_SOURCE_DIR}${CMAKE_BINARY_DIR} ${QT_INCLUDES} )
 
 # We add our source code here
-file (GLOB ENGINE_SRCs "*.cpp" ENGINE_SRCs) 
+file (GLOB ENGINE_SRCs "*.cpp" ) 
 message(STATUS "DATAENGINE: KDE_INSTALL_PLUGINDIR------------------------------------------------\n" "${KDE_INSTALL_PLUGINDIR}")
 message(STATUS "DATAENGINE: KDE_INSTALL_KSERVICES5DIR------------------------------------------------\n" "${KDE_INSTALL_KSERVICES5DIR}")
 message(STATUS "DATAENGINE: ENGINE_SRCs------------------------------------------------\n" "${ENGINE_SRCs}")

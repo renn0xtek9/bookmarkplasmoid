@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2011 Aaron Seigo <aseigo@kde.org>
  *
@@ -24,10 +25,12 @@
  */
 
 #include <qt5/QtCore/qfile.h>
+#include <qt5/QtGui/QColor>
 #include "XbelReader.hpp"
 
 #include <KLocalizedString>
 #include "bookmarkengine.h"
+
 
 /*
  This DataEngine provides a static set of data that is created on
@@ -36,7 +39,7 @@
  a DataEngine
 */
 
-SimpleEngine::SimpleEngine(QObject *parent, const QVariantList &args)
+Bookmarkengine::Bookmarkengine(QObject *parent, const QVariantList &args)
     : Plasma::DataEngine(parent, args)
 {
     // we've passed the constructor's args to our parent class
@@ -44,12 +47,12 @@ SimpleEngine::SimpleEngine(QObject *parent, const QVariantList &args)
     init();
 }
 
-void SimpleEngine::init()
+void Bookmarkengine::init()
 {
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
 	QFile konquerorbookmarkfile(filename);
 	XbelReader reader;
-	reader.read(konquerorbookmarkfile);
+	reader.read(&konquerorbookmarkfile);
 	// So now we will set up some sources.
 	// Each DataEngine will, generally, be loaded once. Each DataEngine
 	// can provide multiple sets of data keyed by a string, called "Sources".
@@ -79,7 +82,7 @@ void SimpleEngine::init()
 }
 
 // export the plugin; use the plugin name and the class name
-K_EXPORT_PLASMA_DATAENGINE_WITH_JSON(org.kde.plasma.bookmarkengine, bookmarkengine, "bookmarkengine.json")
+K_EXPORT_PLASMA_DATAENGINE_WITH_JSON(org.kde.plasma.bookmarkengine, Bookmarkengine, "bookmarkengine.json")
 
 // include the moc file so the build system makes it for us
 #include "bookmarkengine.moc"

@@ -3,8 +3,9 @@
 
 #include <qt5/QtCore/QIODevice>
 #include <qt5/QtCore/QString>
+#include <qt5/QtCore/QList>
 #include <qt5/QtCore/QXmlStreamReader>
-
+#include "bookmark.hpp"
 class XbelReader
 {
 public:
@@ -16,12 +17,15 @@ public:
 
 private:
     void readXBEL();
-    void readTitle();
+    QString readTitle();
     void readSeparator();
     void readFolder();
     void readBookmark();
+    void readInfoAndMetadata(QString p_blockname);
 
     QXmlStreamReader xml;
+    QList<Bookmark> m_bookmarks;
+    QString s_currentpath;
 };
 
 #endif
