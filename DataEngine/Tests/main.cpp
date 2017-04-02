@@ -10,12 +10,15 @@ int main(int argc, char **argv)
 {  
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
 	QFile konquerorbookmarkfile(filename);
+	if (konquerorbookmarkfile.open(QIODevice::OpenModeFlag::ReadOnly)){
+		qDebug()<<"The QFile is open";
+	}
 	XbelReader reader;
 	
 	if (reader.read(&konquerorbookmarkfile))
  	{
 		foreach (Bookmark bkmr, reader.getBookrmarks()){
-			qDebug()<<"Name: "<<bkmr.getName()<<" Type: "<<bkmr.getType()<<" IconPath: "<<bkmr.getIconPath();
+			qDebug()<<"Name: "<<bkmr.getName()<<" Type: "<<bkmr.getType()<<" IconPath: "<<bkmr.getIconPath()<<" Path: "<<bkmr.getPath();
 		}
 	}
 	else{

@@ -39,4 +39,4 @@ kcoreaddons_desktop_to_json(${ENGINE_NAME} bookmarkengine.desktop SERVICE_TYPES 
 install(TARGETS ${ENGINE_NAME} DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/dataengine)
 install(FILES bookmarkengine.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 
-
+add_subdirectory(Tests)

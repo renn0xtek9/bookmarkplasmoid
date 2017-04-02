@@ -75,10 +75,7 @@ void Bookmarkengine::init()
 	data.insert("Cow", "mooo");
 	data.insert("Black", QColor(0, 0, 0));
 	data.insert("Time", QTime::currentTime());
-	setData("Another Source", data);
-	
-    
-    
+	setData("Another Source", data);    
 }
 
 // export the plugin; use the plugin name and the class name

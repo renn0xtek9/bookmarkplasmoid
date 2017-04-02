@@ -14,6 +14,7 @@ public:
     bool read(QIODevice *device);
 
     QString errorString() const;
+    QList<Bookmark> getBookrmarks();
 
 private:
     void readXBEL();
