@@ -13,5 +13,27 @@ Environment Profile=
 Extra Arguments=
 Install Directory=
 
+[Launch]
+Launch Configurations=Launch Configuration 0
+
+[Launch][Launch Configuration 0]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=xbelreaderopTEST
+Type=Native Application
+
+[Launch][Launch Configuration 0][Data]
+Debugger Shell=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x04\x00\x00\x00\x1e\x00B\x00o\x00o\x00k\x00m\x00a\x00r\x00k\x00_\x00w\x00i\x00d\x00g\x00e\x00t\x00\x00\x00\x14\x00D\x00a\x00t\x00a\x00E\x00n\x00g\x00i\x00n\x00e\x00\x00\x00\n\x00T\x00e\x00s\x00t\x00s\x00\x00\x00 \x00x\x00b\x00e\x00l\x00r\x00e\x00a\x00d\x00e\x00r\x00o\x00p\x00T\x00E\x00S\x00T)
+Dependency Action=Build
+Display Demangle Names=true
+Display Static Members=true
+GDB Path=file:///usr/bin/gdb
+Project Target=Bookmark_widget,DataEngine,Tests,xbelreaderopTEST
+Remote GDB Config Script=
+Remote GDB Run Script=
+Remote GDB Shell Script=
+Start With=ApplicationOutput
+
 [Project]
 VersionControlSupport=kdevgit

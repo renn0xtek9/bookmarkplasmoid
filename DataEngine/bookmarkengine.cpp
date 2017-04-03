@@ -46,36 +46,31 @@ Bookmarkengine::Bookmarkengine(QObject *parent, const QVariantList &args)
     // we're done for now! Call init()
     init();
 }
-
 void Bookmarkengine::init()
 {
+// 	TODO use QSettings to find the file 
+// 	TODO parse files from other origin. e.g Firefox etc. ?
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
 	QFile konquerorbookmarkfile(filename);
-	XbelReader reader;
-	reader.read(&konquerorbookmarkfile);
-	// So now we will set up some sources.
-	// Each DataEngine will, generally, be loaded once. Each DataEngine
-	// can provide multiple sets of data keyed by a string, called "Sources".
-	// In this simplest of cases, we just create some sources arbitrarily.
-
-	// This is the simplest form, with  source name and one bit of data.
-	// Note how the source name is not translated! They can be marked with
-	// I18N_NOOP, however, if they should be translatable in a visualization.
-	setData("Simple Source", i18n("Very simple data"));
-
-	// a source can have multiple entries, differentiated by key names,
-	// which are also not translated:
-	setData("Multiple Source", "First", i18n("First"));
-	setData("Multiple Source", "Second", i18n("Second"));
-
-	// We can also set the data up first and apply it all at once
-	// Note how data types other than strings can be used as well; anything
-	// that works with QVariant, in fact.
-	Plasma::DataEngine::Data data;
-	data.insert("Cow", "mooo");
-	data.insert("Black", QColor(0, 0, 0));
-	data.insert("Time", QTime::currentTime());
-	setData("Another Source", data);    
+	if (konquerorbookmarkfile.open(QIODevice::OpenModeFlag::ReadOnly)){
+		XbelReader reader;
+		if(reader.read(&konquerorbookmarkfile)){
+			foreach (Bookmark bmkr, reader.getBookrmarks()){
+				Plasma::DataEngine::Data data;
+				data.insert("Path",bmkr.getPath());
+				data.insert("Icon",bmkr.getIconPath());
+				data.insert("Origin","Konqueror");
+				data.insert("URL",bmkr.getURL());
+				if (bmkr.getType()){
+					data.insert("IsFolder","True");
+				}
+				else{
+					data.insert("IsFolder","False");
+				}
+				setData(bmkr.getName(),data);
+			}
+		}
+	}
 }
 
 // export the plugin; use the plugin name and the class name
