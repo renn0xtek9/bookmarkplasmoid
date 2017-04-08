@@ -1,10 +1,15 @@
+#include <qt5/QtCore/QVariant>
+#include <qt5/QtCore/QList>
 #include "bookmark.hpp"
 
-Bookmark::Bookmark()
+Bookmark::Bookmark(const QList<QVariant> &data,Bookmark* parentbookmark)
 {
+	m_itemData=data;
+	m_parentItem=parentbookmark;
 }
 Bookmark::~Bookmark()
 {
+	qDeleteAll(m_childItems);
 }
 QString Bookmark::getName()
 {
@@ -60,4 +65,35 @@ void Bookmark::setURL(QString p_url)
 }
 
 
+//New
+void Bookmark::appendChild(Bookmark *child)
+{
+	m_childItems.append(child);
+}
+Bookmark *Bookmark::child(int row)
+{
+	return m_childItems.value(row);
+}
+int Bookmark::childCount() const
+{
+	return m_childItems.count();
+}
+int Bookmark::row() const
+{
+    if (m_parentItem)
+        return m_parentItem->m_childItems.indexOf(const_cast<Bookmark*>(this));
 
+    return 0;
+}
+int Bookmark::columnCount() const
+{
+    return m_itemData.count();
+}
+QVariant Bookmark::data(int column) const
+{
+    return m_itemData.value(column);
+}
+Bookmark *Bookmark::parentItem()
+{
+    return m_parentItem;
+}

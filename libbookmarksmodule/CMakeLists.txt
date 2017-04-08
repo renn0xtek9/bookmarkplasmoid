@@ -10,13 +10,16 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets )
 
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+
 
 # Find KDE modules
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets )
 
-# include(KDEInstallDirs)
-# include(KDECMakeSettings)
-# include(KDECompilerSettings)
+
 include(FeatureSummary)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 # feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
@@ -25,12 +28,15 @@ include_directories(${CMAKE_SOURCE_DIR}${CMAKE_BINARY_DIR} ${QT_INCLUDES} )
 
 
 file (GLOB SRC "*.cpp" ) 
-set (SRC ${SRC} bookmarksmodule.cpp bookmark.cpp)
+set (SRC ${SRC} bookmarkmodel.cpp bookmark.cpp)
 include_directories(./../)
 
+# qt_wrap_cpp(${SRC})
+
 add_library(${PROJECT_NAME} SHARED ${SRC})
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets )
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Core )
 
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/dataengine)
 install(FILES bookmarkengine.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+add_subdirectory(Tests/)

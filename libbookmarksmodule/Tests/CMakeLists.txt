@@ -1,11 +1,11 @@
-set(bookmarkmoduleTEST)
+set(bookmarkmodelTEST)
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets )
 
 
 file (GLOB SRC "*.cpp" ) 
-set (SRC ${SRC} ./../bookmarksmodule.cpp ./../bookmark.cpp)
+set (SRC ${SRC} ./../bookmarkmodel.cpp ./../bookmark.cpp)
 include_directories(./../)
 
-add_executable(bookmarkmoduleTEST ${SRC})
-target_link_libraries(bookmarkmoduleTEST Qt5::Widgets)
+add_executable(bookmarkmodelTEST ${SRC})
+target_link_libraries(bookmarkmodelTEST Qt5::Widgets)

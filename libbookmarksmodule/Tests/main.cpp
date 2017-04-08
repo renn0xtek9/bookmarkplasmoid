@@ -2,28 +2,47 @@
 #include<qt5/QtCore/QString>
 #include<qt5/QtCore/QFile>
 #include<qt5/QtCore/QDebug>
+#include<qt5/QtCore/QModelIndex>
 #include "bookmark.hpp"
-#include "bookmarksmodule.hpp"
+#include "bookmarkmodel.hpp"
 using namespace std;
 
 int main(int argc, char **argv) 
 {  
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
-	QFile konquerorbookmarkfile(filename);
-	if (konquerorbookmarkfile.open(QIODevice::OpenModeFlag::ReadOnly)){
-		qDebug()<<"The QFile is open";
-	}
-	Bookmarkmodule reader;
+	Bookmarkmodel reader("");
+	reader.appendXBELFile(filename);
+	qDebug()<<reader.rowCount();
+	qDebug()<<reader.columnCount();
+// 	QModelIndex index=reader.createIndex();
+// 	QModelIndex index=reader.index(0,0,index);
+	QModelIndex index;
+	int i=0;
 	
-	if (reader.read(&konquerorbookmarkfile))
- 	{
-		foreach (Bookmark bkmr, reader.getBookrmarks()){
-			qDebug()<<"Name: "<<bkmr.getName()<<" Type: "<<bkmr.getType()<<" IconPath: "<<bkmr.getIconPath()<<" Path: "<<bkmr.getPath();
-		}
+	
+	
+	
+	i=0;
+	while (i<reader.rowCount(index)){
+		qDebug()<<i;
+		index=reader.index(i,0,index);
+		qDebug()<<reader.data(index,Qt::DisplayRole);
+		index=index.parent();
+		i++;
 	}
-	else{
-		qDebug()<<"could not read bookmark";
-	}
+	index=reader.index(0,0,index);
+// 	index.
+// 	while (reader.index)
+	
+	
+// 	qDebug()<<reader.hasIndex(1,0,index);
+	
+	
+	
+	
+	qDebug()<<index;
+// 	qDebug()<<index.data(0);
+	
 	
 	return 0;
 }

@@ -4,8 +4,14 @@
 
 class Bookmark{
 public:
-	Bookmark();
+	Bookmark(const QList<QVariant> &data,Bookmark* parentbookmark=0);
 	~Bookmark();
+	
+	
+	
+	
+	//data: 1 name 2 url 3 iconpath 4 origin 5 is folder 6 mimetype
+	
 	void setName(QString p_name);
 	void setPath(QString p_path);
 	void setOrigin(QString p_origin);
@@ -21,7 +27,18 @@ public:
 	QString getURL();
 	
 	
+	void appendChild(Bookmark *child);
+	Bookmark *child(int row);
+	int childCount() const;
+	int columnCount() const;
+// 	int rowCount() const;
+	QVariant data(int column) const;
+	int row() const;
+	Bookmark *parentItem();
 private:
+	QList<Bookmark*> m_childItems;
+	QList<QVariant> m_itemData;
+	Bookmark *m_parentItem;
 	QString s_iconpath;
 	bool is_folder;
 	QString s_name;
