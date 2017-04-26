@@ -1,12 +1,13 @@
 #include "bookmarkmodel.hpp"
-#include<qt5/QtCore/QFile>
-#include <qt5/QtCore/QDebug>
-#include <qt5/QtCore/QAbstractItemModel>
-#include <qt5/QtCore/QVariant>
+#include <QtCore/QFile>
+#include <QtCore/QDebug>
+#include <QtCore/QAbstractItemModel>
+#include <QtCore/QVariant>
+#include <QtCore/QString>
 
 
 
-Bookmarkmodel::Bookmarkmodel(const QString &data, QObject* parent) :QAbstractItemModel(parent)
+Bookmarkmodel::Bookmarkmodel() :QAbstractItemModel(nullptr)
 {
 	m_attributelist.append("Bookmarks");
 	m_attributelist.append("/");
@@ -16,6 +17,7 @@ Bookmarkmodel::Bookmarkmodel(const QString &data, QObject* parent) :QAbstractIte
 	m_attributelist.append("inode/directory");
 	//data: 1 name 2 url 3 iconpath 4 origin 5 is folder 6 mimetype
 	m_rootitem=new Bookmark(m_attributelist);
+	appendXBELFile("/home/max/.local/share/konqueror/bookmarks.xml");	
 	setupModelData(m_rootitem);
 }
 Bookmarkmodel::~Bookmarkmodel()

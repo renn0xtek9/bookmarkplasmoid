@@ -1,8 +1,8 @@
 #include<iostream>
-#include<qt5/QtCore/QString>
-#include<qt5/QtCore/QFile>
-#include<qt5/QtCore/QDebug>
-#include<qt5/QtCore/QModelIndex>
+#include<QtCore/QString>
+#include<QtCore/QFile>
+#include<QtCore/QDebug>
+#include<QtCore/QModelIndex>
 #include "bookmark.hpp"
 #include "bookmarkmodel.hpp"
 using namespace std;
@@ -10,40 +10,39 @@ using namespace std;
 int main(int argc, char **argv) 
 {  
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
-	Bookmarkmodel reader("");
-	reader.appendXBELFile(filename);
+	Bookmarkmodel reader;
+// 	reader.appendXBELFile(filename);
 	qDebug()<<reader.rowCount();
 	qDebug()<<reader.columnCount();
 // 	QModelIndex index=reader.createIndex();
 // 	QModelIndex index=reader.index(0,0,index);
-	QModelIndex index;
+	QModelIndex parent;
+	QModelIndex current;
 	int i=0;
 	
 	
 	
 	
 	i=0;
-	while (i<reader.rowCount(index)){
+	while (i<reader.rowCount(parent)){
 		qDebug()<<i;
-		index=reader.index(i,0,index);
-		qDebug()<<reader.data(index,Qt::DisplayRole);
-		index=index.parent();
+		current=reader.index(i,0,parent);
+		qDebug()<<reader.data(current,Qt::DisplayRole);
+		if(reader.hasChildren(current)){
+			i=0;
+			parent=current;
+			current=reader.index(0,0,current);
+		}
 		i++;
-	}
-	index=reader.index(0,0,index);
-// 	index.
-// 	while (reader.index)
-	
-	
-// 	qDebug()<<reader.hasIndex(1,0,index);
-	
-	
-	
-	
-	qDebug()<<index;
-// 	qDebug()<<index.data(0);
-	
-	
+		if(i==reader.rowCount(parent)){
+			if (parent.parent().isValid()){
+				i=0;
+				parent=parent.parent();
+			}
+		}
+		
+		
+	}	
 	return 0;
 }
 

@@ -1,8 +1,11 @@
 #ifndef BOOKMARK_HPP
 #define BOOKMARK_HPP
-#include <qt5/QtCore/qstring.h>
+#include <QtCore/QObject>
+#include <QtCore/qstring.h>
+class Bookmarkmodel;
 
-class Bookmark{
+class Bookmark {
+	
 public:
 	Bookmark(const QList<QVariant> &data,Bookmark* parentbookmark=0);
 	~Bookmark();

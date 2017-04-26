@@ -5,8 +5,9 @@ PROJECT(${PROJECT_NAME} CXX)
 cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 set(QT_MIN_VERSION "5.3.0")
 set(KF5_MIN_VERSION "5.2.0")
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets )
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets Qml Quick)
 
+set(CMAKE_INSTALL_PREFIX=/usr)
 
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
@@ -34,9 +35,9 @@ include_directories(./../)
 # qt_wrap_cpp(${SRC})
 
 add_library(${PROJECT_NAME} SHARED ${SRC})
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Core )
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Core Qt5::Qml )
 
 
-install(TARGETS ${PROJECT_NAME} DESTINATION ${KDE_INSTALL_PLUGINDIR}/plasma/dataengine)
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 install(FILES bookmarkengine.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 add_subdirectory(Tests/)

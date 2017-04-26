@@ -1,15 +1,14 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Tutorial
-Comment=Tutorial on getting started with Plasma 5 plasmoids.
+Name=Bookmark
+Comment=Plasmoid that will gather and show bookmarks
 Type=Service
-
-X-KDE-Library=plasma_applet_tutorial
+X-KDE-Library=libbookmarkmodule
 X-KDE-ParentApp=
-X-KDE-PluginInfo-Author=Heena
-X-KDE-PluginInfo-Email=heena393@gmail.com
+X-KDE-PluginInfo-Author=Maxime Haselbauer
+X-KDE-PluginInfo-Email=maxime.haselbauer@googlemail.com
 X-KDE-PluginInfo-License=GPL
-X-KDE-PluginInfo-Name=org.kde.tutorial
+X-KDE-PluginInfo-Name=org.kde.bookmarkplasmoid
 X-KDE-PluginInfo-Version=2.0
 X-KDE-PluginInfo-Website=plasma.kde.org
 X-KDE-ServiceTypes=Plasma/Applet
@@ -17,3 +16,4 @@ X-Plasma-API=declarativeappletscript
 X-Plasma-MainScript=ui/main.qml
 X-Plasma-RemoteLocation=
 X-KDE-PluginInfo-Category=Windows and Tasks
+Icon=favorites

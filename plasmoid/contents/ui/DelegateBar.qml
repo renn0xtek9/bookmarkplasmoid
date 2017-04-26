@@ -12,8 +12,6 @@ Rectangle{
 	Keys.onEnterPressed: clicked()
 	Keys.onLeftPressed: clicked()
 	Keys.onRightPressed: clicked()
-	
-	
 	//Propertys and signals
 	property alias bookmarkname: textfield.text
 	property alias iconSize:iconcontainer.iconSize
@@ -29,20 +27,6 @@ Rectangle{
 	}
 	//Get the system palette
 	SystemPalette { id: syspalette ; colorGroup: SystemPalette.Active }
-	
-	
-	
-// 	/home/max/.local/share/okular/bookmarks.xml
-	XmlListModel {
-		id: xmlModel
-		source: "/home/max/.local/share/konqueror/bookmarks.xml"
-		query: "/xbel/(bookmark|folder)"
-	// 	namespaceDeclarations:"declare namespace bookmark"
-		XmlRole { name: "name"; query: "title/string()" }
-	// 	XmlRole { name: "icon"; query: "info/metadata/icon@name/string()" }
-		XmlRole { name: "href"; query: "@href/string()"}
-	}
-	
 	RowLayout{
 		id:	internlayout	
 		anchors.left: parent.left
@@ -76,8 +60,6 @@ Rectangle{
 			Layout.minimumWidth: iconSize
 			Layout.minimumHeight: iconSize
 			property int iconSize:16
-			
-
 			Image{
 				id: icon
 				anchors.left: parent.left

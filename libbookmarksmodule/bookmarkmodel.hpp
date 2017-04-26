@@ -1,21 +1,37 @@
 #ifndef BOOKMARKMODULE_HPP
 #define BOOKMARKMODULE_HPP
-#include <qt5/QtCore/QObject>
-#include <qt5/QtCore/QAbstractItemModel>
-#include <qt5/QtCore/QIODevice>
-#include <qt5/QtCore/QString>
-#include <qt5/QtCore/QList>
-#include <qt5/QtCore/QXmlStreamReader>
-#include <qt5/QtCore/QHash>
+#include <QtCore/QObject>
+#include <QtCore/QAbstractItemModel>
+#include <QtCore/QIODevice>
+#include <QtCore/QString>
+#include <QtCore/QList>
+#include <QtCore/QXmlStreamReader>
+#include <QtCore/QHash>
+#include <QtQml/QtQml>
+#include <QtQml/qqml.h>
+#include <QtQml/QQmlExtensionPlugin>
+#include <QtQml/QQmlExtensionInterface>
 #include "bookmark.hpp"
 
 class Bookmarkmodel :public QAbstractItemModel
 {
 	Q_OBJECT
-public:
-	explicit Bookmarkmodel(const QString &data, QObject* parent=0);
-	~Bookmarkmodel();
+// 	Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
+// 	Q_DISABLE_COPY(Bookmarmodel)
+	Q_PROPERTY(int rowCount READ rowCount NOTIFY rowCountChanged)
 	
+	
+signals:
+	void rowCountChanged(int newcount);
+	
+public:
+	explicit Bookmarkmodel();
+// 	explicit Bookmarkmodel(const QString &data, QObject* parent=0);
+	~Bookmarkmodel();
+// 	void registerTypes(const char *uri)
+// 	{
+// 		qmlRegisterType<BookmarkModel>(uri, 1, 0,"Bookmarkmodel");
+// 	}
 	//data: 1 name 2 url 3 iconpath 4 origin 5 is folder 6 mimetype
 	enum BookmarkRoles {
         	NameRole = Qt::UserRole + 1,
@@ -26,9 +42,8 @@ public:
 		mimetypeRole=Qt::UserRole+6
     	};
 	
-	
 	void appendXBELFile(QString path);
-	//NEw
+	//NEW
 	QVariant data(const QModelIndex &index, int role) const override;
 	Qt::ItemFlags flags(const QModelIndex &index) const override;
 	QVariant headerData(int section, Qt::Orientation orientation,int role = Qt::DisplayRole) const override;
@@ -38,11 +53,9 @@ public:
 	int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 	QHash<int, QByteArray> roleNames() const override;
 
-
 private:
 	//New
 	void setupModelData( Bookmark *parent);
-	
 	
 	//Methods to read an xbel based bookmark fodlder
 	bool readXBEL(QIODevice* device);
@@ -51,24 +64,41 @@ private:
 	void readXBELFolder();
 	void readXBELBookmark();
 	void readXBELInfoAndMetadata(QString p_blockname);
-	
-	
-	
+
 	Bookmark* m_bkmrk=nullptr;
 	Bookmark* m_rootitem=nullptr;
 	QList<QVariant> m_attributelist;
 	void clearAttributeList();
 	
-	
-	
-	
 	QXmlStreamReader xml;
 	QList<Bookmark> m_bookmarks;
 	QString s_currentpath;
-
 };
 
 
+class BookmarkmodelPlugin : public QQmlExtensionPlugin
+{
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
+
+public:
+	BookmarkmodelPlugin()
+	{
+		
+	}
+	~BookmarkmodelPlugin()
+	{
+		
+	}
+    	void registerTypes(const char *uri)
+    	{
+        	Q_ASSERT(uri == QLatin1String("Bookmarkmodel"));
+        	qmlRegisterType<Bookmarkmodel,1>(uri, 1, 0, "Bookmarkmodel");
+    	}
+};
+
+
+// undefined reference to `QQmlExtensionPlugin::qt_metacast(char const*)'
 
 #endif
 
