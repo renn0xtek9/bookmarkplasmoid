@@ -1,0 +1,3 @@
+module BookmarkmodelPlugin
+plugin bookmarkmodelplugin
+classname BookmarkmodelPlugin
