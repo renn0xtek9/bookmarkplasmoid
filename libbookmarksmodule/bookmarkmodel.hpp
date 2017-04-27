@@ -19,7 +19,8 @@ class Bookmarkmodel :public QAbstractItemModel
 // 	Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
 // 	Q_DISABLE_COPY(Bookmarmodel)
 	Q_PROPERTY(int rowCount READ rowCount NOTIFY rowCountChanged)
-	
+// 	Q_PROPERTY(s)
+// 	
 	
 signals:
 	void rowCountChanged(int newcount);
@@ -42,7 +43,7 @@ public:
 		mimetypeRole=Qt::UserRole+6
     	};
 	
-	void appendXBELFile(QString path);
+	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 	//NEW
 	QVariant data(const QModelIndex &index, int role) const override;
 	Qt::ItemFlags flags(const QModelIndex &index) const override;

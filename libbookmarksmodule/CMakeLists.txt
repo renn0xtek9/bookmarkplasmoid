@@ -9,7 +9,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_S
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build directories
 set(CMAKE_AUTOMOC ON) # Instruct CMake to run moc automatically when needed.
 
-set(PROJECT_NAME bookmarkmodule)
+set(PROJECT_NAME bookmarkmodelplugin)
 PROJECT(${PROJECT_NAME} CXX)
 file (GLOB SRC "*.cpp" ) 
 set (SRC ${SRC} bookmarkmodel.cpp bookmark.cpp)
