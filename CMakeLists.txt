@@ -8,6 +8,7 @@ find_package(ECM REQUIRED NO_MODULE)
 # Needed by find_package(KF5Plasma) below.
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_MODULE_PATH})
 
+set(CMAKE_INSTALL_PREFIX=/usr)
 # Locate plasma_install_package macro.
 find_package(KF5Plasma REQUIRED)
 # add_subdirectory(DataEngine/)
