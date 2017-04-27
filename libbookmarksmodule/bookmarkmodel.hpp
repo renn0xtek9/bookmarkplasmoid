@@ -93,8 +93,8 @@ public:
 	}
     	void registerTypes(const char *uri)
     	{
-        	Q_ASSERT(uri == QLatin1String("Bookmarkmodel"));
-        	qmlRegisterType<Bookmarkmodel,1>(uri, 1, 0, "Bookmarkmodel");
+        	Q_ASSERT(uri == QLatin1String("bookmarkmodelplugin"));
+        	qmlRegisterType<Bookmarkmodel,1>(uri, 1, 0, "bookmarkmodelplugin");
     	}
 };
 

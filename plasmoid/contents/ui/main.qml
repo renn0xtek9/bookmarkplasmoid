@@ -10,9 +10,9 @@ import bookmarkmodelplugin 1.0
 
 PlasmaComponents.Dialog {
 	
-	bookmarkmodelplugin.BookmarkmodelPlugin{
-		id: model 
-	}
+// 	bookmarkmodelplugin.Bookmarkmodel{
+// 		id: model 
+// 	}
 	
 	
 	
