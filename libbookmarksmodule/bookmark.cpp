@@ -69,6 +69,7 @@ void Bookmark::setURL(QString p_url)
 void Bookmark::appendChild(Bookmark *child)
 {
 	m_childItems.append(child);
+	child->m_parentItem=this;
 }
 Bookmark *Bookmark::child(int row)
 {

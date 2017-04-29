@@ -96,14 +96,23 @@ void Bookmarkmodel::readXBELFolder()
 				m_bkmrk->appendChild(newbookmark);
 				m_bkmrk=newbookmark;
 				readXBELFolder();
+				// remonte d'un cran 
 			}
 			else {
 				if (xml.name() == "bookmark")
 				{
-					Bookmark* newbookmark=new Bookmark(m_attributelist,m_bkmrk);
-					m_bkmrk->appendChild(newbookmark);
-					m_bkmrk=newbookmark;
+// 					Bookmark* newbookmark=new Bookmark(m_attributelist,m_bkmrk);
+// 					m_bkmrk->appendChild(newbookmark);
+// 					m_bkmrk=newbookmark;
 					readXBELBookmark();
+					if (m_bkmrk->parentItem())
+     					{
+						m_bkmrk=m_bkmrk->parentItem();
+					}
+					else{
+						m_bkmrk=m_rootitem;
+					}
+					
 				}
 				else 
 				{

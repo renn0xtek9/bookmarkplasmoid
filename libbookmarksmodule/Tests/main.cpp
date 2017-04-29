@@ -19,10 +19,16 @@ int main(int argc, char **argv)
 	QModelIndex parent;
 	QModelIndex current;
 	int i=0;
+	int n=reader.rowCount(parent);
 	
-	
-	
-	
+	for (int i=0 ; i<n ; i++)
+ 	{
+		current=reader.index(i,0,parent);
+		int rowforthis=current.row();
+// 		int subrows=current.
+		qDebug()<<reader.data(current,Qt::DisplayRole)<<" row for this:"<<rowforthis;
+	}
+	return 0;
 	i=0;
 	while (i<reader.rowCount(parent)){
 		qDebug()<<i;
