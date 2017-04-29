@@ -1,3 +1,3 @@
-module bookmarkmodelplugin
+module MyPlugins
 plugin bookmarkmodelplugin
 classname BookmarkmodelPlugin
