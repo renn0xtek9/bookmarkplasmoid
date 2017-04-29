@@ -1,7 +1,8 @@
 #ifndef BOOKMARKMODULE_HPP
 #define BOOKMARKMODULE_HPP
 #include <QtCore/QObject>
-#include <QtCore/QAbstractItemModel>
+// #include <QtCore/QAbstractItemModel>
+#include <QtGui/QStandardItemModel>
 #include <QtCore/QIODevice>
 #include <QtCore/QString>
 #include <QtCore/QList>
@@ -13,7 +14,8 @@
 #include <QtQml/QQmlExtensionInterface>
 #include "bookmark.hpp"
 
-class Bookmarkmodel :public QAbstractItemModel
+
+class Bookmarkmodel :public QStandardItemModel
 {
 	Q_OBJECT
 // 	Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
@@ -26,7 +28,7 @@ signals:
 	void rowCountChanged(int newcount);
 	
 public:
-	explicit Bookmarkmodel();
+	Bookmarkmodel();
 // 	explicit Bookmarkmodel(const QString &data, QObject* parent=0);
 	~Bookmarkmodel();
 // 	void registerTypes(const char *uri)
@@ -45,14 +47,14 @@ public:
 	
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 	//NEW
-	QVariant data(const QModelIndex &index, int role) const override;
-	Qt::ItemFlags flags(const QModelIndex &index) const override;
-	QVariant headerData(int section, Qt::Orientation orientation,int role = Qt::DisplayRole) const override;
-	QModelIndex index(int row, int column,const QModelIndex &parent = QModelIndex()) const override;
-	QModelIndex parent(const QModelIndex &index) const override;
-	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-	int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-	QHash<int, QByteArray> roleNames() const override;
+// 	QVariant data(const QModelIndex &index, int role) const override;
+// 	Qt::ItemFlags flags(const QModelIndex &index) const override;
+// // 	QVariant headerData(int section, Qt::Orientation orientation,int role = Qt::DisplayRole) const override;
+// 	QModelIndex index(int row, int column,const QModelIndex &parent = QModelIndex()) const override;
+// 	QModelIndex parent(const QModelIndex &index) const override;
+// 	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+// 	int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+// 	QHash<int, QByteArray> roleNames() const override;
 
 private:
 	//New
@@ -66,14 +68,10 @@ private:
 	void readXBELBookmark();
 	void readXBELInfoAndMetadata(QString p_blockname);
 
-	Bookmark* m_bkmrk=nullptr;
-	Bookmark* m_rootitem=nullptr;
-	QList<QVariant> m_attributelist;
-	void clearAttributeList();
+	QStandardItem* m_bkmrk=nullptr;
+	
 	
 	QXmlStreamReader xml;
-	QList<Bookmark> m_bookmarks;
-	QString s_currentpath;
 };
 
 

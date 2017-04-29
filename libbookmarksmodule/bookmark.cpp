@@ -2,11 +2,24 @@
 #include <qt5/QtCore/QList>
 #include "bookmark.hpp"
 
-Bookmark::Bookmark(const QList<QVariant> &data,Bookmark* parentbookmark)
+
+Bookmark::Bookmark():QStandardItem()
 {
-	m_itemData=data;
-	m_parentItem=parentbookmark;
+	
 }
+// Bookmark::Bookmark(Bookmark* parent):QStandardItem
+// {
+// 	m_parentItem=parent;
+// }
+
+
+Bookmark::Bookmark(const QString& text):QStandardItem(text)
+{
+}
+
+
+
+
 Bookmark::~Bookmark()
 {
 	qDeleteAll(m_childItems);
