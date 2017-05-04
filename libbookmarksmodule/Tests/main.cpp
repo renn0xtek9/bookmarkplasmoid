@@ -3,6 +3,7 @@
 #include<QtCore/QFile>
 #include<QtCore/QDebug>
 #include<QtCore/QModelIndex>
+#include<QtGuit/QStandardItem>
 #include "bookmark.hpp"
 #include "bookmarkmodel.hpp"
 using namespace std;
@@ -16,6 +17,7 @@ int main(int argc, char **argv)
 	qDebug()<<reader.columnCount();
 // 	QModelIndex index=reader.createIndex();
 // 	QModelIndex index=reader.index(0,0,index);
+
 	QModelIndex parent;
 	QModelIndex current;
 	int i=0;

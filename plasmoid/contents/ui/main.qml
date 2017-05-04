@@ -13,131 +13,42 @@ PlasmaComponents.Button {
     Plasmoid.title: "Bookmarks plasmoid"
 	
 	
+	
 	anchors.bottom: parent.bottom
 	anchors.horizontalCenter: parent.horizontalCenter
 	//             anchors.horizontalCenter: rectangleLayout.horizontalCenter
 	Layout.alignment: Qt.AlignTop
 	Layout.preferredWidth: 80
-	Layout.preferredHeight: 20
+	Layout.preferredHeight: 40
+	
 	iconName: "favorites"
 	text: "Bookmarks"
 	activeFocusOnPress: true
-	onClicked: mainlistview.focusChanged(false)
+// 	onClicked: mainlistview.focusChanged(false)
 	
 	MyPlugins.Bookmarkmodel{
 		id: itemmodel
 	}
-	Component {
-		id: highlightBar
-		Rectangle {
-		width: mainlistview.width; height: 30
-		color: "#FFFF88"
-		y: mainlistview.currentItem.y;
-		Behavior on y { SpringAnimation { spring: 2; damping: 0.1 } }
-		}
-	}
-	Rectangle{
-		id: pagerectangle
-		visible: false
-		width: mainlistview.width
-		height: 200
-		states: [
-		State{
-			name: "invisible"
-			PropertyChanges {
-			target: pagerectangle;visible: false}
-			},
-		State{
-			name: "visible"
-			PropertyChanges{
-				target: pagerectangle;visible: true}
-			},
-		State{
-			name:"displaced"
-			PropertyChanges{
-			target: pagerectangle ;x: 400;y: 400;visible:true}
-		}
-		]
-		transitions: [
-		Transition {
-			NumberAnimation {
-			target: pagerectangle
-			property: "x,y"
-			duration: 200
-			easing.type: Easing.InOutQuad
+	ListView{
+		id: view 
+		height: 400
+		visible:true
+		model:itemmodel
+		delegate: Rectangle {
+              height: 30;
+              width: 100;
+              Text {
+                 id: itemText
+                 text: display;
 			}
-
 		}
-		]
-	}
-	ColumnLayout{
-		spacing: 2 
-		Item{
-		id: mainitem
-		Layout.alignment: Qt.AlignTop
-		Layout.preferredWidth: 80
-		Layout.preferredHeight: 20
-		state: "hided"
-		states: [
-			State {
-			name: "normal"
-			PropertyChanges {
-				target: mainlistview;visible:true}
-			PropertyChanges {
-				target: putainderectangle;visible:true}
-			},
-			State {
-			name: "hided"
-			PropertyChanges {
-				target: mainlistview;visible:false}
-			PropertyChanges{
-				target: putainderectangle;visible:false}
-			}
-		]
-		Rectangle{
-			id: putainderectangle
-			color: "#FF00BB"
-			height:75
-			width: 300
-			visible: false
+		footer: Rectangle {
+			width: parent.width; height: 30;
 			Text{
-				id: putaindetext
-				text: bookmarksource.data.Local.Time
+				id: footertext
+				text: "Footer"
 			}
-		}
-		ListView{
-			id: mainlistview
-			width: 300
-			height: 1000
-			spacing: 0
-	//                 model: ContactModel{} 
-			model: PlasmaCore.DataModel {
-        			dataSource: bookmarksource
-        			keyRoleFilter: "*"
-   			}
-			currentIndex: 4
-			focus:true
-			delegate: DelegateBar{
-				width: mainlistview.width 
-				iconSize:32
-				bookmarkname: Timezone
-			}
-			visible: true
-			highlight: highlightBar
-			highlightFollowsCurrentItem: true
-		}
-		}
-		Connections{
-		target:mainbutton
-		onClicked:{
-			if (mainitem.state=="normal"){
-			mainitem.state="hided"
-			}
-			else
-			{
-			mainitem.state="normal"
-			}
-		}
 		}
 	}
+	
 }
