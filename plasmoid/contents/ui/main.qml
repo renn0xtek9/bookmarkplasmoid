@@ -5,13 +5,13 @@ import QtQuick.XmlListModel 2.0
 // import org.kde.plasma.plasmoid 2.0 //needed to give the Plasmoid attached properties
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
-import MyPlugins 1.0
+import MyPlugins 1.0 as MyPlugins
 
 
 
 PlasmaComponents.Dialog {
 	id : plasmoid
-	MyPlugins.bookmarkmodel{
+	MyPlugins.Bookmarkmodel{
 		id: model 
 	}
 
