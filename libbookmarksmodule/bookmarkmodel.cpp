@@ -113,6 +113,7 @@ void Bookmarkmodel::readXBELInfoAndMetadata(QString p_blockname,QStandardItem* p
 			//TODO make default icons !!
 // 			QIcon l_icon(xml.attributes().value("name").toString());
 // 			p_item->setIcon(l_icon);
+			p_item->setData(xml.attributes().value("name").toString(),Qt::UserRole);
 		}
 		readXBELInfoAndMetadata(xml.name().toString(),p_item);	 
 	}
@@ -149,4 +150,10 @@ void Bookmarkmodel::readXBELSeparator()
 {
 	Q_ASSERT(xml.isStartElement() && xml.name() == "separator");
 	xml.skipCurrentElement();
+}
+QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
+    QHash<int, QByteArray> roles;
+    roles[Iconpathrole] = "icon";
+	roles[Displayrole] = "display";
+    return roles;
 }

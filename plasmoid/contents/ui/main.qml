@@ -6,14 +6,10 @@ import org.kde.plasma.plasmoid 2.0 //needed to give the Plasmoid attached proper
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
 import MyPlugins 1.0 as MyPlugins
-    
 PlasmaComponents.Button {
 	id: mainbutton
 	
     Plasmoid.title: "Bookmarks plasmoid"
-	
-	
-	
 	anchors.bottom: parent.bottom
 	anchors.horizontalCenter: parent.horizontalCenter
 	//             anchors.horizontalCenter: rectangleLayout.horizontalCenter
@@ -24,29 +20,95 @@ PlasmaComponents.Button {
 	iconName: "favorites"
 	text: "Bookmarks"
 	activeFocusOnPress: true
-// 	onClicked: mainlistview.focusChanged(false)
+	onClicked: view.focusChanged(false)
 	
 	MyPlugins.Bookmarkmodel{
 		id: itemmodel
 	}
+	
+	Component {
+		id: highlightBar
+		Rectangle {
+		width: view.width; height: 30
+		color: "#FFFF88"
+		y: view.currentItem.y;
+		Behavior on y { SpringAnimation { spring: 2; damping: 0.1 } }
+		}
+	}	
+	
 	ListView{
 		id: view 
+		anchors.bottom: parent.top
+		anchors.bottomMargin: 10			//TODO this is probably not the proper way to have the bottom of List view sitting on top of the button		
 		height: 400
-		visible:true
+		visible:false
 		model:itemmodel
-		delegate: Rectangle {
-              height: 30;
-              width: 100;
-              Text {
-                 id: itemText
-                 text: display;
+		highlight: highlightBar;
+		focus:true
+
+		onCountChanged: {
+			/* calculate ListView dimensions based on content */
+
+			// get QQuickItem which is a root element which hosts delegate items
+			var root = view.visibleChildren[0]
+			var listViewHeight = 0
+			var listViewWidth = 0
+
+			// iterate over each delegate item to get their sizes
+			for (var i = 0; i < root.visibleChildren.length; i++) {
+				listViewHeight += root.visibleChildren[i].height
+				listViewWidth  = Math.max(listViewWidth, root.visibleChildren[i].width)
 			}
+
+			view.height = listViewHeight
+			view.width = listViewWidth
 		}
-		footer: Rectangle {
-			width: parent.width; height: 30;
-			Text{
-				id: footertext
-				text: "Footer"
+		
+		delegate: DelegateBar{
+			bookmarkname: display;
+			iconSource: icon;
+			iconSize: 24;
+		}
+		states: [
+		State{
+			name: "invisible"
+			PropertyChanges {
+			target: view;visible: false}
+			},
+		State{
+			name: "visible"
+			PropertyChanges{
+				target: view;visible: true}
+			},
+		State{
+			name:"displaced"
+			PropertyChanges{
+			target: view ;x: 400;y: 400;visible:true}
+		}
+		]
+		transitions: [
+		Transition {
+			NumberAnimation {
+			target: view
+			property: "x,y"
+			duration: 200
+			easing.type: Easing.InOutQuad
+			}
+
+		}
+	]
+	}
+	
+	
+	Connections{
+		target:mainbutton
+		onClicked:{
+			if (view.state=="invisible"){
+			view.state="visible"
+			}
+			else
+			{
+			view.state="invisible"
 			}
 		}
 	}

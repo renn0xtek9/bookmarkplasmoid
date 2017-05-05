@@ -3,7 +3,7 @@
 #include<QtCore/QFile>
 #include<QtCore/QDebug>
 #include<QtCore/QModelIndex>
-#include<QtGuit/QStandardItem>
+#include<QtGui/QStandardItem>
 #include "bookmark.hpp"
 #include "bookmarkmodel.hpp"
 using namespace std;

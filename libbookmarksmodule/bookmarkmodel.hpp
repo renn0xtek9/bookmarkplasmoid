@@ -36,7 +36,11 @@ public:
 // 		qmlRegisterType<BookmarkModel>(uri, 1, 0,"Bookmarkmodel");
 // 	}
 	
-	
+	 enum BookmarkRoles {
+        Iconpathrole = Qt::UserRole,
+		Displayrole =Qt::DisplayRole
+    };
+	QHash<int, QByteArray> roleNames() const ;
 	
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 private:

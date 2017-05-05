@@ -14,8 +14,6 @@ public:
 	~Bookmark();
 	
 	
-	
-	
 	//data: 1 name 2 url 3 iconpath 4 origin 5 is folder 6 mimetype
 	
 	void setName(QString p_name);
