@@ -1,12 +1,12 @@
 #include "bookmarkmodel.hpp"
 #include <QtCore/QFile>
 #include <QtCore/QDebug>
+#include <QtCore/QFileInfo>
 #include <QtCore/QAbstractItemModel>
 #include <QtCore/QVariant>
 #include <QtCore/QString>
 #include <QtGui/QIcon>
-
-
+#include <KF5/KIconThemes/KIconTheme>
 
 Bookmarkmodel::Bookmarkmodel() :QStandardItemModel(nullptr)
 {
@@ -69,6 +69,7 @@ bool Bookmarkmodel::readXBEL(QIODevice* device)
 QStandardItem* Bookmarkmodel::readXBELFolder()
 {
 	QStandardItem* ret=new QStandardItem();
+	ret->setData(getCustomOrThemeIconPath("folder-bookmark"),Qt::UserRole);		//Icon for a bookmark of folder
 	Q_ASSERT(xml.isStartElement() && xml.name() == "folder");
 	while (xml.readNextStartElement()) 
 	{
@@ -103,6 +104,31 @@ QStandardItem* Bookmarkmodel::readXBELFolder()
 	}
 	return ret;
 }
+QString Bookmarkmodel::getCustomOrThemeIconPath(QString iconpathfromxml)
+{
+	QFileInfo finfo(iconpathfromxml);
+	QString path;
+	if(!finfo.isFile())
+	{
+		QStringList themelist("hicolor");
+		themelist.append(KIconTheme::current());
+		QString path;
+		foreach(QString str, themelist)
+		{
+			KIconTheme theme(str);
+			path=theme.iconPathByName(iconpathfromxml,24,KIconLoader::MatchBest);
+			if(!path.isEmpty())
+			{
+				iconpathfromxml=path;
+				break;
+			}
+			
+		}
+	}
+	return iconpathfromxml;
+}
+
+
 void Bookmarkmodel::readXBELInfoAndMetadata(QString p_blockname,QStandardItem* p_item)
 {
 	Q_ASSERT(xml.isStartElement() && xml.name() == p_blockname);
@@ -110,10 +136,9 @@ void Bookmarkmodel::readXBELInfoAndMetadata(QString p_blockname,QStandardItem* p
 	{
 		if(xml.name()=="icon")	//we are at bookmark::icon
 		{
-			//TODO make default icons !!
-// 			QIcon l_icon(xml.attributes().value("name").toString());
-// 			p_item->setIcon(l_icon);
-			p_item->setData(xml.attributes().value("name").toString(),Qt::UserRole);
+			QString iconname=xml.attributes().value("name").toString();
+			getCustomOrThemeIconPath(iconname);
+			p_item->setData(iconname,Qt::UserRole);
 		}
 		readXBELInfoAndMetadata(xml.name().toString(),p_item);	 
 	}
@@ -122,7 +147,8 @@ QStandardItem* Bookmarkmodel::readXBELBookmark()
 {
 	Q_ASSERT(xml.isStartElement() && xml.name() == "bookmark");
 	QStandardItem* ret=new QStandardItem();		//This is the bookmark (not a folder) that we are going to build	
-	ret->setWhatsThis(xml.attributes().value("href").toString());	//The link goes on the whatsthis
+	ret->setToolTip(xml.attributes().value("href").toString());	//The link goes on the whatsthis
+// 	qDebug()<<"Has defined the tooltip"<<xml.attributes().value("href").toString();
 	while (xml.readNextStartElement()) {
 		if (xml.name() == "title")
 		{
@@ -153,7 +179,8 @@ void Bookmarkmodel::readXBELSeparator()
 }
 QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
     QHash<int, QByteArray> roles;
-    roles[Iconpathrole] = "icon";
+	roles[Iconpathrole] = "icon";
 	roles[Displayrole] = "display";
+	roles[Tooltiprole] = "tooltip";
     return roles;
 }

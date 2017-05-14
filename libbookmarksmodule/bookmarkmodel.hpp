@@ -37,13 +37,16 @@ public:
 // 	}
 	
 	 enum BookmarkRoles {
-        Iconpathrole = Qt::UserRole,
-		Displayrole =Qt::DisplayRole
-    };
+		Iconpathrole = Qt::UserRole,
+		Displayrole =Qt::DisplayRole,
+		Tooltiprole=Qt::ToolTipRole
+	};
 	QHash<int, QByteArray> roleNames() const ;
 	
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 private:
+	QString getCustomOrThemeIconPath(QString iconpathfromxml);
+	
 	
 	//Methods to read an xbel based bookmark fodlder
 	bool readXBEL(QIODevice* device);

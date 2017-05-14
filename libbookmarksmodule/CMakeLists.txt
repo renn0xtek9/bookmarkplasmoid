@@ -9,6 +9,8 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_S
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build directories
 set(CMAKE_AUTOMOC ON) # Instruct CMake to run moc automatically when needed.
 
+find_package(KF5IconThemes)
+
 set(PROJECT_NAME bookmarkmodelplugin)
 PROJECT(${PROJECT_NAME} CXX)
 file (GLOB SRC "*.cpp" ) 
@@ -21,7 +23,7 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Qml )
 add_definitions (${QT_DEFINITIONS} )
 
 set(CMAKE_INSTALL_PREFIX=/usr)
-include_directories(${CMAKE_SOURCE_DIR}${CMAKE_BINARY_DIR} ${QT_INCLUDES} )
+include_directories(${CMAKE_SOURCE_DIR}${CMAKE_BINARY_DIR} ${QT_INCLUDES})
 
 # Copy qmldir file to build dir for running in QtCreator
 add_custom_target(${PROJECT_NAME}-qmldir ALL
@@ -38,7 +40,7 @@ message(STATUS "libbookmarkmodule:  QT_IMPORTS_DIR.-----------------------------
 add_library(${PROJECT_NAME} MODULE ${SRC})
 qt5_use_modules(${PROJECT_NAME}  Qml)
 set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_NAME})
-target_link_libraries(${PROJECT_NAME}  Qt5::Core Qt5::Qml )
+target_link_libraries(${PROJECT_NAME}  Qt5::Core Qt5::Qml KF5::IconThemes )
 install(TARGETS ${PROJECT_NAME} DESTINATION ${QT_IMPORTS_DIR}/MyPlugins/)
 install(FILES   qmldir DESTINATION ${QT_IMPORTS_DIR}/MyPlugins/)
 add_subdirectory(Tests/)

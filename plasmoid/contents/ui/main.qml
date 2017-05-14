@@ -6,10 +6,10 @@ import org.kde.plasma.plasmoid 2.0 //needed to give the Plasmoid attached proper
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
 import MyPlugins 1.0 as MyPlugins
+
 PlasmaComponents.Button {
 	id: mainbutton
-	
-    Plasmoid.title: "Bookmarks plasmoid"
+	Plasmoid.title: "Bookmarks plasmoid"
 	anchors.bottom: parent.bottom
 	anchors.horizontalCenter: parent.horizontalCenter
 	//             anchors.horizontalCenter: rectangleLayout.horizontalCenter
@@ -40,12 +40,13 @@ PlasmaComponents.Button {
 		id: view 
 		anchors.bottom: parent.top
 		anchors.bottomMargin: 10			//TODO this is probably not the proper way to have the bottom of List view sitting on top of the button		
-		height: 400
+		height: 24*view.count
+		
 		visible:false
 		model:itemmodel
-		highlight: highlightBar;
+// 		highlight: highlightBar;
 		focus:true
-
+		highlightFollowsCurrentItem: true
 		onCountChanged: {
 			/* calculate ListView dimensions based on content */
 
@@ -64,10 +65,17 @@ PlasmaComponents.Button {
 			view.width = listViewWidth
 		}
 		
-		delegate: DelegateBar{
-			bookmarkname: display;
-			iconSource: icon;
-			iconSize: 24;
+		delegate: PlasmaComponents.Button{
+			iconSource :icon
+			height: 24
+			width: 200
+			text: display
+			tooltip: tooltip
+			minimumWidth: view.width
+			onClicked:{
+				console.log(icon+"clicked")
+				
+			}
 		}
 		states: [
 		State{
@@ -78,7 +86,7 @@ PlasmaComponents.Button {
 		State{
 			name: "visible"
 			PropertyChanges{
-				target: view;visible: true}
+				target: view;visible: true;currentItem:0}
 			},
 		State{
 			name:"displaced"

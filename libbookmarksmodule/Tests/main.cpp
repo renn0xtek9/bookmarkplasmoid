@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 		int rowforthis=current.row();
 // 		int subrows=current.
 		qDebug()<<reader.data(current,Qt::DisplayRole)<<" row for this:"<<rowforthis;
+		qDebug()<<reader.data(current,Qt::ToolTipRole)<<" is the tooltip";
 	}
 	return 0;
 	i=0;
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
 		qDebug()<<i;
 		current=reader.index(i,0,parent);
 		qDebug()<<reader.data(current,Qt::DisplayRole);
+		qDebug()<<"Tooltip"<<reader.data(current,Qt::ToolTip);
 		if(reader.hasChildren(current)){
 			i=0;
 			parent=current;
