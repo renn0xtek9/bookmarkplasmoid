@@ -70,10 +70,11 @@ PlasmaComponents.Button {
 			height: 24
 			width: 200
 			text: display
-			tooltip: tooltip
+// 			tooltip: tooltip
+			tooltip: ttp
 			minimumWidth: view.width
 			onClicked:{
-				console.log(icon+"clicked")
+				console.log(tooltip+"clicked")
 				
 			}
 		}

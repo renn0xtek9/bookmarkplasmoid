@@ -148,7 +148,6 @@ QStandardItem* Bookmarkmodel::readXBELBookmark()
 	Q_ASSERT(xml.isStartElement() && xml.name() == "bookmark");
 	QStandardItem* ret=new QStandardItem();		//This is the bookmark (not a folder) that we are going to build	
 	ret->setToolTip(xml.attributes().value("href").toString());	//The link goes on the whatsthis
-// 	qDebug()<<"Has defined the tooltip"<<xml.attributes().value("href").toString();
 	while (xml.readNextStartElement()) {
 		if (xml.name() == "title")
 		{
@@ -178,9 +177,9 @@ void Bookmarkmodel::readXBELSeparator()
 	xml.skipCurrentElement();
 }
 QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
-    QHash<int, QByteArray> roles;
+	QHash<int, QByteArray> roles;
 	roles[Iconpathrole] = "icon";
 	roles[Displayrole] = "display";
-	roles[Tooltiprole] = "tooltip";
-    return roles;
+	roles[Tooltiprole] = "ttp";
+	return roles;
 }
