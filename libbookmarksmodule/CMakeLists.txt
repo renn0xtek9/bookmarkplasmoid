@@ -13,8 +13,8 @@ find_package(KF5IconThemes)
 
 set(PROJECT_NAME bookmarkmodelplugin)
 PROJECT(${PROJECT_NAME} CXX)
-file (GLOB SRC "*.cpp" ) 
-set (SRC ${SRC} bookmarkmodel.cpp bookmark.cpp)
+# file (GLOB SRC "*.cpp" ) 
+set (SRC ${SRC} bookmarkmodel.cpp launcher.cpp)
 include_directories(./../)
 
 set(QT_MIN_VERSION "5.3.0")
@@ -35,6 +35,7 @@ add_custom_target(${PROJECT_NAME}-qmldir ALL
 # query_qmake(QT_INSTALL_IMPORTS QT_IMPORTS_DIR)
 set(QT_IMPORTS_DIR /usr/lib/x86_64-linux-gnu/qt5/qml/)		#TODO this should be set in platform independant
 message(STATUS "libbookmarkmodule:  QT_IMPORTS_DIR.------------------------------------------------\n" "${QT_IMPORTS_DIR}")
+message(STATUS "libbookmarkmodule:  SRC.------------------------------------------------\n" "${SRC}")
 
 #The plugin c++ plugin itself
 add_library(${PROJECT_NAME} MODULE ${SRC})

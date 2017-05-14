@@ -12,7 +12,7 @@
 #include <QtQml/qqml.h>
 #include <QtQml/QQmlExtensionPlugin>
 #include <QtQml/QQmlExtensionInterface>
-#include "bookmark.hpp"
+#include "launcher.hpp"
 
 
 class Bookmarkmodel :public QStandardItemModel
@@ -58,7 +58,6 @@ private:
 	QXmlStreamReader xml;
 };
 
-
 class BookmarkmodelPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
@@ -77,6 +76,7 @@ public:
     	{
         	Q_ASSERT(uri == QLatin1String("MyPlugins"));
         	qmlRegisterType<Bookmarkmodel,1>(uri, 1, 0, "Bookmarkmodel");
+		qmlRegisterType<Launcher,1>(uri,1,0,"Launcher");
     	}
 };
 
