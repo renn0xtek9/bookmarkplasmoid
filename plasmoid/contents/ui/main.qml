@@ -26,6 +26,26 @@ PlasmaComponents.Button {
 		id: itemmodel
 	}
 	
+	PlasmaCore.DataSource {
+		id: executable
+		engine: "executable"
+		connectedSources: []
+		onNewData: {
+			var exitCode = data["exit code"]
+			var exitStatus = data["exit status"]
+			var stdout = data["stdout"]
+			var stderr = data["stderr"]
+			exited(exitCode, exitStatus, stdout, stderr)
+			disconnectSource(sourceName) // cmd finished
+		}
+		function exec(cmd) {
+			connectSource(cmd)
+		}
+		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
+	}
+
+	
+	
 	Component {
 		id: highlightBar
 		Rectangle {
@@ -75,7 +95,7 @@ PlasmaComponents.Button {
 			minimumWidth: view.width
 			onClicked:{
 				console.log(tooltip+"clicked")
-				
+				executable.exec("xdg-open "+tooltip)
 			}
 		}
 		states: [

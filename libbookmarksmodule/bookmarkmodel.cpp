@@ -20,10 +20,8 @@ void Bookmarkmodel::appendXBELFile(QString path)
 {
 	QFile xbelfile(path);
 	if (xbelfile.open(QIODevice::OpenModeFlag::ReadOnly)){
-		qDebug()<<"The QFile is open";
 		if(!(readXBEL(&xbelfile)))
 		{
-	  		qDebug()<<"Problem when reading file";
 		}
 	}
 	else{
@@ -69,7 +67,7 @@ bool Bookmarkmodel::readXBEL(QIODevice* device)
 QStandardItem* Bookmarkmodel::readXBELFolder()
 {
 	QStandardItem* ret=new QStandardItem();
-	ret->setData(getCustomOrThemeIconPath("folder-bookmark"),Qt::UserRole);		//Icon for a bookmark of folder
+	ret->setData(true,BookmarkRoles::IsFolderRole);
 	Q_ASSERT(xml.isStartElement() && xml.name() == "folder");
 	while (xml.readNextStartElement()) 
 	{
@@ -90,13 +88,20 @@ QStandardItem* Bookmarkmodel::readXBELFolder()
 				}
 				else 
 				{
-					if (xml.name() == "separator")
+					if (xml.name()=="info")
 					{
-						readXBELSeparator();
+						readXBELInfoAndMetadata("info",ret);
 					}
 					else
 					{
-						xml.skipCurrentElement();
+						if (xml.name() == "separator")
+						{
+							readXBELSeparator();
+						}
+						else
+						{
+							xml.skipCurrentElement();
+						}
 					}
 				}		
 			}
@@ -104,28 +109,50 @@ QStandardItem* Bookmarkmodel::readXBELFolder()
 	}
 	return ret;
 }
-QString Bookmarkmodel::getCustomOrThemeIconPath(QString iconpathfromxml)
+QString Bookmarkmodel::getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item)
 {
 	QFileInfo finfo(iconpathfromxml);
-	QString path;
+	QString path,standard,iconsource;
+	QStringList themelist("hicolor");
+	iconsource=iconpathfromxml;
 	if(!finfo.isFile())
 	{
-		QStringList themelist("hicolor");
+		iconsource="";
 		themelist.append(KIconTheme::current());
-		QString path;
 		foreach(QString str, themelist)
 		{
 			KIconTheme theme(str);
 			path=theme.iconPathByName(iconpathfromxml,24,KIconLoader::MatchBest);
 			if(!path.isEmpty())
 			{
-				iconpathfromxml=path;
+				iconsource=path;
 				break;
+			}	
+		}
+		if(iconsource.isEmpty())
+		{
+			themelist.append(KIconTheme::current());
+			if(p_item->data(BookmarkRoles::IsFolderRole).toBool()==true)
+			{
+				standard="folder-bookmark";
 			}
-			
+			else
+			{
+				standard="text-html";
+			}
+			foreach(QString str, themelist)
+			{
+				KIconTheme theme(str);
+				path=theme.iconPathByName(standard,24,KIconLoader::MatchBest);
+				if(!path.isEmpty())
+				{
+					iconsource=path;
+					break;
+				}	
+			}
 		}
 	}
-	return iconpathfromxml;
+	return iconsource;
 }
 
 
@@ -137,8 +164,8 @@ void Bookmarkmodel::readXBELInfoAndMetadata(QString p_blockname,QStandardItem* p
 		if(xml.name()=="icon")	//we are at bookmark::icon
 		{
 			QString iconname=xml.attributes().value("name").toString();
-			getCustomOrThemeIconPath(iconname);
-			p_item->setData(iconname,Qt::UserRole);
+			QString customortheme=getCustomOrThemeIconPath(iconname,p_item);
+			p_item->setData(customortheme,Qt::UserRole);
 		}
 		readXBELInfoAndMetadata(xml.name().toString(),p_item);	 
 	}
@@ -147,6 +174,7 @@ QStandardItem* Bookmarkmodel::readXBELBookmark()
 {
 	Q_ASSERT(xml.isStartElement() && xml.name() == "bookmark");
 	QStandardItem* ret=new QStandardItem();		//This is the bookmark (not a folder) that we are going to build	
+	ret->setData(false,BookmarkRoles::IsFolderRole);
 	ret->setToolTip(xml.attributes().value("href").toString());	//The link goes on the whatsthis
 	while (xml.readNextStartElement()) {
 		if (xml.name() == "title")
@@ -181,5 +209,6 @@ QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
 	roles[Iconpathrole] = "icon";
 	roles[Displayrole] = "display";
 	roles[Tooltiprole] = "ttp";
+	roles[IsFolderRole] = "isFolder";
 	return roles;
 }

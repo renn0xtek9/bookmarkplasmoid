@@ -14,7 +14,7 @@
 #include <QtQml/QQmlExtensionInterface>
 #include "launcher.hpp"
 
-
+class Launcher;
 class Bookmarkmodel :public QStandardItemModel
 {
 	Q_OBJECT
@@ -39,13 +39,14 @@ public:
 	 enum BookmarkRoles {
 		Iconpathrole = Qt::UserRole,
 		Displayrole =Qt::DisplayRole,
-		Tooltiprole=Qt::ToolTipRole
+		Tooltiprole =Qt::ToolTipRole,
+		IsFolderRole = Qt::UserRole+2
 	};
 	QHash<int, QByteArray> roleNames() const ;
 	
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 private:
-	QString getCustomOrThemeIconPath(QString iconpathfromxml);
+	QString getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item);
 	
 	
 	//Methods to read an xbel based bookmark fodlder
@@ -76,7 +77,7 @@ public:
     	{
         	Q_ASSERT(uri == QLatin1String("MyPlugins"));
         	qmlRegisterType<Bookmarkmodel,1>(uri, 1, 0, "Bookmarkmodel");
-		qmlRegisterType<Launcher,1>(uri,1,0,"Launcher");
+// 		qmlRegisterType<Launcher,1>(uri,1,0,"Launcher");
     	}
 };
 

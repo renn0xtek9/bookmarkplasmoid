@@ -14,7 +14,7 @@ find_package(KF5IconThemes)
 set(PROJECT_NAME bookmarkmodelplugin)
 PROJECT(${PROJECT_NAME} CXX)
 # file (GLOB SRC "*.cpp" ) 
-set (SRC ${SRC} bookmarkmodel.cpp launcher.cpp)
+set (SRC ${SRC} bookmarkmodel.cpp )
 include_directories(./../)
 
 set(QT_MIN_VERSION "5.3.0")
