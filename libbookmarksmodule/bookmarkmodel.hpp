@@ -45,6 +45,12 @@ public:
 	QHash<int, QByteArray> roleNames() const ;
 	
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
+	
+public slots:
+// 	ItemLeftCicked(int index);
+// 	ItemRightClicked(int index);
+	
+
 private:
 	QString getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item);
 	

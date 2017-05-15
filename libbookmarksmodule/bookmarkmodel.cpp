@@ -212,3 +212,11 @@ QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
 	roles[IsFolderRole] = "isFolder";
 	return roles;
 }
+// int Bookmarkmodel::ItemLeftCicked(int index)
+// {
+// 	
+// }
+// int Bookmarkmodel::ItemRightClicked(int index)
+// {
+// }
+

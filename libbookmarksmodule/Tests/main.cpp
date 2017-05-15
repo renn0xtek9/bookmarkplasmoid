@@ -31,8 +31,26 @@ int main(int argc, char **argv)
 		qDebug()<<reader.data(current,Qt::DisplayRole)<<" row for this:"<<rowforthis;
 		qDebug()<<reader.data(current,Qt::ToolTipRole)<<" is the tooltip";
 	}
+	
+	qDebug()<<"Now inside Utiles";
+	
+	if(reader.findItems("Utiles").count()>0)
+	{
+		QStandardItem* utiles=reader.findItems("Utiles").at(0);
+		for (int i=0 ; i<reader.rowCount(utiles->index()) ; i++)
+		{	
+			current=reader.index(i,0,utiles->index());
+			int rowforthis=current.row();
+			qDebug()<<reader.data(current,Qt::DisplayRole)<<" row for this:"<<rowforthis;
+			qDebug()<<reader.data(current,Qt::ToolTipRole)<<" is the tooltip";
+		}
+		
+	}
 	return 0;
-	i=0;
+	
+	
+	
+	
 	while (i<reader.rowCount(parent)){
 		qDebug()<<i;
 		current=reader.index(i,0,parent);

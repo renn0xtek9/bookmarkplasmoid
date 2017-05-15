@@ -93,11 +93,26 @@ PlasmaComponents.Button {
 // 			tooltip: tooltip
 			tooltip: ttp
 			minimumWidth: view.width
+			
+			
 			onClicked:{
-				console.log(tooltip+"clicked")
-				executable.exec("xdg-open "+tooltip)
+				if (!isFolder)
+				{
+					console.log(tooltip+"clicked")
+					executable.exec("xdg-open "+tooltip)
+				}
+				else
+				{
+					console.log(tooltip+"clicked")
+					view.currentIndex=currentIndex
+					//Execute click of a bookmarkfolder 
+// 					itemmodel.set
+// 					view.currentItem=currentItem
+				}
 			}
 		}
+// 		onCurrentIndexChanged()
+		
 		states: [
 		State{
 			name: "invisible"
