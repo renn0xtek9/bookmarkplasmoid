@@ -12,7 +12,7 @@
 #include <QtQml/qqml.h>
 #include <QtQml/QQmlExtensionPlugin>
 #include <QtQml/QQmlExtensionInterface>
-#include "launcher.hpp"
+// #include "launcher.hpp"
 
 class Launcher;
 class Bookmarkmodel :public QStandardItemModel
@@ -21,6 +21,7 @@ class Bookmarkmodel :public QStandardItemModel
 // 	Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
 // 	Q_DISABLE_COPY(Bookmarmodel)
 	Q_PROPERTY(int rowCount READ rowCount NOTIFY rowCountChanged)
+	
 // 	Q_PROPERTY(s)
 // 	
 	
@@ -29,12 +30,7 @@ signals:
 	
 public:
 	Bookmarkmodel();
-// 	explicit Bookmarkmodel(const QString &data, QObject* parent=0);
 	~Bookmarkmodel();
-// 	void registerTypes(const char *uri)
-// 	{
-// 		qmlRegisterType<BookmarkModel>(uri, 1, 0,"Bookmarkmodel");
-// 	}
 	
 	 enum BookmarkRoles {
 		Iconpathrole = Qt::UserRole,
@@ -44,14 +40,15 @@ public:
 	};
 	QHash<int, QByteArray> roleNames() const ;
 	
+	
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 	
 public slots:
-// 	ItemLeftCicked(int index);
-// 	ItemRightClicked(int index);
-	
+	void itemSelectedAsRoot(int index);
+	void parentItemSelectedAsRoot();
 
 private:
+	QModelIndex* m_rootmodelindex;
 	QString getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item);
 	
 	

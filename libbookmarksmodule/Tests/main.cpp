@@ -4,7 +4,7 @@
 #include<QtCore/QDebug>
 #include<QtCore/QModelIndex>
 #include<QtGui/QStandardItem>
-#include "bookmark.hpp"
+// #include "bookmark.hpp"
 #include "bookmarkmodel.hpp"
 using namespace std;
 

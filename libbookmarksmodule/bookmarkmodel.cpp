@@ -10,7 +10,7 @@
 
 Bookmarkmodel::Bookmarkmodel() :QStandardItemModel(nullptr)
 {
-	appendXBELFile("/home/max/.local/share/konqueror/bookmarks.xml");	
+	appendXBELFile("/home/max/.local/share/konqueror/bookmarks.xml");
 }
 Bookmarkmodel::~Bookmarkmodel()
 {
@@ -27,6 +27,7 @@ void Bookmarkmodel::appendXBELFile(QString path)
 	else{
 		qDebug()<<"Could not open File";
 	}
+	emit this->rowCountChanged(this->rowCount());
 }
 bool Bookmarkmodel::readXBEL(QIODevice* device)
 {
@@ -41,9 +42,7 @@ bool Bookmarkmodel::readXBEL(QIODevice* device)
  	{	
 		return false ;
 	}
-	
 	Q_ASSERT(xml.isStartElement() && xml.name() == "xbel");
-// 	readXBELFolder();
 	while (xml.readNextStartElement()) {
 		if (xml.name() == "folder"){
 			invisibleRootItem()->appendRow(readXBELFolder());
@@ -212,11 +211,11 @@ QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
 	roles[IsFolderRole] = "isFolder";
 	return roles;
 }
-// int Bookmarkmodel::ItemLeftCicked(int index)
-// {
-// 	
-// }
-// int Bookmarkmodel::ItemRightClicked(int index)
-// {
-// }
+void Bookmarkmodel::itemSelectedAsRoot(int index)
+{		
+}
+void Bookmarkmodel::parentItemSelectedAsRoot()
+{
+// 	this->setRootIndex(this->invisibleRootItem());
+}
 

@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 import QtQuick.XmlListModel 2.0
+import QtQml 2.2
 import org.kde.plasma.plasmoid 2.0 //needed to give the Plasmoid attached properties
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
@@ -43,6 +44,9 @@ PlasmaComponents.Button {
 		}
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
 	}
+	
+	
+	
 
 	
 	
@@ -56,17 +60,60 @@ PlasmaComponents.Button {
 		}
 	}	
 	
+	
+	VisualDataModel {
+		id: visualModel
+		model: itemmodel	
+		delegate: PlasmaComponents.Button{
+			iconSource :icon
+			height: 24
+			width: 200
+			text: display
+	// 		tooltip: tooltip
+			tooltip: ttp
+			minimumWidth: view.width
+			MouseArea{
+				anchors.fill: parent
+				acceptedButtons: Qt.LeftButton | Qt.RightButton
+				onClicked:{
+					 if(mouse.button & Qt.LeftButton) {
+						if (!isFolder)
+						{
+							console.log(tooltip+"clicked")
+							Qt.openUrlExternally(tooltip)
+	// 		/ 				executable.exec("xdg-open "+tooltip)
+						}
+						else
+						{
+							console.log(tooltip+"clicked"+index)
+							visualModel.rootIndex=view.model.modelIndex(index)
+	// 						visualModel.rootIndex=VisualDataModel.
+	// 						if (model.hasModelChildren)
+	// 							view.model.rootIndex = view.model.modelIndex(index)
+						}
+					 }
+					 if(mouse.button & Qt.RightButton)
+					 {
+						 visualModel.rootIndex=visualModel.parentModelIndex()
+// 						 visualModel.rootIndex=view.model.rootIndex
+						 
+					 }
+				}
+			}
+		}
+	}
+
+	
+	
 	ListView{
 		id: view 
 		anchors.bottom: parent.top
 		anchors.bottomMargin: 10			//TODO this is probably not the proper way to have the bottom of List view sitting on top of the button		
 		height: 24*view.count
-		
 		visible:false
-		model:itemmodel
-// 		highlight: highlightBar;
+		model:visualModel
 		focus:true
-		highlightFollowsCurrentItem: true
+		highlightFollowsCurrentItem: true		
 		onCountChanged: {
 			/* calculate ListView dimensions based on content */
 
@@ -84,33 +131,34 @@ PlasmaComponents.Button {
 			view.height = listViewHeight
 			view.width = listViewWidth
 		}
+// 		delegate: PlasmaComponents.Button{
+// 			iconSource :icon
+// 			height: 24
+// 			width: 200
+// 			text: display
+// 	// 		tooltip: tooltip
+// 			tooltip: ttp
+// 			minimumWidth: view.width
+// 			MouseArea{
+// 				anchors.fill: parent
+// 				onClicked:{
+// 					if (!isFolder)
+// 					{
+// 						console.log(tooltip+"clicked")
+// 						openUrlExternally(tooltip)
+// 		/ 					executable.exec("xdg-open "+tooltip)
+// 					}
+// 					else
+// 					{
+// 						console.log(tooltip+"clicked"+index)
+// // 						visualModel.rootIndex=VisualDataModel.
+// // 						if (model.hasModelChildren)
+// // 							view.model.rootIndex = view.model.modelIndex(index)
+// 					}
+// 				}
+// 			}
+// 		}
 		
-		delegate: PlasmaComponents.Button{
-			iconSource :icon
-			height: 24
-			width: 200
-			text: display
-// 			tooltip: tooltip
-			tooltip: ttp
-			minimumWidth: view.width
-			
-			
-			onClicked:{
-				if (!isFolder)
-				{
-					console.log(tooltip+"clicked")
-					executable.exec("xdg-open "+tooltip)
-				}
-				else
-				{
-					console.log(tooltip+"clicked")
-					view.currentIndex=currentIndex
-					//Execute click of a bookmarkfolder 
-// 					itemmodel.set
-// 					view.currentItem=currentItem
-				}
-			}
-		}
 // 		onCurrentIndexChanged()
 		
 		states: [

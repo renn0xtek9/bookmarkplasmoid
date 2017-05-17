@@ -6,7 +6,7 @@ find_package(KF5IconThemes)
 
 
 file (GLOB SRC "*.cpp" ) 
-set (SRC ${SRC} ./../bookmarkmodel.cpp ./../bookmark.cpp)
+set (SRC ${SRC} ./../bookmarkmodel.cpp )
 include_directories(./../)
 
 add_executable(bookmarkmodelTEST ${SRC})
