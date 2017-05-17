@@ -7,49 +7,49 @@ import org.kde.plasma.plasmoid 2.0 //needed to give the Plasmoid attached proper
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
 import MyPlugins 1.0 as MyPlugins
-
+import QtQuick.Controls 1.4
+import QtQuick.Controls.Styles 1.4
 PlasmaComponents.Button {
 	id: mainbutton
 	Plasmoid.title: "Bookmarks plasmoid"
 	anchors.bottom: parent.bottom
 	anchors.horizontalCenter: parent.horizontalCenter
-	//             anchors.horizontalCenter: rectangleLayout.horizontalCenter
 	Layout.alignment: Qt.AlignTop
 	Layout.preferredWidth: 80
 	Layout.preferredHeight: 40
-	
 	iconName: "favorites"
 	text: "Bookmarks"
 	activeFocusOnPress: true
 	onClicked: view.focusChanged(false)
-	
+	MouseArea{
+		anchors.fill: mainbutton
+		acceptedButtons: Qt.LeftButton | Qt.RightButton
+		onClicked:{
+			if (mouse.button == Qt.LeftButton)
+			{
+				ctextview.state="invisible"
+				if (view.state=="invisible"){
+					view.state="visible"
+				}
+				else{
+					view.state="invisible"
+				}
+			}
+			else if (mouse.button == Qt.RightButton)
+			{
+				view.state="invisible"
+				if (ctextview.state=="invisible"){
+					ctextview.state="visible"
+				}
+				else{
+					ctextview.state="invisible"
+				}
+			}
+		}
+	}	
 	MyPlugins.Bookmarkmodel{
 		id: itemmodel
 	}
-	
-	PlasmaCore.DataSource {
-		id: executable
-		engine: "executable"
-		connectedSources: []
-		onNewData: {
-			var exitCode = data["exit code"]
-			var exitStatus = data["exit status"]
-			var stdout = data["stdout"]
-			var stderr = data["stderr"]
-			exited(exitCode, exitStatus, stdout, stderr)
-			disconnectSource(sourceName) // cmd finished
-		}
-		function exec(cmd) {
-			connectSource(cmd)
-		}
-		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
-	}
-	
-	
-	
-
-	
-	
 	Component {
 		id: highlightBar
 		Rectangle {
@@ -59,19 +59,17 @@ PlasmaComponents.Button {
 		Behavior on y { SpringAnimation { spring: 2; damping: 0.1 } }
 		}
 	}	
-	
-	
 	VisualDataModel {
 		id: visualModel
 		model: itemmodel	
-		delegate: PlasmaComponents.Button{
+// 		delegate: PlasmaComponents.Button{
+		delegate: Button{
 			iconSource :icon
 			height: 24
 			width: 200
 			text: display
-	// 		tooltip: tooltip
 			tooltip: ttp
-			minimumWidth: view.width
+// 			minimumWidth: view.width
 			MouseArea{
 				anchors.fill: parent
 				acceptedButtons: Qt.LeftButton | Qt.RightButton
@@ -79,88 +77,33 @@ PlasmaComponents.Button {
 					 if(mouse.button & Qt.LeftButton) {
 						if (!isFolder)
 						{
-							console.log(tooltip+"clicked")
 							Qt.openUrlExternally(tooltip)
-	// 		/ 				executable.exec("xdg-open "+tooltip)
 						}
 						else
 						{
-							console.log(tooltip+"clicked"+index)
 							visualModel.rootIndex=view.model.modelIndex(index)
-	// 						visualModel.rootIndex=VisualDataModel.
-	// 						if (model.hasModelChildren)
-	// 							view.model.rootIndex = view.model.modelIndex(index)
 						}
 					 }
 					 if(mouse.button & Qt.RightButton)
 					 {
-						 visualModel.rootIndex=visualModel.parentModelIndex()
-// 						 visualModel.rootIndex=view.model.rootIndex
-						 
+						 visualModel.rootIndex=visualModel.parentModelIndex()						 
 					 }
 				}
 			}
 		}
 	}
-
-	
-	
 	ListView{
 		id: view 
-		anchors.bottom: parent.top
-		anchors.bottomMargin: 10			//TODO this is probably not the proper way to have the bottom of List view sitting on top of the button		
+		anchors.bottom: mainbutton.top
 		height: 24*view.count
 		visible:false
 		model:visualModel
 		focus:true
-		highlightFollowsCurrentItem: true		
+		highlightFollowsCurrentItem: true
+		state: "invisible"
 		onCountChanged: {
-			/* calculate ListView dimensions based on content */
-
-			// get QQuickItem which is a root element which hosts delegate items
-			var root = view.visibleChildren[0]
-			var listViewHeight = 0
-			var listViewWidth = 0
-
-			// iterate over each delegate item to get their sizes
-			for (var i = 0; i < root.visibleChildren.length; i++) {
-				listViewHeight += root.visibleChildren[i].height
-				listViewWidth  = Math.max(listViewWidth, root.visibleChildren[i].width)
-			}
-
-			view.height = listViewHeight
-			view.width = listViewWidth
-		}
-// 		delegate: PlasmaComponents.Button{
-// 			iconSource :icon
-// 			height: 24
-// 			width: 200
-// 			text: display
-// 	// 		tooltip: tooltip
-// 			tooltip: ttp
-// 			minimumWidth: view.width
-// 			MouseArea{
-// 				anchors.fill: parent
-// 				onClicked:{
-// 					if (!isFolder)
-// 					{
-// 						console.log(tooltip+"clicked")
-// 						openUrlExternally(tooltip)
-// 		/ 					executable.exec("xdg-open "+tooltip)
-// 					}
-// 					else
-// 					{
-// 						console.log(tooltip+"clicked"+index)
-// // 						visualModel.rootIndex=VisualDataModel.
-// // 						if (model.hasModelChildren)
-// // 							view.model.rootIndex = view.model.modelIndex(index)
-// 					}
-// 				}
-// 			}
-// 		}
-		
-// 		onCurrentIndexChanged()
-		
+			view.height=24*view.count
+		}		
 		states: [
 		State{
 			name: "invisible"
@@ -171,38 +114,71 @@ PlasmaComponents.Button {
 			name: "visible"
 			PropertyChanges{
 				target: view;visible: true;currentItem:0}
-			},
-		State{
-			name:"displaced"
-			PropertyChanges{
-			target: view ;x: 400;y: 400;visible:true}
-		}
+			}
 		]
 		transitions: [
-		Transition {
-			NumberAnimation {
-			target: view
-			property: "x,y"
-			duration: 200
-			easing.type: Easing.InOutQuad
-			}
+			Transition {
+				NumberAnimation {
+				target: view
+				property: "x,y"
+				duration: 200
+				easing.type: Easing.InOutQuad
+				}
 
-		}
-	]
-	}
-	
-	
-	Connections{
-		target:mainbutton
-		onClicked:{
-			if (view.state=="invisible"){
-			view.state="visible"
 			}
-			else
-			{
-			view.state="invisible"
+		]
+	}
+	ListView{
+		id: ctextview
+		anchors.bottom:mainbutton.top 
+		height: 24*ctextview.count 
+		visible:false 
+		focus:true 
+		state: "invisible"
+		highlightFollowsCurrentItem:true 
+		onCountChanged:{
+			ctextview.height=24*ctextview.count
+		}
+		states: [
+		State{
+			name: "invisible"
+			PropertyChanges {
+				target: ctextview;visible: false}
+		},
+		State{
+			name: "visible"
+			PropertyChanges{
+				target: ctextview;visible: true}
+		}
+		]
+		model:
+		ListModel {
+			ListElement {
+				iconTxt: qsTr("Edit Bookmarks")
+				iconSrc: qsTr("bookmarks-organize.png")
+				iconTip: qsTr("Organize KDE Bookmarks")
+				iconAct: "editbookmarks"
+			}
+			ListElement {
+				iconTxt: qsTr("Add a source")
+				iconSrc: qsTr("bookmark-add-folder")
+				iconTip: qsTr("Add a source of bookmarks")
+				iconAct: "addasource"
 			}
 		}
-	}
-	
+		delegate:Button{
+			iconName:iconSrc
+			text:iconTxt
+			tooltip: iconTip
+			height: 24
+			width: 200
+			action:iconAct
+			onClicked:{
+				console.log(text+" "+action+" clicked")
+				if (action=="editbookmarks"){
+					openUrlExternally("keditbookmarks")
+				}
+			}
+		}
+	}	
 }
