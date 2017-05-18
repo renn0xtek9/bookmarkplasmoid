@@ -9,6 +9,7 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import MyPlugins 1.0 as MyPlugins
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
+import org.kde.plasma.extras 2.0 as PlasmaExtras
 PlasmaComponents.Button {
 	id: mainbutton
 	Plasmoid.title: "Bookmarks plasmoid"
@@ -92,41 +93,41 @@ PlasmaComponents.Button {
 			}
 		}
 	}
+
 	ListView{
 		id: view 
+		state:"invisible"
+		height:24*view.count 
+		focus:true
 		anchors.bottom: mainbutton.top
-		height: 24*view.count
 		visible:false
 		model:visualModel
-		focus:true
 		highlightFollowsCurrentItem: true
-		state: "invisible"
 		onCountChanged: {
-			view.height=24*view.count
-		}		
-		states: [
-		State{
-			name: "invisible"
-			PropertyChanges {
-			target: view;visible: false}
-			},
-		State{
-			name: "visible"
-			PropertyChanges{
-				target: view;visible: true;currentItem:0}
-			}
-		]
-		transitions: [
-			Transition {
-				NumberAnimation {
-				target: view
-				property: "x,y"
-				duration: 200
-				easing.type: Easing.InOutQuad
+					view.height=24*view.count
 				}
-
-			}
-		]
+		states: [
+			State{
+				name: "invisible"
+				PropertyChanges {
+				target: view;visible: false}
+				},
+			State{
+				name: "visible"
+				PropertyChanges{
+					target: view;visible: true}
+				}
+			]
+			transitions: [
+				Transition {
+					NumberAnimation {
+					target: view
+					property: "x,y"
+					duration: 200
+					easing.type: Easing.InOutQuad
+					}
+				}
+			]
 	}
 	ListView{
 		id: ctextview
