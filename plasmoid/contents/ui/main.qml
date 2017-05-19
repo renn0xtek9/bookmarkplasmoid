@@ -50,7 +50,7 @@ PlasmaComponents.Button {
 	}	
 	MyPlugins.Bookmarkmodel{
 		id: itemmodel
-	}
+	}	
 	Component {
 		id: highlightBar
 		Rectangle {
@@ -63,14 +63,12 @@ PlasmaComponents.Button {
 	VisualDataModel {
 		id: visualModel
 		model: itemmodel	
-// 		delegate: PlasmaComponents.Button{
 		delegate: Button{
 			iconSource :icon
 			height: 24
 			width: 200
 			text: display
 			tooltip: ttp
-// 			minimumWidth: view.width
 			MouseArea{
 				anchors.fill: parent
 				acceptedButtons: Qt.LeftButton | Qt.RightButton
@@ -93,7 +91,6 @@ PlasmaComponents.Button {
 			}
 		}
 	}
-
 	ListView{
 		id: view 
 		state:"invisible"

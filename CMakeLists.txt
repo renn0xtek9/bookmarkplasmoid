@@ -15,4 +15,4 @@ find_package(KF5Plasma REQUIRED)
 add_subdirectory(libbookmarksmodule/)
 # Add installatation target ("make install").
 plasma_install_package(plasmoid org.kde.bookmarkplasmoid)
-# kcoreaddons_desktop_to_json(metadata.desktop)
+

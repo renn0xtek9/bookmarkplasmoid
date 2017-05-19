@@ -44,12 +44,10 @@ message(STATUS "libbookmarkmodule:  SRC.----------------------------------------
 message(STATUS "libbookmarkmodule:  SRC.------------------------------------------------\n" "${PROJECT_NAME}")
 
 #The plugin c++ plugin itself
-add_library(${PROJECT_NAME} MODULE ${SRC})
+add_library(${PROJECT_NAME} SHARED ${SRC})
 qt5_use_modules(${PROJECT_NAME}  Qml)
 set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME}  Qt5::Core Qt5::Qml KF5::IconThemes )
-
-kcoreaddons_desktop_to_json(${PROJECT_NAME} ./../plasmoid/metadata.desktop )
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${QT_IMPORTS_DIR}/MyPlugins/)
 install(FILES   qmldir DESTINATION ${QT_IMPORTS_DIR}/MyPlugins/)
