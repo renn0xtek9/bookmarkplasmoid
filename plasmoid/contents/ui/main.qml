@@ -10,173 +10,136 @@ import MyPlugins 1.0 as MyPlugins
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-PlasmaComponents.Button {
-	id: mainbutton
-	Plasmoid.title: "Bookmarks plasmoid"
-	anchors.bottom: parent.bottom
-	anchors.horizontalCenter: parent.horizontalCenter
-	Layout.alignment: Qt.AlignTop
-	Layout.preferredWidth: 80
-	Layout.preferredHeight: 40
-	iconName: "favorites"
-	text: "Bookmarks"
-	activeFocusOnPress: true
-	onClicked: view.focusChanged(false)
-	MouseArea{
-		anchors.fill: mainbutton
-		acceptedButtons: Qt.LeftButton | Qt.RightButton
-		onClicked:{
-			if (mouse.button == Qt.LeftButton)
-			{
-				ctextview.state="invisible"
-				if (view.state=="invisible"){
-					view.state="visible"
-				}
-				else{
-					view.state="invisible"
-				}
-			}
-			else if (mouse.button == Qt.RightButton)
-			{
-				view.state="invisible"
-				if (ctextview.state=="invisible"){
-					ctextview.state="visible"
-				}
-				else{
-					ctextview.state="invisible"
-				}
-			}
-		}
-	}	
-	MyPlugins.Bookmarkmodel{
-		id: itemmodel
-	}	
-	Component {
-		id: highlightBar
-		Rectangle {
-		width: view.width; height: 30
-		color: "#FFFF88"
-		y: view.currentItem.y;
-		Behavior on y { SpringAnimation { spring: 2; damping: 0.1 } }
-		}
-	}	
-	VisualDataModel {
-		id: visualModel
-		model: itemmodel	
-		delegate: Button{
-			iconSource :icon
-			height: 24
-			width: 200
-			text: display
-			tooltip: ttp
-			MouseArea{
+import QtQuick 2.2
+import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.networkmanagement 0.2 as PlasmaNM
+import org.kde.kquickcontrolsaddons 2.0
+import QtQuick.Layouts 1.1
+
+Item {
+	id: mainWindow
+	Plasmoid.toolTipMainText: i18n("Bookmarks")
+	Plasmoid.icon: connectionIconProvider.connectionTooltipIcon
+	Plasmoid.switchWidth: units.gridUnit * 10
+	Plasmoid.switchHeight: units.gridUnit * 10
+	Plasmoid.fullRepresentation:  PlasmaExtras.ScrollArea {
+			id: scrollView
+			width:view.width
+			height:view.height
+			anchors {
+				bottom: parent.bottom
+// 				left: parent.left
+// 				right: parent.right
+// 				top: toolbar.bottom
+			} 
+			focus: true
+			ListView{
+				id: view 
 				anchors.fill: parent
-				acceptedButtons: Qt.LeftButton | Qt.RightButton
-				onClicked:{
-					 if(mouse.button & Qt.LeftButton) {
-						if (!isFolder)
-						{
-							Qt.openUrlExternally(tooltip)
+				anchors.bottom: parent.bottom
+				height:24*view.count 
+				width:200
+				focus:true
+				visible:true
+				model:visualModel
+				highlightFollowsCurrentItem: true
+				MyPlugins.Bookmarkmodel{
+					id: itemmodel
+				}	
+				VisualDataModel {
+					id: visualModel
+					model: itemmodel	
+					delegate: Button{
+						iconSource :icon
+						height: 24
+						width: view.width
+						text: display
+						tooltip: ttp
+						MouseArea{
+							anchors.fill: parent
+							acceptedButtons: Qt.LeftButton | Qt.RightButton
+							onClicked:{
+								if(mouse.button & Qt.LeftButton) {
+									if (!isFolder)
+									{
+										Qt.openUrlExternally(tooltip)
+									}
+									else
+									{
+										visualModel.rootIndex=view.model.modelIndex(index)
+									}
+								}
+								if(mouse.button & Qt.RightButton)
+								{
+									visualModel.rootIndex=visualModel.parentModelIndex()						 
+								}
+							}
 						}
-						else
-						{
-							visualModel.rootIndex=view.model.modelIndex(index)
-						}
-					 }
-					 if(mouse.button & Qt.RightButton)
-					 {
-						 visualModel.rootIndex=visualModel.parentModelIndex()						 
-					 }
-				}
-			}
-		}
-	}
-	ListView{
-		id: view 
-		state:"invisible"
-		height:24*view.count 
-		focus:true
-		anchors.bottom: mainbutton.top
-		visible:false
-		model:visualModel
-		highlightFollowsCurrentItem: true
-		onCountChanged: {
-					view.height=24*view.count
-				}
-		states: [
-			State{
-				name: "invisible"
-				PropertyChanges {
-				target: view;visible: false}
-				},
-			State{
-				name: "visible"
-				PropertyChanges{
-					target: view;visible: true}
-				}
-			]
-			transitions: [
-				Transition {
-					NumberAnimation {
-					target: view
-					property: "x,y"
-					duration: 200
-					easing.type: Easing.InOutQuad
 					}
 				}
-			]
-	}
-	ListView{
-		id: ctextview
-		anchors.bottom:mainbutton.top 
-		height: 24*ctextview.count 
-		visible:false 
-		focus:true 
-		state: "invisible"
-		highlightFollowsCurrentItem:true 
-		onCountChanged:{
-			ctextview.height=24*ctextview.count
-		}
-		states: [
-		State{
-			name: "invisible"
-			PropertyChanges {
-				target: ctextview;visible: false}
-		},
-		State{
-			name: "visible"
-			PropertyChanges{
-				target: ctextview;visible: true}
-		}
-		]
-		model:
-		ListModel {
-			ListElement {
-				iconTxt: qsTr("Edit Bookmarks")
-				iconSrc: qsTr("bookmarks-organize.png")
-				iconTip: qsTr("Organize KDE Bookmarks")
-				iconAct: "editbookmarks"
-			}
-			ListElement {
-				iconTxt: qsTr("Add a source")
-				iconSrc: qsTr("bookmark-add-folder")
-				iconTip: qsTr("Add a source of bookmarks")
-				iconAct: "addasource"
-			}
-		}
-		delegate:Button{
-			iconName:iconSrc
-			text:iconTxt
-			tooltip: iconTip
-			height: 24
-			width: 200
-			action:iconAct
-			onClicked:{
-				console.log(text+" "+action+" clicked")
-				if (action=="editbookmarks"){
-					openUrlExternally("keditbookmarks")
+				onCountChanged: {
+					view.height=24*view.count
+					scrollView.height=24*view.count
+				}
+				header: RowLayout{
+					id: head 
+					height:100
+					anchors{
+						left:parent.left 
+						right:parent.right
+						top:parent.top						
+					}
+					Button{
+						id: buttonorganize
+						iconName:"bookmarks-organize.png"
+						text:qsTr("Edit bookmarks")
+						tooltip: qsTr("Organize KDE Bookmarks")
+						height: 24
+						anchors{
+							left:parent.left
+							right:buttonadd.left
+						}
+						onClicked:{
+							executable.exec("keditbookmarks")
+// 							Qt.openUrlExternally(" keditbookmarks") //TODO ask the model what is the file and pass it as argument
+						}
+					}
+					Button{
+						id: buttonadd
+						anchors{
+							left:buttonorganize.right
+							right:parent.right
+						}
+						iconName:"bookmark-add-folder"
+						text:qsTr("Add a source")
+						tooltip: qsTr("Add a source of bookmarks")
+						height: 24
+						onClicked:{
+							Qt.openUrlExternally(" keditbookmarks") //TODO call a dialog to selct other source (Firefox etc)
+						}
+					}
 				}
 			}
-		}
-	}	
+	}
+	
+	PlasmaCore.DataSource {
+	id: executable
+	engine: "executable"
+	connectedSources: []
+	onNewData: {
+		var exitCode = data["exit code"]
+		var exitStatus = data["exit status"]
+		var stdout = data["stdout"]
+		var stderr = data["stderr"]
+		exited(exitCode, exitStatus, stdout, stderr)
+		disconnectSource(sourceName) // cmd finished
+	}
+	function exec(cmd) {
+		connectSource(cmd)
+	}
+	signal exited(int exitCode, int exitStatus, string stdout, string stderr)
 }
+
+}
+
+
