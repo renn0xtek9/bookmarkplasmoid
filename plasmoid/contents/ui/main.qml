@@ -28,9 +28,6 @@ Item {
 			height:view.height
 			anchors {
 				bottom: parent.bottom
-// 				left: parent.left
-// 				right: parent.right
-// 				top: toolbar.bottom
 			} 
 			focus: true
 			ListView{
@@ -101,7 +98,6 @@ Item {
 						}
 						onClicked:{
 							executable.exec("keditbookmarks")
-// 							Qt.openUrlExternally(" keditbookmarks") //TODO ask the model what is the file and pass it as argument
 						}
 					}
 					Button{
@@ -121,25 +117,23 @@ Item {
 				}
 			}
 	}
-	
 	PlasmaCore.DataSource {
-	id: executable
-	engine: "executable"
-	connectedSources: []
-	onNewData: {
-		var exitCode = data["exit code"]
-		var exitStatus = data["exit status"]
-		var stdout = data["stdout"]
-		var stderr = data["stderr"]
-		exited(exitCode, exitStatus, stdout, stderr)
-		disconnectSource(sourceName) // cmd finished
+		id: executable
+		engine: "executable"
+		connectedSources: []
+		onNewData: {
+			var exitCode = data["exit code"]
+			var exitStatus = data["exit status"]
+			var stdout = data["stdout"]
+			var stderr = data["stderr"]
+			exited(exitCode, exitStatus, stdout, stderr)
+			disconnectSource(sourceName) // cmd finished
+		}
+		function exec(cmd) {
+			connectSource(cmd)
+		}
+		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
 	}
-	function exec(cmd) {
-		connectSource(cmd)
-	}
-	signal exited(int exitCode, int exitStatus, string stdout, string stderr)
-}
-
 }
 
 
