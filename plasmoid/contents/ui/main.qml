@@ -7,13 +7,15 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import MyPlugins 1.0 as MyPlugins
+import Qt.labs.settings 1.0
 
 Item {
 	id: mainWindow
 	Plasmoid.toolTipMainText: i18n("Bookmarks")
 	Plasmoid.icon: connectionIconProvider.connectionTooltipIcon
 	Plasmoid.switchWidth: units.gridUnit * 10
-	Plasmoid.switchHeight: units.gridUnit * 10
+	Plasmoid.switchHeight: units.gridUnit * 10	
+	/*
 	Plasmoid.fullRepresentation:  PlasmaExtras.ScrollArea {
 			id: scrollView
 			width:view.width
@@ -34,6 +36,9 @@ Item {
 				highlightFollowsCurrentItem: true
 				MyPlugins.Bookmarkmodel{
 					id: itemmodel
+					konquerorBookmarks: plasmoid.configuration.firefoxpath
+					okularBookmarks: plasmoid.configuration.okularpath
+					firefoxBookmarks: plasmoid.configuration.konquerorpath
 				}	
 				VisualDataModel {
 					id: visualModel
@@ -104,11 +109,26 @@ Item {
 						tooltip: qsTr("Add a source of bookmarks")
 						height: 24
 						onClicked:{
-							Qt.openUrlExternally(" keditbookmarks") //TODO call a dialog to selct other source (Firefox etc)
+							scrollView.state="invisible"
+							editsourceview.state="visible"
 						}
 					}
 				}
 			}
+			states: [
+			State{
+				name: "invisible"
+				PropertyChanges {
+					target: scrollView;visible: false}
+			},
+			State{
+				name: "visible"
+				PropertyChanges{
+					target: scrollView;visible: true}
+			}
+			]
+			
+			
 	}
 	PlasmaCore.DataSource {
 		id: executable
@@ -126,6 +146,162 @@ Item {
 			connectSource(cmd)
 		}
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
+	}*/
+	ColumnLayout{
+		id:editsourceview
+		spacing:2
+		width:300
+		height:600
+		state:"visible"
+		anchors.fill: parent
+		
+		Item{
+			height:30
+			width:parent.width
+			anchors{
+				right:parent.right
+				left:parent.left
+			}
+			RowLayout{
+				anchors{
+					right:parent.right
+					left:parent.left
+				}
+				
+				Button{
+					id:konquerorselectfile
+					iconName:"bookmark-new-list"
+					text:qsTr("Choose")
+					tooltip: qsTr("Select Konqueror (KDE) bookmarks file")
+					anchors{
+						right:parent.right
+					}
+				}
+				TextField{
+					id:konquerortextedit
+					width:parent.width
+					text:"Merde"
+// 					color:"blue"
+					anchors{
+						left:parent.left 
+						right:konquerorselectfile.left
+					}
+				}
+			}
+		}
+		Item{
+			height:30
+			width:parent.width
+			anchors{
+				right:parent.right
+				left:parent.left
+			}
+			RowLayout{
+				anchors{
+					right:parent.right
+					left:parent.left
+				}
+				TextField{
+					id:okulartextedit
+					width:parent.width
+					text:"Okular"
+// 					color:"blue"
+					anchors{
+						left:parent.left 
+						right:okularselectfile.left
+					}
+				}
+				Button{
+					id:okularselectfile
+					iconName:"bookmark-new-list"
+					text:qsTr("Choose")
+					tooltip: qsTr("Select Konqueror (KDE) bookmarks file")
+					anchors{
+						right:parent.right
+					}
+				}
+			}
+		}
+		Item{
+			height:30
+			width:parent.width
+			anchors{
+				right:parent.right
+				left:parent.left
+			}
+			RowLayout{
+				anchors{
+					right:parent.right
+					left:parent.left
+				}
+				TextField{
+					id:firefoxtextedit
+					width:parent.width
+					text:"Okular"
+// 					color:"blue"
+					anchors{
+						left:parent.left 
+						right:firefoxselectfile.left
+					}
+				}
+				Button{
+					id:firefoxselectfile
+					iconName:"bookmark-new-list"
+					text:qsTr("Choose")
+					tooltip: qsTr("Select Konqueror (KDE) bookmarks file")
+					anchors{
+						right:parent.right
+					}
+				}
+			}
+		}
+		Item{
+			height:30
+			width:parent.width
+			anchors{
+				right:parent.right
+				left:parent.left
+			}
+			RowLayout{
+				anchors{
+					right:parent.right
+					left:parent.left
+				}
+				TextField{
+					id:chrometextedit
+					width:parent.width
+					text:"Okular"
+// 					color:"blue"
+					anchors{
+						left:parent.left 
+						right:chromeselectfile.left
+					}
+				}
+				Button{
+					id:chromeselectfile
+					iconName:"bookmark-new-list"
+					text:qsTr("Choose")
+					tooltip: qsTr("Select Konqueror (KDE) bookmarks file")
+					anchors{
+						right:parent.right
+					}
+				}
+			}
+		}
+		
+		states: [
+		State{
+			name: "invisible"
+			PropertyChanges {
+				target: editsourceview;visible: false}
+		},
+		State{
+			name: "visible"
+			PropertyChanges{
+				target: editsourceview;visible: true}
+		}
+		]		
+		
 	}
 }
 

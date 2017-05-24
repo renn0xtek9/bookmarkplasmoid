@@ -1,7 +1,6 @@
 #ifndef BOOKMARKMODULE_HPP
 #define BOOKMARKMODULE_HPP
 #include <QtCore/QObject>
-// #include <QtCore/QAbstractItemModel>
 #include <QtGui/QStandardItemModel>
 #include <QtCore/QIODevice>
 #include <QtCore/QString>
@@ -12,45 +11,54 @@
 #include <QtQml/qqml.h>
 #include <QtQml/QQmlExtensionPlugin>
 #include <QtQml/QQmlExtensionInterface>
-// #include "launcher.hpp"
 
-class Launcher;
+
 class Bookmarkmodel :public QStandardItemModel
 {
 	Q_OBJECT
-// 	Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
-// 	Q_DISABLE_COPY(Bookmarmodel)
-	Q_PROPERTY(int rowCount READ rowCount NOTIFY rowCountChanged)
-	
-// 	Q_PROPERTY(s)
-// 	
-	
+	Q_PROPERTY(int rowCount READ rowCount NOTIFY rowCountChanged);
+	Q_PROPERTY(QString konquerorBookmarks READ getPathForKonquerorBookmarks WRITE setPathForKonquerorBookmarks NOTIFY konquerorpathChanged);
+	Q_PROPERTY(QString okularBookmarks READ getPathForOkularBookmarks WRITE setPathForOkularBookmarks NOTIFY okularpathChanged);
+	Q_PROPERTY(QString firefoxBookmarks READ getPathForFirefoxBookmarks WRITE setPathForFirefoxBookmarks NOTIFY firefoxpathChanged);
+
 signals:
 	void rowCountChanged(int newcount);
-	
+	void konquerorpathChanged(QString newpath);
+	void okularpathChanged(QString newpath);
+	void firefoxpathChanged(QString newpath);
+
 public:
 	Bookmarkmodel();
-	~Bookmarkmodel();
-	
-	 enum BookmarkRoles {
+	virtual ~Bookmarkmodel();
+
+	enum BookmarkRoles {
 		Iconpathrole = Qt::UserRole,
 		Displayrole =Qt::DisplayRole,
 		Tooltiprole =Qt::ToolTipRole,
 		IsFolderRole = Qt::UserRole+2
 	};
+	Q_INVOKABLE void setPathForKonquerorBookmarks(const QString& fullpath);
+	Q_INVOKABLE void setPathForOkularBookmarks(const QString& fullpath);
+	Q_INVOKABLE void setPathForFirefoxBookmarks(const QString& fullpath);
+	QString getPathForKonquerorBookmarks()const;
+	QString getPathForOkularBookmarks()const;
+	QString getPathForFirefoxBookmarks()const;
+	
 	QHash<int, QByteArray> roleNames() const ;
-	
-	
-	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 	
 public slots:
 	void itemSelectedAsRoot(int index);
 	void parentItemSelectedAsRoot();
 
 private:
+	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 	QModelIndex* m_rootmodelindex;
 	QString getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item);
-	
+	//path
+	QString m_konquerorpath;
+	QString m_okularpath;
+	QString m_firefoxpath;
+	QString m_chromepath;
 	
 	//Methods to read an xbel based bookmark fodlder
 	bool readXBEL(QIODevice* device);
@@ -64,9 +72,8 @@ private:
 
 class BookmarkmodelPlugin : public QQmlExtensionPlugin
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
-
+	Q_OBJECT
+	Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
 public:
 	BookmarkmodelPlugin()
 	{

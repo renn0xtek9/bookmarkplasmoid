@@ -11,8 +11,9 @@ using namespace std;
 int main(int argc, char **argv) 
 {  
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
+	
 	Bookmarkmodel reader;
-// 	reader.appendXBELFile(filename);
+	reader.setPathForKonquerorBookmarks(filename);
 	qDebug()<<reader.rowCount();
 	qDebug()<<reader.columnCount();
 // 	QModelIndex index=reader.createIndex();
@@ -33,44 +34,6 @@ int main(int argc, char **argv)
 	}
 	
 	qDebug()<<"Now inside Utiles";
-	
-	if(reader.findItems("Utiles").count()>0)
-	{
-		QStandardItem* utiles=reader.findItems("Utiles").at(0);
-		for (int i=0 ; i<reader.rowCount(utiles->index()) ; i++)
-		{	
-			current=reader.index(i,0,utiles->index());
-			int rowforthis=current.row();
-			qDebug()<<reader.data(current,Qt::DisplayRole)<<" row for this:"<<rowforthis;
-			qDebug()<<reader.data(current,Qt::ToolTipRole)<<" is the tooltip";
-		}
-		
-	}
-	return 0;
-	
-	
-	
-	
-	while (i<reader.rowCount(parent)){
-		qDebug()<<i;
-		current=reader.index(i,0,parent);
-		qDebug()<<reader.data(current,Qt::DisplayRole);
-		qDebug()<<"Tooltip"<<reader.data(current,Qt::ToolTip);
-		if(reader.hasChildren(current)){
-			i=0;
-			parent=current;
-			current=reader.index(0,0,current);
-		}
-		i++;
-		if(i==reader.rowCount(parent)){
-			if (parent.parent().isValid()){
-				i=0;
-				parent=parent.parent();
-			}
-		}
-		
-		
-	}	
 	return 0;
 }
 

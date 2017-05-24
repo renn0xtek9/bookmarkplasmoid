@@ -10,12 +10,50 @@
 
 Bookmarkmodel::Bookmarkmodel() :QStandardItemModel(nullptr)
 {
-	appendXBELFile("/home/max/.local/share/konqueror/bookmarks.xml");
+	
 }
 Bookmarkmodel::~Bookmarkmodel()
 {
 
 }
+void Bookmarkmodel::setPathForKonquerorBookmarks(const QString& fullpath)
+{
+	m_konquerorpath=fullpath;
+	//TODO test if exsit;
+	appendXBELFile(m_konquerorpath);
+	emit konquerorpathChanged(fullpath);
+}
+void Bookmarkmodel::setPathForOkularBookmarks(const QString& fullpath)
+{
+	m_okularpath=fullpath;
+	//TODO test if exist
+	appendXBELFile(m_okularpath);
+	emit okularpathChanged(fullpath);
+}
+void Bookmarkmodel::setPathForFirefoxBookmarks(const QString& fullpath)
+{
+	m_firefoxpath=fullpath;
+	//TODO test if exist
+	//TODO implement json bookmarks
+	emit firefoxpathChanged(fullpath);
+}
+QString Bookmarkmodel::getPathForFirefoxBookmarks() const
+{
+	return m_firefoxpath;
+}
+QString Bookmarkmodel::getPathForKonquerorBookmarks() const
+{
+	return m_konquerorpath;
+}
+QString Bookmarkmodel::getPathForOkularBookmarks() const
+{
+	return m_okularpath;
+}
+
+
+
+
+
 void Bookmarkmodel::appendXBELFile(QString path)
 {
 	QFile xbelfile(path);
