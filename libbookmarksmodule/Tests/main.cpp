@@ -10,10 +10,18 @@ using namespace std;
 
 int main(int argc, char **argv) 
 {  
+	
+// 	/home/max/.config/google-chrome/Default/Bookmarks
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
 	QString okularfilename="/home/max/.local/share/okular/bookmarks.xml";
+	/*
+	‎kbrosnan‎>‎ places.sqlite
+‎[18:38] ‎<‎kbrosnan‎>‎ places.squlte.wal*/
 	Bookmarkmodel reader;
 	reader.setPathForOkularBookmarks(okularfilename);
+// 	reader.setPathForKonquerorBookmarks(filename);
+	
+	reader.ReadAllSources();
 	qDebug()<<reader.rowCount();
 	qDebug()<<reader.columnCount();
 // 	QModelIndex index=reader.createIndex();

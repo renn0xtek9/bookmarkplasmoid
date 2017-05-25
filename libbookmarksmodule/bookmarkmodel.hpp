@@ -21,7 +21,15 @@ class Bookmarkmodel :public QStandardItemModel
 	Q_PROPERTY(QString okularBookmarks READ getPathForOkularBookmarks WRITE setPathForOkularBookmarks NOTIFY okularpathChanged);
 	Q_PROPERTY(QString firefoxBookmarks READ getPathForFirefoxBookmarks WRITE setPathForFirefoxBookmarks NOTIFY firefoxpathChanged);
 	Q_PROPERTY(QString chromeBookmarks READ getPathForChromeBookmarks WRITE setPathForChromeBookamarks NOTIFY chromepathChanged );
-
+	
+	enum class  CurrentlyParsing 
+	{
+		Okular,	/**< We are currently parsing an okular bookmarks repository */
+		Konqueror, /**< We are currently parsing an konqueror bookmarks repository */
+		Firefox, /**< We are currently parsing an firefox bookmarks repository */
+		Chrome /**< We are currently parsing an chrome bookmarks repository */
+	};
+	
 signals:
 	void rowCountChanged(int newcount);
 	void konquerorpathChanged(QString newpath);
@@ -51,8 +59,9 @@ public:
 	QHash<int, QByteArray> roleNames() const ;
 	
 public slots:
-	void itemSelectedAsRoot(int index);
-	void parentItemSelectedAsRoot();
+// 	void itemSelectedAsRoot(int index);
+// 	void parentItemSelectedAsRoot();
+	Q_INVOKABLE void ReadAllSources();
 
 private:
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
@@ -64,7 +73,8 @@ private:
 	QString m_okularpath;
 	QString m_firefoxpath;
 	QString m_chromepath;
-	
+	QString getStandardIcon(const QStandardItem* p_item) const noexcept;
+	CurrentlyParsing m_currentlyparsed;
 	//Methods to read an xbel based bookmark fodlder
 	bool readXBEL(QIODevice* device);
 	QString readXBELTitle();

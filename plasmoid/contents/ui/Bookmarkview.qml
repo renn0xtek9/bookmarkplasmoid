@@ -6,8 +6,7 @@ import MyPlugins 1.0 as MyPlugins
 
 PlasmaExtras.ScrollArea {
 	id: scrollView
-	width:view.width
-	height:view.height
+	width:childrenRect.width
 	anchors.fill:parent
 	focus: true
 	ListView{
@@ -49,10 +48,6 @@ PlasmaExtras.ScrollArea {
 				}
 			}
 		}
-		onCountChanged: {
-			view.height=24*view.count
-			scrollView.height=24*view.count
-		}
 		header: RowLayout{
 			id: head 
 			height:30
@@ -88,6 +83,9 @@ PlasmaExtras.ScrollArea {
 					mainrepresentation.state="editsourceview"
 				}
 			}
+		}
+		onCountChanged: {
+			mainrepresentation.Layout.minimumHeight=24*view.count+view.headerItem.height
 		}
 	}
 }

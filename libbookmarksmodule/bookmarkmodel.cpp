@@ -19,39 +19,48 @@ Bookmarkmodel::~Bookmarkmodel()
 }
 void Bookmarkmodel::setPathForKonquerorBookmarks(const QString& fullpath)
 {
-	if (FileExists(fullpath))
-	{
-		m_konquerorpath=fullpath;
-		appendXBELFile(m_konquerorpath);
-		emit konquerorpathChanged(fullpath);
-	}
+	m_konquerorpath=fullpath;
+	emit konquerorpathChanged(fullpath);
 }
 void Bookmarkmodel::setPathForOkularBookmarks(const QString& fullpath)
 {
-	if (FileExists(fullpath))
-	{
-		m_okularpath=fullpath;
-		appendXBELFile(m_okularpath);
-		emit okularpathChanged(fullpath);
-	}
+	m_okularpath=fullpath;
+	m_currentlyparsed=CurrentlyParsing::Okular;	
+	emit okularpathChanged(fullpath);
 }
 void Bookmarkmodel::setPathForFirefoxBookmarks(const QString& fullpath)
 {
-	if(FileExists(fullpath))
-	{
-		m_firefoxpath=fullpath;
-		//TODO implement json bookmarks
-		emit firefoxpathChanged(fullpath);
-	}
+	m_firefoxpath=fullpath;
+	emit firefoxpathChanged(fullpath);
 }
 void Bookmarkmodel::setPathForChromeBookamarks(const QString& fullpath)
 {
-	if(FileExists(fullpath))
+	m_chromepath=fullpath;
+	emit chromepathChanged(fullpath);
+}
+void Bookmarkmodel::ReadAllSources()
+{
+	if (FileExists(m_konquerorpath))
 	{
-		m_chromepath=fullpath;
-		//TODO read the json bookmark
-		emit chromepathChanged(fullpath);
+		m_currentlyparsed=CurrentlyParsing::Konqueror;
+		appendXBELFile(m_konquerorpath);
 	}
+	if (FileExists(m_okularpath))
+	{
+		m_currentlyparsed=CurrentlyParsing::Okular;
+		appendXBELFile(m_okularpath);
+	}
+	if(FileExists(m_firefoxpath))
+	{
+		m_currentlyparsed=CurrentlyParsing::Firefox;
+		//TODO implement json bookmarks
+	}
+	if(FileExists(m_chromepath))
+	{
+		m_currentlyparsed=CurrentlyParsing::Chrome;
+		//TODO read the json bookmark
+	}
+	emit rowCountChanged(rowCount());
 }
 QString Bookmarkmodel::getPathForFirefoxBookmarks() const
 {
@@ -83,9 +92,8 @@ void Bookmarkmodel::appendXBELFile(QString path)
 		}
 	}
 	else{
-		qDebug()<<"Could not open File";
+		
 	}
-	emit this->rowCountChanged(this->rowCount());
 }
 bool Bookmarkmodel::readXBEL(QIODevice* device)
 {
@@ -126,6 +134,10 @@ QStandardItem* Bookmarkmodel::readXBELFolder()
 	QStandardItem* ret=new QStandardItem();
 	ret->setData(true,BookmarkRoles::IsFolderRole);
 	Q_ASSERT(xml.isStartElement() && xml.name() == "folder");
+	if(m_currentlyparsed==CurrentlyParsing::Okular) //Force icon for okular books
+	{
+		ret->setData(getCustomOrThemeIconPath("okular",ret),Qt::UserRole);
+	}	
 	while (xml.readNextStartElement()) 
 	{
 		if (xml.name() == "title")
@@ -166,67 +178,6 @@ QStandardItem* Bookmarkmodel::readXBELFolder()
 	}
 	return ret;
 }
-QString Bookmarkmodel::getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item)
-{
-	QFileInfo finfo(iconpathfromxml);
-	QString path,standard,iconsource;
-	QStringList themelist("hicolor");
-	iconsource=iconpathfromxml;
-	if(!finfo.isFile())
-	{
-		iconsource="";
-		themelist.append(KIconTheme::current());
-		foreach(QString str, themelist)
-		{
-			KIconTheme theme(str);
-			path=theme.iconPathByName(iconpathfromxml,24,KIconLoader::MatchBest);
-			if(!path.isEmpty())
-			{
-				iconsource=path;
-				break;
-			}	
-		}
-		if(iconsource.isEmpty())
-		{
-			themelist.append(KIconTheme::current());
-			if(p_item->data(BookmarkRoles::IsFolderRole).toBool()==true)
-			{
-				standard="folder-bookmark";
-			}
-			else
-			{
-				standard="text-html";
-			}
-			foreach(QString str, themelist)
-			{
-				KIconTheme theme(str);
-				path=theme.iconPathByName(standard,24,KIconLoader::MatchBest);
-				if(!path.isEmpty())
-				{
-					iconsource=path;
-					break;
-				}	
-			}
-		}
-	}
-	return iconsource;
-}
-
-
-void Bookmarkmodel::readXBELInfoAndMetadata(QString p_blockname,QStandardItem* p_item)
-{
-	Q_ASSERT(xml.isStartElement() && xml.name() == p_blockname);
-	while(xml.readNextStartElement())
-	{
-		if(xml.name()=="icon")	//we are at bookmark::icon
-		{
-			QString iconname=xml.attributes().value("name").toString();
-			QString customortheme=getCustomOrThemeIconPath(iconname,p_item);
-			p_item->setData(customortheme,Qt::UserRole);
-		}
-		readXBELInfoAndMetadata(xml.name().toString(),p_item);	 
-	}
-}
 QStandardItem* Bookmarkmodel::readXBELBookmark()
 {
 	Q_ASSERT(xml.isStartElement() && xml.name() == "bookmark");
@@ -250,6 +201,20 @@ QStandardItem* Bookmarkmodel::readXBELBookmark()
 	}
 	return ret;
 }
+void Bookmarkmodel::readXBELInfoAndMetadata(QString p_blockname,QStandardItem* p_item)
+{
+	Q_ASSERT(xml.isStartElement() && xml.name() == p_blockname);
+	while(xml.readNextStartElement())
+	{
+		if(xml.name()=="icon")	//we are at bookmark::icon
+		{
+			QString iconname=xml.attributes().value("name").toString();
+			QString customortheme=getCustomOrThemeIconPath(iconname,p_item);
+			p_item->setData(customortheme,Qt::UserRole);
+		}
+		readXBELInfoAndMetadata(xml.name().toString(),p_item);	 
+	}
+}
 QString Bookmarkmodel::readXBELTitle()
 {
 	Q_ASSERT(xml.isStartElement() && xml.name() == "title");
@@ -269,12 +234,93 @@ QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
 	roles[IsFolderRole] = "isFolder";
 	return roles;
 }
-void Bookmarkmodel::itemSelectedAsRoot(int index)
-{		
-}
-void Bookmarkmodel::parentItemSelectedAsRoot()
+
+QString Bookmarkmodel::getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item)
 {
-// 	this->setRootIndex(this->invisibleRootItem());
+	QFileInfo finfo(iconpathfromxml);
+	QString path,standard,iconsource;
+	QStringList themelist("hicolor");
+	iconsource=iconpathfromxml;
+	if(!finfo.isFile())
+	{
+		iconsource="";
+		themelist.append(KIconTheme::current());
+		foreach(QString str, themelist)
+		{
+			KIconTheme theme(str);
+			path=theme.iconPathByName(iconpathfromxml,24,KIconLoader::MatchBest);
+			if(!path.isEmpty())
+			{
+				iconsource=path;
+				break;
+			}	
+		}
+		if(iconsource.isEmpty())
+		{
+			themelist.append(KIconTheme::current());
+			standard=getStandardIcon(p_item);
+			foreach(QString str, themelist)
+			{
+				KIconTheme theme(str);
+				path=theme.iconPathByName(standard,24,KIconLoader::MatchBest);
+				if(!path.isEmpty())
+				{
+					iconsource=path;
+					break;
+				}	
+			}
+		}
+	}
+	return iconsource;
+}
+QString Bookmarkmodel::getStandardIcon(const QStandardItem* p_item) const noexcept
+{
+	if(p_item->data(BookmarkRoles::IsFolderRole).toBool()==true)
+	{
+		switch(m_currentlyparsed)
+		{
+			case(CurrentlyParsing::Konqueror):
+			{
+				return QString("folder-bookmark");
+				
+			}
+			case(CurrentlyParsing::Okular):
+			{
+				return QString("okular");
+			}
+			case(CurrentlyParsing::Firefox):
+			{
+				return QString("firefox");
+			}
+			case(CurrentlyParsing::Chrome):
+			{
+				return QString("google-chrome");
+			}
+		}
+	}
+	else
+	{
+		switch(m_currentlyparsed)
+		{
+			case(CurrentlyParsing::Konqueror):
+			{
+				return QString("text-html");
+			}
+			case(CurrentlyParsing::Okular):
+			{
+				return QString("application-pdf");
+			}
+			case(CurrentlyParsing::Firefox):
+			{
+				return QString("text-html");
+			}
+			case(CurrentlyParsing::Chrome):
+			{
+				return QString("text-html");
+			}
+		}
+	}
+	return QString("text-htm");
 }
 bool Bookmarkmodel::FileExists(const QString & path) const noexcept
 {

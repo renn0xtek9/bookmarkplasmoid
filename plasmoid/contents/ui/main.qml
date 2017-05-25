@@ -17,6 +17,8 @@ Item {
 	Plasmoid.switchHeight: units.gridUnit * 10	
 	Plasmoid.fullRepresentation:  Item{
 		id: mainrepresentation
+		
+		Layout.minimumWidth:300
 		MyPlugins.Bookmarkmodel{
 			id: itemmodel
 			konquerorBookmarks: plasmoid.configuration.firefoxpath
@@ -36,6 +38,8 @@ Item {
 				name: "editsourceview"
 				PropertyChanges {
 					target: bookmarkview;visible: false}
+				PropertyChanges{
+					target: mainrepresentation;Layout.maximumHeight: 300}
 				PropertyChanges{
 					target: editsourceview;visible:true}
 			},
@@ -66,27 +70,27 @@ Item {
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
 	}
 	
-// 	Item{
-// 		id: dialogcontainer
-// 		visible:false 
-// 		
+		
 // 		FileDialog{
 // 			id: fileDialog
 // 			modality: Qt.NonModal
 // 			title: "Please choose a file"
+// 			
 // // 			visible: "hidden"
 // 			folder: shortcuts.home
 // 			onAccepted: {
 // 				console.log("You chose: " + fileDialog.fileUrls)
-// 				Qt.quit()
+// // 				Qt.quit()
+// 				visible=false
 // 			}
 // 			onRejected: {
 // 				console.log("Canceled")
-// 				Qt.quit()
+// // 				Qt.quit()
+// 				visible=false
 // 			}
 // 			Component.onCompleted: visible = true
 // 		}
-// 	}
+	
 }
 
 

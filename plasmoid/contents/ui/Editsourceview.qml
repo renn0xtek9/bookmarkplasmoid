@@ -5,8 +5,9 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 ColumnLayout{
 	id:editsourceview
 	spacing:2
+	property alias viewHeight:editsourceview.height
 	width:300
-	height:600
+	height:300
 	visible:false
 	state:"visible"
 	anchors.fill: parent

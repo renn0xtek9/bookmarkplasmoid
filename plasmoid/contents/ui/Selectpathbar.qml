@@ -2,7 +2,7 @@ import QtQuick 2.2
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
-
+import org.kde.plasma.components 2.0 as PlasmaComponent
 Item{
 	height:30
 	width:parent.width
@@ -28,13 +28,15 @@ Item{
 				right:parent.right
 			}
 			onClicked:{
-// 				fileDialog.visible=true;				
+				console.log("Shoud show dialog")
+// 				fileDialog.visible=true
 			}
 		}
-		TextField{
+		PlasmaComponent.TextField{
 			id:field
 			width:parent.width
 			text:""
+			clearButtonShown:true
 			anchors{
 				left:parent.left 
 				right:button.left
