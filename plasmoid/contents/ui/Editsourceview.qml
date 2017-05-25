@@ -38,7 +38,7 @@ ColumnLayout{
 		tooltip: "Choose path for Chrome bookmarks"
 		textfield: plasmoid.configuration.chromepath
 	}
-	RowLayout{
+	RowLayout {
 		id: okcanclelbuttons
 		height:30
 		anchors{
@@ -52,32 +52,25 @@ ColumnLayout{
 			text:qsTr("Ok")
 			tooltip: qsTr("Validate changes")
 			height: 24
-			anchors{
-				left:parent.left
-				right:cancelbutton.left
-			}
+			Layout.fillWidth: true
 			onClicked:{
 				console.log("Changes validated")
-// 				scrollView.state="visible"
-// 				editsourceview.state="invisible" //TODO fix it !!
+				//TODO pass pathes to the plugin
+				mainrepresentation.state="bookmarkview"
 			}
 		}
 		Button{
 			id: cancelbutton
-			anchors{
-				left:okbutton.right
-				right:parent.right
-			}
 			iconName:"dialog-cancel"
 			text:qsTr("Cancel")
 			tooltip: qsTr("Discard changes")
 			height: 24
+			Layout.fillWidth: true
 			onClicked:{
 				console.log("Changes Validated")
-// 				scrollView.state="visible"
-// 				editsourceview.state="invisible" //TODO fix it !!
+				mainrepresentation.state="bookmarkview"
 			}
 		}
-		
+
 	}
 }

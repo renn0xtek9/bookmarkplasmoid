@@ -8,14 +8,10 @@ PlasmaExtras.ScrollArea {
 	id: scrollView
 	width:view.width
 	height:view.height
-	anchors {
-		bottom: parent.bottom
-	} 
+	anchors.fill:parent
 	focus: true
 	ListView{
 		id: view 
-		anchors.fill: parent
-		anchors.bottom: parent.bottom
 		height:24*view.count 
 		width:200
 		focus:true
@@ -96,11 +92,7 @@ PlasmaExtras.ScrollArea {
 				tooltip: qsTr("Add a source of bookmarks")
 				height: 24
 				onClicked:{
-					mainWindow.height=1200;
-					scrollView.visible=false
-					editsourceview.visible=true
-					scrollView.state="invisible"
-					editsourceview.state="visible" //TODO fix it !!
+					mainrepresentation.state="editsourceview"
 				}
 			}
 		}
