@@ -14,7 +14,7 @@
     <entry name="firefoxpath" type="string">
       <default>false</default>
     </entry>
-    <entry name="chromapath" type="string">
+    <entry name="chromepath" type="string">
       <default>false</default>
     </entry>
   </group>

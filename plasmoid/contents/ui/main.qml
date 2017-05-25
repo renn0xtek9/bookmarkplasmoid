@@ -154,139 +154,33 @@ Item {
 		height:600
 		state:"visible"
 		anchors.fill: parent
-		
-		Item{
-			height:30
-			width:parent.width
-			anchors{
-				right:parent.right
-				left:parent.left
-			}
-			RowLayout{
-				anchors{
-					right:parent.right
-					left:parent.left
-				}
-				
-				Button{
-					id:konquerorselectfile
-					iconName:"bookmark-new-list"
-					text:qsTr("Choose")
-					tooltip: qsTr("Select Konqueror (KDE) bookmarks file")
-					anchors{
-						right:parent.right
-					}
-				}
-				TextField{
-					id:konquerortextedit
-					width:parent.width
-					text:"Merde"
-// 					color:"blue"
-					anchors{
-						left:parent.left 
-						right:konquerorselectfile.left
-					}
-				}
-			}
+		Selectpathbar{
+			id: okularselect 
+			iconName :"bookmark-new-list"
+			text: "Okular"
+			tooltip: "Choose path for okular bookmarks"
+			textfield: plasmoid.configuration.okularpath
 		}
-		Item{
-			height:30
-			width:parent.width
-			anchors{
-				right:parent.right
-				left:parent.left
-			}
-			RowLayout{
-				anchors{
-					right:parent.right
-					left:parent.left
-				}
-				TextField{
-					id:okulartextedit
-					width:parent.width
-					text:"Okular"
-// 					color:"blue"
-					anchors{
-						left:parent.left 
-						right:okularselectfile.left
-					}
-				}
-				Button{
-					id:okularselectfile
-					iconName:"bookmark-new-list"
-					text:qsTr("Choose")
-					tooltip: qsTr("Select Konqueror (KDE) bookmarks file")
-					anchors{
-						right:parent.right
-					}
-				}
-			}
+		Selectpathbar{
+			id: konquerorselect 
+			iconName :"bookmark-new-list"
+			text: "KDE"
+			tooltip: "Choose path for Konqueror (KDE) bookmarks"
+			textfield: plasmoid.configuration.konquerorpath
 		}
-		Item{
-			height:30
-			width:parent.width
-			anchors{
-				right:parent.right
-				left:parent.left
-			}
-			RowLayout{
-				anchors{
-					right:parent.right
-					left:parent.left
-				}
-				TextField{
-					id:firefoxtextedit
-					width:parent.width
-					text:"Okular"
-// 					color:"blue"
-					anchors{
-						left:parent.left 
-						right:firefoxselectfile.left
-					}
-				}
-				Button{
-					id:firefoxselectfile
-					iconName:"bookmark-new-list"
-					text:qsTr("Choose")
-					tooltip: qsTr("Select Konqueror (KDE) bookmarks file")
-					anchors{
-						right:parent.right
-					}
-				}
-			}
+		Selectpathbar{
+			id: firefoxselect 
+			iconName :"bookmark-new-list"
+			text: "Firefox"
+			tooltip: "Choose path for firefox bookmarks"
+			textfield: plasmoid.configuration.firefoxpath
 		}
-		Item{
-			height:30
-			width:parent.width
-			anchors{
-				right:parent.right
-				left:parent.left
-			}
-			RowLayout{
-				anchors{
-					right:parent.right
-					left:parent.left
-				}
-				TextField{
-					id:chrometextedit
-					width:parent.width
-					text:"Okular"
-// 					color:"blue"
-					anchors{
-						left:parent.left 
-						right:chromeselectfile.left
-					}
-				}
-				Button{
-					id:chromeselectfile
-					iconName:"bookmark-new-list"
-					text:qsTr("Choose")
-					tooltip: qsTr("Select Konqueror (KDE) bookmarks file")
-					anchors{
-						right:parent.right
-					}
-				}
-			}
+		Selectpathbar{
+			id: chromeselect 
+			iconName :"bookmark-new-list"
+			text: "Chrome"
+			tooltip: "Choose path for Chrome bookmarks"
+			textfield: plasmoid.configuration.chromepath
 		}
 		
 		states: [
