@@ -11,9 +11,9 @@ using namespace std;
 int main(int argc, char **argv) 
 {  
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
-	
+	QString okularfilename="/home/max/.local/share/okular/bookmarks.xml";
 	Bookmarkmodel reader;
-	reader.setPathForKonquerorBookmarks(filename);
+	reader.setPathForOkularBookmarks(okularfilename);
 	qDebug()<<reader.rowCount();
 	qDebug()<<reader.columnCount();
 // 	QModelIndex index=reader.createIndex();
@@ -33,7 +33,6 @@ int main(int argc, char **argv)
 		qDebug()<<reader.data(current,Qt::ToolTipRole)<<" is the tooltip";
 	}
 	
-	qDebug()<<"Now inside Utiles";
 	return 0;
 }
 

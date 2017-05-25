@@ -55,7 +55,10 @@ ColumnLayout{
 			Layout.fillWidth: true
 			onClicked:{
 				console.log("Changes validated")
-				//TODO pass pathes to the plugin
+				itemmodel.konquerorBookmarks=konquerorselect.textfield
+				itemmodel.okularBookmarks=okularselect.textfield
+				itemmodel.firefoxBookmarks=firefoxselect.textfield
+				itemmodel.chromeBookmarks=chromeselect.textfield
 				mainrepresentation.state="bookmarkview"
 			}
 		}

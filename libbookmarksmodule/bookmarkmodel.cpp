@@ -6,6 +6,7 @@
 #include <QtCore/QVariant>
 #include <QtCore/QString>
 #include <QtGui/QIcon>
+#include <QtCore/QFileInfo>
 #include <KF5/KIconThemes/KIconTheme>
 
 Bookmarkmodel::Bookmarkmodel() :QStandardItemModel(nullptr)
@@ -18,24 +19,39 @@ Bookmarkmodel::~Bookmarkmodel()
 }
 void Bookmarkmodel::setPathForKonquerorBookmarks(const QString& fullpath)
 {
-	m_konquerorpath=fullpath;
-	//TODO test if exsit;
-	appendXBELFile(m_konquerorpath);
-	emit konquerorpathChanged(fullpath);
+	if (FileExists(fullpath))
+	{
+		m_konquerorpath=fullpath;
+		appendXBELFile(m_konquerorpath);
+		emit konquerorpathChanged(fullpath);
+	}
 }
 void Bookmarkmodel::setPathForOkularBookmarks(const QString& fullpath)
 {
-	m_okularpath=fullpath;
-	//TODO test if exist
-	appendXBELFile(m_okularpath);
-	emit okularpathChanged(fullpath);
+	if (FileExists(fullpath))
+	{
+		m_okularpath=fullpath;
+		appendXBELFile(m_okularpath);
+		emit okularpathChanged(fullpath);
+	}
 }
 void Bookmarkmodel::setPathForFirefoxBookmarks(const QString& fullpath)
 {
-	m_firefoxpath=fullpath;
-	//TODO test if exist
-	//TODO implement json bookmarks
-	emit firefoxpathChanged(fullpath);
+	if(FileExists(fullpath))
+	{
+		m_firefoxpath=fullpath;
+		//TODO implement json bookmarks
+		emit firefoxpathChanged(fullpath);
+	}
+}
+void Bookmarkmodel::setPathForChromeBookamarks(const QString& fullpath)
+{
+	if(FileExists(fullpath))
+	{
+		m_chromepath=fullpath;
+		//TODO read the json bookmark
+		emit chromepathChanged(fullpath);
+	}
 }
 QString Bookmarkmodel::getPathForFirefoxBookmarks() const
 {
@@ -48,6 +64,10 @@ QString Bookmarkmodel::getPathForKonquerorBookmarks() const
 QString Bookmarkmodel::getPathForOkularBookmarks() const
 {
 	return m_okularpath;
+}
+QString Bookmarkmodel::getPathForChromeBookmarks() const
+{
+	return m_chromepath;
 }
 
 
@@ -255,5 +275,10 @@ void Bookmarkmodel::itemSelectedAsRoot(int index)
 void Bookmarkmodel::parentItemSelectedAsRoot()
 {
 // 	this->setRootIndex(this->invisibleRootItem());
+}
+bool Bookmarkmodel::FileExists(const QString & path) const noexcept
+{
+	QFileInfo finfo(path);
+	return finfo.exists();	
 }
 

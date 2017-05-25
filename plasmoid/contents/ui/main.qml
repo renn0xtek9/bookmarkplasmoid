@@ -17,6 +17,13 @@ Item {
 	Plasmoid.switchHeight: units.gridUnit * 10	
 	Plasmoid.fullRepresentation:  Item{
 		id: mainrepresentation
+		MyPlugins.Bookmarkmodel{
+			id: itemmodel
+			konquerorBookmarks: plasmoid.configuration.firefoxpath
+			okularBookmarks: plasmoid.configuration.okularpath
+			firefoxBookmarks: plasmoid.configuration.konquerorpath
+			chromeBookmarks: plasmoid.configuration.chromepath
+		}	
 		state:"editsourceview"
 		Bookmarkview{
 			id:bookmarkview

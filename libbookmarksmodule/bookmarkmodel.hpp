@@ -20,12 +20,14 @@ class Bookmarkmodel :public QStandardItemModel
 	Q_PROPERTY(QString konquerorBookmarks READ getPathForKonquerorBookmarks WRITE setPathForKonquerorBookmarks NOTIFY konquerorpathChanged);
 	Q_PROPERTY(QString okularBookmarks READ getPathForOkularBookmarks WRITE setPathForOkularBookmarks NOTIFY okularpathChanged);
 	Q_PROPERTY(QString firefoxBookmarks READ getPathForFirefoxBookmarks WRITE setPathForFirefoxBookmarks NOTIFY firefoxpathChanged);
+	Q_PROPERTY(QString chromeBookmarks READ getPathForChromeBookmarks WRITE setPathForChromeBookamarks NOTIFY chromepathChanged );
 
 signals:
 	void rowCountChanged(int newcount);
 	void konquerorpathChanged(QString newpath);
 	void okularpathChanged(QString newpath);
 	void firefoxpathChanged(QString newpath);
+	void chromepathChanged(QString newpath);
 
 public:
 	Bookmarkmodel();
@@ -40,10 +42,12 @@ public:
 	Q_INVOKABLE void setPathForKonquerorBookmarks(const QString& fullpath);
 	Q_INVOKABLE void setPathForOkularBookmarks(const QString& fullpath);
 	Q_INVOKABLE void setPathForFirefoxBookmarks(const QString& fullpath);
+	Q_INVOKABLE void setPathForChromeBookamarks(const QString& fullpath);
+	
 	QString getPathForKonquerorBookmarks()const;
 	QString getPathForOkularBookmarks()const;
 	QString getPathForFirefoxBookmarks()const;
-	
+	QString getPathForChromeBookmarks()const;
 	QHash<int, QByteArray> roleNames() const ;
 	
 public slots:
@@ -54,6 +58,7 @@ private:
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 	QModelIndex* m_rootmodelindex;
 	QString getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item);
+	bool FileExists(const QString & path) const noexcept;
 	//path
 	QString m_konquerorpath;
 	QString m_okularpath;

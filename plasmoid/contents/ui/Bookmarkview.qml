@@ -18,12 +18,6 @@ PlasmaExtras.ScrollArea {
 		visible:true
 		model:visualModel
 		highlightFollowsCurrentItem: true
-		MyPlugins.Bookmarkmodel{
-			id: itemmodel
-			konquerorBookmarks: plasmoid.configuration.firefoxpath
-			okularBookmarks: plasmoid.configuration.okularpath
-			firefoxBookmarks: plasmoid.configuration.konquerorpath
-		}	
 		VisualDataModel {
 			id: visualModel
 			model: itemmodel	
@@ -61,36 +55,35 @@ PlasmaExtras.ScrollArea {
 		}
 		header: RowLayout{
 			id: head 
-			height:100
+			height:30
 			anchors{
 				left:parent.left 
 				right:parent.right
-				top:parent.top						
 			}
 			Button{
 				id: buttonorganize
 				iconName:"bookmarks-organize.png"
 				text:qsTr("Edit bookmarks")
 				tooltip: qsTr("Organize KDE Bookmarks")
+				Layout.fillWidth: true
 				height: 24
 				anchors{
 					left:parent.left
-					right:buttonadd.left
 				}
 				onClicked:{
-					executable.exec("keditbookmarks")
+					executable.exec("keditbookmarks "+itemmodel.konquerorBookmarks)
 				}
 			}
 			Button{
 				id: buttonadd
 				anchors{
-					left:buttonorganize.right
 					right:parent.right
 				}
 				iconName:"bookmark-add-folder"
 				text:qsTr("Add a source")
 				tooltip: qsTr("Add a source of bookmarks")
 				height: 24
+				Layout.fillWidth: true
 				onClicked:{
 					mainrepresentation.state="editsourceview"
 				}
