@@ -1,6 +1,8 @@
 import QtQuick 2.2
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
+import QtQuick.Dialogs 1.2
+
 Item{
 	height:30
 	width:parent.width
@@ -25,6 +27,9 @@ Item{
 			anchors{
 				right:parent.right
 			}
+			onClicked:{
+// 				fileDialog.visible=true;				
+			}
 		}
 		TextField{
 			id:field
@@ -35,5 +40,5 @@ Item{
 				right:button.left
 			}
 		}
-	}
+	}	
 }

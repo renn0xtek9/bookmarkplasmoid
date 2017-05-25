@@ -1,0 +1,83 @@
+import QtQuick 2.2
+import QtQuick.Controls 1.4
+import QtQuick.Layouts 1.3
+import org.kde.plasma.extras 2.0 as PlasmaExtras
+ColumnLayout{
+	id:editsourceview
+	spacing:2
+	width:300
+	height:600
+	visible:false
+	state:"visible"
+	anchors.fill: parent
+	Selectpathbar{
+		id: okularselect 
+		iconName :"bookmark-new-list"
+		text: "Okular"
+		tooltip: "Choose path for okular bookmarks"
+		textfield: plasmoid.configuration.okularpath
+	}
+	Selectpathbar{
+		id: konquerorselect 
+		iconName :"bookmark-new-list"
+		text: "KDE"
+		tooltip: "Choose path for Konqueror (KDE) bookmarks"
+		textfield: plasmoid.configuration.konquerorpath
+	}
+	Selectpathbar{
+		id: firefoxselect 
+		iconName :"bookmark-new-list"
+		text: "Firefox"
+		tooltip: "Choose path for firefox bookmarks"
+		textfield: plasmoid.configuration.firefoxpath
+	}
+	Selectpathbar{
+		id: chromeselect 
+		iconName :"bookmark-new-list"
+		text: "Chrome"
+		tooltip: "Choose path for Chrome bookmarks"
+		textfield: plasmoid.configuration.chromepath
+	}
+	RowLayout{
+		id: okcanclelbuttons
+		height:30
+		anchors{
+			left:parent.left 
+			right:parent.right
+			bottom:parent.bottom
+		}
+		Button{
+			id: okbutton
+			iconName:"dialog-ok.png"
+			text:qsTr("Ok")
+			tooltip: qsTr("Validate changes")
+			height: 24
+			anchors{
+				left:parent.left
+				right:cancelbutton.left
+			}
+			onClicked:{
+				console.log("Changes validated")
+// 				scrollView.state="visible"
+// 				editsourceview.state="invisible" //TODO fix it !!
+			}
+		}
+		Button{
+			id: cancelbutton
+			anchors{
+				left:okbutton.right
+				right:parent.right
+			}
+			iconName:"dialog-cancel"
+			text:qsTr("Cancel")
+			tooltip: qsTr("Discard changes")
+			height: 24
+			onClicked:{
+				console.log("Changes Validated")
+// 				scrollView.state="visible"
+// 				editsourceview.state="invisible" //TODO fix it !!
+			}
+		}
+		
+	}
+}
