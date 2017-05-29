@@ -59,8 +59,10 @@ ColumnLayout{
 				itemmodel.okularBookmarks=okularselect.textfield
 				itemmodel.firefoxBookmarks=firefoxselect.textfield
 				itemmodel.chromeBookmarks=chromeselect.textfield
-				plasmoid.configuration.save()
-				console.log("Changes validated")
+				plasmoid.configuration.firefoxpath=firefoxselect.textfield
+				plasmoid.configuration.okularpath=okularselect.textfield
+				plasmoid.configuration.konquerorpath=konquerorselect.textfield
+				plasmoid.configuration.chromepath=chromeselect.textfield
 				itemmodel.ReadAllSources()
 				mainrepresentation.state="bookmarkview"
 			}
