@@ -74,9 +74,9 @@ PlasmaExtras.ScrollArea {
 				anchors{
 					right:parent.right
 				}
-				iconName:"bookmark-add-folder"
-				text:qsTr("Add a source")
-				tooltip: qsTr("Add a source of bookmarks")
+				iconName:"bookmark-new-list"
+				text:qsTr("Edit sources")
+				tooltip: qsTr("Edit the various bookmark sources")
 				height: 24
 				Layout.fillWidth: true
 				onClicked:{
@@ -85,7 +85,11 @@ PlasmaExtras.ScrollArea {
 			}
 		}
 		onCountChanged: {
+// 			mainrepresentation.Layout.preferredHeight=24*view.count+view.headerItem.height
 			mainrepresentation.Layout.minimumHeight=24*view.count+view.headerItem.height
+// 			mainrepresentation.Layout.maximumHeight=24*view.count+view.headerItem.height
+// 			mainrepresentation.Layout.height=24*view.count
+			console.log("Layout preferred set at" +24*view.count)
 		}
 	}
 }

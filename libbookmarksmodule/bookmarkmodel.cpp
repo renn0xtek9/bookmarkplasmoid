@@ -40,6 +40,8 @@ void Bookmarkmodel::setPathForChromeBookamarks(const QString& fullpath)
 }
 void Bookmarkmodel::ReadAllSources()
 {
+	//TODO clear all 
+	clear();
 	if (FileExists(m_konquerorpath))
 	{
 		m_currentlyparsed=CurrentlyParsing::Konqueror;

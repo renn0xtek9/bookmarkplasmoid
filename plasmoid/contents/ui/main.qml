@@ -12,20 +12,22 @@ import QtQuick.Dialogs 1.2
 Item {
 	id: mainWindow
 	Plasmoid.toolTipMainText: i18n("Bookmarks")
-	Plasmoid.icon: connectionIconProvider.connectionTooltipIcon
+// 	Plasmoid.icon: connectionIconProvider.connectionTooltipIcon
 	Plasmoid.switchWidth: units.gridUnit * 10
 	Plasmoid.switchHeight: units.gridUnit * 10	
+	Layout.preferredHeight:800
 	Plasmoid.fullRepresentation:  Item{
 		id: mainrepresentation
-		
+		Layout.minimumHeight:300
 		Layout.minimumWidth:300
+		Layout.fillHeight : true
 		MyPlugins.Bookmarkmodel{
 			id: itemmodel
 			konquerorBookmarks: plasmoid.configuration.firefoxpath
 			okularBookmarks: plasmoid.configuration.okularpath
 			firefoxBookmarks: plasmoid.configuration.konquerorpath
 			chromeBookmarks: plasmoid.configuration.chromepath
-		}	
+		}
 		state:"editsourceview"
 		Bookmarkview{
 			id:bookmarkview
@@ -49,6 +51,8 @@ Item {
 					target: bookmarkview;visible: true}
 				PropertyChanges{
 					target: editsourceview;visible:false}
+// 				PropertyChanges{
+// 					target: mainrepresentation;Layout.minimumHeight:150; Layout.maximumHeight:-1}
 			}
 		]
 	}
@@ -68,6 +72,9 @@ Item {
 			connectSource(cmd)
 		}
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
+	}
+	Component.onCompleted: {
+		Plasmoid.save("Appearance");
 	}
 	
 		

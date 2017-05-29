@@ -55,11 +55,13 @@ ColumnLayout{
 			height: 24
 			Layout.fillWidth: true
 			onClicked:{
-				console.log("Changes validated")
 				itemmodel.konquerorBookmarks=konquerorselect.textfield
 				itemmodel.okularBookmarks=okularselect.textfield
 				itemmodel.firefoxBookmarks=firefoxselect.textfield
 				itemmodel.chromeBookmarks=chromeselect.textfield
+				plasmoid.configuration.save()
+				console.log("Changes validated")
+				itemmodel.ReadAllSources()
 				mainrepresentation.state="bookmarkview"
 			}
 		}
