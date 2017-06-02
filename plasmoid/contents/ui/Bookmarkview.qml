@@ -8,7 +8,8 @@ PlasmaExtras.ScrollArea {
 	id: scrollView
 	width:childrenRect.width
 	anchors.fill:parent
-	focus: true
+// 	focus: true
+	
 	ListView{
 		id: view 
 		height:24*view.count 
@@ -16,16 +17,23 @@ PlasmaExtras.ScrollArea {
 		focus:true
 		visible:true
 		model:visualModel
-		highlightFollowsCurrentItem: true
+// 		highlightFollowsCurrentItem: true
+		highlight: Component { 
+			Button {
+				id: high
+				text: "PUTAAAAAINNNN"
+			}
+		}	
 		VisualDataModel {
 			id: visualModel
-			model: itemmodel	
+			model: itemmodel
 			delegate: Button{
 				iconSource :icon
 				height: 24
 				width: view.width
-				text: display
+				text: ListView.isCurrentItem? "merde":display
 				tooltip: ttp
+				
 				MouseArea{
 					anchors.fill: parent
 					acceptedButtons: Qt.LeftButton | Qt.RightButton
@@ -48,9 +56,20 @@ PlasmaExtras.ScrollArea {
 				}
 			}
 		}
+		Keys.onDownPressed: {
+			console.log("Uppressed")
+			if (view.currentIndex + 2 < view.count - 1)
+				view.currentIndex += 2;
+		}
+		Keys.onUpPressed: {
+			if (view.currentIndex - 2 >= 0)
+				view.currentIndex -= 2;
+		}
+		
 		header: RowLayout{
 			id: head 
 			height:30
+			focus:false
 			anchors{
 				left:parent.left 
 				right:parent.right

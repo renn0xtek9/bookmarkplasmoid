@@ -12,7 +12,6 @@ import QtQuick.Dialogs 1.2
 Item {
 	id: mainWindow
 	Plasmoid.toolTipMainText: i18n("Bookmarks")
-// 	Plasmoid.icon: connectionIconProvider.connectionTooltipIcon
 	Plasmoid.switchWidth: units.gridUnit * 10
 	Plasmoid.switchHeight: units.gridUnit * 10	
 	Layout.preferredHeight:800
@@ -28,7 +27,7 @@ Item {
 			firefoxBookmarks: plasmoid.configuration.konquerorpath
 			chromeBookmarks: plasmoid.configuration.chromepath
 		}
-		state:"editsourceview"
+		state:"bookmarkview"
 		Bookmarkview{
 			id:bookmarkview
 		}
@@ -73,10 +72,6 @@ Item {
 		}
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
 	}
-	Component.onCompleted: {
-		Plasmoid.save("Appearance");
-	}
-	
 		
 // 		FileDialog{
 // 			id: fileDialog

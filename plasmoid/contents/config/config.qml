@@ -3,6 +3,6 @@
      ConfigCategory {
           name: "General"
           icon: "bookmarks-organize.png"
-          source: "configgeneral.qml"
+          source: "config/configgeneral.qml"
      }
 }

@@ -63,6 +63,8 @@ ColumnLayout{
 				plasmoid.configuration.okularpath=okularselect.textfield
 				plasmoid.configuration.konquerorpath=konquerorselect.textfield
 				plasmoid.configuration.chromepath=chromeselect.textfield
+				
+				console.log("Konquerorpath: "+plasmoid.configuration.konquerorpath)
 				itemmodel.ReadAllSources()
 				mainrepresentation.state="bookmarkview"
 			}

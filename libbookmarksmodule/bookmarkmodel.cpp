@@ -40,7 +40,6 @@ void Bookmarkmodel::setPathForChromeBookamarks(const QString& fullpath)
 }
 void Bookmarkmodel::ReadAllSources()
 {
-	//TODO clear all 
 	clear();
 	if (FileExists(m_konquerorpath))
 	{
@@ -80,11 +79,6 @@ QString Bookmarkmodel::getPathForChromeBookmarks() const
 {
 	return m_chromepath;
 }
-
-
-
-
-
 void Bookmarkmodel::appendXBELFile(QString path)
 {
 	QFile xbelfile(path);
@@ -236,7 +230,6 @@ QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
 	roles[IsFolderRole] = "isFolder";
 	return roles;
 }
-
 QString Bookmarkmodel::getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item)
 {
 	QFileInfo finfo(iconpathfromxml);
