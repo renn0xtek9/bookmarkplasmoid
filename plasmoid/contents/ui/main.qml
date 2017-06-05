@@ -45,6 +45,7 @@ Item {
 					target: editsourceview;visible:true}
 			},
 			State{
+				
 				name: "bookmarkview"
 				PropertyChanges{
 					target: bookmarkview;visible: true}
@@ -71,6 +72,11 @@ Item {
 			connectSource(cmd)
 		}
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
+	}
+	
+	Connections{
+		target: itemmodel 
+		onCompleted: ReadAllSources();
 	}
 		
 // 		FileDialog{
