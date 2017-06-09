@@ -37,25 +37,44 @@ PlasmaComponents.ListItem {
     property bool showInput: false
     property string iconSource: ""
     property string bookmarktext: "No bookmark"
+    property string tooltip: ""
     
     width: parent.width - units.gridUnit * 2
     height: Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
 
-    x: -listMargins.left
+//     x: -listMargins.left
+    x:0
 
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
-
-        onClicked: {
-            if (TypeRole!=1)
-                menuItem.itemSelected(UuidRole);
-            else {
-                showInput=true; 
-            }
+	acceptedButtons: Qt.LeftButton | Qt.RightButton
+	onClicked: {
+		if(mouse.button & Qt.LeftButton) {
+			console.log("leftclick")
+			if (!isFolder)
+			{
+				Qt.openUrlExternally(tooltip)
+			}
+			else
+			{
+				visualModel.rootIndex=view.model.modelIndex(index)
+			}
+		}
+		if(mouse.button & Qt.RightButton)
+		{
+			console.log("rightclick")
+			visualModel.rootIndex=visualModel.parentModelIndex()						 
+		}
+		if (TypeRole!=1)
+			menuItem.itemSelected(UuidRole);
+		else {
+			showInput=true; 
+		}
+		
         }
-        onEntered: menuListView.currentIndex = index
-        onExited: menuListView.currentIndex = -1
+        onEntered: view.currentIndex = index
+        onExited: view.currentIndex = -1
 
         Item {
             id: label
@@ -140,9 +159,9 @@ PlasmaComponents.ListItem {
                 onClicked: menuItem.remove(UuidRole)
             }
 
-            Component.onCompleted: {
-                toolButtonsLayout.visible = Qt.binding(function () { return (TypeRole==2) && (menuListView.currentIndex == index); });
-            }
+//             Component.onCompleted: {
+//                 toolButtonsLayout.visible = Qt.binding(function () { return (TypeRole==2) && (view.currentIndex == index); });
+//             }
         }
     }
 }

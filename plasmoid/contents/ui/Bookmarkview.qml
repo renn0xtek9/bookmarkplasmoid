@@ -21,18 +21,23 @@ PlasmaExtras.ScrollArea {
 		visible:true
 		model:visualModel
 // 		highlightFollowsCurrentItem: true
-		highlight: Component { 
-			Button {
-				id: high
-				text: "PUTAAAAAINNNN"
-			}
-		}	
+// 		highlight: Component { 
+// 			Button {
+// 				id: high
+// 				text: "PUTAAAAAINNNN"
+// 			}
+// 		}	
+		highlight: PlasmaComponents.Highlight {
+// 			anchors.bottomMargin: -listMargins.bottom
+			y: 1
+		}
 		VisualDataModel {
 			id: visualModel
 			model: itemmodel
 			delegate: Bookmarkdelegate{
 				bookmarktext: display
 				iconSource: icon
+				tooltip: ttp
 			}
 			
 			
