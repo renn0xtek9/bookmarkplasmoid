@@ -39,7 +39,7 @@ PlasmaExtras.ScrollArea {
 				iconSource: icon
 				tooltip: ttp
 			}
-			
+		Keys.onLeftPressed: console.log("move left")
 			
 			
 			

@@ -29,7 +29,7 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 PlasmaComponents.ListItem {
     id: menuItem
-
+    focus: true
     signal itemSelected(string uuid)
     signal newSession(string sessionname)
     signal remove(string uuid)
@@ -75,7 +75,16 @@ PlasmaComponents.ListItem {
         }
         onEntered: view.currentIndex = index
         onExited: view.currentIndex = -1
+        Keys.onUpPressed:{
+		console.log("up pressed");
+		event.accepted=true;
+	}
+	Keys.onDownPressed:{
+		console.log("Down pressed");
+		event.accepted=true;
+	}
 
+	
         Item {
             id: label
             height: childrenRect.height
@@ -146,7 +155,7 @@ PlasmaComponents.ListItem {
                 }
         }
         
-        RowLayout {
+        RowLayout { //This is the toolButton on the right side that shows a blue arrow depending on wether it is  a folder or not
             id: toolButtonsLayout
             anchors {
                 right: label.right
@@ -154,7 +163,7 @@ PlasmaComponents.ListItem {
             }
 
             PlasmaComponents.ToolButton {
-                iconSource: "edit-delete"
+                iconSource: isFolder ? "go-next-view" : ""
                 tooltip: i18n("Delete session")
                 onClicked: menuItem.remove(UuidRole)
             }
