@@ -1,6 +1,9 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
+import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
+import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import MyPlugins 1.0 as MyPlugins
 
@@ -27,34 +30,43 @@ PlasmaExtras.ScrollArea {
 		VisualDataModel {
 			id: visualModel
 			model: itemmodel
-			delegate: Button{
-				iconSource :icon
-				height: 24
-				width: view.width
-				text: ListView.isCurrentItem? "merde":display
-				tooltip: ttp
-				
-				MouseArea{
-					anchors.fill: parent
-					acceptedButtons: Qt.LeftButton | Qt.RightButton
-					onClicked:{
-						if(mouse.button & Qt.LeftButton) {
-							if (!isFolder)
-							{
-								Qt.openUrlExternally(tooltip)
-							}
-							else
-							{
-								visualModel.rootIndex=view.model.modelIndex(index)
-							}
-						}
-						if(mouse.button & Qt.RightButton)
-						{
-							visualModel.rootIndex=visualModel.parentModelIndex()						 
-						}
-					}
-				}
+			delegate: Bookmarkdelegate{
+				bookmarktext: display
+				iconSource: icon
 			}
+			
+			
+			
+			
+			
+// 			Button{
+// 				iconSource :icon
+// 				height: 24
+// 				width: view.width
+// // 				text: ListView.isCurrentItem? "merde":display
+// 				tooltip: ttp
+// 				
+// 				MouseArea{
+// 					anchors.fill: parent
+// 					acceptedButtons: Qt.LeftButton | Qt.RightButton
+// 					onClicked:{
+// 						if(mouse.button & Qt.LeftButton) {
+// 							if (!isFolder)
+// 							{
+// 								Qt.openUrlExternally(tooltip)
+// 							}
+// 							else
+// 							{
+// 								visualModel.rootIndex=view.model.modelIndex(index)
+// 							}
+// 						}
+// 						if(mouse.button & Qt.RightButton)
+// 						{
+// 							visualModel.rootIndex=visualModel.parentModelIndex()						 
+// 						}
+// 					}
+// 				}
+// 			}
 		}
 		Keys.onDownPressed: {
 			console.log("Uppressed")
