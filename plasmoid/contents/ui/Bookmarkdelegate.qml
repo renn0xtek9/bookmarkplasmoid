@@ -38,6 +38,7 @@ PlasmaComponents.ListItem {
 	property string iconSource: ""
 	property string bookmarktext: "No bookmark"
 	property string tooltip: ""
+	property bool isAFolder: true
 	
 	width: parent.width - units.gridUnit * 2
 	height: Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
@@ -45,24 +46,7 @@ PlasmaComponents.ListItem {
 	//     x: -listMargins.left
 	x:0
 
-	Keys.onPressed: {
-		if (event.key == Qt.Key_Left) {
-			console.log("move left");
-			event.accepted = true;
-		}
-		if (event.key == Qt.Key_Right) {
-			console.log("move right");
-			event.accepted = true;
-		}
-		if (event.key == Qt.Key_Up) {
-			console.log("move up");
-			event.accepted = true;
-		}
-		if (event.key == Qt.Key_Down) {
-			console.log("move down");
-			event.accepted = true;
-		}
-	}
+	
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -76,7 +60,7 @@ PlasmaComponents.ListItem {
 			}
 			else
 			{
-				visualModel.rootIndex=view.model.modelIndex(index)
+				visualModel.rootIndex=bookmarklist.model.modelIndex(index)
 			}
 		}
 		if(mouse.button & Qt.RightButton)
@@ -91,8 +75,8 @@ PlasmaComponents.ListItem {
 		}
 		
         }
-        onEntered: view.currentIndex = index
-        onExited: view.currentIndex = -1
+        onEntered: bookmarklist.currentIndex = index
+        onExited: bookmarklist.currentIndex = -1
         Item {
             id: label
             height: childrenRect.height
@@ -148,7 +132,6 @@ PlasmaComponents.ListItem {
                     placeholderText: i18n("Session name")
                     clearButtonShown: true
                     Layout.fillWidth: true
-                    
                 }
                 PlasmaComponents.ToolButton {
                     iconSource: "dialog-ok"
@@ -162,7 +145,6 @@ PlasmaComponents.ListItem {
                     onClicked: showInput=false
                 }
         }
-        
         RowLayout { //This is the toolButton on the right side that shows a blue arrow depending on wether it is  a folder or not
             id: toolButtonsLayout
             anchors {

@@ -32,6 +32,7 @@ Item {
 		state:"bookmarkview"
 		Bookmarkview{
 			id:bookmarkview
+			focus: true
 		}
 		Editsourceview{
 			id:editsourceview 
@@ -54,7 +55,7 @@ Item {
 				PropertyChanges{
 					target: editsourceview;visible:false}
 				PropertyChanges{
-					target: view;focus: true}
+					target: bookmarkview;focus: true}
 			}
 		]
 		Connections{

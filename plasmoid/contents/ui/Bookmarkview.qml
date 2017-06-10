@@ -14,8 +14,8 @@ PlasmaExtras.ScrollArea {
 	anchors.fill:parent
 	focus: true
 	ListView{
-		id: view 
-		height:24*view.count 
+		id: bookmarklist 
+		height:24*bookmarklist.count 
 		anchors.fill: parent
 		width:200
 		focus:true
@@ -33,6 +33,7 @@ PlasmaExtras.ScrollArea {
 				bookmarktext: display
 				iconSource: icon
 				tooltip: ttp
+				isAFolder: isFolder
 			}
 		}
 		header: RowLayout{
@@ -74,28 +75,43 @@ PlasmaExtras.ScrollArea {
 		}
 		Keys.onPressed: {
 			if (event.key == Qt.Key_Left) {
-				console.log("move left");
+// 				console.log("move left");
+				visualModel.rootIndex=visualModel.parentModelIndex();
 				event.accepted = true;
 			}
-			if (event.key == Qt.Key_Right) {
-				console.log("move right");
+			if (event.key == Qt.Key_Right || event.key==Qt.Key_Enter || event.key==Qt.Key_Return) {
+// 				console.log("move right");
+// 				console.log(bookmarklist.currentItem)
+// 				console.log(bookmarklist.currentItem.tooltip)
+// 				console.log(bookmarklist.currentItem.bookmarktext)
+// 				console.log(bookmarklist.currentItem.isAFolder)
+				if (!bookmarklist.currentItem.isAFolder)
+				{
+					Qt.openUrlExternally(bookmarklist.currentItem.tooltip)
+				}
+				else
+				{
+					visualModel.rootIndex=bookmarklist.model.modelIndex(bookmarklist.currentIndex);
+				}
 				event.accepted = true;
 			}
 			if (event.key == Qt.Key_Up) {
-				console.log("move up");
+// 				console.log("move up");
+				bookmarklist.currentIndex = bookmarklist.currentIndex-1
 				event.accepted = true;
 			}
 			if (event.key == Qt.Key_Down) {
-				console.log("move down");
+// 				console.log("move down");
+				bookmarklist.currentIndex = bookmarklist.currentIndex +1
 				event.accepted = true;
 			}
 		}	
 		onCountChanged: {
-// 			mainrepresentation.Layout.preferredHeight=24*view.count+view.headerItem.height
-			mainrepresentation.Layout.minimumHeight=24*view.count+view.headerItem.height
-// 			mainrepresentation.Layout.maximumHeight=24*view.count+view.headerItem.height
-// 			mainrepresentation.Layout.height=24*view.count
-			console.log("Layout preferred set at" +24*view.count)
+// 			mainrepresentation.Layout.preferredHeight=24*bookmarklist.count+bookmarklist.headerItem.height
+			mainrepresentation.Layout.minimumHeight=24*bookmarklist.count+bookmarklist.headerItem.height
+// 			mainrepresentation.Layout.maximumHeight=24*bookmarklist.count+bookmarklist.headerItem.height
+// 			mainrepresentation.Layout.height=24*bookmarklist.count
+			console.log("Layout preferred set at" +24*bookmarklist.count)
 		}
 	}
 }
