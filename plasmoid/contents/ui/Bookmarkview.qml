@@ -102,7 +102,7 @@ PlasmaExtras.ScrollArea {
 			mainrepresentation.Layout.minimumHeight=24*bookmarklist.count+bookmarklist.headerItem.height
 // 			mainrepresentation.Layout.maximumHeight=24*bookmarklist.count+bookmarklist.headerItem.height
 // 			mainrepresentation.Layout.height=24*bookmarklist.count
-			console.log("Layout preferred set at" +24*bookmarklist.count)
+// 			console.log("Layout preferred set at" +24*bookmarklist.count)
 		}
 	}
 }
