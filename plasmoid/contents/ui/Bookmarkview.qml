@@ -22,7 +22,6 @@ PlasmaExtras.ScrollArea {
 		visible:true
 		model:visualModel
 		highlightFollowsCurrentItem: true
-		
 		highlight: PlasmaComponents.Highlight {
 			y: 0
 		}
@@ -75,16 +74,10 @@ PlasmaExtras.ScrollArea {
 		}
 		Keys.onPressed: {
 			if (event.key == Qt.Key_Left) {
-// 				console.log("move left");
 				visualModel.rootIndex=visualModel.parentModelIndex();
 				event.accepted = true;
 			}
 			if (event.key == Qt.Key_Right || event.key==Qt.Key_Enter || event.key==Qt.Key_Return) {
-// 				console.log("move right");
-// 				console.log(bookmarklist.currentItem)
-// 				console.log(bookmarklist.currentItem.tooltip)
-// 				console.log(bookmarklist.currentItem.bookmarktext)
-// 				console.log(bookmarklist.currentItem.isAFolder)
 				if (!bookmarklist.currentItem.isAFolder)
 				{
 					Qt.openUrlExternally(bookmarklist.currentItem.tooltip)
@@ -96,13 +89,11 @@ PlasmaExtras.ScrollArea {
 				event.accepted = true;
 			}
 			if (event.key == Qt.Key_Up) {
-// 				console.log("move up");
-				bookmarklist.currentIndex = bookmarklist.currentIndex-1
+				bookmarklist.currentIndex = bookmarklist.currentIndex-1 >0 ? bookmarklist.currentIndex-1 :0
 				event.accepted = true;
 			}
 			if (event.key == Qt.Key_Down) {
-// 				console.log("move down");
-				bookmarklist.currentIndex = bookmarklist.currentIndex +1
+				bookmarklist.currentIndex = bookmarklist.currentIndex +1 < bookmarklist.count ? bookmarklist.currentIndex+1 : bookmarklist.count-1
 				event.accepted = true;
 			}
 		}	
