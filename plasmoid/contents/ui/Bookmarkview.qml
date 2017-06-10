@@ -6,32 +6,27 @@ import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import MyPlugins 1.0 as MyPlugins
+import QtQml.Models 2.2
 
 PlasmaExtras.ScrollArea {
 	id: scrollView
 	width:childrenRect.width
 	anchors.fill:parent
-// 	focus: true
-	
+	focus: true
 	ListView{
 		id: view 
 		height:24*view.count 
+		anchors.fill: parent
 		width:200
 		focus:true
 		visible:true
 		model:visualModel
-// 		highlightFollowsCurrentItem: true
-// 		highlight: Component { 
-// 			Button {
-// 				id: high
-// 				text: "PUTAAAAAINNNN"
-// 			}
-// 		}	
+		highlightFollowsCurrentItem: true
+		
 		highlight: PlasmaComponents.Highlight {
-// 			anchors.bottomMargin: -listMargins.bottom
-			y: 1
+			y: 0
 		}
-		VisualDataModel {
+		DelegateModel {
 			id: visualModel
 			model: itemmodel
 			delegate: Bookmarkdelegate{
@@ -39,50 +34,7 @@ PlasmaExtras.ScrollArea {
 				iconSource: icon
 				tooltip: ttp
 			}
-		Keys.onLeftPressed: console.log("move left")
-			
-			
-			
-			
-// 			Button{
-// 				iconSource :icon
-// 				height: 24
-// 				width: view.width
-// // 				text: ListView.isCurrentItem? "merde":display
-// 				tooltip: ttp
-// 				
-// 				MouseArea{
-// 					anchors.fill: parent
-// 					acceptedButtons: Qt.LeftButton | Qt.RightButton
-// 					onClicked:{
-// 						if(mouse.button & Qt.LeftButton) {
-// 							if (!isFolder)
-// 							{
-// 								Qt.openUrlExternally(tooltip)
-// 							}
-// 							else
-// 							{
-// 								visualModel.rootIndex=view.model.modelIndex(index)
-// 							}
-// 						}
-// 						if(mouse.button & Qt.RightButton)
-// 						{
-// 							visualModel.rootIndex=visualModel.parentModelIndex()						 
-// 						}
-// 					}
-// 				}
-// 			}
 		}
-		Keys.onDownPressed: {
-			console.log("Uppressed")
-			if (view.currentIndex + 2 < view.count - 1)
-				view.currentIndex += 2;
-		}
-		Keys.onUpPressed: {
-			if (view.currentIndex - 2 >= 0)
-				view.currentIndex -= 2;
-		}
-		
 		header: RowLayout{
 			id: head 
 			height:30
@@ -120,6 +72,24 @@ PlasmaExtras.ScrollArea {
 				}
 			}
 		}
+		Keys.onPressed: {
+			if (event.key == Qt.Key_Left) {
+				console.log("move left");
+				event.accepted = true;
+			}
+			if (event.key == Qt.Key_Right) {
+				console.log("move right");
+				event.accepted = true;
+			}
+			if (event.key == Qt.Key_Up) {
+				console.log("move up");
+				event.accepted = true;
+			}
+			if (event.key == Qt.Key_Down) {
+				console.log("move down");
+				event.accepted = true;
+			}
+		}	
 		onCountChanged: {
 // 			mainrepresentation.Layout.preferredHeight=24*view.count+view.headerItem.height
 			mainrepresentation.Layout.minimumHeight=24*view.count+view.headerItem.height

@@ -28,23 +28,41 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 
 PlasmaComponents.ListItem {
-    id: menuItem
-    focus: true
-    signal itemSelected(string uuid)
-    signal newSession(string sessionname)
-    signal remove(string uuid)
-    
-    property bool showInput: false
-    property string iconSource: ""
-    property string bookmarktext: "No bookmark"
-    property string tooltip: ""
-    
-    width: parent.width - units.gridUnit * 2
-    height: Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
+	id: menuItem
+	//     focus: true
+	signal itemSelected(string uuid)
+	signal newSession(string sessionname)
+	signal remove(string uuid)
+	
+	property bool showInput: false
+	property string iconSource: ""
+	property string bookmarktext: "No bookmark"
+	property string tooltip: ""
+	
+	width: parent.width - units.gridUnit * 2
+	height: Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
 
-//     x: -listMargins.left
-    x:0
+	//     x: -listMargins.left
+	x:0
 
+	Keys.onPressed: {
+		if (event.key == Qt.Key_Left) {
+			console.log("move left");
+			event.accepted = true;
+		}
+		if (event.key == Qt.Key_Right) {
+			console.log("move right");
+			event.accepted = true;
+		}
+		if (event.key == Qt.Key_Up) {
+			console.log("move up");
+			event.accepted = true;
+		}
+		if (event.key == Qt.Key_Down) {
+			console.log("move down");
+			event.accepted = true;
+		}
+	}
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -75,16 +93,6 @@ PlasmaComponents.ListItem {
         }
         onEntered: view.currentIndex = index
         onExited: view.currentIndex = -1
-        Keys.onUpPressed:{
-		console.log("up pressed");
-		event.accepted=true;
-	}
-	Keys.onDownPressed:{
-		console.log("Down pressed");
-		event.accepted=true;
-	}
-
-	
         Item {
             id: label
             height: childrenRect.height

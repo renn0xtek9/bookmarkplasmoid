@@ -8,6 +8,7 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import MyPlugins 1.0 as MyPlugins
 import Qt.labs.settings 1.0
+import QtQml.Models 2.2
 import QtQuick.Dialogs 1.2
 Item {
 	id: mainWindow
@@ -15,18 +16,19 @@ Item {
 	Plasmoid.switchWidth: units.gridUnit * 10
 	Plasmoid.switchHeight: units.gridUnit * 10	
 	Layout.preferredHeight:800
+// 	onActiveFocusItemChanged: print(activeFocusItem)
+	MyPlugins.Bookmarkmodel{
+		id: itemmodel
+		konquerorBookmarks: plasmoid.configuration.firefoxpath
+		okularBookmarks: plasmoid.configuration.okularpath
+		firefoxBookmarks: plasmoid.configuration.konquerorpath
+		chromeBookmarks: plasmoid.configuration.chromepath
+	}
 	Plasmoid.fullRepresentation:  Item{
 		id: mainrepresentation
 		Layout.minimumHeight:300
 		Layout.minimumWidth:300
 		Layout.fillHeight : true
-		MyPlugins.Bookmarkmodel{
-			id: itemmodel
-			konquerorBookmarks: plasmoid.configuration.firefoxpath
-			okularBookmarks: plasmoid.configuration.okularpath
-			firefoxBookmarks: plasmoid.configuration.konquerorpath
-			chromeBookmarks: plasmoid.configuration.chromepath
-		}
 		state:"bookmarkview"
 		Bookmarkview{
 			id:bookmarkview
@@ -51,10 +53,14 @@ Item {
 					target: bookmarkview;visible: true}
 				PropertyChanges{
 					target: editsourceview;visible:false}
-// 				PropertyChanges{
-// 					target: mainrepresentation;Layout.minimumHeight:150; Layout.maximumHeight:-1}
+				PropertyChanges{
+					target: view;focus: true}
 			}
 		]
+		Connections{
+			target: itemmodel 
+			onCompleted: ReadAllSources();
+		}
 	}
 	PlasmaCore.DataSource {
 		id: executable
@@ -74,10 +80,6 @@ Item {
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
 	}
 	
-	Connections{
-		target: itemmodel 
-		onCompleted: ReadAllSources();
-	}
 		
 // 		FileDialog{
 // 			id: fileDialog
