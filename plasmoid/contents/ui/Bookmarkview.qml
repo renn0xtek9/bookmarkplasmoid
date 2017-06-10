@@ -93,16 +93,16 @@ PlasmaExtras.ScrollArea {
 				event.accepted = true;
 			}
 			if (event.key == Qt.Key_Down) {
-				bookmarklist.currentIndex = bookmarklist.currentIndex +1 < bookmarklist.count ? bookmarklist.currentIndex+1 : bookmarklist.count-1
+				bookmarklist.currentIndex = bookmarklist.currentIndex +1 < bookmarklist.count ? bookmarklist.currentIndex+1 : bookmarklist.count
 				event.accepted = true;
 			}
 		}	
 		onCountChanged: {
 // 			mainrepresentation.Layout.preferredHeight=24*bookmarklist.count+bookmarklist.headerItem.height
-			mainrepresentation.Layout.minimumHeight=24*bookmarklist.count+bookmarklist.headerItem.height
+			mainrepresentation.Layout.minimumHeight=bookmarklist.count*bookmarklist.contentHeight+bookmarklist.headerItem.height
 // 			mainrepresentation.Layout.maximumHeight=24*bookmarklist.count+bookmarklist.headerItem.height
 // 			mainrepresentation.Layout.height=24*bookmarklist.count
-// 			console.log("Layout preferred set at" +24*bookmarklist.count)
+			console.log("Layout preferred set at" +24*bookmarklist.count)
 		}
 	}
 }

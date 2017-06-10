@@ -16,7 +16,6 @@ Item {
 	Plasmoid.switchWidth: units.gridUnit * 10
 	Plasmoid.switchHeight: units.gridUnit * 10	
 	Layout.preferredHeight:800
-// 	onActiveFocusItemChanged: print(activeFocusItem)
 	MyPlugins.Bookmarkmodel{
 		id: itemmodel
 		konquerorBookmarks: plasmoid.configuration.firefoxpath
@@ -48,7 +47,6 @@ Item {
 					target: editsourceview;visible:true}
 			},
 			State{
-				
 				name: "bookmarkview"
 				PropertyChanges{
 					target: bookmarkview;visible: true}
@@ -79,29 +77,7 @@ Item {
 			connectSource(cmd)
 		}
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
-	}
-	
-		
-// 		FileDialog{
-// 			id: fileDialog
-// 			modality: Qt.NonModal
-// 			title: "Please choose a file"
-// 			
-// // 			visible: "hidden"
-// 			folder: shortcuts.home
-// 			onAccepted: {
-// 				console.log("You chose: " + fileDialog.fileUrls)
-// // 				Qt.quit()
-// 				visible=false
-// 			}
-// 			onRejected: {
-// 				console.log("Canceled")
-// // 				Qt.quit()
-// 				visible=false
-// 			}
-// 			Component.onCompleted: visible = true
-// 		}
-	
+	}	
 }
 
 

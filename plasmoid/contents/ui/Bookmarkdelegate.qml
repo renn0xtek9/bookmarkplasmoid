@@ -39,10 +39,8 @@ PlasmaComponents.ListItem {
 	property string bookmarktext: "No bookmark"
 	property string tooltip: ""
 	property bool isAFolder: true
-	
 	width: parent.width - units.gridUnit * 2
 	height: Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
-
 	MouseArea {
 		anchors.fill: parent
 		hoverEnabled: true
@@ -84,10 +82,10 @@ PlasmaComponents.ListItem {
 			PlasmaComponents.Label {
 				height: implicitHeight
 				anchors {
-				left: parent.left
-				right: parent.right
-				rightMargin: units.gridUnit * 2
-				leftMargin: units.gridUnit * 2
+					left: parent.left
+					right: parent.right
+					rightMargin: units.gridUnit * 2
+					leftMargin: units.gridUnit * 2
 				}
 				maximumLineCount: 1
 				text: bookmarktext
@@ -95,7 +93,6 @@ PlasmaComponents.ListItem {
 				elide: Text.ElideRight
 				wrapMode: Text.Wrap
 			}
-
 			PlasmaCore.IconItem {
 				width: units.iconSizes.small
 				height: width
@@ -105,7 +102,6 @@ PlasmaComponents.ListItem {
 				visible: true
 			}
 		}
-
 		RowLayout {
 			id:sessionnameditlayout
 			visible:showInput
@@ -121,12 +117,6 @@ PlasmaComponents.ListItem {
 				width: units.gridUnit / 2 - parent.spacing
 				height: 1
 			}
-// 			PlasmaComponents.TextField {
-// 				id: sessionname
-// 				placeholderText: i18n("Session name")
-// 				clearButtonShown: true
-// 				Layout.fillWidth: true
-// 			}
 			PlasmaComponents.ToolButton {
 				iconSource: "dialog-cancel"
 				tooltip: i18n("Cancel session creation")
