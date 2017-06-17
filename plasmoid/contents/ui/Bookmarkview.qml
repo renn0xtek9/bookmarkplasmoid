@@ -71,6 +71,17 @@ PlasmaExtras.ScrollArea {
 				}
 			}
 		}
+		footer: PlasmaComponents.ToolButton{
+			width:bookmarklist.width
+			height:32
+			focus:false
+			iconSource: "go-previous-view"
+			text: "Go back"
+			visible:false 
+			onClicked:{
+				visualModel.rootIndex=visualModel.parentModelIndex();
+			}
+		}		
 		Keys.onPressed: {
 			if (event.key == Qt.Key_Left) {
 				visualModel.rootIndex=visualModel.parentModelIndex();
@@ -106,7 +117,15 @@ PlasmaExtras.ScrollArea {
 		}	
 		onCountChanged: {
 			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);  //TODO instead of silly 32 guess! , fixed it in the delegate and thake same height as delegate
-			mainrepresentation.Layout.maximumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
+// 			mainrepresentation.Layout.maximumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
+			mainrepresentation.Layout.maximumHeight=mainrepresentation.Layout.minimumHeight;
+			if(bookmarklist.count==0)
+			{
+				bookmarklist.footerItem.visible=true;
+				bookmarklist.footerItem.focus=true;
+				mainrepresentation.Layout.minimumHeight=bookmarklist.headerItem.height+bookmarklist.footerItem.height;
+				mainrepresentation.Layout.maximumHeight=mainrepresentation.Layout.minimumHeight;
+			}
 		}
 		onVisibleChanged:{
 			if(visible)
@@ -118,5 +137,5 @@ PlasmaExtras.ScrollArea {
 				itemmodel.ReadAllSources(false);
 			}
 		}
-	}
+	}	
 }
