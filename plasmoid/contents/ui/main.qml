@@ -31,11 +31,8 @@ Item {
 			focus: true
 		}
 		states: [
-
 			State{
 				name: "bookmarkview"
-				PropertyChanges{
-					target: editsourceview;visible:false}
 				PropertyChanges{
 					target: bookmarkview;visible: true}
 				PropertyChanges{
