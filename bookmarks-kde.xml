@@ -1,0 +1,2857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<xbel folded="no" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv" dbusName="konqueror" toolbar="no">
+ <bookmark href="https://ark.intel.com/products/codename/82879/Kaby-Lake">
+  <title>Kabylake</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="www"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="https://extranet.mbtech-group.com">
+  <title>extranet MBtech</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Costume_cravatte.png"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="http://www.gulesider.no/person/resultat/Solveig+S%C3%B8rensen">
+  <title>sorensens</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="www"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/max/Documents/PhD/Organisation/Timesheet.ods">
+  <title>Timesheets</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/1368754176_notes.png"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="https://mail.google.com/tasks/canvas?pli=1">
+  <title>Google Task</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Actions-dialog-ok-apply-icon.png"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="https://calendar.google.com/calendar/render?tab=mc&amp;pli=1#main_7">
+  <title>Google Agenda</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/calendar.png"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <bookmark href="file:///home/max/Documents/Compte/Comptabilite/Comptabilite.ods">
+  <title>Compta</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Money2.png"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <folder folded="no">
+  <title>Utiles</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/tournevis .png"/>
+   </metadata>
+  </info>
+  <bookmark href="http://home.meinestadt.de/sindelfingen/muell">
+   <title>Was gehoert Wo ? Muell Sindelfingen</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://www.lrabb.de/,Lde/start/Service+_+Verwaltung/Abfuhrtermine.html">
+   <title>Abfall Kalender Sindelfingen Richtig</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://www.sindelfingen.de/,Lde/start/Wohnen+Bauen/Abfall.html">
+   <title>Bzgl Abfall Sindelfingen</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <folder folded="yes">
+  <title>Jobs</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Costume_cravatte.png"/>
+   </metadata>
+  </info>
+  <folder folded="no">
+   <title>Beworben</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="http://www.yourfirm.de/stellenangebote/inline/FERCHAU/berechnungsingenieur-mw-getriebe-groraum-ludwigsburg---692914/?utm_source=indeed_de_hot&amp;utm_medium=CPC&amp;utm_campaign=indeed_de_hot">
+    <title>Ferchau Getriebe</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://career.edag.de/sap(bD1kZSZjPTEwMA==)/bc/bsp/sap/hrrcf_pinstappl/application.do?rcfContext=EDAG03&amp;PARAM=UElOU1RfR1VJRD0wMDUwNTY5N0I5NzMxRUU1QUFBRDg1REJDMzY1NkRCMSZUQVNLPQ%3d%3d">
+    <title>EDAG CAE Crash</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://jobs.jobware.net/Job/Berechnungsingenieur-m-w-Statik-Dynamik-NVH-Betriebsfestigkeit-Automotive.30629751.html?jw_chl_seg=INDEED_40ct">
+    <title>Semcon Betriebsfestigkeit</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://jobs.jobware.net/Job/CAE-Berechnungsingenieur-m-w-im-Bereich-Crash-Safety.30628131.html?jw_chl_seg=INDEED_40ct">
+    <title>Semcon Crash</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="hhttp://www.brunel.de/jobs/entwicklungsingenieur-im-bereich-package-dmu.7660445.lynkx?areaOfExpertise_nid=&amp;branch_nid=1685961&amp;businessLine_nid=&amp;businessUnit_nid=&amp;continent_nid=&amp;country_nid=39166%2c39100&amp;distance=50&amp;educationLevel_nid=&amp;experience_nid=&amp;language_nid=&amp;location=Stuttgart%2c%20Deutschland&amp;market_nid=&amp;pageSize=10&amp;q=CATIA&amp;region_nid=&amp;sort=&amp;worldRegion_nid=&amp;pageStart=3&amp;rank=4">
+    <title>Brunal CAD Stuttgart</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://recruiting.bmwgroup.de/ibs/Servlets/ibs/controller/satellit?event=__activate_and_reset&amp;target=smstelleanzeigen&amp;stellenreferenz=bea8232205e20525c7aa48736d2e23833df2d1d51eca3e54&amp;anzeige=veroeffentlichung&amp;mode=job&amp;iis=Indeed&amp;iisn=Indeed.com">
+    <title>BMW_Berechnungsingenieur</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://www.ferchau.com/de/de/karriere/jobs-bewerbung/jobangebote/softwareentwickler-adtf-c-c-fuer-fahrerassistenzsysteme-73156">
+    <title>Ferchau Fahrerassistenzsysteme ADTF</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://jobs.jobware.net/Job/Ingenieur-Absicherung-Fahrerassistenzsysteme-m-w.46971925.html?jw_chl_seg=INDEED_40ct">
+    <title>Job fahrer assistenz MBTech</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://jobs.porsche.com/index.php?ac=jobad&amp;id=5762&amp;curPage=66">
+    <title>Porsche Berechnung</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://career.edag.de/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?param=cG9zdF9pbnN0X2d1aWQ9MDA1MDU2OTdCOTczMUVENjhGQzEwRTMxQkY0Q0E5MUUmY2FuZF90eXBlPUVYVA%3d%3d&amp;sap-wd-configId=Z_HRRCF_A_POSTING_APPLY&amp;sap-client=100&amp;params=cG9zdF9pbnN0X2d1aWQ9MDA1MDU2OTdCOTczMUVENjhGQzEwRTMxQkY0Q0E5MUU%3d#">
+    <title>EDAG_vollautonom parken ULM 16774002_HP</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.continental-jobs.com/index.php?ac=jobad&amp;id=12630&amp;language=1&amp;codes=BB_indeed_organic">
+    <title>Job Fahrerassistenz continental</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://karriere.akka.eu/stelle/stelle-elektromobilitat-entwicklungsingenieur-applikation-hybridfahrzeuge_2036.aspx">
+    <title>MBtech1 Hybridfahrzeuge</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://recruiting.bmwgroup.de/ibs/Servlets/ibs/controller/satellit?event=__activate_and_reset&amp;target=smstelleanzeigen&amp;stellenreferenz=429d034a18cb75ac8959e3cafbf793fe1fc770af9475ed35&amp;anzeige=veroeffentlichung">
+    <title>BMW autonom fahren</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://www.bosch-career.de/bewerben/jobsearch/-/cui/job/ZRB_UNREG_SEARCH/de/567D863A01021ED693C96EF3B6DC9C40">
+    <title>Bosch Fahrerassistenz sportfahrzeug</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.bertrandt-karriere.com/index.php?eID=rsvw&amp;ref=MU---31233&amp;stellenagebot=Software-Entwickler-m-w-f%C3%BCr-kamerabasierte-Fahrerassistenzsysteme&amp;city=M%C3%BCnchen">
+    <title>Bertrand Kamerbasierte autonomes fahren</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+ </folder>
+ <folder folded="no">
+  <title>Sport</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Sport.png"/>
+   </metadata>
+  </info>
+  <bookmark href="https://www.puzzlematten.net/anfrage-formular?success=1">
+   <title>Puzzlematten aus Polyethylen</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://www.bikepedia.com/QuickBike/BikeSpecs.aspx?year=2008&amp;brand=Specialized&amp;model=FSR++XC+Comp">
+   <title>FSR XC comp mod 2008 Bikepedia</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <folder folded="yes">
+  <title>Langues</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Meeting.png"/>
+   </metadata>
+  </info>
+  <bookmark href="http://www.duden.de/rechtschreibpruefung-online">
+   <title>Duden Rechtschreibung</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Duden.jpg"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://dict.leo.org/frde/index_de.html">
+   <title>DE Leo </title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Leo.png"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.linguee.de/">
+   <title>Linguee</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Linguee.jpg"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://www.wordreference.com/fren/">
+   <title>EN Wordreference</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.wordreference.com/ende/">
+   <title>DE Wordreference</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://conjugator.reverso.net/conjugation-english.html">
+   <title>EN conjugaison</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://leconjugueur.lefigaro.fr/">
+   <title>Le Conjugueur</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/Langue/Allemand/declinaisons.odt">
+   <title>Declinaisons</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/Langue/Allemand/mot_nouveaux.odt">
+   <title>Mot nouveaux</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <folder folded="yes">
+  <title>Automobile</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Car.png"/>
+   </metadata>
+  </info>
+  <folder folded="no">
+   <title>Occasion</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/challenger.png"/>
+    </metadata>
+   </info>
+  </folder>
+  <bookmark href="http://www.spritmonitor.de/">
+   <title>Spritsparmonitor</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/tankstelle.png"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="https://www.adac.de/infotestrat/autodatenbank/Autodaten/default.aspx">
+   <title>ADAC Autodaten</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/ADAC.png"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://www.michelin.de/autoreifen/pkw-reifen#type=type_2&amp;brand=toyota&amp;range=auris&amp;model=auris%20hybrid&amp;engine=1.8%20hsd%20136&amp;year=2006%20-%202013&amp;selectedFilter=summer">
+   <title>Michelin guide pneu</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Wheel-256.png"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://www.reifendirekt.de/">
+   <title>Reifendirekt</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <folder folded="no">
+  <title>Suivis de travaux</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/notepad.png"/>
+   </metadata>
+  </info>
+  <bookmark href="file:///home/max/Documents/PhD/Organisation/CdC-PGGP.odt">
+   <title>CdC-PGGP</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/PhD/Doc/Two-phase-flow_and_sodium_boiling_notes.odt">
+   <title>Two Phase Flow Notes</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/PhD/Organisation/Tags/Tag_Ispra.odt">
+   <title>Ispra</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <folder folded="yes" netscapeinfo="">
+  <title>Science</title>
+  <folder folded="no">
+   <title>Maxima</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="http://stackoverflow.com/questions/24892016/maxima-differentiating-a-piecewise-function">
+    <title>Differentiation d'une fonction par morceaux</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="file:///home/max/Documents/Outils/Maximatools/Thermo_Hydro_Na.mac">
+    <title>Themo-hydraulic Na </title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="application-x-kformula"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="file:///home/max/Documents/Outils/Maximatools/texputs.mac">
+    <title>Texputs global</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="application-x-kformula"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <desc>Fichiers Maxima</desc>
+  </folder>
+  <bookmark href="file:///home/max/Documents/Outils/Physique/main.pdf">
+   <title>Physique</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="application-pdf"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/Outils/Mathematiques/main.pdf">
+   <title>Mathematiques</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="application-pdf"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <folder folded="no">
+   <title>Mathematiques</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=LSxqpaCCPvY">
+    <title>Mathematics Gives You Wings - YouTube</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://store.doverpublications.com/0486603490.html">
+    <title>Ordinary Differential Equations Book</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.sosmath.com/tables/diffeq/diffeq.html">
+    <title>First and Second Order Differential Equations</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no">
+   <title>Simulation numerique</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="https://www.comsol.com/blogs/solving-nonlinear-static-finite-element-problems/">
+    <title>Introduction fonctionnement solveur Newton-Raphson (Comsol)</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Open Coursewares</title>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Technique</title>
+   <bookmark netscapeinfo="" href="http://www.drotek.fr/shop/en/104-sunnysky-x2212-brushless-motor.html">
+    <title>Drotek module electroniques pour drone</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://xcotton.pagesperso-orange.fr/electron/coursetdocs.htm">
+    <title>Cours d'électronique et documentation</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <bookmark netscapeinfo="" href="http://spacehack.org/">
+   <title>Spacehack</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.libremechanics.com/">
+   <title>Home | Libre Mechanics</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.nobelprize.org/events/nobel-week-dialogue/">
+   <title>Nobel Week Dialogue</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.cyberphysics.co.uk/topics/magnetsm/levetation.htm">
+   <title>Cyberphysics</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://dournac.org/sciences/general_relativity/index.html">
+   <title>Introduction to General Relativity</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/tubes-icon.png"/>
+   </metadata>
+  </info>
+ </folder>
+ <folder folded="yes" netscapeinfo="">
+  <title>Shops</title>
+  <bookmark href="https://de.pcpartpicker.com">
+   <title>PC PartPiker</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.mobile.de/">
+   <title>Mobil</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.deutschlandsim.de/tariffs/smart100">
+   <title>Deutschlandsim</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://geizhals.at/eu/?m=1">
+   <title>Preisvergleich</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.chainreactioncycles.com/">
+   <title>Chainreactioncycles</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.conrad.de/ce/">
+   <title>Conrad</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.marleva.net/">
+   <title>Visserie Marleva</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.supermagnete.de/fre/magnets.php?group=new">
+   <title>Supermagnete</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.laboutiquedubois.com/panneau-sapin-certifie-pefc100-29.html">
+   <title>Planche en bois</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="https://www.amazon.de/gp/css/homepage.html?ie=UTF8&amp;ref_=gno_yam_ya&amp;">
+   <title>Amazon.de</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="https://signin.ebay.de/ws/eBayISAPI.dll?SignIn&amp;ru=http%3A%2F%2Fwww.ebay.de%2F">
+   <title>eBay.de</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.reichelt.de/Oszilloskope/2/index.html?;ACTION=2;LA=2;GROUPID=5897;SHOW=1">
+   <title>Reichelt elektronik</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://kleinanzeigen.ebay.de/anzeigen/stadt/karlsruhe/">
+   <title>eBay Kleinanzeigen</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.ebay.de/itm/Komplett-GAMER-PC-System-Computer-AMD-FX-8320-16GB-DDR3-GeForce-GT630-4096-MB-/261131349350?pt=DE_Technik_Computer_Peripherieger%C3%A4te_PC_Systeme&amp;hash=item3ccca42d66">
+   <title>Komplett GAMER PC ...630 4096 MB | eBay</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://stores.ebay.de/systemtreff/Intel-Core-i7-/_i.html?_fsub=2655871017&amp;_sid=86352617&amp;_trksid=p4634.c0.m322">
+   <title>Systemtreffe Made in Germany</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.nettoparts.eu/shop/-soufflet-de-hublot-63c7.html">
+   <title>Soufflet Hublot Lavelinge</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.laboandco.com/verrerie-consommable/refrigerant/refrigerant-de-liebig-250-mm-lenz.html">
+   <title>Materiel Chimie</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.blume2000.de/Weitere-Anlaesse/Aus-Liebe/">
+   <title>Blume2000</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.cafepress.de/">
+   <title>CafePress.de</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.cafepress.de/mf/8101335/nasa-logo_tank-top?productId=649486083">
+   <title>NASA Logo Men's Tank Top by usshirtcompany</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.cafepress.com/theapollostore/9195556">
+   <title>Apollo Store</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.office-profishop.com/index.php?cat=c9111&amp;keywords=mars%20druckbleistift">
+   <title>Staedler</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.proartshirts.com/0875.html">
+   <title>Molon Labe Skull Shirt</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Cart.png"/>
+   </metadata>
+  </info>
+ </folder>
+ <folder folded="yes">
+  <title>Poweruser</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/prog 3D box.png"/>
+   </metadata>
+  </info>
+  <bookmark href="file:///home/max/Documents/C/Macro/edit_reinstaller.sh">
+   <title>Edit fichier de reinstallation</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="applications-utilities"/>
+    </metadata>
+   </info>
+   <desc/>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/Outils/Liste_xdotool_keys.txt">
+   <title>Liste character xdotool</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <folder folded="no">
+   <title>Sidewinder P1</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="file:///home/max/.sidewinderx6/p1/S1.sh">
+    <title>S1</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="file:///home/max/.sidewinderx6/p1/S2.sh">
+    <title>S2</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="file:///home/max/.sidewinderx6/p1/S2.sh">
+    <title>S3</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="file:///home/max/.sidewinderx6/p1/S4.sh">
+    <title>S4</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="kate%20-n%20/home/max/.sidewinderx6/p1/S5.sh">
+    <title>S5</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+    <desc/>
+   </bookmark>
+   <bookmark href="file:///home/max/.sidewinderx6/p1/S6.sh">
+    <title>S6</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+ </folder>
+ <folder folded="yes">
+  <title>Webpages</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/usr/share/pixmaps/firefox.png"/>
+   </metadata>
+  </info>
+  <bookmark href="http://www.rugbyrama.fr/rugby/6-nations/calendar-result.shtml">
+   <title>rugby calendrier</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <folder folded="no">
+   <title>Tir sportif</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="http://www.airsoftgunbcm.com/armes-longues/2429-m16-carbine-msr77-nitro-piston-avec-lunette-4x32-plomb-45-mm-20-j.html">
+    <title>M16 carabine plomb</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Utiles</title>
+   <bookmark netscapeinfo="" href="http://www.oeffnungszeitenbuch.de/">
+    <title>Öffnungszeiten</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.les-horaires.fr/">
+    <title>Les horaires</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.wetterstation-karlsruhe.de/Wetter/Regenradar/regenradar.html">
+    <title>Regenradar 2</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.openstreetmap.de/karte.html#">
+    <title>OpenStreetMap Deutschland: Karte</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal">
+    <title>Wikipédia FR</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.acronymfinder.com/">
+    <title>Acronymfinder</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.akelys.com/exercices/exercices_par_muscle/triceps.html">
+    <title>Exercices Muscu</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.guide-vitamines.org/oligoelements/zinc/sources-alimentaires-zinc.html">
+    <title>Sources alimentaires</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Bricolage</title>
+   <bookmark href="http://arduino103.blogspot.de/2011/06/controle-moteur-dc-via-l293d-h-bridge.html">
+    <title>Asservissement d'un moteur electrique</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://dangerousprototypes.com/">
+    <title>Dangerous Prototypes</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://hackaday.com/">
+    <title>Hack a Day</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://xmodulo.com/2014/03/geographic-location-ip-address-command-line.html">
+    <title>How to look up the geographic location of an IP address from the command line - Linux FAQ</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.pcbheaven.com/userpages/The_Philips_RC6_Protocol/">
+    <title>RC6</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.sprut.de/electronic/ir/rc5.htm">
+    <title>Elektronik: IR-Fernbedienung, RC-5</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Mixs</title>
+   <bookmark href="http://dancefloor24com.playtheradio.com/">
+    <title>Dancefloor24</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://www.youtube.com/watch?v=F5PSK5VYu6I">
+    <title>C'est degueulasse</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=xakfzVVrktc">
+    <title>winter mix 2012-2013 - YouTube</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=RoRRQu46kug">
+    <title>Electro &amp; House 20...al Mix 3 - YouTube</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=DrRslTF3V2I">
+    <title>ELECTRO HOUSE MUSI... Epsilon - YouTube</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=2MSpRWWTj38">
+    <title>ELECTRO HOUSE MUSI... Epsilon - YouTube</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.jam.fm/new-music-radio">
+    <title>JAM FM</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=BSLPH9d-jsI">
+    <title>Skyrim - Lindsey Stirling &amp; Peter Hollens - YouTube</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=s1ml3LkN_nw&amp;list=PLaOY5hnH30HZiDPXkjVymZiZbOiMQl8lS">
+    <title>Kaamelott replique</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=jZBajp-sUWs&amp;list=RDgyBFECxztSc">
+    <title>Replique Kaamelott 2</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://www.youtube.com/watch?v=OaNSiOLvSx4">
+    <title>Va t'en et ne reviens jamais</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/watch?v=s1ml3LkN_nw">
+    <title>C'est nul ! Zéro ! - YouTube</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.youtube.com/user/Kaamdelaf/videos">
+    <title>Sébastien Petit - YouTube</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Transport</title>
+   <bookmark netscapeinfo="" href="http://www.kvv.de/index.php?id=674">
+    <title>KVV</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.bahn.de/p/view/index.shtml">
+    <title>DB Bahn</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.covoiturage.fr/">
+    <title>BlaBlaCar</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://karlsruhe.stadtmobil.de/privatkunden/tarife/tarifrechner/">
+    <title>Tarifrechner Stadmobil</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://karlsruhe.stadtmobil.de/privatkunden/fuhrpark/">
+    <title>Stadmobil Furhpark</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://de.voyages-sncf.com/de/">
+    <title>SNCF</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.trocdestrains.com/">
+    <title>Trocs des trains</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.viamichelin.de/">
+    <title>ViaMichelin</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.openstreetmap.org/?lat=49.09793&amp;lon=8.43263&amp;mlat=49.09793&amp;mlon=8.43263&amp;zoom=15">
+    <title>KIT Campus Nord</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://www.kit.edu/downloads/Fahrplan_Shuttle.pdf">
+    <title>Fahrplan_Shuttle.pdf</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Assurances</title>
+   <bookmark href="https://entry.axa.de/kunde/myaxa/member/kunde">
+    <title>AXA</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.expatriation-allemagne.com/assurances.php">
+    <title>Expatriation Allemagne</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.comfortplan.de/haushaftpflicht/haushaftpflicht.html">
+    <title>Hapftpflicht versicherung</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.krankenkassentarife.de/krankenkassen_vergleich.html">
+    <title>Krankenkassen vergleichung</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.euresa.org/index.php?id=397&amp;L=1///%27#c1094">
+    <title>Euresa: S'expatrier en Allemagne</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Bourses</title>
+   <bookmark href="http://my.onvista.de/musterdepot/">
+    <title>MyOnvista Musterdepot</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="/home/max/Pictures/icone/Png/OnVista_Bank.png"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://zertifikat.finanzen.net/optionsscheine/suche?listingbit_inlistofint=1,3&amp;parentderivativetypeid_equals=13&amp;underlyingssearchtext_likewithbothwildcard=volkswagen&amp;firststrikeabsolute_lowerbound=194&amp;firststrikeabsolute_upperbound=200&amp;maturitydate_lowerbounddate=01.12.2013&amp;maturitydate_upperbounddate=31.12.2013&amp;derivativesubtypeid_inlistofint=2&amp;issuercompanyid_inlistofint=1,2,3,4,5,6,8,9,11,12,14,19,22,24,100&amp;orderby=omega:desc&amp;dynamickeys=omega,volatility,spreadhomogenous">
+    <title>OS Suche</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://www.bitcoin.de/">
+    <title>Bitcoins.de</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://blockchain.info/">
+    <title>Bitcoin Block-Explorer - Blockchain.info</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/PEUGEOT-Aktie-FR0000121501">
+    <title>PEUGEOT Aktie 852363</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/VW-Aktie-DE0007664039">
+    <title>VW Aktie 766403</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/BMW-Aktie-DE0005190003">
+    <title>BMW Aktie 519000</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.wsj.de/public/npage/maerkte.html">
+    <title>Märkte - Berichte, Börsenkurse, Aktien, Fonds und Rohstoffe - WSJ.de</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.wsj.de/public/npage/maerkte.html">
+    <title>Märkte - Wallstreet Journal Germany</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/Infineon-Aktie-DE0006231004">
+    <title>Infineon Aktie</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.finanznachrichten.de/nachrichten-aktien/nordex-se.htm">
+    <title>Nordex</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.finanznachrichten.de/nachrichten-aktien/barrick-gold-corporation.htm">
+    <title>Barrick Gold</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/Porsche-Aktie-DE000PAH0038?notation=24387141&amp;activeType=line&amp;activeTab=J1&amp;displayVolume=true&amp;min=1365508800000&amp;max=1397071570000&amp;zoom=false&amp;scaling=linear&amp;assetName=Porsche&amp;isPopup=false">
+    <title>Porsche Aktie</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://www.mtgox.com/">
+    <title>Mt.Gox - Bitcoin Exchange</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/Daimler-Aktie-DE0007100000">
+    <title>Daimler Aktie: 710000</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/Dialog-Semiconductor-Aktie-GB0059822006">
+    <title>Dialog Semiconductor</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.finanzen.net/termine/Porsche">
+    <title>Finanzen Termine</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="favicons/www.finanzen.net"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/Infineon-Aktie-DE0006231004?notation=154990&amp;activeType=line&amp;activeTab=J1&amp;displayVolume=true&amp;min=1361966400000&amp;max=1393485481000&amp;zoom=false&amp;scaling=linear&amp;assetName=Infineon&amp;isPopup=false">
+    <title>Infineon Aktie</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.onvista.de/aktien/Infineon-Aktie-DE0006231004?notation=154990&amp;activeType=line&amp;activeTab=J1&amp;displayVolume=true&amp;min=1361966400000&amp;max=1393485481000&amp;zoom=false&amp;scaling=linear&amp;assetName=Infineon&amp;isPopup=false">
+    <title>Infineon Aktie</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Finance</title>
+   <bookmark href="http://www.finanzen.net/rohstoffe/goldpreis/euro">
+    <title>Goldpreis EURO</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://banking.postbank.de/rai/login">
+    <title>Postbank Online-Banking</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://particuliers.societegenerale.fr/">
+    <title>Logitelenet</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://finance.yahoo.com/">
+    <title>Yahoo Finance</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.finanzen.net/aktien/BMW-Aktie">
+    <title>Finanzen</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="favicons/www.finanzen.net"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.daf.fm/index.html">
+    <title>DAF</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.boursorama.com/index.phtml?">
+    <title>Boursorama</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://kunde.onvista-bank.de/login.html">
+    <title>OnVista</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.deraktionaer.de/">
+    <title>Der Aktionaer</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+ </folder>
+ <folder folded="no">
+  <title>Electronique</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/1394155426_HardwareChip.png"/>
+   </metadata>
+  </info>
+  <folder folded="no">
+   <title>AVR_Dragon</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="http://www.atmel.com/webdoc/avrdragon/avrdragon.SCKT3200A2.html">
+    <title>ATMEL connection Dragon to breaboard</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://de.wikibooks.org/wiki/C-Programmierung_mit_AVR-GCC/_Makefile">
+    <title>Makefile AVR-GCC</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://embeddedelectronics.org/?p=9">
+    <title>Helloworld avrdude</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.atmel.com/webdoc/avrdragon/avrdragon.isp_description.html">
+    <title>ISP</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://www.google.de/search?q=JTAG+to+atmega+328&amp;tbm=isch&amp;imgil=vu7RXgb0seDZpM%253A%253BOfZxEnswwr_waM%253Bhttps%25253A%25252F%25252Felectronics.stackexchange.com%25252Fquestions%25252F36004%25252Fbuilding-a-jtag-programmer-for-atmega&amp;source=iu&amp;pf=m&amp;fir=vu7RXgb0seDZpM%253A%252COfZxEnswwr_waM%252C_&amp;usg=__l-lWSuTTCj75twDW7ZH0n-3zqMA%3D&amp;biw=1920&amp;bih=922&amp;ved=0ahUKEwiv2tfKvrXUAhUH2xoKHZ4zBhsQyjcITg&amp;ei=rw49We_GIIe2a57nmNgB#imgrc=vu7RXgb0seDZpM:">
+    <title>JTAG to ATMEGA</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://www.google.de/search?q=ATMEGA+328+Piniing&amp;tbm=isch&amp;imgil=-pQ7dGFygMUhVM%253A%253B08_IK2TU2IOmsM%253Bhttp%25253A%25252F%25252Fwww.hobbytronics.co.uk%25252Farduino-atmega328-pinout&amp;source=iu&amp;pf=m&amp;fir=-pQ7dGFygMUhVM%253A%252C08_IK2TU2IOmsM%252C_&amp;usg=__degkE5Cd7UuteoKBw_fYB0PV_H0%3D&amp;biw=1920&amp;bih=922&amp;ved=0ahUKEwj75azLvLXUAhWBWBQKHQq2AOoQyjcIPg&amp;ei=mAw9Wfu5A4GxUYrsgtAO#imgrc=-pQ7dGFygMUhVM:">
+    <title>ATMEG 328 Pining</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.atmel.com/webdoc/avrdragon/avrdragon.section.wpr_osd_lc.html">
+    <title>JTAG wiring</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.instructables.com/id/Help%3A-An-Absolute-Beginner-s-Guide-to-8-Bit-AVR-Pr/">
+    <title>Tutorial AVR Dragon Instructables</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://wiki.ubuntuusers.de/AVR/">
+    <title>Ubuntu AVR</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <bookmark href="https://andreasrohner.at/posts/Electronics/How-to-fix-device-permissions-for-the-USBasp-programmer/">
+   <title>USBasp access rights</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="https://developer.psa-peugeot-citroen.com/">
+   <title>PSA API</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://www.journals.elsevier.com/hardwarex/">
+   <title>Elsevier HardwareX</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/Electronique/Composants.txt">
+   <title>Composants courant</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="kate"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <folder folded="no">
+   <title>Arduino</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="arduino"/>
+    </metadata>
+   </info>
+   <bookmark href="http://tutorial.cytron.com.my/2011/12/19/burning-arduino-bootloader-with-avr-usbasp/">
+    <title>Burni Arduino bootloader with AVR-USBASP</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://tbspace.de/arduinoalsispprogrammer.html">
+    <title>U</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.mikrocontroller.net/articles/AVRDUDE">
+    <title>upload avec avrdude</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://www.arduino.cc/en/Tutorial/ArduinoISP">
+    <title>Arduino ISP</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://arduino.cc/en/Tutorial/ArduinoToBreadboard">
+    <title>Arduino - ArduinoToBreadboard</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://hardwarefun.com/tutorials/compiling-arduino-sketches-using-makefile">
+    <title>Arduino_command_line</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://github.com/queezythegreat/arduino-cmake#pure-avr-development">
+    <title>Arduino cmake</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <desc>https://github.com/queezythegreat/arduino-cmake#pure-avr-development</desc>
+  </folder>
+ </folder>
+ <folder folded="yes" netscapeinfo="">
+  <title>Librarys</title>
+  <bookmark href="http://gen.lib.rus.ec/">
+   <title>Libgen (russian mirror)</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://lead.to/amazon/en/">
+   <title>Amazon to Bibtex</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.library.anl.gov/">
+   <title>Argonne Research Library</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.iaea.org/Publications/">
+   <title>IAEA Publications</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.osti.gov/scitech/biblio/10173120">
+   <title>US DOE Office of Scientific Tech Info</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="https://www.jstage.jst.go.jp/browse">
+   <title>J-STAGE Home</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.sciencedirect.com/">
+   <title>ScienceDirect</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.oecd-ilibrary.org/papers;jsessionid=1k1tspd1d8n9p.x-oecd-live-01">
+   <title>OECD iLibrary</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="https://ec.europa.eu/jrc/en/publications-list/">
+   <title>JRC Science Hub - European Commission</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://authors.library.caltech.edu/view/types/book.html">
+   <title>Books Caltech</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://asmedigitalcollection.asme.org/">
+   <title>American Society Mechanical Engineer Library</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.ans.org/pubs/journals/nt/">
+   <title>American Nuclear Society</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.bibliothek.kit.edu/cms/index.php">
+   <title>KIT-Bibliothek</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/1321805045_Library.png"/>
+   </metadata>
+  </info>
+ </folder>
+ <folder folded="yes">
+  <title>Outils</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="applications-development"/>
+   </metadata>
+  </info>
+  <bookmark href="file:///home/max/Templates/Libreoffice_vorlagen/Checklist_proc.ott">
+   <title>Checklist proc</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/Outils/Table_unicode.ott">
+   <title>Table des caracteres unicodes</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="http://www.tablesgenerator.com">
+   <title>Generateur de tableaux Latex en ligne</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/Outils/Conversion.xlsx">
+   <title>Convertisseur d'unite</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-calc"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/PhD/Organisation/liste_des_raccourics.txt">
+   <title>Liste des raccourcis</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+   <desc>Liste des raccourcis utilises sur l'ordinateur</desc>
+  </bookmark>
+  <bookmark href="file:///home/max/Templates/Libreoffice_vorlagen/Rapport_activite.ott">
+   <title>Rapport activite</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <desc>/home/max/Templates/Libreoffice_vorlagen/</desc>
+ </folder>
+ <folder folded="yes">
+  <title>Aide et Documentation</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/1321805045_Library.png"/>
+   </metadata>
+  </info>
+  <bookmark href="https://www.it-agile.de/">
+   <title>Methode Agile, Kanban etc</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/C/Documentation/">
+   <title>Documentation de mes projets</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="https://www.stack.nl/~dimitri/doxygen/manual/commands.html">
+   <title>Doxygen commande principale</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file://///usr/share/doc/gnuplot-doc/htmldocs/index.html">
+   <title>Gnuplot</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/gnuplot.png"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///usr/share/doc/git-doc/user-manual.html">
+   <title>Git</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/git.png"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html#docexamples">
+   <title>Doxygen Manual</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///usr/share/doc/maxima-doc/html/maxima_toc.html">
+   <title>Maxima</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Maxima.jpg"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <folder folded="no" netscapeinfo="">
+  <title>PC</title>
+  <bookmark href="file:///home/max/Documents/Info_Programmation/QML_doc.odt">
+   <title>Doc QML</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="file:///home/max/Documents/Outils/Lois/Convention_personelle_ecriture_code_en_cpp.odt">
+   <title>Normalisation_code_cpp</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="libreoffice-writer"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="https://thetinhat.com/tutorials/darknets/i2p.html">
+   <title>Configure i2p</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="https://openclassrooms.com/dashboard">
+   <title>Openclassrooms</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/File server_128x128.png"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="https://openclassrooms.com/courses/2820396/2972776?status=waiting-for-publication">
+   <title>Bitcoin Blockhain OpenClassRoom</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <folder folded="no" netscapeinfo="">
+   <title>Prog</title>
+   <bookmark href="http://danceswithcode.net/engineeringnotes/index.html">
+    <title>Angle / Quaternion Rotation Matrix</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/">
+    <title>Kallman filters</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://github.com/renn0xtek9">
+    <title>Github renn0xtek9</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="/home/max/Pictures/icone/Png/github.png"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <folder folded="no">
+    <title>KDE-Devel</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="start-here-kde"/>
+     </metadata>
+    </info>
+    <bookmark href="https://exote.ch/blogs/aseigo/2013/02/28/elegant_plasmoid_configuration/">
+     <title>Plasmoid configuration (Aaron Seigo)</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="https://cgit.kde.org/kate.git/tree/addons/sessionapplet">
+     <title>Kate-session applet</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="https://zren.github.io/projects/kde/docs/#examples">
+     <title>Conseil pour plasmoid (Zren)</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://blog.davidedmundson.co.uk/node/92">
+     <title>QML Plasmoid tutorial David Edmundson QML Plugin</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="https://api.kde.org/frameworks/plasma-framework/html/plasmacomponents.html%0A">
+     <title>PlasmaComponents</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://notmart.org/blog/2015/03/writing-qml-based-apps-the-kde-way/%0A">
+     <title>Kdeclarative c++ and QML</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="https://api.kde.org/frameworks/kbookmarks/html/index.html">
+     <title>KF5Bookmark</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="https://github.com/Zren/plasma-applets/blob/master/commandoutput/package/contents/ui/main.qml#L15">
+     <title>Execute data source KDE</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="https://cgit.kde.org/">
+     <title>Le git de KDE</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="start-here-kde"/>
+      </metadata>
+     </info>
+    </bookmark>
+   </folder>
+   <folder folded="no">
+    <title>Java</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="bookmark_folder"/>
+     </metadata>
+    </info>
+    <bookmark href="https://github.com/smehrbrodt/libreoffice-starter-extension">
+     <title>Programmation Extension Libreoffice</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+   </folder>
+   <folder folded="yes" toolbar="yes">
+    <title>Python</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="bookmark-toolbar"/>
+     </metadata>
+    </info>
+    <folder folded="yes">
+     <title>Macro LO</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="bookmark_folder"/>
+      </metadata>
+     </info>
+     <bookmark href="http://www.linuxjournal.com/content/python-pyuno-hello-world-addon-openoffice">
+      <title>Example pyuno Linux journal</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="https://www.openoffice.org/api/docs/common/ref/com/sun/star/script/provider/XScriptContext.html#getDesktop">
+      <title>UNO API STARTING POINT !!!</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="https://www.openoffice.org/api/docs/common/ref/com/sun/star/sheet/SpreadsheetDocument.html">
+      <title>XSpreadDocument</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+      <desc>return de doc.getSheets()</desc>
+     </bookmark>
+     <bookmark href="https://wiki.openoffice.org/wiki/PyUNO_samples">
+      <title>pyuno samples</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="https://forum.openoffice.org/en/forum/viewtopic.php?t=61222">
+      <title>Forum Thread about python text document</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="https://www.openoffice.org/api/docs/common/ref/com/sun/star/style/CharacterProperties.html">
+      <title>uno char style</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="http://www.apidev.fr/blog/2011/07/18/utiliser-openoffice-avec-python/">
+      <title>Formatter du text dans LO avec Python</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="https://www.logilab.org/blogentry/6130">
+      <title>How to storeToURL in python uno</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="https://wiki.openoffice.org/wiki/Documentation/DevGuide/Spreadsheets/Filter_Options">
+      <title>Filter Options for storeToUrl python uno</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="http://openofficejava.blogspot.de/2009/05/openofficeorg-api.html">
+      <title>OpenOfficeAPI properties pour printer</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="http://christopher5106.github.io/office/2015/12/06/openoffice-libreoffice-automate-your-office-tasks-with-python-macros.html">
+      <title>Tuto python Libreoffice</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="https://wiki.openoffice.org/wiki/Python-Calc">
+      <title>Plein exemple utiles Macro LO calc</title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+     <bookmark href="http://www.oooforum.de/viewtopic.php?t=24079">
+      <title>Imprimer dans Macro LO </title>
+      <info>
+       <metadata owner="http://freedesktop.org">
+        <bookmark:icon name="www"/>
+       </metadata>
+      </info>
+     </bookmark>
+    </folder>
+    <bookmark href="http://docs.python-guide.org/en/latest/scenarios/scrape/">
+     <title>HTML Scrapping</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="/home/max/Pictures/icone/Png/python.jpg"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://www.pythonforbeginners.com/mechanize/browsing-in-python-with-mechanize/">
+     <title>Mechanize (Simulate a browser)</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="/home/max/Pictures/icone/Png/python.jpg"/>
+      </metadata>
+     </info>
+    </bookmark>
+   </folder>
+   <folder folded="yes">
+    <title>Bash</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="bookmark_folder"/>
+     </metadata>
+    </info>
+    <bookmark href="https://mostlylinux.wordpress.com/bashscripting/kdialog/#Sorry">
+     <title>KDialog guide</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+   </folder>
+   <folder folded="no">
+    <title>C/C++</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="/home/max/Pictures/icone/Png/Matrix.png"/>
+     </metadata>
+    </info>
+    <bookmark href="https://www.quora.com/What-are-major-concepts-every-C++-programmer-should-know-about-the-language">
+     <title>Quora Important Things to Know C++</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://www.cprogramming.com/c++11/c++11-lambda-closures.html%0A">
+     <title>Note fonction lambda</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://www.c4learn.com/c-programming/c-dereferencing-void-pointers/">
+     <title>Dereference un void pointer</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://www.c4learn.com/c-programming/c-void-pointers/%20%20%20%20%20">
+     <title>Void pointers on variable</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://www.differencebetween.info/difference-between-c-and-embedded-c">
+     <title>Difference entre C et C++</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://www.catb.org/esr/structure-packing/">
+     <title>Structure packing</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://stackoverflow.com/questions/156438/what-does-it-mean-for-a-c-function-to-be-inline">
+     <title>Meaning of inline</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="https://simpleprogrammer.com/2012/12/01/why-c-is-not-back/">
+     <title>Liste de competences c++</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="www"/>
+      </metadata>
+     </info>
+    </bookmark>
+   </folder>
+   <folder folded="no" netscapeinfo="">
+    <title>Smartphone devel</title>
+    <bookmark href="https://openrepos.net/content/afshindva/whatsup">
+     <title>Whatsup open repos</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="call-start"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://developer.android.com/tools/sdk/ndk/index.html">
+     <title>Android NDK | Android Developers</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://maemo-sdk.garage.maemo.org/install-ubuntu.html">
+     <title>Maemo SDK installation</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://ubuntuforums.org/showthread.php?t=2035337">
+     <title>gcc or g++ installation based on arm</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://www.friendlyarm.net/forum/topic/2291">
+     <title>qt says : arm-none-linux-gnueabi-g++ not found - FriendlyARM</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://qt-project.org/forums/viewthread/13990">
+     <title>Cross-compile Qt build problem (host : linux x86_64, target : arm) | Qt Project forums | Qt Project</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="/home/max/Pictures/icone/Png/android.png"/>
+     </metadata>
+    </info>
+   </folder>
+   <folder folded="no" netscapeinfo="">
+    <title>Packaging</title>
+    <bookmark netscapeinfo="" href="https://gitorious.org/rainyday">
+     <title>Rainyday - Gitorious</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="https://launchpad.net/~maxime-haselbauer/+archive/wotan/+packages">
+     <title>Launchpad wotan Maxime Haselbauer</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://doc.ubuntu-fr.org/tutoriel/creer_et_administrer_un_ppa_sur_launchpad">
+     <title>Tuto: creer et administrer un ppa</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://doc.ubuntu-fr.org/tutoriel/creer_un_paquet#creation_du_paquet_source">
+     <title>Tuto: creer un paquet</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="https://wiki.ubuntu.com/PackagingGuide/Basic">
+     <title>PackagingGuide/Basic - Ubuntu Wiki</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://wiki.maemo.org/Packaging#Packaging_a_.deb">
+     <title>Packaging Maemo</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://fr.openclassrooms.com/informatique/cours/creer-un-paquet-deb/arborescence">
+     <title>SdZ debian packaging</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://www.siteduzero.com/tutoriel-3-545268-creer-un-depot-launchpad.html#ss_part_2">
+     <title>Créer un dépôt Launchpad - Site du Zero</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://pwet.fr/man/linux/commandes/dpkg_depcheck">
+     <title>man dpkg-depcheck</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://fr.openclassrooms.com/informatique/cours/creer-un-paquet-deb">
+     <title>Créer un paquet .deb</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://developer.ubuntu.com/packaging/html/debian-dir-overview.html">
+     <title>Ubuntu Packaging Guide</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="/home/max/Pictures/icone/Png/1356369731_Shipping5.png"/>
+     </metadata>
+    </info>
+   </folder>
+   <folder folded="no" netscapeinfo="">
+    <title>CMake</title>
+    <bookmark netscapeinfo="" href="http://www.kdab.com/modern-cmake-with-qt-and-boost/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=modern-cmake-with-qt-and-boost">
+     <title>Modern CMake with Qt and Boost | KDAB</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://qtnode.net/wiki/Qt4_with_cmake">
+     <title>Qt4 with cmake - qtnode</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://www.vtk.org/Wiki/CMake/Examples">
+     <title>Wiki CMAKE</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="text-html"/>
+      </metadata>
+     </info>
+    </bookmark>
+   </folder>
+   <folder folded="no" netscapeinfo="">
+    <title>Qt</title>
+    <bookmark href="http://doc.qt.io/qt-5/qmltypes.html">
+     <title>QML All types</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="/usr/share/pixmaps/assistant-qt5.png"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://doc.qt.io/qt-5/qml-qtquick-xmllistmodel-xmllistmodel.html">
+     <title>QML XmlList</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="/usr/share/pixmaps/assistant-qt5.png"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark href="http://doc.qt.io/qt-5/qml-qtqml-qt.html#openUrlExternally-method">
+     <title>QML openUrlExternally</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="/usr/share/pixmaps/assistant-qt5.png"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://qt-project.org/doc/qt-4.8/">
+     <title>Qt library 4.8 | Documentation | Qt Developer Network</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="/usr/share/pixmaps/assistant-qt5.png"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://www.qtcentre.org/content/">
+     <title>Qt Centre Forum - Qt Centre Community Portal</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="/usr/share/pixmaps/assistant-qt5.png"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <bookmark netscapeinfo="" href="http://qt-project.org/doc/qt-4.8/qtbinding.html">
+     <title>QML C++ Bindings</title>
+     <info>
+      <metadata owner="http://freedesktop.org">
+       <bookmark:icon name="/usr/share/pixmaps/assistant-qt5.png"/>
+      </metadata>
+     </info>
+    </bookmark>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="/usr/share/pixmaps/assistant-qt5.png"/>
+     </metadata>
+    </info>
+   </folder>
+   <bookmark netscapeinfo="" href="http://eigen.tuxfamily.org/index.php?title=Main_Page">
+    <title>Eigen</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://lwn.net/Kernel/LDD3/">
+    <title>Linux Device Drivers</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://github.com/makelinux/ldt/">
+    <title>Linux Driver Template</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://tdistler.com/2008/11/15/how-to-print-a-stack-backtrace-programatically-in-linux">
+    <title>Generer une backtrace dynamiquement, dans le code C++</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/console-icon.png"/>
+    </metadata>
+   </info>
+  </folder>
+  <folder folded="yes">
+   <title>Tricks</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Qui-Gon Jinn's light-saber.png"/>
+    </metadata>
+   </info>
+   <bookmark href="https://techbase.kde.org/Development/Tutorials/Creating_Konqueror_Service_Menus">
+    <title>Creer des Servicees Menus</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.netz-online.com/2009/05/05/gemeinsame-ordner-in-virtualbox-unter-ubuntu-als-gast/">
+    <title>Gemeinsam Ordner Virtualbox</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.linuxproblem.org/art_9.html">
+    <title>SSH login without password</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://forum.ubuntu-fr.org/viewtopic.php?id=301721">
+    <title>Isoler skype</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://forum.ubuntu-fr.org/viewtopic.php?id=384500">
+    <title>VPN gratuits et openVPN</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.alexonlinux.com/reverse-ssh-tunnel-or-connecting-to-computer-behind-nat-router">
+    <title>Reverse SSH tunnel or connecting to computer behind NAT router - Alex on Linux</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://linuxtricksandtips.blogspot.nl/2011/08/how-to-convert-png-to-pdf.html">
+    <title>Linux Tricks and Tips: How to convert png to pdf</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no">
+   <title>Debugging</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Safety Box v2.png"/>
+    </metadata>
+   </info>
+   <bookmark href="file:///home/max/Documents/Outils/gdb_trick.txt">
+    <title>Astuce GDB</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="http://www.riteh.uniri.hr/zav_katd_sluz/zr/nastava/uur/download/kdevelop/debugger.html">
+    <title>Meaning of breakpoint status</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="opera"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="yes" netscapeinfo="">
+   <title>Customize</title>
+   <bookmark href="https://www.iconfinder.com/">
+    <title>Iconfinder</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://patorjk.com/software/taag/#p=display&amp;h=1&amp;v=2&amp;f=ANSI%20Shadow&amp;t=what%20the%20fuck%3F">
+    <title>ascii art generator</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.iconfinder.com/">
+    <title>IconFinder</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://kde-look.org/content/show.php/Label?content=99881">
+    <title>Label KDE-Look.org</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.practicatechnical.com/computer-tips/libreoffice-color-palette">
+    <title>LibreOffice Color Palette</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://www.colorspire.com/rgb-color-wheel/">
+    <title>RGB test</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://kate-editor.org/2005/03/24/writing-a-syntax-highlighting-file/">
+    <title>Tutorial Kate Highlighting</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Chapeau_magicien.png"/>
+    </metadata>
+   </info>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Pirate</title>
+   <bookmark netscapeinfo="" href="http://thepiratebay.se/">
+    <title>The pirate Bay</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://isohunt.com/">
+    <title>Isohunt</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://myp2p.ec/index.php?sport=football">
+    <title>Sport en streaming</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://schoener-fernsehen.com/live/stream/fr/FRANCE3/">
+    <title>France TV streaming</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://solidsquad.blogspot.de/2013_09_01_archive.html">
+    <title>Team SolidSQUAD: September 2013</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://forums.ffshrine.org/f7/how-do-i-download-torrent-rutracker-org-114469/">
+    <title>How to user rutracker.org</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="http://sc-downloader.com/">
+    <title>Sc-downloader</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="/home/max/Pictures/icone/Png/Pirate.png"/>
+    </metadata>
+   </info>
+  </folder>
+  <folder folded="no" netscapeinfo="">
+   <title>Kbibtex</title>
+   <bookmark netscapeinfo="" href="http://home.gna.org/kbibtex/download.html">
+    <title>KBibTeX – Download &amp; Installation</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://gna.org/account/login.php?uri=/projects/kbibtex/&amp;cookie_test=1">
+    <title>Kbibtex Bugreport</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark netscapeinfo="" href="https://projects.kde.org/projects/playground/office/kbibtex/repository">
+    <title>KBibTeX - KDE Projects</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="text-html"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no">
+   <title>LATEX</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="https://en.wikibooks.org/wiki/LaTeX/Algorithms">
+    <title>Algorithm</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <bookmark netscapeinfo="" href="http://support.microsoft.com/kb/500972/de">
+   <title>Excel DE-EN uebersetzung</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="https://bugs.kde.org/">
+   <title>KDE Bugtracking</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark netscapeinfo="" href="http://www.fileformat.info/info/unicode/char/search.htm?q=delta&amp;preview=entity">
+   <title>Unicode Character Search</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="text-html"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Devices-computer-laptop-icon.png"/>
+   </metadata>
+  </info>
+ </folder>
+ <folder folded="no">
+  <title>Kultur</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="/home/max/Pictures/icone/Png/Mec_seul.png"/>
+   </metadata>
+  </info>
+  <bookmark href="http://www.ka-news.de/kultur/regional/">
+   <title>Sortie Karlsruhe</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <info>
+  <metadata owner="http://freedesktop.org">
+   <bookmark:icon name=""/>
+  </metadata>
+ </info>
+</xbel>
