@@ -57,17 +57,17 @@ PlasmaExtras.ScrollArea {
 				}
 			}
 			Button{
-				id: buttonadd
+				id: buttonrefresh
 				anchors{
 					right:parent.right
 				}
-				iconName:"bookmark-new-list"
-				text:qsTr("Edit sources")
-				tooltip: qsTr("Edit the various bookmark sources")
+				iconName:"view-refresh"
+				text:qsTr("Refresh")
+				tooltip: qsTr("Re-read sources")
 				height: 24
 				Layout.fillWidth: true
 				onClicked:{
-					mainrepresentation.state="editsourceview"
+					itemmodel.ReadAllSources();
 				}
 			}
 		}

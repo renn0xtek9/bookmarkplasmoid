@@ -34,22 +34,22 @@ Item {
 			id:bookmarkview
 			focus: true
 		}
-		Editsourceview{
-			id:editsourceview 
-		}
+// 		Editsourceview{
+// 			id:editsourceview 
+// 		}
 		states: [
-			State{
-				name: "editsourceview"
-				PropertyChanges {
-					target: bookmarkview;visible: false}
-				PropertyChanges{
-					target: mainrepresentation;
-					Layout.maximumHeight: 300;
-					Layout.minimumHeight: 300;
-				}
-				PropertyChanges{
-					target: editsourceview;visible:true}
-			},
+// 			State{
+// 				name: "editsourceview"
+// 				PropertyChanges {
+// 					target: bookmarkview;visible: false}
+// 				PropertyChanges{
+// 					target: mainrepresentation;
+// 					Layout.maximumHeight: 300;
+// 					Layout.minimumHeight: 300;
+// 				}
+// 				PropertyChanges{
+// 					target: editsourceview;visible:true}
+// 			},
 			State{
 				name: "bookmarkview"
 				PropertyChanges{
