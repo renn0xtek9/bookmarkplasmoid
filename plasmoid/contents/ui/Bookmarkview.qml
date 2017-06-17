@@ -112,20 +112,8 @@ PlasmaExtras.ScrollArea {
 			}
 		}	
 		onCountChanged: {
-// 			mainrepresentation.Layout.preferredHeight=24*bookmarklist.count+bookmarklist.headerItem.height
-// 			mainrepresentation.Layout.minimumHeight=bookmarklist.count*bookmarklist.contentHeight+bookmarklist.headerItem.height
-// 			mainrepresentation.Layout.maximumHeight=24*bookmarklist.count+bookmarklist.headerItem.height
-// 			mainrepresentation.Layout.height=24*bookmarklist.count
-			console.log("elements"+bookmarklist.count);
-			console.log("new count"+(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height));
-// 			bookmarklist.height=bookmarklist.count*(Math.max(Math.max(32,32),32) + 2 * units.smallSpacing)
-// 			bookmarklist.height=700;;
-// 			bookmarklist.Layout.minimumHeight=700;
-// 			scrollView.Layout.minimumHeight=700;
 			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
 			mainrepresentation.Layout.maximumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
-			console.log(bookmarklist.height);
-// 			scrollView.layout.minimumHeight=bookmarklist.height;
 		}
 		Component.onCompleted:
 		{

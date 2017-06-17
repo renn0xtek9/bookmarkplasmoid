@@ -53,7 +53,8 @@ Item {
 					target: bookmarkview;visible: false}
 				PropertyChanges{
 					target: mainrepresentation;
-// 					Layout.maximumHeight: 300
+					Layout.maximumHeight: 300;
+					Layout.minimumHeight: 300;
 				}
 				PropertyChanges{
 					target: editsourceview;visible:true}
