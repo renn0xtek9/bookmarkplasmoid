@@ -67,7 +67,7 @@ PlasmaExtras.ScrollArea {
 				height: 24
 				Layout.fillWidth: true
 				onClicked:{
-					itemmodel.ReadAllSources();
+					itemmodel.ReadAllSources(true);
 				}
 			}
 		}
@@ -115,7 +115,7 @@ PlasmaExtras.ScrollArea {
 				itemmodel.okularBookmarks=plasmoid.configuration.okularpath
 				itemmodel.firefoxBookmarks=plasmoid.configuration.firefoxpath
 				itemmodel.chromeBookmarks=plasmoid.configuration.chromepath
-				itemmodel.ReadAllSources();
+				itemmodel.ReadAllSources(false);
 			}
 		}
 	}

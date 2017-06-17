@@ -22,6 +22,7 @@ Item {
 		firefoxBookmarks: plasmoid.configuration.konquerorpath
 		chromeBookmarks: plasmoid.configuration.chromepath
 	}
+	focus:true
 	Plasmoid.fullRepresentation:  Item{
 		id: mainrepresentation
 		Layout.minimumWidth:300
