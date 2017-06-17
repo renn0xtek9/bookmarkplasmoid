@@ -159,6 +159,7 @@ QStandardItem* Bookmarkmodel::readXBELFolder()
 	QStandardItem* ret=new QStandardItem();
 	ret->setData(true,BookmarkRoles::IsFolderRole);
 	Q_ASSERT(xml.isStartElement() && xml.name() == "folder");
+	ret->setData(getStandardIcon(ret),Qt::UserRole);		//This ensure there is a default icon on the folder
 	if(m_currentlyparsed==CurrentlyParsing::Okular) //Force icon for okular books
 	{
 		ret->setData(getCustomOrThemeIconPath("okular",ret),Qt::UserRole);
