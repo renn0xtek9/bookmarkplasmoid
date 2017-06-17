@@ -116,6 +116,8 @@ PlasmaExtras.ScrollArea {
 			}
 		}	
 		onCountChanged: {
+			bookmarklist.footerItem.visible=false;
+			bookmarklist.footerItem.height=0;
 			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);  //TODO instead of silly 32 guess! , fixed it in the delegate and thake same height as delegate
 // 			mainrepresentation.Layout.maximumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
 			mainrepresentation.Layout.maximumHeight=mainrepresentation.Layout.minimumHeight;
@@ -123,6 +125,7 @@ PlasmaExtras.ScrollArea {
 			{
 				bookmarklist.footerItem.visible=true;
 				bookmarklist.footerItem.focus=true;
+				bookmarklist.footerItem.height=32;	//TODO use global property instead of this silly thing
 				mainrepresentation.Layout.minimumHeight=bookmarklist.headerItem.height+bookmarklist.footerItem.height;
 				mainrepresentation.Layout.maximumHeight=mainrepresentation.Layout.minimumHeight;
 			}
