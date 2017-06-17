@@ -10,14 +10,18 @@ import QtQml.Models 2.2
 
 PlasmaExtras.ScrollArea {
 	id: scrollView
-	width:childrenRect.width
+// 	width:childrenRect.width
+	visible:true
 	anchors.fill:parent
 	focus: true
+	Layout.fillHeight: true
+	Layout.minimumHeight:bookmarklist.contentHeight
+	Layout.preferredHeight: bookmarklist.contentHeight
 	ListView{
 		id: bookmarklist 
-		height:24*bookmarklist.count 
+// 		height:count*Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
 		anchors.fill: parent
-		width:200
+// 		width:500
 		focus:true
 		visible:true
 		model:visualModel
@@ -81,28 +85,52 @@ PlasmaExtras.ScrollArea {
 				if (!bookmarklist.currentItem.isAFolder)
 				{
 					Qt.openUrlExternally(bookmarklist.currentItem.tooltip)
+// 					mainrepresentation.Layout.minimumHeight=bookmarklist.count*bookmarklist.contentHeight+bookmarklist.headerItem.height
 				}
 				else
 				{
 					visualModel.rootIndex=bookmarklist.model.modelIndex(bookmarklist.currentIndex);
+// 					mainrepresentation.Layout.minimumHeight=bookmarklist.count*bookmarklist.contentHeight+bookmarklist.headerItem.height
 				}
 				event.accepted = true;
 			}
 			if (event.key == Qt.Key_Up) {
+				if (!(bookmarklist.currentIndex<bookmarklist.count)&&!(bookmarklist.currentIndex>0))
+				{
+					bookmarklist.currentIndex=bookmarklist.count-1
+				}
 				bookmarklist.currentIndex = bookmarklist.currentIndex-1 >0 ? bookmarklist.currentIndex-1 :0
 				event.accepted = true;
 			}
 			if (event.key == Qt.Key_Down) {
+				if (!(bookmarklist.currentIndex<bookmarklist.count)&&!(bookmarklist.currentIndex>0))
+				{
+					bookmarklist.currentIndex=0
+				}
 				bookmarklist.currentIndex = bookmarklist.currentIndex +1 < bookmarklist.count ? bookmarklist.currentIndex+1 : bookmarklist.count
 				event.accepted = true;
 			}
 		}	
 		onCountChanged: {
 // 			mainrepresentation.Layout.preferredHeight=24*bookmarklist.count+bookmarklist.headerItem.height
-			mainrepresentation.Layout.minimumHeight=bookmarklist.count*bookmarklist.contentHeight+bookmarklist.headerItem.height
+// 			mainrepresentation.Layout.minimumHeight=bookmarklist.count*bookmarklist.contentHeight+bookmarklist.headerItem.height
 // 			mainrepresentation.Layout.maximumHeight=24*bookmarklist.count+bookmarklist.headerItem.height
 // 			mainrepresentation.Layout.height=24*bookmarklist.count
-			console.log("Layout preferred set at" +24*bookmarklist.count)
+			console.log("elements"+bookmarklist.count);
+			console.log("new count"+(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height));
+// 			bookmarklist.height=bookmarklist.count*(Math.max(Math.max(32,32),32) + 2 * units.smallSpacing)
+// 			bookmarklist.height=700;;
+// 			bookmarklist.Layout.minimumHeight=700;
+// 			scrollView.Layout.minimumHeight=700;
+			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
+			mainrepresentation.Layout.maximumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
+			console.log(bookmarklist.height);
+// 			scrollView.layout.minimumHeight=bookmarklist.height;
+		}
+		Component.onCompleted:
+		{
+			console.log("component is completed")
+// 			mainrepresentation.state="bookmarkview"
 		}
 	}
 }
