@@ -15,9 +15,6 @@ Item {
 	Plasmoid.toolTipMainText: i18n("Bookmarks")
 	Plasmoid.switchWidth: units.gridUnit * 10
 	Plasmoid.switchHeight: units.gridUnit * 10	
-// 	Layout.preferredHeight:800
-// 	Layout.preferredHeight:childrenRect.height
-// 	anchors.fill:parent
 	MyPlugins.Bookmarkmodel{
 		id: itemmodel
 		konquerorBookmarks: plasmoid.configuration.firefoxpath
@@ -28,14 +25,8 @@ Item {
 	Plasmoid.fullRepresentation:  Item{
 		id: mainrepresentation
 		anchors.fill:parent
-		Layout.minimumHeight:24*bookmarklist.count+bookmarklist.header.height
+		
 		Layout.minimumWidth:300
-		
-		Layout.preferredHeight:Layout.minimumHeight
-		Layout.preferredWidth:Layout.minimumWidth
-		
-// 		Layout.maximumHeight:Layout.minimumHeight
-// 		Layout.maximumWidth:Layout.minimumWidth
 		
 		Layout.fillHeight : true
 		state:"bookmarkview"

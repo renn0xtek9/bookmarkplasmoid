@@ -10,6 +10,10 @@ Rectangle {
 // 	width: units.gridUnit * 40
 // 	height: units.gridUnit * 30
 	anchors.fill:parent
+	
+	property alias cfg_konquerorpath :konquerorpath.text
+	property alias cfg_okularpath: okularpath.text
+	
 	ColumnLayout{
 		anchors.fill:parent
 		PlasmaComponent.Label{
@@ -17,9 +21,9 @@ Rectangle {
 			color:syspal.text
 		}
 		PlasmaComponent.TextField{
-			id:okularpathfield
+			id:okularpath
 			width:parent.width
-			text:"okular bookmarks"
+			text:plasmoid.configuration.okularpath
 			clearButtonShown:true
 			anchors{
 				left:parent.left 
@@ -31,9 +35,9 @@ Rectangle {
 			color:syspal.text
 		}
 		PlasmaComponent.TextField{
-			id:kde
+			id:konquerorpath
 			width:parent.width
-			text:"kde bookmarks"
+			text:plasmoid.configuration.konquerorpath
 			clearButtonShown:true
 			anchors{
 				left:parent.left 

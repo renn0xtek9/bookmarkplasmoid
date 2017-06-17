@@ -10,18 +10,13 @@ import QtQml.Models 2.2
 
 PlasmaExtras.ScrollArea {
 	id: scrollView
-// 	width:childrenRect.width
 	visible:true
-	anchors.fill:parent
 	focus: true
+	anchors.fill:parent
 	Layout.fillHeight: true
-	Layout.minimumHeight:bookmarklist.contentHeight
-	Layout.preferredHeight: bookmarklist.contentHeight
 	ListView{
 		id: bookmarklist 
-// 		height:count*Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
 		anchors.fill: parent
-// 		width:500
 		focus:true
 		visible:true
 		model:visualModel
@@ -85,12 +80,10 @@ PlasmaExtras.ScrollArea {
 				if (!bookmarklist.currentItem.isAFolder)
 				{
 					Qt.openUrlExternally(bookmarklist.currentItem.tooltip)
-// 					mainrepresentation.Layout.minimumHeight=bookmarklist.count*bookmarklist.contentHeight+bookmarklist.headerItem.height
 				}
 				else
 				{
 					visualModel.rootIndex=bookmarklist.model.modelIndex(bookmarklist.currentIndex);
-// 					mainrepresentation.Layout.minimumHeight=bookmarklist.count*bookmarklist.contentHeight+bookmarklist.headerItem.height
 				}
 				event.accepted = true;
 			}
@@ -117,8 +110,19 @@ PlasmaExtras.ScrollArea {
 		}
 		Component.onCompleted:
 		{
-			console.log("component is completed")
-// 			mainrepresentation.state="bookmarkview"
+			console.log("Bookmarkview is completed")
+		}
+		onVisibleChanged:{
+			if(visible)
+			{
+				console.log("visible");
+				console.log(plasmoid.configuration.konquerorpath);
+				itemmodel.konquerorBookmarks=plasmoid.configuration.konquerorpath
+				itemmodel.okularBookmarks=plasmoid.configuration.okularpath
+				itemmodel.firefoxBookmarks=plasmoid.configuration.firefoxpath
+				itemmodel.chromeBookmarks=plasmoid.configuration.chromepath
+				itemmodel.ReadAllSources();
+			}
 		}
 	}
 }

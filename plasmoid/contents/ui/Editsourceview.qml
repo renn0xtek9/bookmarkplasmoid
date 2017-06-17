@@ -42,7 +42,7 @@ ColumnLayout{
 	RowLayout {
 		id: okcanclelbuttons
 		height:30
-		anchors{
+		anchors{	 
 			left:parent.left 
 			right:parent.right
 			bottom:parent.bottom
