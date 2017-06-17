@@ -105,18 +105,12 @@ PlasmaExtras.ScrollArea {
 			}
 		}	
 		onCountChanged: {
-			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
+			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);  //TODO instead of silly 32 guess! , fixed it in the delegate and thake same height as delegate
 			mainrepresentation.Layout.maximumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
-		}
-		Component.onCompleted:
-		{
-			console.log("Bookmarkview is completed")
 		}
 		onVisibleChanged:{
 			if(visible)
 			{
-				console.log("visible");
-				console.log(plasmoid.configuration.konquerorpath);
 				itemmodel.konquerorBookmarks=plasmoid.configuration.konquerorpath
 				itemmodel.okularBookmarks=plasmoid.configuration.okularpath
 				itemmodel.firefoxBookmarks=plasmoid.configuration.firefoxpath

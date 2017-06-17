@@ -47,7 +47,6 @@ PlasmaComponents.ListItem {
 		acceptedButtons: Qt.LeftButton | Qt.RightButton
 		onClicked: {
 			if(mouse.button & Qt.LeftButton) {
-				console.log("leftclick")
 				if (!isFolder)
 				{
 					Qt.openUrlExternally(tooltip)
@@ -59,7 +58,6 @@ PlasmaComponents.ListItem {
 			}
 			if(mouse.button & Qt.RightButton)
 			{
-				console.log("rightclick")
 				visualModel.rootIndex=visualModel.parentModelIndex()						 
 			}
 			if (TypeRole!=1)

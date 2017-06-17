@@ -24,32 +24,14 @@ Item {
 	}
 	Plasmoid.fullRepresentation:  Item{
 		id: mainrepresentation
-		anchors.fill:parent
-		
 		Layout.minimumWidth:300
-		
-		Layout.fillHeight : true
 		state:"bookmarkview"
 		Bookmarkview{
 			id:bookmarkview
 			focus: true
 		}
-// 		Editsourceview{
-// 			id:editsourceview 
-// 		}
 		states: [
-// 			State{
-// 				name: "editsourceview"
-// 				PropertyChanges {
-// 					target: bookmarkview;visible: false}
-// 				PropertyChanges{
-// 					target: mainrepresentation;
-// 					Layout.maximumHeight: 300;
-// 					Layout.minimumHeight: 300;
-// 				}
-// 				PropertyChanges{
-// 					target: editsourceview;visible:true}
-// 			},
+
 			State{
 				name: "bookmarkview"
 				PropertyChanges{
@@ -60,10 +42,6 @@ Item {
 					target: bookmarkview;focus: true}
 			}
 		]
-		Connections{
-			target: itemmodel 
-			onCompleted: ReadAllSources();
-		}
 	}
 	PlasmaCore.DataSource {
 		id: executable
