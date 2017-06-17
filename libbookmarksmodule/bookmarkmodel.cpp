@@ -19,44 +19,72 @@ Bookmarkmodel::~Bookmarkmodel()
 }
 void Bookmarkmodel::setPathForKonquerorBookmarks(const QString& fullpath)
 {
-	m_konquerorpath=fullpath;
-	emit konquerorpathChanged(fullpath);
+	m_konquerorpathhaschangedsincelastread=false;
+	if(m_konquerorpath!=fullpath)
+	{
+		m_konquerorpath=fullpath;
+		m_konquerorpathhaschangedsincelastread=true;
+		emit konquerorpathChanged(fullpath);
+	}
 }
 void Bookmarkmodel::setPathForOkularBookmarks(const QString& fullpath)
 {
-	m_okularpath=fullpath;
-	m_currentlyparsed=CurrentlyParsing::Okular;	
-	emit okularpathChanged(fullpath);
+	m_okularpathhaschangedsincelasteread=false;
+	if(m_okularpath!=fullpath)
+	{
+		m_okularpath=fullpath;
+		m_currentlyparsed=CurrentlyParsing::Okular;	
+		m_okularpathhaschangedsincelasteread=true;
+		emit okularpathChanged(fullpath);
+	}
 }
 void Bookmarkmodel::setPathForFirefoxBookmarks(const QString& fullpath)
 {
-	m_firefoxpath=fullpath;
-	emit firefoxpathChanged(fullpath);
+	m_firefoxpathhaschangedsincelastread=false;
+	if(m_firefoxpath!=fullpath)
+	{
+		m_firefoxpath=fullpath;
+		m_firefoxpathhaschangedsincelastread=true;
+		emit firefoxpathChanged(fullpath);
+	}
 }
 void Bookmarkmodel::setPathForChromeBookamarks(const QString& fullpath)
 {
-	m_chromepath=fullpath;
-	emit chromepathChanged(fullpath);
+	m_chromepathhaschnagedsincelastread=false;
+	if(m_chromepath!=fullpath)
+	{
+		m_chromepath=fullpath;
+		m_chromepathhaschnagedsincelastread=true;
+		emit chromepathChanged(fullpath);
+	}
 }
 void Bookmarkmodel::ReadAllSources()
 {
+	if(!m_okularpathhaschangedsincelasteread&&
+		!m_firefoxpathhaschangedsincelastread&&
+		!m_konquerorpathhaschangedsincelastread&&
+		!m_chromepathhaschnagedsincelastread)
+	{
+		return; //If nothing has changed just leave it
+	}
+	
 	clear();
-	if (FileExists(m_konquerorpath))
+	if (FileExists(m_konquerorpath)&&m_konquerorpathhaschangedsincelastread)
 	{
 		m_currentlyparsed=CurrentlyParsing::Konqueror;
 		appendXBELFile(m_konquerorpath);
 	}
-	if (FileExists(m_okularpath))
+	if (FileExists(m_okularpath)&&m_okularpathhaschangedsincelasteread)
 	{
 		m_currentlyparsed=CurrentlyParsing::Okular;
 		appendXBELFile(m_okularpath);
 	}
-	if(FileExists(m_firefoxpath))
+	if(FileExists(m_firefoxpath)&&m_firefoxpathhaschangedsincelastread)
 	{
 		m_currentlyparsed=CurrentlyParsing::Firefox;
 		//TODO implement json bookmarks
 	}
-	if(FileExists(m_chromepath))
+	if(FileExists(m_chromepath)&&m_chromepathhaschnagedsincelastread)
 	{
 		m_currentlyparsed=CurrentlyParsing::Chrome;
 		//TODO read the json bookmark

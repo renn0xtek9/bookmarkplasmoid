@@ -73,6 +73,11 @@ private:
 	QString m_okularpath;
 	QString m_firefoxpath;
 	QString m_chromepath;
+	bool m_konquerorpathhaschangedsincelastread={true};
+	bool m_okularpathhaschangedsincelasteread={true};
+	bool m_firefoxpathhaschangedsincelastread={true};
+	bool m_chromepathhaschnagedsincelastread={true};
+	
 	QString getStandardIcon(const QStandardItem* p_item) const noexcept;
 	CurrentlyParsing m_currentlyparsed;
 	//Methods to read an xbel based bookmark fodlder
