@@ -58,12 +58,13 @@ void Bookmarkmodel::setPathForChromeBookamarks(const QString& fullpath)
 		emit chromepathChanged(fullpath);
 	}
 }
-void Bookmarkmodel::ReadAllSources()
+void Bookmarkmodel::ReadAllSources(bool forcereread)
 {
 	if(!m_okularpathhaschangedsincelasteread&&
 		!m_firefoxpathhaschangedsincelastread&&
 		!m_konquerorpathhaschangedsincelastread&&
-		!m_chromepathhaschnagedsincelastread)
+		!m_chromepathhaschnagedsincelastread&&
+		!forcereread)
 	{
 		return; //If nothing has changed just leave it
 	}

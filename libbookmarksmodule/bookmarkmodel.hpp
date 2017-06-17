@@ -61,7 +61,7 @@ public:
 public slots:
 // 	void itemSelectedAsRoot(int index);
 // 	void parentItemSelectedAsRoot();
-	Q_INVOKABLE void ReadAllSources();
+	Q_INVOKABLE void ReadAllSources(bool forcereread);
 
 private:
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE

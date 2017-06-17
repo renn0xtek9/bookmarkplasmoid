@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	reader.setPathForOkularBookmarks(okularfilename);
 	reader.setPathForKonquerorBookmarks(filename);
 	
-	reader.ReadAllSources();
+	reader.ReadAllSources(true);
 	qDebug()<<reader.rowCount();
 	qDebug()<<reader.columnCount();
 // 	QModelIndex index=reader.createIndex();
