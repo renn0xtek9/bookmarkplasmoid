@@ -33,14 +33,15 @@ PlasmaComponents.ListItem {
 	signal itemSelected(string uuid)
 	signal newSession(string sessionname)
 	signal remove(string uuid)
-	
+	property int itemheight 
 	property bool showInput: false
 	property string iconSource: ""
 	property string bookmarktext: "No bookmark"
 	property string tooltip: ""
 	property bool isAFolder: true
 	width: parent.width - units.gridUnit * 2
-	height: Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
+// 	height: Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
+	height: itemheight
 	MouseArea {
 		anchors.fill: parent
 		hoverEnabled: true
@@ -70,18 +71,22 @@ PlasmaComponents.ListItem {
 		onExited: bookmarklist.currentIndex = -1
 		Item {
 			id: label
-			height: childrenRect.height
+			height: itemheight
 			anchors {
 				left: parent.left
 				leftMargin: units.gridUnit / 2
 				right: parent.right
 				verticalCenter: parent.verticalCenter
+				top:parent.top
+				bottom:parent.bottom
 			}
 			PlasmaComponents.Label {
 				height: implicitHeight
 				anchors {
 					left: parent.left
 					right: parent.right
+					top:parent.top
+					bottom:parent.bottom
 					rightMargin: units.gridUnit * 2
 					leftMargin: units.gridUnit * 2
 				}
@@ -94,6 +99,12 @@ PlasmaComponents.ListItem {
 			PlasmaCore.IconItem {
 				width: units.iconSizes.small
 				height: width
+// 				width:itemheight
+// 				height:itemheight
+				anchors{
+					top:parent.top
+					bottom:parent.bottom
+				}
 				z: 900
 				source: iconSource
 				enabled: true

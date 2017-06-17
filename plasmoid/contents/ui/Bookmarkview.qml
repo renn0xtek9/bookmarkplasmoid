@@ -14,6 +14,9 @@ PlasmaExtras.ScrollArea {
 	focus: true
 	anchors.fill:parent
 	Layout.fillHeight: true
+	property int itemheight
+	
+	
 	ListView{
 		id: bookmarklist 
 		anchors.fill: parent
@@ -29,6 +32,7 @@ PlasmaExtras.ScrollArea {
 			model: itemmodel
 			delegate: Bookmarkdelegate{
 				bookmarktext: display
+				itemheight:scrollView.itemheight
 				iconSource: icon
 				tooltip: ttp
 				isAFolder: isFolder
@@ -36,7 +40,7 @@ PlasmaExtras.ScrollArea {
 		}
 		header: RowLayout{
 			id: head 
-			height:32
+			height:itemheight
 			width:bookmarklist.width
 			focus:false
 			PlasmaComponents.ToolButton{
@@ -70,7 +74,7 @@ PlasmaExtras.ScrollArea {
 		}
 		footer: PlasmaComponents.ToolButton{
 			width:bookmarklist.width
-			height:32
+			height:itemheight
 			focus:false
 			iconSource: "go-previous-view"
 			text: "Go back"
@@ -115,14 +119,14 @@ PlasmaExtras.ScrollArea {
 		onCountChanged: {
 			bookmarklist.footerItem.visible=false;
 			bookmarklist.footerItem.height=0;
-			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);  //TODO instead of silly 32 guess! , fixed it in the delegate and thake same height as delegate
+			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(scrollView.itemheight)+bookmarklist.headerItem.height); 
 // 			mainrepresentation.Layout.maximumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
 			mainrepresentation.Layout.maximumHeight=mainrepresentation.Layout.minimumHeight;
 			if(bookmarklist.count==0)
 			{
 				bookmarklist.footerItem.visible=true;
 				bookmarklist.footerItem.focus=true;
-				bookmarklist.footerItem.height=32;	//TODO use global property instead of this silly thing
+				bookmarklist.footerItem.height=scrollView.itemheight;
 				mainrepresentation.Layout.minimumHeight=bookmarklist.headerItem.height+bookmarklist.footerItem.height;
 				mainrepresentation.Layout.maximumHeight=mainrepresentation.Layout.minimumHeight;
 			}

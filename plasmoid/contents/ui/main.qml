@@ -30,6 +30,7 @@ Item {
 		Bookmarkview{
 			id:bookmarkview
 			focus: true
+			itemheight: 32
 		}
 		states: [
 			State{
