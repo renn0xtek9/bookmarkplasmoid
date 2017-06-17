@@ -36,19 +36,16 @@ PlasmaExtras.ScrollArea {
 		}
 		header: RowLayout{
 			id: head 
-			height:30
+			height:32
+			width:bookmarklist.width
 			focus:false
-			anchors{
-				left:parent.left 
-				right:parent.right
-			}
-			Button{
+			PlasmaComponents.ToolButton{
 				id: buttonorganize
 				iconName:"bookmarks-organize.png"
 				text:qsTr("Edit bookmarks")
 				tooltip: qsTr("Organize KDE Bookmarks")
 				Layout.fillWidth: true
-				height: 24
+				Layout.fillHeight: true
 				anchors{
 					left:parent.left
 				}
@@ -56,7 +53,7 @@ PlasmaExtras.ScrollArea {
 					executable.exec("keditbookmarks "+itemmodel.konquerorBookmarks)
 				}
 			}
-			Button{
+			PlasmaComponents.ToolButton{
 				id: buttonrefresh
 				anchors{
 					right:parent.right
@@ -64,7 +61,7 @@ PlasmaExtras.ScrollArea {
 				iconName:"view-refresh"
 				text:qsTr("Refresh")
 				tooltip: qsTr("Re-read sources")
-				height: 24
+				Layout.fillHeight: true
 				Layout.fillWidth: true
 				onClicked:{
 					itemmodel.ReadAllSources(true);
