@@ -17,7 +17,7 @@ Rectangle {
 	ColumnLayout{
 		anchors.fill:parent
 		PlasmaComponent.Label{
-			text:"okular bookmarks"
+			text:i18n("okular bookmarks")
 			color:syspal.text
 		}
 		PlasmaComponent.TextField{
@@ -31,7 +31,7 @@ Rectangle {
 			}
 		}
 		PlasmaComponent.Label{
-			text:"KDE bookmarks"
+			text:i18n("KDE bookmarks")
 			color:syspal.text
 		}
 		PlasmaComponent.TextField{

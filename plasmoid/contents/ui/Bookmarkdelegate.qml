@@ -29,7 +29,6 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 PlasmaComponents.ListItem {
 	id: menuItem
-	//     focus: true
 	signal itemSelected(string uuid)
 	signal newSession(string sessionname)
 	signal remove(string uuid)
@@ -40,7 +39,6 @@ PlasmaComponents.ListItem {
 	property string tooltip: ""
 	property bool isAFolder: true
 	width: parent.width - units.gridUnit * 2
-// 	height: Math.max(Math.max(label.height, toolButtonsLayout.implicitHeight),sessionnameditlayout.implicitHeight) + 2 * units.smallSpacing
 	height: itemheight
 	MouseArea {
 		anchors.fill: parent
@@ -77,8 +75,8 @@ PlasmaComponents.ListItem {
 				leftMargin: units.gridUnit / 2
 				right: parent.right
 				verticalCenter: parent.verticalCenter
-				top:parent.top
-				bottom:parent.bottom
+// 				top:parent.top
+// 				bottom:parent.bottom
 			}
 			PlasmaComponents.Label {
 				height: implicitHeight
@@ -99,8 +97,6 @@ PlasmaComponents.ListItem {
 			PlasmaCore.IconItem {
 				width: units.iconSizes.small
 				height: width
-// 				width:itemheight
-// 				height:itemheight
 				anchors{
 					top:parent.top
 					bottom:parent.bottom

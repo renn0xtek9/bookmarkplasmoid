@@ -27,6 +27,7 @@ Item {
 		id: mainrepresentation
 		Layout.minimumWidth:300
 		state:"bookmarkview"
+		focus:true
 		Bookmarkview{
 			id:bookmarkview
 			focus: true

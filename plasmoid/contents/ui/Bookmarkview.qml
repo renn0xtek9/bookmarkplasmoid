@@ -15,15 +15,15 @@ PlasmaExtras.ScrollArea {
 	anchors.fill:parent
 	Layout.fillHeight: true
 	property int itemheight
-	
-	
 	ListView{
 		id: bookmarklist 
-		anchors.fill: parent
+// 		anchors.fill: parent
 		focus:true
 		visible:true
 		model:visualModel
 		highlightFollowsCurrentItem: true
+		highlightMoveVelocity: 800
+// 		keyNavigationEnabled: true  //Only for qt>=5.7
 		highlight: PlasmaComponents.Highlight {
 			y: 0
 		}
@@ -46,8 +46,8 @@ PlasmaExtras.ScrollArea {
 			PlasmaComponents.ToolButton{
 				id: buttonorganize
 				iconName:"bookmarks-organize.png"
-				text:qsTr("Edit bookmarks")
-				tooltip: qsTr("Organize KDE Bookmarks")
+				text:i18n("Edit bookmarks")
+				tooltip: i18n("Organize KDE Bookmarks")
 				Layout.fillWidth: true
 				Layout.fillHeight: true
 				anchors{
@@ -63,8 +63,8 @@ PlasmaExtras.ScrollArea {
 					right:parent.right
 				}
 				iconName:"view-refresh"
-				text:qsTr("Refresh")
-				tooltip: qsTr("Re-read sources")
+				text:i18n("Refresh")
+				tooltip: i18n("Re-read sources")
 				Layout.fillHeight: true
 				Layout.fillWidth: true
 				onClicked:{
@@ -120,7 +120,6 @@ PlasmaExtras.ScrollArea {
 			bookmarklist.footerItem.visible=false;
 			bookmarklist.footerItem.height=0;
 			mainrepresentation.Layout.minimumHeight=(bookmarklist.count*(scrollView.itemheight)+bookmarklist.headerItem.height); 
-// 			mainrepresentation.Layout.maximumHeight=(bookmarklist.count*(32+units.smallSpacing)+bookmarklist.headerItem.height);
 			mainrepresentation.Layout.maximumHeight=mainrepresentation.Layout.minimumHeight;
 			if(bookmarklist.count==0)
 			{
@@ -134,11 +133,12 @@ PlasmaExtras.ScrollArea {
 		onVisibleChanged:{
 			if(visible)
 			{
+				currentIndex=0
 				itemmodel.konquerorBookmarks=plasmoid.configuration.konquerorpath
 				itemmodel.okularBookmarks=plasmoid.configuration.okularpath
 				itemmodel.firefoxBookmarks=plasmoid.configuration.firefoxpath
 				itemmodel.chromeBookmarks=plasmoid.configuration.chromepath
-				itemmodel.ReadAllSources(false);
+				itemmodel.ReadAllSources(false); //Don't force reread if paths are the same (false)
 			}
 		}
 	}	
