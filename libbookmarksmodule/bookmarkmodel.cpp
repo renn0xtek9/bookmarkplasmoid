@@ -71,22 +71,22 @@ void Bookmarkmodel::ReadAllSources(bool forcereread)
 			}
 	}
 	clear();
-	if (FileExists(m_konquerorpath)&&m_konquerorpathhaschangedsincelastread)
+	if (FileExists(m_konquerorpath))
 	{
 		m_currentlyparsed=CurrentlyParsing::Konqueror;
 		appendXBELFile(m_konquerorpath);
 	}
-	if (FileExists(m_okularpath)&&m_okularpathhaschangedsincelasteread)
+	if (FileExists(m_okularpath))
 	{
 		m_currentlyparsed=CurrentlyParsing::Okular;
 		appendXBELFile(m_okularpath);
 	}
-	if(FileExists(m_firefoxpath)&&m_firefoxpathhaschangedsincelastread)
+	if(FileExists(m_firefoxpath))
 	{
 		m_currentlyparsed=CurrentlyParsing::Firefox;
 		//TODO implement json bookmarks
 	}
-	if(FileExists(m_chromepath)&&m_chromepathhaschnagedsincelastread)
+	if(FileExists(m_chromepath))
 	{
 		m_currentlyparsed=CurrentlyParsing::Chrome;
 		//TODO read the json bookmark

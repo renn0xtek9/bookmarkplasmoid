@@ -15,6 +15,7 @@ Item {
 	Plasmoid.toolTipMainText: i18n("Bookmarks")
 	Plasmoid.switchWidth: units.gridUnit * 10
 	Plasmoid.switchHeight: units.gridUnit * 10	
+	Plasmoid.activationTogglesExpanded: true
 	MyPlugins.Bookmarkmodel{
 		id: itemmodel
 		konquerorBookmarks: plasmoid.configuration.firefoxpath
