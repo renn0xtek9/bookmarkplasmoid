@@ -1,6 +1,6 @@
 #include "bookmarkmodel.hpp"
 #include <QtCore/QFile>
-// #include <QtCore/QDebug>
+#include <QtCore/QDebug>
 #include <QtCore/QFileInfo>
 #include <QtCore/QAbstractItemModel>
 #include <QtCore/QVariant>
@@ -352,5 +352,6 @@ bool Bookmarkmodel::FileExists(const QString & path) const noexcept
 {
 	QFileInfo finfo(path);
 	return finfo.exists();	
+
 }
 

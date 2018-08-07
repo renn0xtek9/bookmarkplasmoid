@@ -10,6 +10,7 @@ import MyPlugins 1.0 as MyPlugins
 import Qt.labs.settings 1.0
 import QtQml.Models 2.2
 import QtQuick.Dialogs 1.2
+
 Item {
 	id: mainWindow
 	Plasmoid.toolTipMainText: i18n("Bookmarks")
@@ -44,6 +45,32 @@ Item {
 			}
 		]
 	}
+	/*
+	Plasmoid.compactRepresentation: Item{
+			width:48
+			height:48
+			PlasmaCore.IconItem {
+				width: units.iconSizes.small
+				anchors{
+					right:parent.right 
+					left:parent.left
+					top:parent.top
+					bottom:parent.bottom
+				}
+				source: "favorites"
+				enabled: true
+				visible: true
+			}
+			MouseArea{
+				anchors.fill: parent
+				hoverEnabled: true
+				acceptedButtons: Qt.LeftButton | Qt.RightButton
+				onClicked: {
+					console.log(plasmoid.formFactor)
+// 					show: fullRepresentation
+				}			
+			}
+	}*/
 	PlasmaCore.DataSource {
 		id: executable
 		engine: "executable"
