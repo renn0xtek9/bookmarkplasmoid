@@ -4,6 +4,8 @@ It can only display bookmark (in *bookmarks.xml* format). If you want to edit it
 It can displays the content of what used to be *konqueror* bookmarks, *as well as okular* (pdf) bookmarks. 
 Support for any Software that uses *bookmarks.xml* structure to save its bookmarks (Marble, Konsole ... ?) should be pretty straightforward to implement
 
+If you like this plasmoid, up me on [opendesktop](https://www.opendesktop.org/c/1519558653)
+
 ## Architecture
 It has a qml frontend (for the plasmoid in itself) and a C++ backend to analyze the bookmark repositories
 
