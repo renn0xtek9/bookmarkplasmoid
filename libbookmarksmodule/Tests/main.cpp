@@ -10,17 +10,21 @@ using namespace std;
 
 int main(int argc, char **argv) 
 {  
+	//Testing json
+	
+	
 	
 // 	/home/max/.config/google-chrome/Default/Bookmarks
 	QString filename="/home/max/.local/share/konqueror/bookmarks.xml";
 	QString okularfilename="/home/max/.local/share/okular/bookmarks.xml";
+	QString googlechrome="/home/max/.config/google-chrome/Default/Bookmarks";
 	/*
 	‎kbrosnan‎>‎ places.sqlite
 ‎[18:38] ‎<‎kbrosnan‎>‎ places.squlte.wal*/
 	Bookmarkmodel reader;
 	reader.setPathForOkularBookmarks(okularfilename);
 	reader.setPathForKonquerorBookmarks(filename);
-	
+	reader.setPathForChromeBookamarks(googlechrome);
 	reader.ReadAllSources(true);
 	qDebug()<<reader.rowCount();
 	qDebug()<<reader.columnCount();
@@ -54,6 +58,8 @@ int main(int argc, char **argv)
 		qDebug()<<reader.data(current,Qt::DisplayRole)<<" row for this:"<<rowforthis;
 // 		if current.has
 	}
+	
+	
 	
 	return 0;
 }

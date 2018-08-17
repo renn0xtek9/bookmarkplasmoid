@@ -44,6 +44,20 @@ Rectangle {
 				right:parent.right
 			}
 		}
+		PlasmaComponent.Label{
+			text:i18n("Google Chrome bookmarks")
+			color:syspal.text
+		}
+		PlasmaComponent.TextField{
+			id:konquerorpath
+			width:parent.width
+			text:plasmoid.configuration.chromepath
+			clearButtonShown:true
+			anchors{
+				left:parent.left 
+				right:parent.right
+			}
+		}
 		Item{
 			id: space
 			Layout.fillHeight:true

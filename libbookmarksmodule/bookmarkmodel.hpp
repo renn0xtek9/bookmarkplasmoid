@@ -74,6 +74,8 @@ public slots:
 
 private:
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
+	void appendJsonFile(QString path);
+	QStandardItem* appendFolderFromJsonBookmark(QJsonObject obj,QString name);
 	QModelIndex* m_rootmodelindex;
 	QString getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item);
 	bool FileExists(const QString & path) const noexcept;

@@ -7,6 +7,8 @@
 #include <QtCore/QString>
 #include <QtGui/QIcon>
 #include <QtCore/QFileInfo>
+#include <QtCore/QJsonDocument>
+#include <QtCore/QJsonObject>
 #include <KF5/KIconThemes/KIconTheme>
 
 Bookmarkmodel::Bookmarkmodel() :QSortFilterProxyModel(nullptr)
@@ -93,7 +95,7 @@ void Bookmarkmodel::ReadAllSources(bool forcereread)
 	if(FileExists(m_chromepath))
 	{
 		m_currentlyparsed=CurrentlyParsing::Chrome;
-		//TODO read the json bookmark
+		appendJsonFile(m_chromepath);
 	}
 	emit rowCountChanged(rowCount());
 }
@@ -366,3 +368,74 @@ QString Bookmarkmodel::getSearchField() const
 {
 	return m_searchfield;
 }
+void Bookmarkmodel::appendJsonFile(QString path)
+{	
+	QFile jsonfile(path);
+	if (jsonfile.open(QIODevice::OpenModeFlag::ReadOnly|QIODevice::Text) )
+	{
+		QJsonDocument jsonDoc=QJsonDocument::fromJson(jsonfile.readAll());
+		jsonfile.close();		
+		QJsonObject rootobj=jsonDoc.object();
+		if (rootobj.contains("roots"))
+		{
+			rootobj=rootobj["roots"].toObject();
+		}
+		else
+		{
+			return;
+		}
+		QJsonObject current=rootobj;
+		qDebug()<<current;
+		if (rootobj.keys().contains("bookmark_bar"))
+		{
+			current=current["bookmark_bar"].toObject();
+			m_model->invisibleRootItem()->appendRow(appendFolderFromJsonBookmark(current,"bookmark bar"));
+		}		
+	}
+	else{
+		
+	}
+}
+QStandardItem* Bookmarkmodel::appendFolderFromJsonBookmark(QJsonObject obj,QString name)
+{
+	QStandardItem* ret=new QStandardItem();
+	ret->setData(true,BookmarkRoles::IsFolderRole);
+	ret->setData(getStandardIcon(ret),Qt::UserRole);		//This ensure there is a default icon on the folder
+	ret->setText(name);
+	qDebug()<<"Add Folder"<< name;
+	if (obj.keys().contains("children"))
+	{
+		qDebug()<<"The object has childern";
+		obj=obj["children"].toObject();
+		foreach (QString key, obj.keys())
+		{
+			qDebug()<<"Parse key"<<key;
+			if (!obj[key].toObject().contains("type"))
+			{
+				break;
+			}
+			if (obj[key].toObject()["type"]=="folder")
+			{
+				//we have spotted a fodler in the bookmarks list
+				appendFolderFromJsonBookmark(obj[key].toObject(),obj[key].toObject()["name"].toString());
+			}
+			if (obj[key].toObject()["type"]=="url")
+			{
+				//we have spotted a url in the bookmark list
+				QStandardItem* bookmark=new QStandardItem();
+				bookmark->setData(false,BookmarkRoles::IsFolderRole);
+				bookmark->setToolTip(xml.attributes().value("href").toString());	//The link goes on the whatsthis
+				bookmark->setText(obj[key].toObject()["name"].toString());				
+				ret->appendRow(bookmark);
+				qDebug()<<"Add bookmark" <<bookmark->text();
+			}
+		}
+	}
+	return ret;
+}
+
+
+
+
+
+	
