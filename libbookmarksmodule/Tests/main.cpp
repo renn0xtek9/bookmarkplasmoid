@@ -43,8 +43,17 @@ int main(int argc, char **argv)
 		qDebug()<<reader.data(current,Qt::ToolTipRole)<<" is the tooltip";
 	}
 	qDebug()<<"Filtering";
-	reader.setSearchField("Outils");
+	reader.setSearchField("Onvista");
 	qDebug()<<reader.rowCount(parent);
+	
+	for (int i=0 ; i<reader.rowCount() ; i++)
+ 	{
+		current=reader.index(i,0,parent);
+		int rowforthis=current.row();
+// 		int subrows=current.
+		qDebug()<<reader.data(current,Qt::DisplayRole)<<" row for this:"<<rowforthis;
+// 		if current.has
+	}
 	
 	return 0;
 }

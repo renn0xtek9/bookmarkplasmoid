@@ -14,7 +14,7 @@
 #include <QtQml/QQmlExtensionInterface>
 
 
-class Bookmarkmodel :public QStandardItemModel
+class Bookmarkmodel :public QSortFilterProxyModel
 {
 	Q_OBJECT
 	Q_PROPERTY(int rowCount READ rowCount NOTIFY rowCountChanged);
@@ -100,6 +100,7 @@ private:
 	void readXBELInfoAndMetadata(QString p_blockname,QStandardItem* p_item);	
 	QXmlStreamReader xml;
 	
+	QStandardItemModel* m_model;
 };
 
 class BookmarkmodelPlugin : public QQmlExtensionPlugin

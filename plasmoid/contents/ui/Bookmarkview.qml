@@ -60,6 +60,7 @@ PlasmaExtras.ScrollArea {
 			}
 			PlasmaComponents.TextField{
 				id: searchfield
+				clearButtonShown:true
 				Layout.fillWidth:true 
 				Layout.fillHeight:true
 				onTextChanged:{

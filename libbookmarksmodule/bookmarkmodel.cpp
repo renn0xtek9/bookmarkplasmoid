@@ -9,10 +9,12 @@
 #include <QtCore/QFileInfo>
 #include <KF5/KIconThemes/KIconTheme>
 
-Bookmarkmodel::Bookmarkmodel() :QStandardItemModel(nullptr)
+Bookmarkmodel::Bookmarkmodel() :QSortFilterProxyModel(nullptr)
 {
-	m_searchfield="";
-	
+	m_model=new QStandardItemModel(this);
+	this->setSourceModel(m_model);
+	this->setRecursiveFilteringEnabled(true);
+	m_searchfield="";	
 	emit searchfieldchanged(m_searchfield);
 }
 Bookmarkmodel::~Bookmarkmodel()
@@ -72,7 +74,7 @@ void Bookmarkmodel::ReadAllSources(bool forcereread)
 				return; //If nothing has changed just leave it
 			}
 	}
-	clear();
+	m_model->clear();
 	if (FileExists(m_konquerorpath))
 	{
 		m_currentlyparsed=CurrentlyParsing::Konqueror;
@@ -139,11 +141,11 @@ bool Bookmarkmodel::readXBEL(QIODevice* device)
 	Q_ASSERT(xml.isStartElement() && xml.name() == "xbel");
 	while (xml.readNextStartElement()) {
 		if (xml.name() == "folder"){
-			invisibleRootItem()->appendRow(readXBELFolder());
+			m_model->invisibleRootItem()->appendRow(readXBELFolder());
 		}
 		else{
 			if (xml.name() == "bookmark"){
-				invisibleRootItem()->appendRow(readXBELBookmark());		
+				m_model->invisibleRootItem()->appendRow(readXBELBookmark());		
 			}
 			else{
 				if (xml.name() == "separator"){
@@ -354,16 +356,13 @@ bool Bookmarkmodel::FileExists(const QString & path) const noexcept
 {
 	QFileInfo finfo(path);
 	return finfo.exists();	
-
 }
 void Bookmarkmodel::setSearchField(const QString& searchfield)
-{
-	
+{	
+	this->setFilterRegExp(QRegExp(searchfield,Qt::CaseInsensitive,QRegExp::FixedString));
 	emit searchfieldchanged(searchfield);
 }
 QString Bookmarkmodel::getSearchField() const
 {
 	return m_searchfield;
 }
-
-
