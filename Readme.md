@@ -28,3 +28,6 @@ Under ubuntu you will need
 ## Known bugs 
 
 * The plasmoid does not catch the focuss correctly (i.e. using  keyboard arrows does not mobe index in the list). This bug is believed to be caused by framework. And I have not really clue / time to solve it. (We need to analyze it using gammarays)
+
+## Changelog 
+Added search feature
