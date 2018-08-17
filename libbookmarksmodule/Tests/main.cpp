@@ -32,6 +32,8 @@ int main(int argc, char **argv)
 	int i=0;
 	int n=reader.rowCount(parent);
 	
+	
+	
 	for (int i=0 ; i<n ; i++)
  	{
 		current=reader.index(i,0,parent);
@@ -40,6 +42,9 @@ int main(int argc, char **argv)
 		qDebug()<<reader.data(current,Qt::DisplayRole)<<" row for this:"<<rowforthis;
 		qDebug()<<reader.data(current,Qt::ToolTipRole)<<" is the tooltip";
 	}
+	qDebug()<<"Filtering";
+	reader.setSearchField("Outils");
+	qDebug()<<reader.rowCount(parent);
 	
 	return 0;
 }

@@ -48,7 +48,8 @@ PlasmaExtras.ScrollArea {
 				iconName:"bookmarks-organize.png"
 				text:i18n("Edit bookmarks")
 				tooltip: i18n("Organize KDE Bookmarks")
-				Layout.fillWidth: true
+				width: 50
+// 				Layout.fillWidth: true
 				Layout.fillHeight: true
 				anchors{
 					left:parent.left
@@ -57,15 +58,25 @@ PlasmaExtras.ScrollArea {
 					executable.exec("keditbookmarks "+itemmodel.konquerorBookmarks)
 				}
 			}
+			PlasmaComponents.TextField{
+				id: searchfield
+				Layout.fillWidth:true 
+				Layout.fillHeight:true
+				onTextChanged:{
+					console.log("Text changed"+text)
+					itemmodel.setSearchField(text)
+				}
+			}
 			PlasmaComponents.ToolButton{
 				id: buttonrefresh
+				width: 30
 				anchors{
 					right:parent.right
 				}
 				iconName:"view-refresh"
 				text:i18n("Refresh")
 				tooltip: i18n("Re-read sources")
-				Layout.fillHeight: true
+// 				Layout.fillHeight: true
 				Layout.fillWidth: true
 				onClicked:{
 					itemmodel.ReadAllSources(true);

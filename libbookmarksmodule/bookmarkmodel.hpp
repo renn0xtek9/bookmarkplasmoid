@@ -2,6 +2,7 @@
 #define BOOKMARKMODULE_HPP
 #include <QtCore/QObject>
 #include <QtGui/QStandardItemModel>
+#include <QtCore/QSortFilterProxyModel>
 #include <QtCore/QIODevice>
 #include <QtCore/QString>
 #include <QtCore/QList>
@@ -21,6 +22,8 @@ class Bookmarkmodel :public QStandardItemModel
 	Q_PROPERTY(QString okularBookmarks READ getPathForOkularBookmarks WRITE setPathForOkularBookmarks NOTIFY okularpathChanged);
 	Q_PROPERTY(QString firefoxBookmarks READ getPathForFirefoxBookmarks WRITE setPathForFirefoxBookmarks NOTIFY firefoxpathChanged);
 	Q_PROPERTY(QString chromeBookmarks READ getPathForChromeBookmarks WRITE setPathForChromeBookamarks NOTIFY chromepathChanged );
+	Q_PROPERTY(QString searchfield READ getSearchField WRITE setSearchField NOTIFY searchfieldchanged);
+	
 	
 	enum class  CurrentlyParsing 
 	{
@@ -36,6 +39,8 @@ signals:
 	void okularpathChanged(QString newpath);
 	void firefoxpathChanged(QString newpath);
 	void chromepathChanged(QString newpath);
+	void searchfieldchanged(QString searchfield);
+	
 
 public:
 	Bookmarkmodel();
@@ -51,12 +56,16 @@ public:
 	Q_INVOKABLE void setPathForOkularBookmarks(const QString& fullpath);
 	Q_INVOKABLE void setPathForFirefoxBookmarks(const QString& fullpath);
 	Q_INVOKABLE void setPathForChromeBookamarks(const QString& fullpath);
+	Q_INVOKABLE void setSearchField(const QString & searchfield);
 	
 	QString getPathForKonquerorBookmarks()const;
 	QString getPathForOkularBookmarks()const;
 	QString getPathForFirefoxBookmarks()const;
 	QString getPathForChromeBookmarks()const;
+	QString getSearchField()const;
 	QHash<int, QByteArray> roleNames() const ;
+	
+	
 	
 public slots:
 // 	void itemSelectedAsRoot(int index);
@@ -73,6 +82,8 @@ private:
 	QString m_okularpath;
 	QString m_firefoxpath;
 	QString m_chromepath;
+	//
+	QString m_searchfield;
 	bool m_konquerorpathhaschangedsincelastread={true};
 	bool m_okularpathhaschangedsincelasteread={true};
 	bool m_firefoxpathhaschangedsincelastread={true};
@@ -88,6 +99,7 @@ private:
 	QStandardItem* readXBELBookmark();
 	void readXBELInfoAndMetadata(QString p_blockname,QStandardItem* p_item);	
 	QXmlStreamReader xml;
+	
 };
 
 class BookmarkmodelPlugin : public QQmlExtensionPlugin

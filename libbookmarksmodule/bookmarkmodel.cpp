@@ -11,7 +11,9 @@
 
 Bookmarkmodel::Bookmarkmodel() :QStandardItemModel(nullptr)
 {
+	m_searchfield="";
 	
+	emit searchfieldchanged(m_searchfield);
 }
 Bookmarkmodel::~Bookmarkmodel()
 {
@@ -354,4 +356,14 @@ bool Bookmarkmodel::FileExists(const QString & path) const noexcept
 	return finfo.exists();	
 
 }
+void Bookmarkmodel::setSearchField(const QString& searchfield)
+{
+	
+	emit searchfieldchanged(searchfield);
+}
+QString Bookmarkmodel::getSearchField() const
+{
+	return m_searchfield;
+}
+
 
