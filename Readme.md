@@ -12,9 +12,8 @@ It has a qml frontend (for the plasmoid in itself) and a C++ backend to analyze 
 
 ## TODO 
 
-* Support for Google Chrome bookmarks
 * Support for Firefox bookmarks
-
+* Create Unit-Tests 
 
 ## Compile instruction 
 Under ubuntu you will need
@@ -27,7 +26,20 @@ Under ubuntu you will need
     
 ## Known bugs 
 
-* The plasmoid does not catch the focuss correctly (i.e. using  keyboard arrows does not mobe index in the list). This bug is believed to be caused by framework. And I have not really clue / time to solve it. (We need to analyze it using gammarays)
+* The plasmoid does not catch the focus correctly (i.e. using  keyboard arrows does not mobe index in the list). This bug is believed to be caused by framework. And I have not really clue / time to solve it. (We need to analyze it using gammarays)
 
 ## Changelog 
-Added search feature
+Version 2.0.1 
+Version 2.0.0
+- Added search feature
+- Add support for Google Chrome bookmarks 
+
+
+
+
+
+
+
+
+
+Version number:2.0.1

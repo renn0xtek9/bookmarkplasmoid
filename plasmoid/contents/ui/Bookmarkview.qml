@@ -46,7 +46,7 @@ PlasmaExtras.ScrollArea {
 			PlasmaComponents.ToolButton{
 				id: buttonorganize
 				iconName:"bookmarks-organize.png"
-				text:i18n("Edit bookmarks")
+				text:i18n("Edit")
 				tooltip: i18n("Organize KDE Bookmarks")
 				width: 50
 // 				Layout.fillWidth: true
@@ -64,7 +64,6 @@ PlasmaExtras.ScrollArea {
 				Layout.fillWidth:true 
 				Layout.fillHeight:true
 				onTextChanged:{
-					console.log("Text changed"+text)
 					itemmodel.setSearchField(text)
 				}
 			}

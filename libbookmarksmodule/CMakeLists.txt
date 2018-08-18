@@ -30,6 +30,17 @@ set (SRC ${SRC} bookmarkmodel.cpp )
 include_directories(./../)
 include_directories(${CMAKE_SOURCE_DIR}${CMAKE_BINARY_DIR} ${QT_INCLUDES})
 
+
+
+SET_TARGET_PROPERTIES(
+  ${PROJECT_NAME}
+  PROPERTIES
+  VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}
+  SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+
+
+
+
 # Copy qmldir file to build dir for running in QtCreator
 add_custom_target(${PROJECT_NAME}-qmldir ALL
     COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/qmldir ${CMAKE_CURRENT_BINARY_DIR}

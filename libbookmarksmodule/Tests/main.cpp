@@ -22,8 +22,8 @@ int main(int argc, char **argv)
 	‎kbrosnan‎>‎ places.sqlite
 ‎[18:38] ‎<‎kbrosnan‎>‎ places.squlte.wal*/
 	Bookmarkmodel reader;
-	reader.setPathForOkularBookmarks(okularfilename);
-	reader.setPathForKonquerorBookmarks(filename);
+// 	reader.setPathForOkularBookmarks(okularfilename);
+// 	reader.setPathForKonquerorBookmarks(filename);
 	reader.setPathForChromeBookamarks(googlechrome);
 	reader.ReadAllSources(true);
 	qDebug()<<reader.rowCount();
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	int n=reader.rowCount(parent);
 	
 	
-	
+	qDebug()<<"Now inspecting content";
 	for (int i=0 ; i<n ; i++)
  	{
 		current=reader.index(i,0,parent);
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 		qDebug()<<reader.data(current,Qt::ToolTipRole)<<" is the tooltip";
 	}
 	qDebug()<<"Filtering";
-	reader.setSearchField("Onvista");
+	reader.setSearchField("gazebo");
 	qDebug()<<reader.rowCount(parent);
 	
 	for (int i=0 ; i<reader.rowCount() ; i++)

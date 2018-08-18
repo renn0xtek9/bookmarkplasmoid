@@ -13,6 +13,7 @@ Rectangle {
 	
 	property alias cfg_konquerorpath :konquerorpath.text
 	property alias cfg_okularpath: okularpath.text
+	property alias cfg_chromepath: chromepath.text
 	
 	ColumnLayout{
 		anchors.fill:parent
@@ -49,7 +50,7 @@ Rectangle {
 			color:syspal.text
 		}
 		PlasmaComponent.TextField{
-			id:konquerorpath
+			id:chromepath
 			width:parent.width
 			text:plasmoid.configuration.chromepath
 			clearButtonShown:true

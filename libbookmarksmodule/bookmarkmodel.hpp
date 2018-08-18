@@ -74,7 +74,7 @@ public slots:
 
 private:
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
-	void appendJsonFile(QString path);
+	void appendChromeBookmarks(QString path);
 	QStandardItem* appendFolderFromJsonBookmark(QJsonObject obj,QString name);
 	QModelIndex* m_rootmodelindex;
 	QString getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item);

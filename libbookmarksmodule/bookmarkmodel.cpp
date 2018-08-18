@@ -95,7 +95,7 @@ void Bookmarkmodel::ReadAllSources(bool forcereread)
 	if(FileExists(m_chromepath))
 	{
 		m_currentlyparsed=CurrentlyParsing::Chrome;
-		appendJsonFile(m_chromepath);
+		appendChromeBookmarks(m_chromepath);
 	}
 	emit rowCountChanged(rowCount());
 }
@@ -326,7 +326,7 @@ QString Bookmarkmodel::getStandardIcon(const QStandardItem* p_item) const noexce
 			}
 			case(CurrentlyParsing::Chrome):
 			{
-				return QString("google-chrome");
+				return QString("folder-bookmark");
 			}
 		}
 	}
@@ -348,11 +348,11 @@ QString Bookmarkmodel::getStandardIcon(const QStandardItem* p_item) const noexce
 			}
 			case(CurrentlyParsing::Chrome):
 			{
-				return QString("text-html");
+				return QString("google-chrome");
 			}
 		}
 	}
-	return QString("text-htm");
+	return QString("text-html");
 }
 bool Bookmarkmodel::FileExists(const QString & path) const noexcept
 {
@@ -368,7 +368,7 @@ QString Bookmarkmodel::getSearchField() const
 {
 	return m_searchfield;
 }
-void Bookmarkmodel::appendJsonFile(QString path)
+void Bookmarkmodel::appendChromeBookmarks(QString path)
 {	
 	QFile jsonfile(path);
 	if (jsonfile.open(QIODevice::OpenModeFlag::ReadOnly|QIODevice::Text) )
@@ -385,12 +385,17 @@ void Bookmarkmodel::appendJsonFile(QString path)
 			return;
 		}
 		QJsonObject current=rootobj;
-		qDebug()<<current;
+		
 		if (rootobj.keys().contains("bookmark_bar"))
 		{
 			current=current["bookmark_bar"].toObject();
-			m_model->invisibleRootItem()->appendRow(appendFolderFromJsonBookmark(current,"bookmark bar"));
-		}		
+			m_model->invisibleRootItem()->appendRow(appendFolderFromJsonBookmark(current,"Chrome bookmark bar"));
+		}
+		if (rootobj.keys().contains("others"))
+		{
+			current=rootobj["other"].toObject();
+			m_model->invisibleRootItem()->appendRow(appendFolderFromJsonBookmark(current,"Chrome"));
+		}
 	}
 	else{
 		
@@ -402,32 +407,32 @@ QStandardItem* Bookmarkmodel::appendFolderFromJsonBookmark(QJsonObject obj,QStri
 	ret->setData(true,BookmarkRoles::IsFolderRole);
 	ret->setData(getStandardIcon(ret),Qt::UserRole);		//This ensure there is a default icon on the folder
 	ret->setText(name);
-	qDebug()<<"Add Folder"<< name;
 	if (obj.keys().contains("children"))
 	{
-		qDebug()<<"The object has childern";
-		obj=obj["children"].toObject();
-		foreach (QString key, obj.keys())
+		if (obj["children"].isArray())
 		{
-			qDebug()<<"Parse key"<<key;
-			if (!obj[key].toObject().contains("type"))
+			for (int i=0;i<obj["children"].toArray().count();i++)
 			{
-				break;
-			}
-			if (obj[key].toObject()["type"]=="folder")
-			{
-				//we have spotted a fodler in the bookmarks list
-				appendFolderFromJsonBookmark(obj[key].toObject(),obj[key].toObject()["name"].toString());
-			}
-			if (obj[key].toObject()["type"]=="url")
-			{
-				//we have spotted a url in the bookmark list
-				QStandardItem* bookmark=new QStandardItem();
-				bookmark->setData(false,BookmarkRoles::IsFolderRole);
-				bookmark->setToolTip(xml.attributes().value("href").toString());	//The link goes on the whatsthis
-				bookmark->setText(obj[key].toObject()["name"].toString());				
-				ret->appendRow(bookmark);
-				qDebug()<<"Add bookmark" <<bookmark->text();
+				QJsonObject localobj=obj["children"].toArray().at(i).toObject();
+				if (!localobj.contains("type"))
+				{
+					break;
+				}
+				if (localobj["type"]=="folder")
+				{
+					//we have spotted a fodler in the bookmarks list
+					ret->appendRow(appendFolderFromJsonBookmark(localobj,localobj["name"].toString()));
+				}
+				if (localobj["type"]=="url")
+				{
+					//we have spotted a url in the bookmark list
+					QStandardItem* bookmark=new QStandardItem();
+					bookmark->setData(false,BookmarkRoles::IsFolderRole);
+					bookmark->setToolTip(localobj["url"].toString());	//The link goes on the whatsthis
+					bookmark->setData(getStandardIcon(bookmark),Qt::UserRole);
+					bookmark->setText(localobj["name"].toString());				
+					ret->appendRow(bookmark);
+				}
 			}
 		}
 	}
