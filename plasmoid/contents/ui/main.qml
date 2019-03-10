@@ -19,9 +19,9 @@ Item {
 	Plasmoid.activationTogglesExpanded: true
 	MyPlugins.Bookmarkmodel{
 		id: itemmodel
-		konquerorBookmarks: plasmoid.configuration.firefoxpath
+		konquerorBookmarks: plasmoid.configuration.konquerorpath
 		okularBookmarks: plasmoid.configuration.okularpath
-		firefoxBookmarks: plasmoid.configuration.konquerorpath
+		firefoxBookmarks: plasmoid.configuration.firefoxpath
 		chromeBookmarks: plasmoid.configuration.chromepath
 	}
 	focus:true
