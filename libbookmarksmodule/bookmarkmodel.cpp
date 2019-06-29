@@ -39,7 +39,7 @@ void Bookmarkmodel::setPathForOkularBookmarks(const QString& fullpath)
 	if(m_okularpath!=fullpath)
 	{
 		m_okularpath=fullpath;
-		m_currentlyparsed=CurrentlyParsing::Okular;	
+		m_currentlyparsed=BookmarkSource::Okular;	
 		m_okularpathhaschangedsincelasteread=true;
 		emit okularpathChanged(fullpath);
 	}
@@ -79,22 +79,22 @@ void Bookmarkmodel::ReadAllSources(bool forcereread)
 	m_model->clear();
 	if (FileExists(m_konquerorpath))
 	{
-		m_currentlyparsed=CurrentlyParsing::Konqueror;
+		m_currentlyparsed=BookmarkSource::Konqueror;
 		appendXBELFile(m_konquerorpath);
 	}
 	if (FileExists(m_okularpath))
 	{
-		m_currentlyparsed=CurrentlyParsing::Okular;
+		m_currentlyparsed=BookmarkSource::Okular;
 		appendXBELFile(m_okularpath);
 	}
 	if(FileExists(m_firefoxpath))
 	{
-		m_currentlyparsed=CurrentlyParsing::Firefox;
+		m_currentlyparsed=BookmarkSource::Firefox;
 		//TODO implement json bookmarks
 	}
 	if(FileExists(m_chromepath))
 	{
-		m_currentlyparsed=CurrentlyParsing::Chrome;
+		m_currentlyparsed=BookmarkSource::Chrome;
 		appendChromeBookmarks(m_chromepath);
 	}
 	emit rowCountChanged(rowCount());
@@ -167,7 +167,7 @@ QStandardItem* Bookmarkmodel::readXBELFolder()
 	ret->setData(true,BookmarkRoles::IsFolderRole);
 	Q_ASSERT(xml.isStartElement() && xml.name() == "folder");
 	ret->setData(getStandardIcon(ret),Qt::UserRole);		//This ensure there is a default icon on the folder
-	if(m_currentlyparsed==CurrentlyParsing::Okular) //Force icon for okular books
+	if(m_currentlyparsed==BookmarkSource::Okular) //Force icon for okular books
 	{
 		ret->setData(getCustomOrThemeIconPath("okular",ret),Qt::UserRole);
 	}	
@@ -217,6 +217,7 @@ QStandardItem* Bookmarkmodel::readXBELBookmark()
 	QStandardItem* ret=new QStandardItem();		//This is the bookmark (not a folder) that we are going to build	
 	ret->setData(false,BookmarkRoles::IsFolderRole);
 	ret->setToolTip(xml.attributes().value("href").toString());	//The link goes on the whatsthis
+	ret->setData(int(BookmarkSource::Konqueror),BookmarkRoles::SourceRole);		//We save the source in the item model
 	while (xml.readNextStartElement()) {
 		if (xml.name() == "title")
 		{
@@ -311,20 +312,20 @@ QString Bookmarkmodel::getStandardIcon(const QStandardItem* p_item) const noexce
 	{
 		switch(m_currentlyparsed)
 		{
-			case(CurrentlyParsing::Konqueror):
+			case(BookmarkSource::Konqueror):
 			{
 				return QString("folder-bookmark");
 				
 			}
-			case(CurrentlyParsing::Okular):
+			case(BookmarkSource::Okular):
 			{
 				return QString("okular");
 			}
-			case(CurrentlyParsing::Firefox):
+			case(BookmarkSource::Firefox):
 			{
 				return QString("firefox");
 			}
-			case(CurrentlyParsing::Chrome):
+			case(BookmarkSource::Chrome):
 			{
 				return QString("folder-bookmark");
 			}
@@ -334,19 +335,19 @@ QString Bookmarkmodel::getStandardIcon(const QStandardItem* p_item) const noexce
 	{
 		switch(m_currentlyparsed)
 		{
-			case(CurrentlyParsing::Konqueror):
+			case(BookmarkSource::Konqueror):
 			{
 				return QString("text-html");
 			}
-			case(CurrentlyParsing::Okular):
+			case(BookmarkSource::Okular):
 			{
 				return QString("application-pdf");
 			}
-			case(CurrentlyParsing::Firefox):
+			case(BookmarkSource::Firefox):
 			{
 				return QString("text-html");
 			}
-			case(CurrentlyParsing::Chrome):
+			case(BookmarkSource::Chrome):
 			{
 				return QString("google-chrome");
 			}
@@ -438,7 +439,11 @@ QStandardItem* Bookmarkmodel::appendFolderFromJsonBookmark(QJsonObject obj,QStri
 	}
 	return ret;
 }
-
+void Bookmarkmodel::save(BookmarkSource src,QString filename)
+{
+	//TODO implement me !
+	
+}
 
 
 

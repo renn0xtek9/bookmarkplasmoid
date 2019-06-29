@@ -25,7 +25,7 @@ class Bookmarkmodel :public QSortFilterProxyModel
 	Q_PROPERTY(QString searchfield READ getSearchField WRITE setSearchField NOTIFY searchfieldchanged);
 	
 	
-	enum class  CurrentlyParsing 
+	enum class  BookmarkSource 
 	{
 		Okular,	/**< We are currently parsing an okular bookmarks repository */
 		Konqueror, /**< We are currently parsing an konqueror bookmarks repository */
@@ -50,7 +50,8 @@ public:
 		Iconpathrole = Qt::UserRole,
 		Displayrole =Qt::DisplayRole,
 		Tooltiprole =Qt::ToolTipRole,
-		IsFolderRole = Qt::UserRole+2
+		IsFolderRole = Qt::UserRole+2,
+		SourceRole = Qt::UserRole+3	
 	};
 	Q_INVOKABLE void setPathForKonquerorBookmarks(const QString& fullpath);
 	Q_INVOKABLE void setPathForOkularBookmarks(const QString& fullpath);
@@ -73,6 +74,7 @@ public slots:
 	Q_INVOKABLE void ReadAllSources(bool forcereread);
 
 private:
+	void save(BookmarkSource source,QString filename="");	//This save the data back in the file (in case of modification) TODO implement me
 	void appendXBELFile(QString path); //TODO make it Q_INVOKABLE
 	void appendChromeBookmarks(QString path);
 	QStandardItem* appendFolderFromJsonBookmark(QJsonObject obj,QString name);
@@ -92,7 +94,7 @@ private:
 	bool m_chromepathhaschnagedsincelastread={true};
 	
 	QString getStandardIcon(const QStandardItem* p_item) const noexcept;
-	CurrentlyParsing m_currentlyparsed;
+	   BookmarkSource m_currentlyparsed;
 	//Methods to read an xbel based bookmark fodlder
 	bool readXBEL(QIODevice* device);
 	QString readXBELTitle();

@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 ‎[18:38] ‎<‎kbrosnan‎>‎ places.squlte.wal*/
 	Bookmarkmodel reader;
 // 	reader.setPathForOkularBookmarks(okularfilename);
-// 	reader.setPathForKonquerorBookmarks(filename);
+ 	reader.setPathForKonquerorBookmarks(filename);
 	reader.setPathForChromeBookamarks(googlechrome);
 	reader.ReadAllSources(true);
 	qDebug()<<reader.rowCount();
