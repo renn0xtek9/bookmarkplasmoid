@@ -95,11 +95,11 @@ PlasmaExtras.ScrollArea {
 			}
 		}		
 		Keys.onPressed: {
-			if (event.key == Qt.Key_Left) {
+            if (event.key === Qt.Key_Left) {
 				visualModel.rootIndex=visualModel.parentModelIndex();
 				event.accepted = true;
 			}
-			if (event.key == Qt.Key_Right || event.key==Qt.Key_Enter || event.key==Qt.Key_Return) {
+            if (event.key === Qt.Key_Right || event.key===Qt.Key_Enter || event.key===Qt.Key_Return) {
 				if (!bookmarklist.currentItem.isAFolder)
 				{
 					Qt.openUrlExternally(bookmarklist.currentItem.tooltip)
@@ -110,7 +110,7 @@ PlasmaExtras.ScrollArea {
 				}
 				event.accepted = true;
 			}
-			if (event.key == Qt.Key_Up) {
+            if (event.key === Qt.Key_Up) {
 				if (!(bookmarklist.currentIndex<bookmarklist.count)&&!(bookmarklist.currentIndex>0))
 				{
 					bookmarklist.currentIndex=bookmarklist.count-1
@@ -118,7 +118,7 @@ PlasmaExtras.ScrollArea {
 				bookmarklist.currentIndex = bookmarklist.currentIndex-1 >0 ? bookmarklist.currentIndex-1 :0
 				event.accepted = true;
 			}
-			if (event.key == Qt.Key_Down) {
+            if (event.key === Qt.Key_Down) {
 				if (!(bookmarklist.currentIndex<bookmarklist.count)&&!(bookmarklist.currentIndex>0))
 				{
 					bookmarklist.currentIndex=0
@@ -126,6 +126,9 @@ PlasmaExtras.ScrollArea {
 				bookmarklist.currentIndex = bookmarklist.currentIndex +1 < bookmarklist.count ? bookmarklist.currentIndex+1 : bookmarklist.count
 				event.accepted = true;
 			}
+      //      if ((event.key === Qt.Key_L )&&(event.modifiers=== Qt.ControlModifier)){
+       //         console.log("Contrl +l")
+        //    }
 		}	
 		onCountChanged: {
 			bookmarklist.footerItem.visible=false;
