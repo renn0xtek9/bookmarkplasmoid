@@ -11,7 +11,7 @@ import QtQml.Models 2.2
 PlasmaExtras.ScrollArea {
 	id: scrollView
 	visible:true
-	focus: true
+    focus: true
 	anchors.fill:parent
 	Layout.fillHeight: true
 	property int itemheight
@@ -98,6 +98,7 @@ PlasmaExtras.ScrollArea {
             if (event.key === Qt.Key_Left) {
 				visualModel.rootIndex=visualModel.parentModelIndex();
 				event.accepted = true;
+                console.log("left")
 			}
             if (event.key === Qt.Key_Right || event.key===Qt.Key_Enter || event.key===Qt.Key_Return) {
 				if (!bookmarklist.currentItem.isAFolder)
@@ -126,9 +127,6 @@ PlasmaExtras.ScrollArea {
 				bookmarklist.currentIndex = bookmarklist.currentIndex +1 < bookmarklist.count ? bookmarklist.currentIndex+1 : bookmarklist.count
 				event.accepted = true;
 			}
-      //      if ((event.key === Qt.Key_L )&&(event.modifiers=== Qt.ControlModifier)){
-       //         console.log("Contrl +l")
-        //    }
 		}	
 		onCountChanged: {
 			bookmarklist.footerItem.visible=false;
@@ -155,5 +153,6 @@ PlasmaExtras.ScrollArea {
 				itemmodel.ReadAllSources(false); //Don't force reread if paths are the same (false)
 			}
 		}
+        Component.onCompleted: {itemmodel.ReadAllSources(true);}
 	}	
 }
