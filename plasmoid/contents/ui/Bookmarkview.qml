@@ -17,13 +17,12 @@ PlasmaExtras.ScrollArea {
 	property int itemheight
 	ListView{
 		id: bookmarklist 
-// 		anchors.fill: parent
 		focus:true
 		visible:true
 		model:visualModel
 		highlightFollowsCurrentItem: true
 		highlightMoveVelocity: 800
-// 		keyNavigationEnabled: true  //Only for qt>=5.7
+//        keyNavigationEnabled: true  //Only for qt>=5.7
 		highlight: PlasmaComponents.Highlight {
 			y: 0
 		}
@@ -42,7 +41,6 @@ PlasmaExtras.ScrollArea {
 			id: head 
 			height:itemheight
 			width:bookmarklist.width
-			focus:false
 			PlasmaComponents.ToolButton{
 				id: buttonorganize
 				iconName:"bookmarks-organize.png"
@@ -86,7 +84,6 @@ PlasmaExtras.ScrollArea {
 		footer: PlasmaComponents.ToolButton{
 			width:bookmarklist.width
 			height:itemheight
-			focus:false
 			iconSource: "go-previous-view"
 			text: "Go back"
 			visible:false 
@@ -94,6 +91,10 @@ PlasmaExtras.ScrollArea {
 				visualModel.rootIndex=visualModel.parentModelIndex();
 			}
 		}		
+        function helloworld(){
+            console.log("helloworld")
+        }
+
 		Keys.onPressed: {
             if (event.key === Qt.Key_Left) {
 				visualModel.rootIndex=visualModel.parentModelIndex();
@@ -143,9 +144,10 @@ PlasmaExtras.ScrollArea {
 			}
 		}
 		onVisibleChanged:{
+            currentIndex=0
 			if(visible)
 			{
-				currentIndex=0
+                focus=true
 				itemmodel.konquerorBookmarks=plasmoid.configuration.konquerorpath
 				itemmodel.okularBookmarks=plasmoid.configuration.okularpath
 				itemmodel.firefoxBookmarks=plasmoid.configuration.firefoxpath

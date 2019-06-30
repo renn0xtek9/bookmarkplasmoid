@@ -24,15 +24,12 @@ Item {
 		firefoxBookmarks: plasmoid.configuration.firefoxpath
 		chromeBookmarks: plasmoid.configuration.chromepath
 	}
-// 	focus:true
 	Plasmoid.fullRepresentation:  Item{
 		id: mainrepresentation
 		Layout.minimumWidth:300
 		state:"bookmarkview"
-// 		focus:true
 		Bookmarkview{
-			id:bookmarkview
-// 			focus: true
+            id:bookmarkview
 			itemheight: 32
 		}
 		states: [
@@ -43,13 +40,33 @@ Item {
 				PropertyChanges{
 					target: bookmarkview;focus: true}
 			}
-		]
-		Keys.onPressed: {
-                    if ((event.modifiers == Qt.Key_Control) && (event.text() === "L" )){
-                     console.log("ctr+l pressed")   
-                    }
+        ]
+        Keys.onPressed: {
+            switch(event.key){
+            case Qt.Key_Escape:{
+                console.log("Escape");
+                plasmoid.expanded=false
+            }
+            case Qt.Key_L:{
+                if (event.modifiers=== Qt.ControlModifier){
+                    left()
+                    console.log("Ctrol+l")
+
                 }
-		
+            }
+
+            default:{
+                console.log("default")
+            }
+            }
+        }
+        function left(){
+            bookmarkview.helloworld()
+        }
+
+        onActiveFocusChanged: {
+            bookmarkview.focus=true
+        }
 	}
 	PlasmaCore.DataSource {
 		id: executable
@@ -67,7 +84,7 @@ Item {
 			connectSource(cmd)
 		}
 		signal exited(int exitCode, int exitStatus, string stdout, string stderr)
-	}	
+    }
 }
 
 
