@@ -47,21 +47,21 @@ Item {
                 console.log("Escape");
                 plasmoid.expanded=false
             }
+            /*
             case Qt.Key_L:{
                 if (event.modifiers=== Qt.ControlModifier){
-                    left()
                     console.log("Ctrol+l")
-
+                    bookmarkview.state="searchhasfocus"
                 }
-            }
+            }*/
 
             default:{
                 console.log("default")
             }
             }
         }
-        function left(){
-            bookmarkview.helloworld()
+        function controlleft(){
+            console.log("CTRL")
         }
 
         onActiveFocusChanged: {

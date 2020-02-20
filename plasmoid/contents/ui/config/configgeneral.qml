@@ -11,7 +11,7 @@ Rectangle {
 // 	height: units.gridUnit * 30
 	anchors.fill:parent
 	
-	property alias cfg_konquerorpath :konquerorpath.text
+    property alias cfg_konquerorpath :konquerorpath.text
 	property alias cfg_okularpath: okularpath.text
 	property alias cfg_chromepath: chromepath.text
 	
@@ -38,7 +38,7 @@ Rectangle {
 		PlasmaComponent.TextField{
 			id:konquerorpath
 			width:parent.width
-			text:plasmoid.configuration.konquerorpath
+            text:plasmoid.configuration.konquerorpath
 			clearButtonShown:true
 			anchors{
 				left:parent.left 

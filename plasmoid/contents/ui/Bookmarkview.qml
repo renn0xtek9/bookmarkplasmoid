@@ -2,10 +2,10 @@ import QtQuick 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
+//import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-import MyPlugins 1.0 as MyPlugins
+//import MyPlugins 1.0 as MyPlugins
 import QtQml.Models 2.2
 
 PlasmaExtras.ScrollArea {
@@ -15,9 +15,12 @@ PlasmaExtras.ScrollArea {
 	anchors.fill:parent
 	Layout.fillHeight: true
 	property int itemheight
+    property var searchfieldhasactivefocus
+    property var searchfiledvisible
 	ListView{
 		id: bookmarklist 
-		focus:true
+        property var searchfieldhasactivefocus
+        focus:true
 		visible:true
 		model:visualModel
 		highlightFollowsCurrentItem: true
@@ -37,50 +40,61 @@ PlasmaExtras.ScrollArea {
 				isAFolder: isFolder
 			}
 		}
-		header: RowLayout{
-			id: head 
-			height:itemheight
-			width:bookmarklist.width
-			PlasmaComponents.ToolButton{
-				id: buttonorganize
-				iconName:"bookmarks-organize.png"
-				text:i18n("Edit")
-				tooltip: i18n("Organize KDE Bookmarks")
-				width: 50
-// 				Layout.fillWidth: true
-				Layout.fillHeight: true
-				anchors{
-					left:parent.left
-				}
-				onClicked:{
-					executable.exec("keditbookmarks "+itemmodel.konquerorBookmarks)
-				}
-			}
-			PlasmaComponents.TextField{
-				id: searchfield
-				clearButtonShown:true
-				Layout.fillWidth:true 
-				Layout.fillHeight:true
-				onTextChanged:{
-					itemmodel.setSearchField(text)
-				}
-			}
-			PlasmaComponents.ToolButton{
-				id: buttonrefresh
-				width: 30
-				anchors{
-					right:parent.right
-				}
-				iconName:"view-refresh"
-				text:i18n("Refresh")
-				tooltip: i18n("Re-read sources")
-// 				Layout.fillHeight: true
-				Layout.fillWidth: true
-				onClicked:{
-					itemmodel.ReadAllSources(true);
-				}
-			}
-		}
+        Component {
+            id :headerItem
+            RowLayout{
+                        id: head
+                        height:itemheight
+                        width:bookmarklist.width
+                        PlasmaComponents.ToolButton{
+                            id: buttonorganize
+                            iconName:"bookmarks-organize.png"
+                            text:i18n("Edit")
+                            tooltip: i18n("Organize KDE Bookmarks")
+                            width: 50
+            // 				Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            anchors{
+                                left:parent.left
+                            }
+                            onClicked:{
+                                executable.exec("keditbookmarks "+itemmodel.konquerorBookmarks)
+                            }
+                        }
+                        PlasmaComponents.TextField{
+                            id: searchfield
+                            Component.onCompleted: {
+                                scrollView.searchfieldhasactivefocus= searchfieldhasactivefocus;
+                                scrollView.searchfieldvisible=searchfieldvisible
+                            }
+                            property alias searchfieldhasactivefocus: searchfield.activeFocus
+                            property alias searchfiledvisible: searchfield.visible
+                            visible: false
+                            clearButtonShown:true
+                            Layout.fillWidth:true
+                            Layout.fillHeight:true
+                            onTextChanged:{
+                                itemmodel.setSearchField(text)
+                            }
+                        }
+                        PlasmaComponents.ToolButton{
+                            id: buttonrefresh
+                            width: 30
+                            anchors{
+                                right:parent.right
+                            }
+                            iconName:"view-refresh"
+                            text:i18n("Refresh")
+                            tooltip: i18n("Re-read sources")
+            // 				Layout.fillHeight: true
+                            Layout.fillWidth: true
+                            onClicked:{
+                                itemmodel.ReadAllSources(true);
+                            }
+                        }
+            }
+        }
+        header: headerItem
 		footer: PlasmaComponents.ToolButton{
 			width:bookmarklist.width
 			height:itemheight
@@ -90,44 +104,77 @@ PlasmaExtras.ScrollArea {
 			onClicked:{
 				visualModel.rootIndex=visualModel.parentModelIndex();
 			}
-		}		
-        function helloworld(){
-            console.log("helloworld")
-        }
 
-		Keys.onPressed: {
-            if (event.key === Qt.Key_Left) {
-				visualModel.rootIndex=visualModel.parentModelIndex();
-				event.accepted = true;
-                console.log("left")
-			}
-            if (event.key === Qt.Key_Right || event.key===Qt.Key_Enter || event.key===Qt.Key_Return) {
-				if (!bookmarklist.currentItem.isAFolder)
-				{
-					Qt.openUrlExternally(bookmarklist.currentItem.tooltip)
-				}
-				else
-				{
-					visualModel.rootIndex=bookmarklist.model.modelIndex(bookmarklist.currentIndex);
-				}
-				event.accepted = true;
-			}
-            if (event.key === Qt.Key_Up) {
-				if (!(bookmarklist.currentIndex<bookmarklist.count)&&!(bookmarklist.currentIndex>0))
-				{
-					bookmarklist.currentIndex=bookmarklist.count-1
-				}
-				bookmarklist.currentIndex = bookmarklist.currentIndex-1 >0 ? bookmarklist.currentIndex-1 :0
-				event.accepted = true;
-			}
-            if (event.key === Qt.Key_Down) {
-				if (!(bookmarklist.currentIndex<bookmarklist.count)&&!(bookmarklist.currentIndex>0))
-				{
-					bookmarklist.currentIndex=0
-				}
-				bookmarklist.currentIndex = bookmarklist.currentIndex +1 < bookmarklist.count ? bookmarklist.currentIndex+1 : bookmarklist.count
-				event.accepted = true;
-			}
+        }
+        states: [
+            State{
+                name:"searchhasfocus"
+                PropertyChanges{
+                    target:scrollView; searchfieldhasactivefocus:true;
+                }
+                PropertyChanges{
+                    target: scrollView; searchfiledvisible:true;
+                }
+                StateChangeScript {
+                       name: "myScript"
+                       script: console.log("searchasfocu");
+                 }
+            },
+            State{
+                name:"default"
+                PropertyChanges{
+                    target:scrollView; searchfieldhasactivefocus:false;
+                }
+                StateChangeScript {
+                       name: "myScri"
+                       script: console.log("default");
+                 }
+            }
+        ]
+        Keys.onPressed: {
+                        if (event.key === Qt.Key_Left) {
+                                            visualModel.rootIndex=visualModel.parentModelIndex();
+                                            event.accepted = true;
+                                    }
+                        if (event.key === Qt.Key_Right || event.key===Qt.Key_Enter || event.key===Qt.Key_Return) {
+                                            if (!bookmarklist.currentItem.isAFolder)
+                                            {
+                                                    Qt.openUrlExternally(bookmarklist.currentItem.tooltip)
+                                            }
+                                            else
+                                            {
+                                                    visualModel.rootIndex=bookmarklist.model.modelIndex(bookmarklist.currentIndex);
+                                            }
+                                            event.accepted = true;
+                                    }
+                        if (event.key === Qt.Key_Up) {
+                                            if (!(bookmarklist.currentIndex<bookmarklist.count)&&!(bookmarklist.currentIndex>0))
+                                            {
+                                                    bookmarklist.currentIndex=bookmarklist.count-1
+                                            }
+                                            bookmarklist.currentIndex = bookmarklist.currentIndex-1 >0 ? bookmarklist.currentIndex-1 :0
+                                            event.accepted = true;
+                                    }
+                        if (event.key === Qt.Key_Down) {
+                                            if (!(bookmarklist.currentIndex<bookmarklist.count)&&!(bookmarklist.currentIndex>0))
+                                            {
+                                                    bookmarklist.currentIndex=0
+                                            }
+                                            bookmarklist.currentIndex = bookmarklist.currentIndex +1 < bookmarklist.count ? bookmarklist.currentIndex+1 : bookmarklist.count
+                                            event.accepted = true;
+                                    }
+                        if (event.key === Qt.Key_L){
+                            if(event.modifiers === Qt.ControlModifier){
+                                console.log("Ctrl+L pressed")
+                                if (bookmarklist.state==="default")
+                                {
+                                    bookmarklist.state="searchhasfocus"
+                                }
+                                else {
+                                    bookmarklist.state="default"
+                                }
+                            }
+                        }
 		}	
 		onCountChanged: {
 			bookmarklist.footerItem.visible=false;
@@ -158,3 +205,9 @@ PlasmaExtras.ScrollArea {
         Component.onCompleted: {itemmodel.ReadAllSources(true);}
 	}	
 }
+
+
+
+
+
+

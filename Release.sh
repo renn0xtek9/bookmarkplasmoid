@@ -27,7 +27,17 @@ sed -i "s/^set(PROJECT_VERSION_PATCH [0-9]*)/set(PROJECT_VERSION_PATCH $patch)/"
 sed -i "s/^Version number:[0-9]*\.[0-9]*\.[0-9]*/Version number:$major.$minor.$patch/" Readme.md
 sed -i "s/## Changelog/## Changelog \nVersion $major.$minor.$patch/" Readme.md
 
+tmp=$(mktemp -d)
+cd ..
+rsync -av --progress --exclude="Release" --exclude="build" --exclude=".git" --exclude=".vscode"  --exclude=".kdev4" --exclude="BookMarkWidgets/*.kdev4" BookMarkWidgets $tmp
+cd BookMarkWidgets
+7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on BookMarkWidgets-$major-$minor-$patch.7z $tmp/BookMarkWidgets
+mv BookMarkWidgets-$major-$minor-$patch.7z ./Release/
 
+
+
+
+echo $tmp
 echo "Finished"
 exit 0
 
