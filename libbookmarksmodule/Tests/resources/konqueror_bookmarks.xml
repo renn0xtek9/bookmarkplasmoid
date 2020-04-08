@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<xbel dbusName="konqueror" folded="no" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv">
+ <bookmark href="http://www.google.com">
+  <title>google</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="www"/>
+   </metadata>
+  </info>
+ </bookmark>
+ <folder folded="no">
+  <title>News</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="bookmark_folder"/>
+   </metadata>
+  </info>
+  <folder folded="no">
+   <title>TVs</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="https://www.rt.com/">
+    <title>russia today</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://edition.cnn.com/">
+    <title>CNN</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <bookmark href="https://www.washingtonpost.com/">
+   <title>Washington post</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="https://theintercept.com/">
+   <title>The intercept</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <folder folded="no">
+  <title>Linux</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="bookmark_folder"/>
+   </metadata>
+  </info>
+  <folder folded="no">
+   <title>Bash scripting</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="https://linuxconfig.org/bash-scripting-tutorial-for-beginners">
+    <title>Bash tutorial</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+   <bookmark href="https://devhints.io/bash">
+    <title>Bash scripting cheat sheet</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <bookmark href="https://opensource.com/article/18/11/how-install-device-driver-linux">
+   <title>how to install device driver</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <bookmark href="https://github.com/torvalds">
+   <title>github-torvald</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+ </folder>
+ <bookmark href="https://www.youtube.com/">
+  <title>Youtube</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="www"/>
+   </metadata>
+  </info>
+ </bookmark>
+</xbel>

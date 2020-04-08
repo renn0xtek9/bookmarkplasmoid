@@ -1,4 +1,11 @@
-.gitignore
 *.kdev4
-*.qmlc
+.kdev4/*
+.vscode/*
 build/*
+Release/*
+false 
+false.bak
+falst.tbcache
+*.qmlc
+plasmoid/false 
+plasmoid/false.tbcacche
