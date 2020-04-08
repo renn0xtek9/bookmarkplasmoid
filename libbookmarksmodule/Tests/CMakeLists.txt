@@ -1,21 +1,21 @@
-set(bookmarkmodelTEST)
-enable_testing(true)
+SET (bookmarkmodelTEST)
+ENABLE_TESTING (true)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets Qml Test )
+FIND_PACKAGE (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets Qml
+                                                               Test)
 
-find_package(KF5IconThemes)
+FIND_PACKAGE (KF5IconThemes)
 
-set (TESTSRC bookmarksmodule_test.cpp)
-set(TESTEXE bookmarkmodel_test)
-set (TESTRC resources/Bookmarks resources/konqueror_bookmarks.xml resources/okular_bookmarks.xml)
+SET (TESTSRC bookmarksmodule_test.cpp)
+SET (TESTEXE bookmarkmodel_test)
+SET (TESTRC resources/Bookmarks resources/konqueror_bookmarks.xml
+            resources/okular_bookmarks.xml)
 
-
-FOREACH (_file ${TESTRC} )
-FILE(COPY ${_file} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+FOREACH (_file ${TESTRC})
+  FILE (COPY ${_file} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 ENDFOREACH ()
 
-add_executable(${TESTEXE} ${TESTSRC})
-add_test(test_one ${TESTEXE})
+ADD_EXECUTABLE (${TESTEXE} ${TESTSRC})
+ADD_TEST (test_one ${TESTEXE})
 
-
-target_link_libraries(${TESTEXE} PRIVATE ${LIBNAME} Qt5::Test)
+TARGET_LINK_LIBRARIES (${TESTEXE} PRIVATE ${LIBNAME} Qt5::Test)
