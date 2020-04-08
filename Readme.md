@@ -12,8 +12,9 @@ It has a qml frontend (for the plasmoid in itself) and a C++ backend to analyze 
 
 ## TODO 
 
-* Support for Firefox bookmarks
-* Create Unit-Tests 
+* [ ] Support for Firefox bookmarks
+* [ ] Extend unit-tests to cover all implemented use cases
+    * [ ] Debug/understand why bookmarksmodule_test::get_correct_number_of_element_for_chrome_bookmarks fails
 
 ## Compile instruction 
 Under ubuntu you will need

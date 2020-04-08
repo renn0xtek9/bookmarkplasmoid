@@ -1,5 +1,6 @@
 #include <bookmarksmodule_test.h>
 #include <QtCore/QSharedPointer>
+#include <QtCore/QDebug>
 #include <bookmarkmodel.hpp>
 bookmarksmodule_test::bookmarksmodule_test() : QObject() {
 }
@@ -43,6 +44,15 @@ void bookmarksmodule_test::get_correct_number_of_element_for_okular_bookmarks() 
   m_model->ReadAllSources(true);
   QVERIFY2(m_model->rowCount() == expected_number_of_row,
            "Do not get the correct number of element when reading form konqueror bookmarks");
+}
+
+void bookmarksmodule_test::get_correct_number_of_element_for_chrome_bookmarks() {
+  int expected_number_of_row = 4;
+  m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+  m_model->setPathForChromeBookamarks("Bookmarks");
+  m_model->ReadAllSources(true);
+  QVERIFY2(m_model->rowCount() == expected_number_of_row,
+           "Do not get the correct number of element when reading form Chrome bookmarks");
 }
 
 QTEST_MAIN(bookmarksmodule_test)

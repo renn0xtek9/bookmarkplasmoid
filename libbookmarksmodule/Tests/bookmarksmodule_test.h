@@ -21,7 +21,12 @@ private Q_SLOTS:
     void path_are_set_correctly();
     
     void get_correct_number_of_element_for_konqueror_bookmarks();
+    
     void get_correct_number_of_element_for_okular_bookmarks();
+    
+    void get_correct_number_of_element_for_chrome_bookmarks();
+    
+    
 private:
     QSharedPointer<Bookmarkmodel> m_model{};
 };
