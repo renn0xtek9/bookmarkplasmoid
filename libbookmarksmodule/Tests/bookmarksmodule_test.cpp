@@ -8,9 +8,10 @@ bookmarksmodule_test::bookmarksmodule_test(): QObject()
 void bookmarksmodule_test::init()
 {
 //     m_model=QSharedPointer<Bookmarkmodel>(new Bookmarkmodel());
-    Bookmarkmodel m_model;
-    m_model.setPathForChromeBookamarks("fucl");
-    // will be called before each testfunction is executed.
+    m_model=QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+    m_model->setPathForChromeBookamarks("Bookmarks");
+    m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
+    m_model->setPathForOkularBookmarks("okular_bookmarks.xml");
 }
 void bookmarksmodule_test::initTestCase()
 {
@@ -25,14 +26,30 @@ void bookmarksmodule_test::cleanupTestCase()
     // will be called after the last testfunction was executed.
 }
 
-void bookmarksmodule_test::can_create_a_bookmark_model()
+void bookmarksmodule_test::path_are_set_correctly()
 {
-    
-    
-    QVERIFY2(true==false,"First test");
-    
+    QVERIFY2(m_model->getPathForChromeBookmarks()=="Bookmarks","Path for chrome bookmark is wrong");
+    QVERIFY2(m_model->getPathForKonquerorBookmarks()=="konqueror_bookmarks.xml","Path for Konqueror bookmark is wrong");
+    QVERIFY2(m_model->getPathForOkularBookmarks()=="okular_bookmarks.xml","Path for Okular bookmark is wrong");   
 }
 
+void bookmarksmodule_test::get_correct_number_of_element_for_konqueror_bookmarks()
+{
+    int expected_number_of_row=4;
+    m_model=QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+    m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
+    m_model->ReadAllSources(true);
+    QVERIFY2(m_model->rowCount()==expected_number_of_row,"Do not get the correct number of element when reading form konqueror bookmarks");
+}
+
+void bookmarksmodule_test::get_correct_number_of_element_for_okular_bookmarks()
+{
+    int expected_number_of_row=2;
+    m_model=QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+    m_model->setPathForOkularBookmarks("okular_bookmarks.xml");
+    m_model->ReadAllSources(true);
+    QVERIFY2(m_model->rowCount()==expected_number_of_row,"Do not get the correct number of element when reading form konqueror bookmarks");
+}
 
 QTEST_MAIN(bookmarksmodule_test)
 #include "moc_bookmarksmodule_test.cpp"

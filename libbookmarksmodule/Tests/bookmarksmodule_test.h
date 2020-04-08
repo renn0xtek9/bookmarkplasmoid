@@ -18,7 +18,10 @@ private Q_SLOTS:
     // will be called after every testfunction.
     void cleanup();
     
-    void can_create_a_bookmark_model();
+    void path_are_set_correctly();
+    
+    void get_correct_number_of_element_for_konqueror_bookmarks();
+    void get_correct_number_of_element_for_okular_bookmarks();
 private:
     QSharedPointer<Bookmarkmodel> m_model{};
 };
