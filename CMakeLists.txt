@@ -12,7 +12,7 @@ set(CMAKE_INSTALL_PREFIX=/usr)
 # Locate plasma_install_package macro.
 find_package(KF5Plasma REQUIRED)
 # add_subdirectory(DataEngine/)
-add_subdirectory(libbookmarksmodule/)
+add_subdirectory(libbookmarksmodule)
 # Add installatation target ("make install").
 plasma_install_package(plasmoid org.kde.bookmarkplasmoid)
 

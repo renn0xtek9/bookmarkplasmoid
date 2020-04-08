@@ -1,13 +1,16 @@
 set(bookmarkmodelTEST)
+enable_testing(true)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets Qml )
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets Qml Test )
 
 find_package(KF5IconThemes)
 
+set (TESTSRC bookmarksmodule_test.cpp)
 
-file (GLOB SRC "*.cpp" ) 
-set (SRC ${SRC} ./../bookmarkmodel.cpp )
-include_directories(./../)
+set(TESTEXE bookmarkmodel_test)
 
-add_executable(bookmarkmodelTEST ${SRC})
-target_link_libraries(bookmarkmodelTEST Qt5::Widgets Qt5::Qml KF5::IconThemes)
+add_executable(${TESTEXE} ${TESTSRC})
+add_test(test_one ${TESTEXE})
+
+
+target_link_libraries(${TESTEXE} PRIVATE ${LIBNAME} Qt5::Test)
