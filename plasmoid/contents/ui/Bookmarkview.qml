@@ -109,10 +109,6 @@ PlasmaExtras.ScrollArea {
                     target: scrollView
                     searchfiledvisible: true
                 }
-                StateChangeScript {
-                    name: "myScript"
-                    script: console.log("State: searchasfocus")
-                }
             },
             State {
                 name: "default"
@@ -120,10 +116,6 @@ PlasmaExtras.ScrollArea {
                     target: scrollView
                     searchfieldhasactivefocus: false
                     searchfiledvisible: false
-                }
-                StateChangeScript {
-                    name: "myScri"
-                    script: console.log("State: default")
                 }
             }
         ]
@@ -162,8 +154,6 @@ PlasmaExtras.ScrollArea {
             }
             if (event.key === Qt.Key_L) {
                 if (event.modifiers === Qt.ControlModifier) {
-                    console.log("Ctrl+L pressed")
-                    console.log(bookmarklist.state)
                     if (bookmarklist.state === "default") {
                         bookmarklist.state = "searchhasfocus"
                     } else {
