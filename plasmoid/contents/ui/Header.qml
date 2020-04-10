@@ -10,20 +10,22 @@ RowLayout{
                 iconName:"bookmarks-organize.png"
                 text:i18n("Edit")
                 tooltip: i18n("Organize KDE Bookmarks")
-                width: 50
-// 				Layout.fillWidth: true
+                width:parent.width/3
+                //width: 50
+                // 				Layout.fillWidth: true
                 Layout.fillHeight: true
-                anchors{
-                    left:parent.left
-                }
+                //anchors{
+//                    left:parent.left
+//                }
                 onClicked:{
                     executable.exec("keditbookmarks "+itemmodel.konquerorBookmarks)
                 }
             }
             PlasmaComponents.TextField{
                 id: searchfield
+                width:parent.width/3
                 clearButtonShown:true
-                Layout.fillWidth:true
+//                 Layout.fillWidth:true
                 Layout.fillHeight:true
                 onTextChanged:{
                     itemmodel.setSearchField(text)
@@ -31,15 +33,16 @@ RowLayout{
             }
             PlasmaComponents.ToolButton{
                 id: buttonrefresh
-                width: 30
-                anchors{
-                    right:parent.right
-                }
+                width:parent.width/3
+//                 width: 30
+//                anchors{
+//                    right:parent.right
+//                }
                 iconName:"view-refresh"
                 text:i18n("Refresh")
                 tooltip: i18n("Re-read sources")
 // 				Layout.fillHeight: true
-                Layout.fillWidth: true
+//                 Layout.fillWidth: true
                 onClicked:{
                     itemmodel.ReadAllSources(true);
                 }

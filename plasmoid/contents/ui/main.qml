@@ -47,16 +47,15 @@ Item {
                 console.log("Escape");
                 plasmoid.expanded=false
             }
-            /*
             case Qt.Key_L:{
                 if (event.modifiers=== Qt.ControlModifier){
-                    console.log("Ctrol+l")
+                    console.log("Ctrl+L")
                     bookmarkview.state="searchhasfocus"
+                    bookmarkview.searchfieldhasactivefocus=true
                 }
-            }*/
-
+            }
             default:{
-                console.log("default")
+                console.log("key evnt: "+event.key)
             }
             }
         }
