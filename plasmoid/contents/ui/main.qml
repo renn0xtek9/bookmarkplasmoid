@@ -49,22 +49,11 @@ Item {
         Keys.onPressed: {
             switch (event.key) {
             case Qt.Key_Escape:
-            {
                 console.log("Escape")
                 plasmoid.expanded = false
-            }
-            case Qt.Key_L:
-            {
-                if (event.modifiers === Qt.ControlModifier) {
-                    console.log("Ctrl+L")
-                    bookmarkview.state = "searchhasfocus"
-                    bookmarkview.searchfieldhasactivefocus = true
-                }
-            }
+                break
             default:
-            {
                 console.log("key evnt: " + event.key)
-            }
             }
         }
         function controlleft() {
