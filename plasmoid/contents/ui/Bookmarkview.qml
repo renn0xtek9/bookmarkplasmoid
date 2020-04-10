@@ -163,6 +163,7 @@ PlasmaExtras.ScrollArea {
             if (event.key === Qt.Key_L) {
                 if (event.modifiers === Qt.ControlModifier) {
                     console.log("Ctrl+L pressed")
+                    console.log(bookmarklist.state)
                     if (bookmarklist.state === "default") {
                         bookmarklist.state = "searchhasfocus"
                     } else {
@@ -206,6 +207,7 @@ PlasmaExtras.ScrollArea {
             }
         }
         Component.onCompleted: {
+            bookmarklist.state="default"
             itemmodel.ReadAllSources(true)
         }
     }
