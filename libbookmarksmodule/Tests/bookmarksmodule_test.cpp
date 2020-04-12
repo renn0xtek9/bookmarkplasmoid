@@ -23,16 +23,34 @@ void bookmarksmodule_test::cleanupTestCase() {
 }
 //helpers
 
-QStringList bookmarksmodule_test::list_all_entries_of_the_model_at_this_hierarchical_level()
+QStringList bookmarksmodule_test::list_all_entries_of_the_model_at_this_hierarchical_level(const QModelIndex& parent_index)
 {
     QStringList list_of_entries{};
     for(int i=0;i<m_model->rowCount();++i)
     {
-        QModelIndex parent_index;
         QModelIndex current_index=m_model->index(i,0,parent_index);
         list_of_entries.append(m_model->data(current_index,Qt::DisplayRole).toString());
     }
     return list_of_entries;
+}
+QJsonObject bookmarksmodule_test::convert_model_to_qjsonobject()
+{
+    QJsonObject json_object;
+    for (int row = 0; row < m_model->getModel()->rowCount(); ++row)
+    {
+        QModelIndex index = m_model->getModel()->index(row,0,QModelIndex());
+        QStandardItem *item = m_model->getModel()->itemFromIndex(index);
+        if (item->hasChildren())
+        {
+            json_object.insert(item->text(),"Folder");
+        }
+        else 
+        {
+            json_object.insert(item->text(),item->data(Qt::UserRole+3).toString());
+        }
+    }
+    qDebug()<<json_object;
+    return json_object;
 }
 
 
@@ -52,7 +70,49 @@ void bookmarksmodule_test::get_correct_number_of_element_for_konqueror_bookmarks
   m_model->ReadAllSources(true);
   QVERIFY2(m_model->rowCount() == expected_number_of_row,
            "Do not get the correct number of element when reading form konqueror bookmarks");
+  
+  QStringList expected_items{"google","News","Linux","Youtube"};
+  QCOMPARE(list_all_entries_of_the_model_at_this_hierarchical_level(),expected_items);
 }
+void bookmarksmodule_test::scan_complete_hierarchy_of_konqueror_model_bookmark()
+{
+    m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+    m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
+    m_model->ReadAllSources(true);
+    QModelIndex parent;
+    QStringList expected_items{"google","News","Linux","Youtube"};
+    QCOMPARE(list_all_entries_of_the_model_at_this_hierarchical_level(),expected_items);
+    
+    convert_model_to_qjsonobject();
+    /*
+    for (int row = 0; row < m_model->getModel()->rowCount(); ++row)
+    {
+         QModelIndex index = m_model->getModel()->index(row,0,QModelIndex());
+        QStandardItem *item = m_model->getModel()->itemFromIndex(index);
+        qDebug()<<item->text();
+        qDebug()<<item->hasChildren();
+//         m_model->getModel()->setData(index,0);
+        
+    }
+    */
+    
+    
+    
+    /*
+
+    parent=m_model->index(2,0,QModelIndex());
+    qDebug()<<m_model->getModel()->itemFromIndex(parent);
+    expected_items=QStringList{"TVs","Washington post","The intercept"};
+//     qDebug()<<list_all_entries_of_the_model_at_this_hierarchical_level();
+//     qDebug()<<m_model->data(m_model->index(1,1,parent));
+    QCOMPARE(list_all_entries_of_the_model_at_this_hierarchical_level(parent),expected_items);
+//     parent=m_model->inde
+    */
+}
+
+
+
+
 
 void bookmarksmodule_test::get_correct_number_of_element_for_okular_bookmarks() {
   int expected_number_of_row = 2;

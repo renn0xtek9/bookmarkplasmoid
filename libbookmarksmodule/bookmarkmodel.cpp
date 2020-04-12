@@ -23,6 +23,9 @@ Bookmarkmodel::~Bookmarkmodel()
 {
 
 }
+QStandardItemModel* Bookmarkmodel::getModel() const {
+    return m_model;
+}
 void Bookmarkmodel::setPathForKonquerorBookmarks(const QString& fullpath)
 {
 	m_konquerorpathhaschangedsincelastread=false;
