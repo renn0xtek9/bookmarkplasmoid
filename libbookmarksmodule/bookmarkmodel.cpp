@@ -390,7 +390,7 @@ void Bookmarkmodel::appendChromeBookmarks(QString path)
 		if (rootobj.keys().contains("bookmark_bar"))
 		{
 			current=current["bookmark_bar"].toObject();
-			m_model->invisibleRootItem()->appendRow(appendFolderFromJsonBookmark(current,"Chrome bookmark bar"));
+			m_model->invisibleRootItem()->appendRow(appendFolderFromJsonBookmark(current,"Chrome bookmarks bar"));
 		}
 		if (rootobj.keys().contains("others"))
 		{

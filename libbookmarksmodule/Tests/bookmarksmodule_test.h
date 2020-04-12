@@ -29,6 +29,7 @@ private Q_SLOTS:
     
 private:
     QSharedPointer<Bookmarkmodel> m_model{};
+    QStringList list_all_entries_of_the_model_at_this_hierarchical_level();
 };
 
 #endif // BOOKMARKSMODULE_TEST_HPP
