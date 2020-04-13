@@ -7,17 +7,37 @@
 #include <QtCore/QDebug>
 #include <bookmarkmodel.hpp>
 
-typedef QPair<QString,QList<QVariant>> Subfolder;    // typedef for your type
-Q_DECLARE_METATYPE(Subfolder);  
-bool operator== (const Subfolder& subfolder1, const Subfolder& subfolder2);
 
-bool CompareTwoTree(QList<QVariant> tree1,QList<QVariant> tree2);
-
-
-QDebug operator<< (QDebug d, const Subfolder &sb) {
-    d <<"Folder "<<sb.first<<" :"<<sb.second;
+typedef QPair<int,QStringList> TreeElement;
+typedef QList<TreeElement> TwoDimensionTree ;
+QDebug operator<< (QDebug d, const TwoDimensionTree &tree) {
+    for (const auto& row:tree)
+    {
+        d<<"\n";
+        for(int i=0;i<row.first;++i)
+        {
+            d<<"  ";
+        }
+        d<<row.second.at(0)<<" "<<row.second.at(1);
+    }
     return d;
 }
+QDebug operator<< (QDebug d, const TreeElement& treelement)
+{
+    d<<" index"<<treelement.first <<" content: "<<treelement.second;
+    return d;
+}
+char *toString(const TreeElement& treelement)
+{
+    QString content,index;
+    for (int i=0;i<treelement.second.size();++i)
+    {
+        content+=treelement.second.at(i)+" ";
+    }
+    index.setNum(treelement.first);
+    return QTest::toString(QString("index: ")+ index +QString(" content: ")+content);
+}
+
 
 
 class bookmarksmodule_test: public QObject 
@@ -46,11 +66,11 @@ private Q_SLOTS:
     
     
 private:   
-    
     QSharedPointer<Bookmarkmodel> m_model{};
     QStringList list_all_entries_of_the_model_at_this_hierarchical_level(const QModelIndex& parent_index=QModelIndex{});
-    QList<QVariant> m_tree{};
-    void get_tree_of_data_model(QModelIndex parent,QList<QVariant>& top_level_of_list);
+//     QList<QVariant> m_tree{};
+    void get_tree_of_data_model(QModelIndex parent, int col_start=0);
+    TwoDimensionTree m_tree{};
 };
 
 #endif // BOOKMARKSMODULE_TEST_HPP
