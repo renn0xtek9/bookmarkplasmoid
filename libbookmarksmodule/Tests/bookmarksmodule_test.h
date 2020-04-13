@@ -60,6 +60,7 @@ private Q_SLOTS:
     
     void scan_complete_hierarchy_of_konqueror_model_bookmark();
     void scan_complete_hierarchy_of_okular_model_bookmark();
+    void scan_complete_hierarchy_of_okular_model_bookmark_when_folded();
     void scan_complete_hierarchy_of_chrome_bookmark_model();
     
     

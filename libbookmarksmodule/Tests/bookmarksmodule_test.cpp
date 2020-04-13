@@ -95,6 +95,29 @@ void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark() {
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
 
+void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark_when_folded() {
+    m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+  m_model->setPathForOkularBookmarks("okular_bookmarks.xml");
+  m_model->ReadAllSources(true);
+  TwoDimensionTree expected_tree;
+  expected_tree.append(qMakePair(0,QStringList{"Okular bookmarks","Folder"}));
+  expected_tree.append(qMakePair(1, QStringList{"Making America Great Again", "Folder"}));
+  expected_tree.append(
+      qMakePair(2, QStringList{"Being true, always, again and again", "file:///home/Donald/mybook.pdf#:10"}));
+  expected_tree.append(
+      qMakePair(2, QStringList{"How to tweet faster than anyone", "file:///home/Donald/mybook.pdf#:12"}));
+  expected_tree.append(
+      qMakePair(1, QStringList{"Future of Feminism and Woman Empowerment By Vladimir Putin", "Folder"}));
+  expected_tree.append(
+      qMakePair(2, QStringList{"Gulag", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:1"}));
+  expected_tree.append(
+      qMakePair(2, QStringList{"I said Gulag !", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:2"}));
+  expected_tree.append(qMakePair(
+      2, QStringList{"I saaiiiddd GULAG !", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:12"}));
+  QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
+}
+
+
 void bookmarksmodule_test::scan_complete_hierarchy_of_chrome_bookmark_model() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
   m_model->setPathForChromeBookamarks("Bookmarks");
