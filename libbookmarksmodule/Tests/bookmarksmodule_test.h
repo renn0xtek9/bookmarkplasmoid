@@ -2,8 +2,24 @@
 #define BOOKMARKSMODULE_TEST_HPP
 #include <QtTest/QTest>
 #include <QtCore/QSharedPointer>
-#include <QtCore/QJsonObject>
+#include <QtCore/QList>
+#include <QtCore/QVariant>
+#include <QtCore/QDebug>
 #include <bookmarkmodel.hpp>
+
+typedef QPair<QString,QList<QVariant>> Subfolder;    // typedef for your type
+Q_DECLARE_METATYPE(Subfolder);  
+bool operator== (const Subfolder& subfolder1, const Subfolder& subfolder2);
+
+bool CompareTwoTree(QList<QVariant> tree1,QList<QVariant> tree2);
+
+
+QDebug operator<< (QDebug d, const Subfolder &sb) {
+    d <<"Folder "<<sb.first<<" :"<<sb.second;
+    return d;
+}
+
+
 class bookmarksmodule_test: public QObject 
 {
     Q_OBJECT
@@ -29,10 +45,12 @@ private Q_SLOTS:
     void get_correct_number_of_element_for_chrome_bookmarks();
     
     
-private:
+private:   
+    
     QSharedPointer<Bookmarkmodel> m_model{};
     QStringList list_all_entries_of_the_model_at_this_hierarchical_level(const QModelIndex& parent_index=QModelIndex{});
-    QJsonObject convert_model_to_qjsonobject();
+    QList<QVariant> m_tree{};
+    void get_tree_of_data_model(QModelIndex parent,QList<QVariant>& top_level_of_list);
 };
 
 #endif // BOOKMARKSMODULE_TEST_HPP
