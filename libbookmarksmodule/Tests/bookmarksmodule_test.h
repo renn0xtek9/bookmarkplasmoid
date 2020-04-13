@@ -67,10 +67,8 @@ private Q_SLOTS:
     
 private:   
     QSharedPointer<Bookmarkmodel> m_model{};
-    QStringList list_all_entries_of_the_model_at_this_hierarchical_level(const QModelIndex& parent_index=QModelIndex{});
-//     QList<QVariant> m_tree{};
-    void get_tree_of_data_model(QModelIndex parent, int col_start=0);
-    TwoDimensionTree m_tree{};
+    TwoDimensionTree get_tree_of_data_model(QModelIndex parent, int col_start=0);
+    
 };
 
 #endif // BOOKMARKSMODULE_TEST_HPP
