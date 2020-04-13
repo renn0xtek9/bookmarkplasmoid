@@ -9,7 +9,8 @@
 
 
 typedef QPair<int,QStringList> TreeElement;
-typedef QList<TreeElement> TwoDimensionTree ;
+typedef QList<TreeElement> TwoDimensionTree ;    
+
 QDebug operator<< (QDebug d, const TwoDimensionTree &tree) {
     for (const auto& row:tree)
     {
@@ -57,10 +58,9 @@ private Q_SLOTS:
     
     void path_are_set_correctly();
     
-    void get_correct_number_of_element_for_konqueror_bookmarks();
     void scan_complete_hierarchy_of_konqueror_model_bookmark();
+    void scan_complete_hierarchy_of_okular_model_bookmark();
     
-    void get_correct_number_of_element_for_okular_bookmarks();
     
     void get_correct_number_of_element_for_chrome_bookmarks();
     

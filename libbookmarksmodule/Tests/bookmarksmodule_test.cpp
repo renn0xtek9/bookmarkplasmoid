@@ -74,13 +74,25 @@ void bookmarksmodule_test::scan_complete_hierarchy_of_konqueror_model_bookmark()
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
 
-void bookmarksmodule_test::get_correct_number_of_element_for_okular_bookmarks() {
-  int expected_number_of_row = 2;
+void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
   m_model->setPathForOkularBookmarks("okular_bookmarks.xml");
   m_model->ReadAllSources(true);
-  QVERIFY2(m_model->rowCount() == expected_number_of_row,
-           "Do not get the correct number of element when reading form konqueror bookmarks");
+  TwoDimensionTree expected_tree;
+  expected_tree.append(qMakePair(0, QStringList{"Making America Great Again", "Folder"}));
+  expected_tree.append(
+      qMakePair(1, QStringList{"Being true, always, again and again", "file:///home/Donald/mybook.pdf#:10"}));
+  expected_tree.append(
+      qMakePair(1, QStringList{"How to tweet faster than anyone", "file:///home/Donald/mybook.pdf#:12"}));
+  expected_tree.append(
+      qMakePair(0, QStringList{"Future of Feminism and Woman Empowerment By Vladimir Putin", "Folder"}));
+  expected_tree.append(
+      qMakePair(1, QStringList{"Gulag", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:1"}));
+  expected_tree.append(
+      qMakePair(1, QStringList{"I said Gulag !", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:2"}));
+  expected_tree.append(qMakePair(
+      1, QStringList{"I saaiiiddd GULAG !", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:12"}));
+  QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
 
 void bookmarksmodule_test::get_correct_number_of_element_for_chrome_bookmarks() {
@@ -89,7 +101,7 @@ void bookmarksmodule_test::get_correct_number_of_element_for_chrome_bookmarks() 
   m_model->setPathForChromeBookamarks("Bookmarks");
   m_model->ReadAllSources(true);
   QCOMPARE(m_model->rowCount(), expected_number_of_row);
-  QCOMPARE(list_all_entries_of_the_model_at_this_hierarchical_level(), QStringList("Chrome bookmarks bar"));
+  //   QCOMPARE(list_all_entries_of_the_model_at_this_hierarchical_level(), QStringList("Chrome bookmarks bar"));
 }
 
 QTEST_MAIN(bookmarksmodule_test)
