@@ -98,6 +98,7 @@ void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark() {
 void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark_when_folded() {
     m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
   m_model->setPathForOkularBookmarks("okular_bookmarks.xml");
+  m_model->setOkularBookmarkFolded(true);
   m_model->ReadAllSources(true);
   TwoDimensionTree expected_tree;
   expected_tree.append(qMakePair(0,QStringList{"Okular bookmarks","Folder"}));

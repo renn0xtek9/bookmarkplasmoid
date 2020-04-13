@@ -23,7 +23,7 @@ class Bookmarkmodel :public QSortFilterProxyModel
 	Q_PROPERTY(QString firefoxBookmarks READ getPathForFirefoxBookmarks WRITE setPathForFirefoxBookmarks NOTIFY firefoxpathChanged);
 	Q_PROPERTY(QString chromeBookmarks READ getPathForChromeBookmarks WRITE setPathForChromeBookamarks NOTIFY chromepathChanged );
 	Q_PROPERTY(QString searchfield READ getSearchField WRITE setSearchField NOTIFY searchfieldchanged);
-	
+	Q_PROPERTY(bool okularBookarkFolded WRITE setOkularBookmarkFolded NOTIFY okularbookmarkfoldedChanged)
 	
 	enum class  BookmarkSource 
 	{
@@ -40,6 +40,7 @@ signals:
 	void firefoxpathChanged(QString newpath);
 	void chromepathChanged(QString newpath);
 	void searchfieldchanged(QString searchfield);
+        void okularbookmarkfoldedChanged(bool is_folded);
 	
 
 public:
@@ -58,6 +59,7 @@ public:
 	Q_INVOKABLE void setPathForFirefoxBookmarks(const QString& fullpath);
 	Q_INVOKABLE void setPathForChromeBookamarks(const QString& fullpath);
 	Q_INVOKABLE void setSearchField(const QString & searchfield);
+        Q_INVOKABLE void setOkularBookmarkFolded(const bool& is_folded);
 	
 	QString getPathForKonquerorBookmarks()const;
 	QString getPathForOkularBookmarks()const;
@@ -82,6 +84,8 @@ private:
 	QModelIndex* m_rootmodelindex;
 	QString getCustomOrThemeIconPath(QString iconpathfromxml,QStandardItem* p_item);
 	bool FileExists(const QString & path) const noexcept;
+        bool m_okular_bookmark_should_be_folded{false};
+        
 	//path
 	QString m_konquerorpath;
 	QString m_okularpath;
@@ -106,6 +110,8 @@ private:
 	QXmlStreamReader xml;
 	
 	QStandardItemModel* m_model;
+        
+        QStandardItem* m_item_to_append_to{nullptr};
 };
 
 class BookmarkmodelPlugin : public QQmlExtensionPlugin
