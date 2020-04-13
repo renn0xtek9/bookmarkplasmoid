@@ -60,9 +60,7 @@ private Q_SLOTS:
     
     void scan_complete_hierarchy_of_konqueror_model_bookmark();
     void scan_complete_hierarchy_of_okular_model_bookmark();
-    
-    
-    void get_correct_number_of_element_for_chrome_bookmarks();
+    void scan_complete_hierarchy_of_chrome_bookmark_model();
     
     
 private:   

@@ -95,13 +95,29 @@ void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark() {
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
 
-void bookmarksmodule_test::get_correct_number_of_element_for_chrome_bookmarks() {
-  int expected_number_of_row = 1;
+void bookmarksmodule_test::scan_complete_hierarchy_of_chrome_bookmark_model() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
   m_model->setPathForChromeBookamarks("Bookmarks");
   m_model->ReadAllSources(true);
-  QCOMPARE(m_model->rowCount(), expected_number_of_row);
-  //   QCOMPARE(list_all_entries_of_the_model_at_this_hierarchical_level(), QStringList("Chrome bookmarks bar"));
+  TwoDimensionTree expected;
+  expected.append(qMakePair(0, QStringList{"Chrome bookmarks bar", "Folder"}));
+  expected.append(qMakePair(1, QStringList{"google", "chrome://newtab/"}));
+  expected.append(qMakePair(1, QStringList{"Local", "Folder"}));
+  expected.append(qMakePair(2, QStringList{"Router", "http://192.168.0.1/"}));
+  expected.append(qMakePair(2, QStringList{"Raspberry", "http://192.168.0.2/"}));
+  expected.append(qMakePair(2, QStringList{"Drive", "https://www.google.com/intl/en/drive/"}));
+  expected.append(qMakePair(1, QStringList{"YouTube", "https://www.youtube.com/?gl=DE"}));
+  expected.append(qMakePair(1, QStringList{"Folder1", "Folder"}));
+  expected.append(qMakePair(2, QStringList{"Link1", "https://de.wikipedia.org/wiki/GitHub"}));
+  expected.append(qMakePair(2, QStringList{"Link2", "https://en.wikipedia.org/wiki/GitHub"}));
+  expected.append(qMakePair(2, QStringList{"Subfolder2", "Folder"}));
+  expected.append(qMakePair(3, QStringList{"Subfolder1-Link1", "https://github.blog/"}));
+  expected.append(qMakePair(3, QStringList{"Subfolder1-Link2", "https://twitter.com/github"}));
+  expected.append(qMakePair(2, QStringList{"Subfolder2", "Folder"}));
+  expected.append(qMakePair(3, QStringList{"Subfolder2Link1", "https://www.githubstatus.com/"}));
+  expected.append(qMakePair(3, QStringList{"Subfolder2Link2", "https://git-scm.com/"}));
+
+  QCOMPARE(get_tree_of_data_model(QModelIndex()), expected);
 }
 
 QTEST_MAIN(bookmarksmodule_test)

@@ -1,5 +1,5 @@
 {
-   "checksum": "59e3d49db9f0187f55a3456143255119",
+   "checksum": "58db9557bd9408ada3a6829d07b8af11",
    "roots": {
       "bookmark_bar": {
          "children": [ {
@@ -61,14 +61,6 @@
                "type": "url",
                "url": "https://en.wikipedia.org/wiki/GitHub"
             }, {
-               "children": [  ],
-               "date_added": "13231170530123947",
-               "date_modified": "13231170530123948",
-               "guid": "ca6bab0c-593c-4c72-8052-70784b2cd08e",
-               "id": "18",
-               "name": "Subfolder2",
-               "type": "folder"
-            }, {
                "children": [ {
                   "date_added": "13231170485922457",
                   "guid": "51e9fffe-0c52-4b91-a2a5-64fa62edeb08",
@@ -83,7 +75,15 @@
                   "name": "Subfolder1-Link2",
                   "type": "url",
                   "url": "https://twitter.com/github"
-               }, {
+               } ],
+               "date_added": "13231170530123947",
+               "date_modified": "13231269683027166",
+               "guid": "ca6bab0c-593c-4c72-8052-70784b2cd08e",
+               "id": "18",
+               "name": "Subfolder2",
+               "type": "folder"
+            }, {
+               "children": [ {
                   "date_added": "13231170552342482",
                   "guid": "a062a2e4-66af-4180-ae22-b1a0c129890e",
                   "id": "19",
