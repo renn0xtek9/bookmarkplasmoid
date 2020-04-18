@@ -24,6 +24,7 @@ Item {
         okularBookmarks: plasmoid.configuration.okularpath
         firefoxBookmarks: plasmoid.configuration.firefoxpath
         chromeBookmarks: plasmoid.configuration.chromepath
+        filterItemsOnly: plasmoid.configuration.showonlyitem
     }
     Plasmoid.fullRepresentation: Item {
         id: mainrepresentation

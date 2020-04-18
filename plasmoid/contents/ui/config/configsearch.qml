@@ -5,15 +5,15 @@ import org.kde.plasma.components 2.0 as PlasmaComponent
 import QtQuick.Layouts 1.3
 Rectangle{
 	id: root
+	property alias cfg_showonlyitem : showonlyitem:checked
 	anchors.fill:parent
-	color:syspal.window
-	ColumnLayout{
+ 	color:syspal.window
+        ColumnLayout{
 		anchors.fill:parent
-		PlasmaComponent.CheckBoxStyle{
-			id: searchflat
-			text:i18n("Display search result as a flat collection")
+		PlasmaComponent.CheckBox{
+			id: showonlyitem
+			text:i18n("Show only items in search result")
 			checked: true
-			
 		}		
 		Item{
 			id:space
@@ -21,4 +21,5 @@ Rectangle{
 			Layout.fillWidth:true
 		}		
 	}
+	
 }

@@ -17,5 +17,8 @@
     <entry name="chromepath" type="string">
       <default>false</default>
     </entry>
+    <entry name="showonlyitem" type="bool">
+        <default>true</default>
+    </entry>
   </group>
 </kcfg>
