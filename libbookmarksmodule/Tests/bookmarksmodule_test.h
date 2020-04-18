@@ -66,6 +66,8 @@ private Q_SLOTS:
     void filters_folder_and_items();
     void filters_folder_and_items_when_filtering_items_only();
     
+    void model_is_not_filter_when_searchfield_is_empty();
+    
 private:   
     QSharedPointer<Bookmarkmodel> m_model{};
     TwoDimensionTree get_tree_of_data_model(QModelIndex parent, int col_start=0);

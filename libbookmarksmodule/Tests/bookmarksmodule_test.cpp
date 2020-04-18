@@ -164,8 +164,8 @@ void bookmarksmodule_test::filters_folder_and_items_when_filtering_items_only() 
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
   m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
   m_model->ReadAllSources(true);
-  m_model->setFilterItemsOnly(true);
   m_model->setSearchField("Bash");
+  m_model->setFilterItemsOnly(true);
 
   TwoDimensionTree expected_tree;
   expected_tree.append(
@@ -173,6 +173,35 @@ void bookmarksmodule_test::filters_folder_and_items_when_filtering_items_only() 
   expected_tree.append(qMakePair(0, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
 
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
+}
+void bookmarksmodule_test::model_is_not_filter_when_searchfield_is_empty(){
+  m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+  m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
+  m_model->ReadAllSources(true);
+  m_model->setSearchField("");
+  m_model->setFilterItemsOnly(true);
+    TwoDimensionTree expected_tree;
+  expected_tree.append(qMakePair(0, QStringList{"google", "http://www.google.com"}));
+  expected_tree.append(qMakePair(0, QStringList{"News", "Folder"}));
+  expected_tree.append(qMakePair(1, QStringList{"TVs", "Folder"}));
+  expected_tree.append(qMakePair(2, QStringList{"russia today", "https://www.rt.com/"}));
+  expected_tree.append(qMakePair(2, QStringList{"CNN", "https://edition.cnn.com/"}));
+  expected_tree.append(qMakePair(1, QStringList{"Washington post", "https://www.washingtonpost.com/"}));
+  expected_tree.append(qMakePair(1, QStringList{"The intercept", "https://theintercept.com/"}));
+  expected_tree.append(qMakePair(0, QStringList{"Linux", "Folder"}));
+  expected_tree.append(qMakePair(1, QStringList{"Bash scripting", "Folder"}));
+  expected_tree.append(
+      qMakePair(2, QStringList{"Bash tutorial", "https://linuxconfig.org/bash-scripting-tutorial-for-beginners"}));
+  expected_tree.append(qMakePair(2, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
+  expected_tree.append(
+      qMakePair(1, QStringList{"how to install device driver",
+                               "https://opensource.com/article/18/11/how-install-device-driver-linux"}));
+  expected_tree.append(qMakePair(1, QStringList{"github-torvald", "https://github.com/torvalds"}));
+  expected_tree.append(qMakePair(0, QStringList{"Youtube", "https://www.youtube.com/"}));
+
+  QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
+
+    
 }
 
 QTEST_MAIN(bookmarksmodule_test)
