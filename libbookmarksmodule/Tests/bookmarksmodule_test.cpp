@@ -28,13 +28,14 @@ TwoDimensionTree bookmarksmodule_test::get_tree_of_data_model(QModelIndex parent
   TwoDimensionTree tree{};
   for (int row = 0; row < m_model->rowCount(parent); ++row) {
     QModelIndex index = m_model->index(row, 0, parent);
-    if (index.child(0,0).isValid())
-    {
-        tree.append(qMakePair(col_start,QStringList({index.data(Bookmarkmodel::BookmarkRoles::Displayrole).toString(),"Folder"})));
-        tree.append(get_tree_of_data_model(index,col_start+1));
-    }
-    else {
-        tree.append(qMakePair(col_start,QStringList({index.data(Bookmarkmodel::BookmarkRoles::Displayrole).toString(),index.data(Bookmarkmodel::BookmarkRoles::Tooltiprole).toString()})));
+    if (index.child(0, 0).isValid()) {
+      tree.append(qMakePair(col_start,
+                            QStringList({index.data(Bookmarkmodel::BookmarkRoles::Displayrole).toString(), "Folder"})));
+      tree.append(get_tree_of_data_model(index, col_start + 1));
+    } else {
+      tree.append(
+          qMakePair(col_start, QStringList({index.data(Bookmarkmodel::BookmarkRoles::Displayrole).toString(),
+                                            index.data(Bookmarkmodel::BookmarkRoles::Tooltiprole).toString()})));
     }
   }
   return tree;
@@ -97,12 +98,12 @@ void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark() {
 }
 
 void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark_when_folded() {
-    m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+  m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
   m_model->setPathForOkularBookmarks("okular_bookmarks.xml");
   m_model->setOkularBookmarkFolded(true);
   m_model->ReadAllSources(true);
   TwoDimensionTree expected_tree;
-  expected_tree.append(qMakePair(0,QStringList{"Okular bookmarks","Folder"}));
+  expected_tree.append(qMakePair(0, QStringList{"Okular bookmarks", "Folder"}));
   expected_tree.append(qMakePair(1, QStringList{"Making America Great Again", "Folder"}));
   expected_tree.append(
       qMakePair(2, QStringList{"Being true, always, again and again", "file:///home/Donald/mybook.pdf#:10"}));
@@ -118,7 +119,6 @@ void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark_when
       2, QStringList{"I saaiiiddd GULAG !", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:12"}));
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
-
 
 void bookmarksmodule_test::scan_complete_hierarchy_of_chrome_bookmark_model() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
@@ -145,22 +145,34 @@ void bookmarksmodule_test::scan_complete_hierarchy_of_chrome_bookmark_model() {
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected);
 }
 
-void bookmarksmodule_test::filters_folder_and_items(){
-    m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+void bookmarksmodule_test::filters_folder_and_items() {
+  m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
   m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
   m_model->ReadAllSources(true);
   m_model->setFilterItemsOnly(false);
   m_model->setSearchField("Bash");
-  
+
   TwoDimensionTree expected_tree;
   expected_tree.append(qMakePair(0, QStringList{"Linux", "Folder"}));
   expected_tree.append(qMakePair(1, QStringList{"Bash scripting", "Folder"}));
-  expected_tree.append(qMakePair(2, QStringList{"Bash tutorial", "https://linuxconfig.org/bash-scripting-tutorial-for-beginners"}));
+  expected_tree.append(
+      qMakePair(2, QStringList{"Bash tutorial", "https://linuxconfig.org/bash-scripting-tutorial-for-beginners"}));
   expected_tree.append(qMakePair(2, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
-  QCOMPARE(get_tree_of_data_model(QModelIndex()),expected_tree);
-  
+  QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
+void bookmarksmodule_test::filters_folder_and_items_when_filtering_items_only() {
+  m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
+  m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
+  m_model->ReadAllSources(true);
+  m_model->setFilterItemsOnly(true);
+  m_model->setSearchField("Bash");
 
+  TwoDimensionTree expected_tree;
+  expected_tree.append(
+      qMakePair(2, QStringList{"Bash tutorial", "https://linuxconfig.org/bash-scripting-tutorial-for-beginners"}));
+  expected_tree.append(qMakePair(2, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
+  QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
+}
 
 QTEST_MAIN(bookmarksmodule_test)
 #include "moc_bookmarksmodule_test.cpp"

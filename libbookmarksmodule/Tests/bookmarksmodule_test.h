@@ -64,10 +64,12 @@ private Q_SLOTS:
     void scan_complete_hierarchy_of_chrome_bookmark_model();
     
     void filters_folder_and_items();
+    void filters_folder_and_items_when_filtering_items_only();
     
 private:   
     QSharedPointer<Bookmarkmodel> m_model{};
     TwoDimensionTree get_tree_of_data_model(QModelIndex parent, int col_start=0);
+    
 };
 
 #endif // BOOKMARKSMODULE_TEST_HPP
