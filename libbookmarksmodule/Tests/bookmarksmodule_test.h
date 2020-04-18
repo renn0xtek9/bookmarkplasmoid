@@ -63,11 +63,11 @@ private Q_SLOTS:
     void scan_complete_hierarchy_of_okular_model_bookmark_when_folded();
     void scan_complete_hierarchy_of_chrome_bookmark_model();
     
+    void filters_folder_and_items();
     
 private:   
     QSharedPointer<Bookmarkmodel> m_model{};
     TwoDimensionTree get_tree_of_data_model(QModelIndex parent, int col_start=0);
-    
 };
 
 #endif // BOOKMARKSMODULE_TEST_HPP
