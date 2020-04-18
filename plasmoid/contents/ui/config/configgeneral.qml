@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0 as QtControls
 import org.kde.plasma.configuration 2.0
-// import QtQuick.Layouts 1.0 as Layouts
 import org.kde.plasma.components 2.0 as PlasmaComponent
 import QtQuick.Layouts 1.3
 Rectangle {
