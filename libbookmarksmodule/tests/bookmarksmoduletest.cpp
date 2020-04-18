@@ -176,5 +176,13 @@ void BookMarksModuleTest::model_is_not_filter_when_searchfield_is_empty() {
   QCOMPARE(get_tree_of_data_model(QModelIndex()), KonquerorBookMarksTree());
 }
 
+void BookMarksModuleTest::model_is_not_filtered_anymore_when_searchfield_is_empty_again(){
+  load_model_with_konqueror_bookmarks();
+  m_model->setSearchField("Bash");
+  m_model->setFilterItemsOnly(true);
+  m_model->setSearchField("");
+  QCOMPARE(get_tree_of_data_model(QModelIndex()), KonquerorBookMarksTree());
+}
+
 QTEST_MAIN(BookMarksModuleTest)
 #include "moc_bookmarksmoduletest.cpp"

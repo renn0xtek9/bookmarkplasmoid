@@ -290,8 +290,11 @@ bool Bookmarkmodel::FileExists(const QString& path) const noexcept {
   return finfo.exists();
 }
 void Bookmarkmodel::setSearchField(const QString& searchfield) {
-  m_searchfield=searchfield;
+  m_searchfield = searchfield;
   this->setFilterRegExp(QRegExp(m_searchfield, Qt::CaseInsensitive, QRegExp::FixedString));
+  if (m_searchfield.length() == 0) {
+    this->setSourceModel(m_model);
+  }
   emit searchfieldchanged(m_searchfield);
 }
 void Bookmarkmodel::setOkularBookmarkFolded(const bool& is_folded) {
@@ -300,7 +303,7 @@ void Bookmarkmodel::setOkularBookmarkFolded(const bool& is_folded) {
 }
 void Bookmarkmodel::setFilterItemsOnly(const bool& filterItemsOnly) {
   m_filteritemsonly = filterItemsOnly;
-  if (m_filteritemsonly && m_searchfield.length()>0) {
+  if (m_filteritemsonly && m_searchfield.length() > 0) {
     this->setSourceModel(&m_model_items_only);
   }
   emit filteritemonlyChanged(m_filteritemsonly);
