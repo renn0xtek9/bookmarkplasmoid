@@ -299,6 +299,10 @@ void Bookmarkmodel::setOkularBookmarkFolded(const bool& is_folded) {
   m_okular_bookmark_should_be_folded = is_folded;
   emit okularbookmarkfoldedChanged(m_okular_bookmark_should_be_folded);
 }
+void Bookmarkmodel::setFilterItemsOnly(const bool& filterItemsOnly){
+    m_filteritemsonly=filterItemsOnly;
+    emit filteritemonlyChanged(m_filteritemsonly);
+}
 QString Bookmarkmodel::getSearchField() const {
   return m_searchfield;
 }

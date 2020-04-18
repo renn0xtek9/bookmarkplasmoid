@@ -24,6 +24,7 @@ class Bookmarkmodel :public QSortFilterProxyModel
 	Q_PROPERTY(QString chromeBookmarks READ getPathForChromeBookmarks WRITE setPathForChromeBookamarks NOTIFY chromepathChanged );
 	Q_PROPERTY(QString searchfield READ getSearchField WRITE setSearchField NOTIFY searchfieldchanged);
 	Q_PROPERTY(bool okularBookarkFolded WRITE setOkularBookmarkFolded NOTIFY okularbookmarkfoldedChanged)
+        Q_PROPERTY(bool filterItemsOnly WRITE setFilterItemsOnly NOTIFY filteritemonlyChanged)
 	
 	enum class  BookmarkSource 
 	{
@@ -41,6 +42,7 @@ signals:
 	void chromepathChanged(QString newpath);
 	void searchfieldchanged(QString searchfield);
         void okularbookmarkfoldedChanged(bool is_folded);
+        void filteritemonlyChanged(bool filterItemsOnly);
 	
 
 public:
@@ -60,6 +62,7 @@ public:
 	Q_INVOKABLE void setPathForChromeBookamarks(const QString& fullpath);
 	Q_INVOKABLE void setSearchField(const QString & searchfield);
         Q_INVOKABLE void setOkularBookmarkFolded(const bool& is_folded);
+        Q_INVOKABLE void setFilterItemsOnly(const bool& filterItemsOnly);
 	
 	QString getPathForKonquerorBookmarks()const;
 	QString getPathForOkularBookmarks()const;
@@ -97,6 +100,7 @@ private:
 	bool m_okularpathhaschangedsincelasteread={true};
 	bool m_firefoxpathhaschangedsincelastread={true};
 	bool m_chromepathhaschnagedsincelastread={true};
+        bool m_filteritemsonly={false};
 	
 	QString getStandardIcon(const QStandardItem* p_item) const noexcept;
 	   BookmarkSource m_currentlyparsed;
