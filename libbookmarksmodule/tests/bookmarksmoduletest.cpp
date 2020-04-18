@@ -1,4 +1,4 @@
-#include <bookmarksmodule_test.h>
+#include <bookmarksmoduletest.h>
 #include <QtCore/QDebug>
 #include <QtCore/QModelIndex>
 #include <QtCore/QSharedPointer>
@@ -49,33 +49,32 @@ TwoDimensionTree FoldTree(const QString folding_title, TwoDimensionTree tree) {
   return tree;
 }
 
-bookmarksmodule_test::bookmarksmodule_test() : QObject() {
+BookMarksModuleTest::BookMarksModuleTest() : QObject() {
 }
-void bookmarksmodule_test::init() {
-  //     m_model=QSharedPointer<Bookmarkmodel>(new Bookmarkmodel());
+void BookMarksModuleTest::init() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
 }
-void bookmarksmodule_test::initTestCase() {
+void BookMarksModuleTest::initTestCase() {
   // will be called before the first testfunction is executed.
 }
-void bookmarksmodule_test::cleanup() {
+void BookMarksModuleTest::cleanup() {
   // will be called after every testfunction.
 }
-void bookmarksmodule_test::cleanupTestCase() {
+void BookMarksModuleTest::cleanupTestCase() {
   // will be called after the last testfunction was executed.
 }
 // helpers
 
-void bookmarksmodule_test::load_model_with_konqueror_bookmarks() {
+void BookMarksModuleTest::load_model_with_konqueror_bookmarks() {
   m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
   m_model->ReadAllSources(true);
 }
-void bookmarksmodule_test::load_model_with_okular_bookmarks() {
+void BookMarksModuleTest::load_model_with_okular_bookmarks() {
   m_model->setPathForOkularBookmarks("okular_bookmarks.xml");
   m_model->ReadAllSources(true);
 }
 
-TwoDimensionTree bookmarksmodule_test::get_tree_of_data_model(QModelIndex parent, int col_start) {
+TwoDimensionTree BookMarksModuleTest::get_tree_of_data_model(QModelIndex parent, int col_start) {
   TwoDimensionTree tree{};
   for (int row = 0; row < m_model->rowCount(parent); ++row) {
     QModelIndex index = m_model->index(row, 0, parent);
@@ -93,7 +92,7 @@ TwoDimensionTree bookmarksmodule_test::get_tree_of_data_model(QModelIndex parent
 }
 
 // Tests
-void bookmarksmodule_test::path_are_set_correctly() {
+void BookMarksModuleTest::path_are_set_correctly() {
   m_model->setPathForChromeBookamarks("Bookmarks");
   m_model->setPathForKonquerorBookmarks("konqueror_bookmarks.xml");
   m_model->setPathForOkularBookmarks("okular_bookmarks.xml");
@@ -103,24 +102,24 @@ void bookmarksmodule_test::path_are_set_correctly() {
   QVERIFY2(m_model->getPathForOkularBookmarks() == "okular_bookmarks.xml", "Path for Okular bookmark is wrong");
 }
 
-void bookmarksmodule_test::scan_complete_hierarchy_of_konqueror_model_bookmark() {
+void BookMarksModuleTest::scan_complete_hierarchy_of_konqueror_model_bookmark() {
   load_model_with_konqueror_bookmarks();
   QCOMPARE(get_tree_of_data_model(QModelIndex()), KonquerorBookMarksTree());
 }
 
-void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark() {
+void BookMarksModuleTest::scan_complete_hierarchy_of_okular_model_bookmark() {
   load_model_with_okular_bookmarks();
   QCOMPARE(get_tree_of_data_model(QModelIndex()), OkularBookMarksTree());
 }
 
-void bookmarksmodule_test::scan_complete_hierarchy_of_okular_model_bookmark_when_folded() {
+void BookMarksModuleTest::scan_complete_hierarchy_of_okular_model_bookmark_when_folded() {
   m_model->setOkularBookmarkFolded(true);
   load_model_with_okular_bookmarks();
   m_model->ReadAllSources(true);
   QCOMPARE(get_tree_of_data_model(QModelIndex()), FoldTree("Okular bookmarks", OkularBookMarksTree()));
 }
 
-void bookmarksmodule_test::scan_complete_hierarchy_of_chrome_bookmark_model() {
+void BookMarksModuleTest::scan_complete_hierarchy_of_chrome_bookmark_model() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
   m_model->setPathForChromeBookamarks("Bookmarks");
   m_model->ReadAllSources(true);
@@ -145,7 +144,7 @@ void bookmarksmodule_test::scan_complete_hierarchy_of_chrome_bookmark_model() {
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected);
 }
 
-void bookmarksmodule_test::filters_folder_and_items() {
+void BookMarksModuleTest::filters_folder_and_items() {
   load_model_with_konqueror_bookmarks();
   m_model->setFilterItemsOnly(false);
   m_model->setSearchField("Bash");
@@ -158,7 +157,7 @@ void bookmarksmodule_test::filters_folder_and_items() {
   expected_tree.append(qMakePair(2, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
-void bookmarksmodule_test::filters_folder_and_items_when_filtering_items_only() {
+void BookMarksModuleTest::filters_folder_and_items_when_filtering_items_only() {
   load_model_with_konqueror_bookmarks();
   m_model->setSearchField("Bash");
   m_model->setFilterItemsOnly(true);
@@ -170,12 +169,12 @@ void bookmarksmodule_test::filters_folder_and_items_when_filtering_items_only() 
 
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
-void bookmarksmodule_test::model_is_not_filter_when_searchfield_is_empty() {
+void BookMarksModuleTest::model_is_not_filter_when_searchfield_is_empty() {
   load_model_with_konqueror_bookmarks();
   m_model->setSearchField("");
   m_model->setFilterItemsOnly(true);
   QCOMPARE(get_tree_of_data_model(QModelIndex()), KonquerorBookMarksTree());
 }
 
-QTEST_MAIN(bookmarksmodule_test)
-#include "moc_bookmarksmodule_test.cpp"
+QTEST_MAIN(BookMarksModuleTest)
+#include "moc_bookmarksmoduletest.cpp"

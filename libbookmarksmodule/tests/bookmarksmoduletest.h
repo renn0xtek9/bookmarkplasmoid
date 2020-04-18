@@ -41,11 +41,11 @@ char *toString(const TreeElement& treelement)
 
 
 
-class bookmarksmodule_test: public QObject 
+class BookMarksModuleTest: public QObject 
 {
     Q_OBJECT
 public:
-    bookmarksmodule_test();
+    BookMarksModuleTest();
 private Q_SLOTS:
     // will be called before the first testfunction is executed.
     void initTestCase();

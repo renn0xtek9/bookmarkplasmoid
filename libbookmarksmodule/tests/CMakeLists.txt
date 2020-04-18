@@ -6,8 +6,8 @@ FIND_PACKAGE (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets Qml
 
 FIND_PACKAGE (KF5IconThemes)
 
-SET (TESTSRC bookmarksmodule_test.cpp)
-SET (TESTEXE bookmarkmodel_test)
+SET (TESTSRC bookmarksmoduletest.cpp)
+SET (TESTEXE bookmarkmodeltest)
 SET (TESTRC resources/Bookmarks resources/konqueror_bookmarks.xml
             resources/okular_bookmarks.xml)
 
@@ -16,6 +16,6 @@ FOREACH (_file ${TESTRC})
 ENDFOREACH ()
 
 ADD_EXECUTABLE (${TESTEXE} ${TESTSRC})
-ADD_TEST (bookmarkmodel_test ${TESTEXE})
+ADD_TEST (bookmarkmodeltest ${TESTEXE})
 
 TARGET_LINK_LIBRARIES (${TESTEXE} PRIVATE ${LIBNAME} Qt5::Test)
