@@ -72,6 +72,9 @@ private:
     QSharedPointer<Bookmarkmodel> m_model{};
     TwoDimensionTree get_tree_of_data_model(QModelIndex parent, int col_start=0);
     
+    void load_model_with_konqueror_bookmarks();
+    void load_model_with_okular_bookmarks();
+    
 };
 
 #endif // BOOKMARKSMODULE_TEST_HPP
