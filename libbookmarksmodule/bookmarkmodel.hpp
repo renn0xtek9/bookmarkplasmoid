@@ -71,8 +71,6 @@ public:
 	QString getSearchField()const;
 	QHash<int, QByteArray> roleNames() const ;
 	
-        QStandardItemModel* getModel() const;
-	
 	
 public slots:
 // 	void itemSelectedAsRoot(int index);
