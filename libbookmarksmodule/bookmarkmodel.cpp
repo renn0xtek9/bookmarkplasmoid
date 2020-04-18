@@ -16,6 +16,7 @@ Bookmarkmodel::Bookmarkmodel() : QSortFilterProxyModel(nullptr) {
   this->setRecursiveFilteringEnabled(true);
   m_searchfield = "";
   emit searchfieldchanged(m_searchfield);
+  connect(this, SIGNAL(rowCountChanged(int)), this, SLOT(updateModelItemsOnly()));
 }
 Bookmarkmodel::~Bookmarkmodel() {
 }
@@ -68,7 +69,7 @@ void Bookmarkmodel::ReadAllSources(bool forcereread) {
     if (m_okular_bookmark_should_be_folded) {
       QStandardItem* toplevelitem = new QStandardItem("Okular bookmarks");
       toplevelitem->setData(getCustomOrThemeIconPath("okular", toplevelitem), Qt::UserRole);
-      m_item_to_append_to=toplevelitem;
+      m_item_to_append_to = toplevelitem;
       m_model->invisibleRootItem()->appendRow(toplevelitem);
     }
     m_currentlyparsed = BookmarkSource::Okular;
@@ -116,7 +117,7 @@ bool Bookmarkmodel::readXBEL(QIODevice* device) {
     return false;
   }
   Q_ASSERT(xml.isStartElement() && xml.name() == "xbel");
-  if (m_item_to_append_to==nullptr) {
+  if (m_item_to_append_to == nullptr) {
     m_item_to_append_to = m_model->invisibleRootItem();
   }
   while (xml.readNextStartElement()) {
@@ -296,9 +297,12 @@ void Bookmarkmodel::setOkularBookmarkFolded(const bool& is_folded) {
   m_okular_bookmark_should_be_folded = is_folded;
   emit okularbookmarkfoldedChanged(m_okular_bookmark_should_be_folded);
 }
-void Bookmarkmodel::setFilterItemsOnly(const bool& filterItemsOnly){
-    m_filteritemsonly=filterItemsOnly;
-    emit filteritemonlyChanged(m_filteritemsonly);
+void Bookmarkmodel::setFilterItemsOnly(const bool& filterItemsOnly) {
+  m_filteritemsonly = filterItemsOnly;
+  if (m_filteritemsonly) {
+    this->setSourceModel(&m_model_items_only);
+  }
+  emit filteritemonlyChanged(m_filteritemsonly);
 }
 QString Bookmarkmodel::getSearchField() const {
   return m_searchfield;
@@ -359,4 +363,33 @@ QStandardItem* Bookmarkmodel::appendFolderFromJsonBookmark(QJsonObject obj, QStr
 }
 void Bookmarkmodel::save(BookmarkSource src, QString filename) {
   // TODO implement me !
+}
+
+QList<QStandardItem*> Bookmarkmodel::parseChildsAndListItem(QModelIndex parent, int col_start) {
+  QList<QStandardItem*> list{};
+  for (int row = 0; row < m_model->rowCount(parent); ++row) {
+    QModelIndex index = m_model->index(row, 0, parent);
+    QStandardItem* item = m_model->itemFromIndex(index);
+    if (item->hasChildren()) {
+      list.append(parseChildsAndListItem(index, col_start + 1));
+    } else {
+      list.append(item);
+    }
+  }
+  return list;
+}
+
+void Bookmarkmodel::updateModelItemsOnly() {
+  QList<QStandardItem*> list{};
+  list = parseChildsAndListItem(QModelIndex());
+  m_model_items_only.clear();
+  for (const auto& item : list) {
+    QStandardItem* new_item = new QStandardItem;  // We cannot have one item for two different model
+    new_item->setData(item->data(BookmarkRoles::Iconpathrole), BookmarkRoles::Iconpathrole);
+    new_item->setData(item->data(BookmarkRoles::Displayrole), BookmarkRoles::Displayrole);
+    new_item->setData(item->data(BookmarkRoles::Tooltiprole), BookmarkRoles::Tooltiprole);
+    new_item->setData(item->data(BookmarkRoles::IsFolderRole), BookmarkRoles::IsFolderRole);
+    new_item->setData(item->data(BookmarkRoles::SourceRole), BookmarkRoles::SourceRole);
+    m_model_items_only.appendRow(new_item);
+  }
 }

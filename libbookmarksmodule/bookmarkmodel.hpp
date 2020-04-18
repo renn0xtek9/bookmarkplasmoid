@@ -112,8 +112,13 @@ private:
 	QXmlStreamReader xml;
 	
 	QStandardItemModel* m_model;
+        QStandardItemModel m_model_items_only{this};
         
         QStandardItem* m_item_to_append_to{nullptr};
+        
+        QList<QStandardItem*> parseChildsAndListItem(QModelIndex parent, int col_start=0);
+private slots:
+    void updateModelItemsOnly();
 };
 
 class BookmarkmodelPlugin : public QQmlExtensionPlugin

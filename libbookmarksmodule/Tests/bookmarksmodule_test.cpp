@@ -169,8 +169,9 @@ void bookmarksmodule_test::filters_folder_and_items_when_filtering_items_only() 
 
   TwoDimensionTree expected_tree;
   expected_tree.append(
-      qMakePair(2, QStringList{"Bash tutorial", "https://linuxconfig.org/bash-scripting-tutorial-for-beginners"}));
-  expected_tree.append(qMakePair(2, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
+      qMakePair(0, QStringList{"Bash tutorial", "https://linuxconfig.org/bash-scripting-tutorial-for-beginners"}));
+  expected_tree.append(qMakePair(0, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
+
   QCOMPARE(get_tree_of_data_model(QModelIndex()), expected_tree);
 }
 
