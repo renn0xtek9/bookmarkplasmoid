@@ -40,9 +40,6 @@ Item {
                 PropertyChanges {
                     target: bookmarkview
                     visible: true
-                }
-                PropertyChanges {
-                    target: bookmarkview
                     focus: true
                 }
             }
@@ -58,8 +55,10 @@ Item {
             }
         }
         onActiveFocusChanged: {
-
-            //bookmarkview.focus = true
+            bookmarkview.focus = true
+        }
+        Component.onCompleted: {
+            mainrepresentation.state = "bookmarkview"
         }
     }
     PlasmaCore.DataSource {

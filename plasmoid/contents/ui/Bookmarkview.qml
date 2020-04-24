@@ -18,7 +18,6 @@ PlasmaExtras.ScrollArea {
     property bool searchfieldvisible
     ListView {
         id: bookmarklist
-        property var searchfieldhasactivefocus
         focus: true
         visible: true
         model: visualModel
@@ -58,10 +57,6 @@ PlasmaExtras.ScrollArea {
                 }
                 PlasmaComponents.TextField {
                     id: searchfield
-                    Component.onCompleted: {
-                        scrollView.searchfieldhasactivefocus = searchfieldhasactivefocus
-                        scrollView.searchfieldvisible = searchfieldvisible
-                    }
                     visible: scrollView.searchfieldvisible
                     focus: scrollView.searchfieldhasactivefocus
                     clearButtonShown: true
@@ -112,8 +107,8 @@ PlasmaExtras.ScrollArea {
                     searchfieldvisible: true
                 }
                 PropertyChanges {
-                    target: scrollView
-                    searchfieldvisible: true
+                    target: bookmarklist
+                    currentIndex: -1
                 }
             },
             State {
@@ -168,29 +163,15 @@ PlasmaExtras.ScrollArea {
                 }
             }
         }
-        onSearchfieldhasactivefocusChanged: {
-            console.log("value has changeed")
-            if (searchfieldhasactivefocus === true) {
-                console.log("I will force active focus")
-                searchfield.forceActiveFocus()
-            }
-        }
         onCountChanged: {
-            bookmarklist.footerItem.visible = false
-            bookmarklist.footerItem.height = 0
-            mainrepresentation.Layout.minimumHeight = (bookmarklist.count * (scrollView.itemheight)
-                                                       + bookmarklist.headerItem.height)
-            mainrepresentation.Layout.maximumHeight = mainrepresentation.Layout.minimumHeight
-            console.log("state" + bookmarklist.state)
             if (bookmarklist.count == 0) {
                 bookmarklist.footerItem.visible = true
                 if (bookmarklist.state != "searchhasfocus") {
                     bookmarklist.footerItem.focus = true
                 }
-                bookmarklist.footerItem.height = scrollView.itemheight
-                mainrepresentation.Layout.minimumHeight = bookmarklist.headerItem.height
-                        + bookmarklist.footerItem.height
-                mainrepresentation.Layout.maximumHeight = mainrepresentation.Layout.minimumHeight
+                show_the_footer()
+            } else {
+                hide_the_footer()
             }
         }
         onVisibleChanged: {
@@ -212,5 +193,18 @@ PlasmaExtras.ScrollArea {
     }
     function transfer_focus_from_searchfield_to_list() {
         console.log("transfer focus")
+    }
+    function hide_the_footer() {
+        bookmarklist.footerItem.visible = false
+        bookmarklist.footerItem.height = 0
+        mainrepresentation.Layout.minimumHeight
+                = (bookmarklist.count * (scrollView.itemheight) + bookmarklist.headerItem.height)
+        mainrepresentation.Layout.maximumHeight = mainrepresentation.Layout.minimumHeight
+    }
+    function show_the_footer() {
+        bookmarklist.footerItem.height = scrollView.itemheight
+        mainrepresentation.Layout.minimumHeight = bookmarklist.headerItem.height
+                + bookmarklist.footerItem.height
+        mainrepresentation.Layout.maximumHeight = mainrepresentation.Layout.minimumHeight
     }
 }

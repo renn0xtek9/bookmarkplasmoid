@@ -71,8 +71,6 @@ PlasmaComponents.ListItem {
                 leftMargin: units.gridUnit / 2
                 right: parent.right
                 verticalCenter: parent.verticalCenter
-                // 				top:parent.top
-                // 				bottom:parent.bottom
             }
             PlasmaComponents.Label {
                 height: implicitHeight
@@ -113,7 +111,6 @@ PlasmaComponents.ListItem {
                 rightMargin: 0
                 leftMargin: units.gridUnit * 2
             }
-            /*Layout.fillWidth: true*/
             Item {
                 width: units.gridUnit / 2 - parent.spacing
                 height: 1
