@@ -101,11 +101,11 @@ PlasmaExtras.ScrollArea {
                 PropertyChanges {
                     target: scrollView
                     searchfieldhasactivefocus: true
-                    searchfiledvisible: true
+                    searchfieldvisible: true
                 }
                 PropertyChanges {
                     target: scrollView
-                    searchfiledvisible: true
+                    searchfieldvisible: true
                 }
             },
             State {
@@ -113,7 +113,7 @@ PlasmaExtras.ScrollArea {
                 PropertyChanges {
                     target: scrollView
                     searchfieldhasactivefocus: false
-                    searchfiledvisible: false
+                    searchfieldvisible: false
                 }
             }
         ]
@@ -150,7 +150,7 @@ PlasmaExtras.ScrollArea {
                         < bookmarklist.count ? bookmarklist.currentIndex + 1 : bookmarklist.count
                 event.accepted = true
             }
-            if (event.key === Qt.Key_F) {
+            if (event.key === Qt.Key_L) {
                 if (event.modifiers === Qt.ControlModifier) {
                     if (bookmarklist.state === "default") {
                         bookmarklist.state = "searchhasfocus"
