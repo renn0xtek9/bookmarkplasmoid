@@ -57,10 +57,6 @@ Item {
                 console.log("key evnt: " + event.key)
             }
         }
-        function controlleft() {
-            console.log("CTRL")
-        }
-
         onActiveFocusChanged: {
             bookmarkview.focus = true
         }
@@ -75,7 +71,7 @@ Item {
             var stdout = data["stdout"]
             var stderr = data["stderr"]
             exited(exitCode, exitStatus, stdout, stderr)
-            disconnectSource(sourceName) // cmd finished
+            disconnectSource(sourceName)
         }
         function exec(cmd) {
             connectSource(cmd)

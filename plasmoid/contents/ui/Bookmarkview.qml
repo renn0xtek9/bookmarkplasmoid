@@ -2,10 +2,8 @@ import QtQuick 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 import org.kde.plasma.components 2.0 as PlasmaComponents
-//import org.kde.kquickcontrolsaddons 2.0 as KQuickControlsAddons
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-//import MyPlugins 1.0 as MyPlugins
 import QtQml.Models 2.2
 
 PlasmaExtras.ScrollArea {
@@ -16,7 +14,7 @@ PlasmaExtras.ScrollArea {
     Layout.fillHeight: true
     property int itemheight
     property bool searchfieldhasactivefocus
-    property bool searchfiledvisible
+    property bool searchfieldvisible
     ListView {
         id: bookmarklist
         property var searchfieldhasactivefocus
@@ -25,7 +23,6 @@ PlasmaExtras.ScrollArea {
         model: visualModel
         highlightFollowsCurrentItem: true
         highlightMoveVelocity: 800
-        //        keyNavigationEnabled: true  //Only for qt>=5.7
         highlight: PlasmaComponents.Highlight {
             y: 0
         }
@@ -64,13 +61,14 @@ PlasmaExtras.ScrollArea {
                         scrollView.searchfieldhasactivefocus = searchfieldhasactivefocus
                         scrollView.searchfieldvisible = searchfieldvisible
                     }
-                    visible: scrollView.searchfiledvisible
+                    visible: scrollView.searchfieldvisible
                     focus: scrollView.searchfieldhasactivefocus
                     clearButtonShown: true
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     onTextChanged: {
                         itemmodel.setSearchField(text)
+                        searchfieldhasactivefocus=true
                     }
                 }
                 PlasmaComponents.ToolButton {
@@ -152,7 +150,7 @@ PlasmaExtras.ScrollArea {
                         < bookmarklist.count ? bookmarklist.currentIndex + 1 : bookmarklist.count
                 event.accepted = true
             }
-            if (event.key === Qt.Key_L) {
+            if (event.key === Qt.Key_F) {
                 if (event.modifiers === Qt.ControlModifier) {
                     if (bookmarklist.state === "default") {
                         bookmarklist.state = "searchhasfocus"
@@ -192,12 +190,12 @@ PlasmaExtras.ScrollArea {
                 itemmodel.okularBookmarks = plasmoid.configuration.okularpath
                 itemmodel.firefoxBookmarks = plasmoid.configuration.firefoxpath
                 itemmodel.chromeBookmarks = plasmoid.configuration.chromepath
-                itemmodel.ReadAllSources(
-                            false) //Don't force reread if paths are the same (false)
+                //Don't force reread if paths are the same (false)
+                itemmodel.ReadAllSources(false)
             }
         }
         Component.onCompleted: {
-            bookmarklist.state="default"
+            bookmarklist.state = "default"
             itemmodel.ReadAllSources(true)
         }
     }
