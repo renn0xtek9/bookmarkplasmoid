@@ -1,5 +1,5 @@
 # Set minimum CMake version (required for CMake 3.0 or later)
-ENABLE_TESTING()
+ENABLE_TESTING ()
 CMAKE_MINIMUM_REQUIRED (VERSION 3.10.0)
 
 # Use Extra CMake Modules (ECM) for common functionality. See
@@ -10,12 +10,9 @@ FIND_PACKAGE (ECM REQUIRED NO_MODULE)
 SET (CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR}
                        ${CMAKE_MODULE_PATH})
 
-
 SET (CMAKE_INSTALL_PREFIX=/usr)
 # Locate plasma_install_package macro.
 FIND_PACKAGE (KF5Plasma REQUIRED)
-SET (QML_IMPORT_PATH"/usr/lib/x86_64-linux-gnu/qt5")
-add_subdirectory(plasmoid)
 # add_subdirectory(DataEngine/)
 ADD_SUBDIRECTORY (libbookmarksmodule)
 # Add installatation target ("make install").
