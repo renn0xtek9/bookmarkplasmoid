@@ -69,7 +69,14 @@ PlasmaExtras.ScrollArea {
                     Layout.fillHeight: true
                     onTextChanged: {
                         itemmodel.setSearchField(text)
-                        searchfieldhasactivefocus=true
+                    }
+                    Keys.onPressed: {
+                        if (event.key === Qt.Key_Down
+                                || event.key === Qt.Key_Enter
+                                || event.key === Qt.Key_Return) {
+                            transfer_focus_from_searchfield_to_list()
+                            event.accepted = true
+                        }
                     }
                 }
                 PlasmaComponents.ToolButton {
@@ -174,9 +181,12 @@ PlasmaExtras.ScrollArea {
             mainrepresentation.Layout.minimumHeight = (bookmarklist.count * (scrollView.itemheight)
                                                        + bookmarklist.headerItem.height)
             mainrepresentation.Layout.maximumHeight = mainrepresentation.Layout.minimumHeight
+            console.log("state" + bookmarklist.state)
             if (bookmarklist.count == 0) {
                 bookmarklist.footerItem.visible = true
-                bookmarklist.footerItem.focus = true
+                if (bookmarklist.state != "searchhasfocus") {
+                    bookmarklist.footerItem.focus = true
+                }
                 bookmarklist.footerItem.height = scrollView.itemheight
                 mainrepresentation.Layout.minimumHeight = bookmarklist.headerItem.height
                         + bookmarklist.footerItem.height
@@ -186,7 +196,7 @@ PlasmaExtras.ScrollArea {
         onVisibleChanged: {
             currentIndex = 0
             if (visible) {
-                focus = true
+                //focus = true
                 itemmodel.konquerorBookmarks = plasmoid.configuration.konquerorpath
                 itemmodel.okularBookmarks = plasmoid.configuration.okularpath
                 itemmodel.firefoxBookmarks = plasmoid.configuration.firefoxpath
@@ -199,5 +209,8 @@ PlasmaExtras.ScrollArea {
             bookmarklist.state = "default"
             itemmodel.ReadAllSources(true)
         }
+    }
+    function transfer_focus_from_searchfield_to_list() {
+        console.log("transfer focus")
     }
 }

@@ -58,7 +58,8 @@ Item {
             }
         }
         onActiveFocusChanged: {
-            bookmarkview.focus = true
+
+            //bookmarkview.focus = true
         }
     }
     PlasmaCore.DataSource {

@@ -9,7 +9,7 @@ FIND_PACKAGE (ECM REQUIRED NO_MODULE)
 # Needed by find_package(KF5Plasma) below.
 SET (CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR}
                        ${CMAKE_MODULE_PATH})
-
+SET(QML_IMPORT_PATH $ENV{QML2_IMPORT_PARTH})
 SET (CMAKE_INSTALL_PREFIX=/usr)
 # Locate plasma_install_package macro.
 FIND_PACKAGE (KF5Plasma REQUIRED)
