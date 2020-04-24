@@ -128,7 +128,7 @@ class BookmarkmodelPlugin : public QQmlExtensionPlugin {
   ~BookmarkmodelPlugin() {
   }
   void registerTypes(const char* uri) override {
-    Q_ASSERT(uri == QLatin1String("MyPlugins"));
+    Q_ASSERT(uri == QLatin1String("Bookmarkmodelplugin"));
     qmlRegisterType<Bookmarkmodel, 1>(uri, 1, 0, "Bookmarkmodel");
     // 		qmlRegisterType<Launcher,1>(uri,1,0,"Launcher");
   }
