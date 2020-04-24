@@ -7,7 +7,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-import Bookmarkmodelplugin 1.0 as Bookmarkmodelplugin/
+import Bookmarkmodelplugin 1.0 as Bookmarkmodelplugin
 import Qt.labs.settings 1.0
 import QtQml.Models 2.2
 import QtQuick.Dialogs 1.2
