@@ -371,9 +371,6 @@ QStandardItem* Bookmarkmodel::appendFolderFromJsonBookmark(QJsonObject obj, QStr
   }
   return ret;
 }
-void Bookmarkmodel::save(BookmarkSource src, QString filename) {
-  // TODO implement me !
-}
 
 QList<QStandardItem*> Bookmarkmodel::parseChildsAndListItem(QModelIndex parent, int col_start) {
   QList<QStandardItem*> list{};

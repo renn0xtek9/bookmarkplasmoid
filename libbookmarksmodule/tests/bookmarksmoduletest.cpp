@@ -74,14 +74,16 @@ void BookMarksModuleTest::load_model_with_okular_bookmarks() {
   m_model->ReadAllSources(true);
 }
 
-TwoDimensionTree BookMarksModuleTest::get_tree_of_data_model(QModelIndex parent,QSharedPointer<Bookmarkmodel> model, int col_start) {
+TwoDimensionTree BookMarksModuleTest::get_tree_of_data_model(QModelIndex parent,
+                                                             QSharedPointer<Bookmarkmodel> model,
+                                                             int col_start) {
   TwoDimensionTree tree{};
   for (int row = 0; row < model->rowCount(parent); ++row) {
     QModelIndex index = model->index(row, 0, parent);
     if (index.child(0, 0).isValid()) {
       tree.append(qMakePair(col_start,
                             QStringList({index.data(Bookmarkmodel::BookmarkRoles::Displayrole).toString(), "Folder"})));
-      tree.append(get_tree_of_data_model(index,model, col_start + 1));
+      tree.append(get_tree_of_data_model(index, model, col_start + 1));
     } else {
       tree.append(
           qMakePair(col_start, QStringList({index.data(Bookmarkmodel::BookmarkRoles::Displayrole).toString(),
@@ -104,19 +106,19 @@ void BookMarksModuleTest::path_are_set_correctly() {
 
 void BookMarksModuleTest::scan_complete_hierarchy_of_konqueror_model_bookmark() {
   load_model_with_konqueror_bookmarks();
-  QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model), KonquerorBookMarksTree());
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), KonquerorBookMarksTree());
 }
 
 void BookMarksModuleTest::scan_complete_hierarchy_of_okular_model_bookmark() {
   load_model_with_okular_bookmarks();
-  QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model), OkularBookMarksTree());
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), OkularBookMarksTree());
 }
 
 void BookMarksModuleTest::scan_complete_hierarchy_of_okular_model_bookmark_when_folded() {
   m_model->setOkularBookmarkFolded(true);
   load_model_with_okular_bookmarks();
   m_model->ReadAllSources(true);
-  QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model), FoldTree("Okular bookmarks", OkularBookMarksTree()));
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), FoldTree("Okular bookmarks", OkularBookMarksTree()));
 }
 
 void BookMarksModuleTest::scan_complete_hierarchy_of_chrome_bookmark_model() {
@@ -141,7 +143,7 @@ void BookMarksModuleTest::scan_complete_hierarchy_of_chrome_bookmark_model() {
   expected.append(qMakePair(3, QStringList{"Subfolder2Link1", "https://www.githubstatus.com/"}));
   expected.append(qMakePair(3, QStringList{"Subfolder2Link2", "https://git-scm.com/"}));
 
-  QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model), expected);
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), expected);
 }
 
 void BookMarksModuleTest::filters_folder_and_items() {
@@ -155,7 +157,7 @@ void BookMarksModuleTest::filters_folder_and_items() {
   expected_tree.append(
       qMakePair(2, QStringList{"Bash tutorial", "https://linuxconfig.org/bash-scripting-tutorial-for-beginners"}));
   expected_tree.append(qMakePair(2, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
-  QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model), expected_tree);
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), expected_tree);
 }
 void BookMarksModuleTest::filters_folder_and_items_when_filtering_items_only() {
   load_model_with_konqueror_bookmarks();
@@ -167,50 +169,50 @@ void BookMarksModuleTest::filters_folder_and_items_when_filtering_items_only() {
       qMakePair(0, QStringList{"Bash tutorial", "https://linuxconfig.org/bash-scripting-tutorial-for-beginners"}));
   expected_tree.append(qMakePair(0, QStringList{"Bash scripting cheat sheet", "https://devhints.io/bash"}));
 
-  QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model), expected_tree);
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), expected_tree);
 }
 void BookMarksModuleTest::model_is_not_filter_when_searchfield_is_empty() {
   load_model_with_konqueror_bookmarks();
   m_model->setSearchField("");
   m_model->setFilterItemsOnly(true);
-  QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model), KonquerorBookMarksTree());
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), KonquerorBookMarksTree());
 }
 
-void BookMarksModuleTest::model_is_not_filtered_anymore_when_searchfield_is_empty_again(){
+void BookMarksModuleTest::model_is_not_filtered_anymore_when_searchfield_is_empty_again() {
   load_model_with_konqueror_bookmarks();
   m_model->setSearchField("Bash");
   m_model->setFilterItemsOnly(true);
   m_model->setSearchField("");
-  QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model), KonquerorBookMarksTree());
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), KonquerorBookMarksTree());
 }
 
-void BookMarksModuleTest::filters_folder_are_not_shown_even_if_they_match_when_filtering_items_only(){
-    m_model->setPathForKonquerorBookmarks("konqueror_bookmarks_same_name_for_folder_and_items.xml");
-    m_model->setSearchField("News");
-    m_model->setFilterItemsOnly(true);
-    m_model->ReadAllSources(true);
-    TwoDimensionTree expected_tree;
-    expected_tree.append(qMakePair(0,QStringList{"News2","http://www.google.com"}));
-    expected_tree.append(qMakePair(0,QStringList{"News","https://www.news.com/"}));
-    
-    QCOMPARE(get_tree_of_data_model(QModelIndex(),m_model),expected_tree);
+void BookMarksModuleTest::filters_folder_are_not_shown_even_if_they_match_when_filtering_items_only() {
+  m_model->setPathForKonquerorBookmarks("konqueror_bookmarks_same_name_for_folder_and_items.xml");
+  m_model->setSearchField("News");
+  m_model->setFilterItemsOnly(true);
+  m_model->ReadAllSources(true);
+  TwoDimensionTree expected_tree;
+  expected_tree.append(qMakePair(0, QStringList{"News2", "http://www.google.com"}));
+  expected_tree.append(qMakePair(0, QStringList{"News", "https://www.news.com/"}));
+
+  QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), expected_tree);
 }
 
 void BookMarksModuleTest::filters_order_of_setting_items_only_and_setting_search_field_has_no_impact() {
-    m_model->setPathForKonquerorBookmarks("konqueror_bookmarks_same_name_for_folder_and_items.xml");
-    m_model->setFilterItemsOnly(true);
-    m_model->setSearchField("News");
-    m_model->ReadAllSources(true);
-    TwoDimensionTree items_only_before_searchfield=get_tree_of_data_model(QModelIndex(),m_model);
-    
-    QSharedPointer<Bookmarkmodel> model_two(new Bookmarkmodel);
-    model_two->setPathForKonquerorBookmarks("konqueror_bookmarks_same_name_for_folder_and_items.xml");
-    model_two->setSearchField("News");
-    model_two->setFilterItemsOnly(true);
-    model_two->ReadAllSources(true);
-    TwoDimensionTree searchfield_before_items_only=get_tree_of_data_model(QModelIndex(),model_two);
-    
-    QCOMPARE(items_only_before_searchfield,searchfield_before_items_only);
+  m_model->setPathForKonquerorBookmarks("konqueror_bookmarks_same_name_for_folder_and_items.xml");
+  m_model->setFilterItemsOnly(true);
+  m_model->setSearchField("News");
+  m_model->ReadAllSources(true);
+  TwoDimensionTree items_only_before_searchfield = get_tree_of_data_model(QModelIndex(), m_model);
+
+  QSharedPointer<Bookmarkmodel> model_two(new Bookmarkmodel);
+  model_two->setPathForKonquerorBookmarks("konqueror_bookmarks_same_name_for_folder_and_items.xml");
+  model_two->setSearchField("News");
+  model_two->setFilterItemsOnly(true);
+  model_two->ReadAllSources(true);
+  TwoDimensionTree searchfield_before_items_only = get_tree_of_data_model(QModelIndex(), model_two);
+
+  QCOMPARE(items_only_before_searchfield, searchfield_before_items_only);
 }
 
 QTEST_MAIN(BookMarksModuleTest)
