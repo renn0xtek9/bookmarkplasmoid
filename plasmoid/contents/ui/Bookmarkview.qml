@@ -192,7 +192,11 @@ PlasmaExtras.ScrollArea {
         }
     }
     function transfer_focus_from_searchfield_to_list() {
-        bookmarklist.footerItem.focus = true
+        if (bookmarklist.count == 0) {
+            bookmarklist.footerItem.focus = true
+        } else {
+            bookmarklist.currentIndex = 0
+        }
     }
     function hide_the_footer() {
         bookmarklist.footerItem.visible = false
