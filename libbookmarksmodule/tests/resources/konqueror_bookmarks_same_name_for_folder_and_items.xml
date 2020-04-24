@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<xbel folded="no" dbusName="konqueror" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv">
+ <folder folded="no">
+  <title>News</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="bookmark_folder"/>
+   </metadata>
+  </info>
+  <bookmark href="http://www.nomatch.com">
+   <title>nomatch</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="www"/>
+    </metadata>
+   </info>
+  </bookmark>
+  <folder folded="no">
+   <title>News</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="http://www.google.com">
+    <title>News2</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+  <folder folded="no">
+   <title>TVs</title>
+   <info>
+    <metadata owner="http://freedesktop.org">
+     <bookmark:icon name="bookmark_folder"/>
+    </metadata>
+   </info>
+   <bookmark href="https://www.news.com/">
+    <title>News</title>
+    <info>
+     <metadata owner="http://freedesktop.org">
+      <bookmark:icon name="www"/>
+     </metadata>
+    </info>
+   </bookmark>
+  </folder>
+ </folder>
+</xbel>

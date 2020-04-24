@@ -65,13 +65,16 @@ private Q_SLOTS:
     
     void filters_folder_and_items();
     void filters_folder_and_items_when_filtering_items_only();
+    void filters_folder_are_not_shown_even_if_they_match_when_filtering_items_only();
+    
+    void filters_order_of_setting_items_only_and_setting_search_field_has_no_impact();
     
     void model_is_not_filter_when_searchfield_is_empty();
     void model_is_not_filtered_anymore_when_searchfield_is_empty_again();
     
 private:   
     QSharedPointer<Bookmarkmodel> m_model{};
-    TwoDimensionTree get_tree_of_data_model(QModelIndex parent, int col_start=0);
+    TwoDimensionTree get_tree_of_data_model(QModelIndex parent, QSharedPointer<Bookmarkmodel> model, int col_start=0);
     
     void load_model_with_konqueror_bookmarks();
     void load_model_with_okular_bookmarks();

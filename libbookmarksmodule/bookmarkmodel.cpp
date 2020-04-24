@@ -295,6 +295,12 @@ void Bookmarkmodel::setSearchField(const QString& searchfield) {
   if (m_searchfield.length() == 0) {
     this->setSourceModel(m_model);
   }
+  else{
+      if (m_filteritemsonly==true)
+      {
+          this->setSourceModel(&m_model_items_only);
+      }
+  }
   emit searchfieldchanged(m_searchfield);
 }
 void Bookmarkmodel::setOkularBookmarkFolded(const bool& is_folded) {
@@ -388,12 +394,15 @@ void Bookmarkmodel::updateModelItemsOnly() {
   list = parseChildsAndListItem(QModelIndex());
   m_model_items_only.clear();
   for (const auto& item : list) {
-    QStandardItem* new_item = new QStandardItem;  // We cannot have one item for two different model
-    new_item->setData(item->data(BookmarkRoles::Iconpathrole), BookmarkRoles::Iconpathrole);
-    new_item->setData(item->data(BookmarkRoles::Displayrole), BookmarkRoles::Displayrole);
-    new_item->setData(item->data(BookmarkRoles::Tooltiprole), BookmarkRoles::Tooltiprole);
-    new_item->setData(item->data(BookmarkRoles::IsFolderRole), BookmarkRoles::IsFolderRole);
-    new_item->setData(item->data(BookmarkRoles::SourceRole), BookmarkRoles::SourceRole);
-    m_model_items_only.appendRow(new_item);
+    if (item->data(BookmarkRoles::IsFolderRole) == false) {
+//         qDebug()<<"item: "<<item->data(BookmarkRoles::Displayrole) <<" "<<item->data(BookmarkRoles::IsFolderRole);
+      QStandardItem* new_item = new QStandardItem;
+      new_item->setData(item->data(BookmarkRoles::Iconpathrole), BookmarkRoles::Iconpathrole);
+      new_item->setData(item->data(BookmarkRoles::Displayrole), BookmarkRoles::Displayrole);
+      new_item->setData(item->data(BookmarkRoles::Tooltiprole), BookmarkRoles::Tooltiprole);
+      new_item->setData(item->data(BookmarkRoles::IsFolderRole), BookmarkRoles::IsFolderRole);
+      new_item->setData(item->data(BookmarkRoles::SourceRole), BookmarkRoles::SourceRole);
+      m_model_items_only.appendRow(new_item);
+    }
   }
 }
