@@ -17,3 +17,4 @@ FIND_PACKAGE (KF5Plasma REQUIRED)
 ADD_SUBDIRECTORY (libbookmarksmodule)
 # Add installatation target ("make install").
 PLASMA_INSTALL_PACKAGE (plasmoid org.kde.bookmarkplasmoid)
+ADD_TEST(NAME qmltestrunner COMMAND qmltestrunner WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})

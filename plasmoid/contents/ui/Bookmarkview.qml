@@ -16,6 +16,9 @@ PlasmaExtras.ScrollArea {
     property int itemheight
     property bool searchfieldhasactivefocus
     property bool searchfieldvisible
+    Helper{
+        id: helper
+    }
     ListView {
         id: bookmarklist
         focus: true
@@ -128,7 +131,14 @@ PlasmaExtras.ScrollArea {
             if (event.key === Qt.Key_Right || event.key === Qt.Key_Enter
                     || event.key === Qt.Key_Return) {
                 if (!bookmarklist.currentItem.isAFolder) {
-                    Qt.openUrlExternally(bookmarklist.currentItem.tooltip)
+                    var url=bookmarklist.currentItem.tooltip
+                    if (helper.is_this_file_a_pdf(url))
+                    {
+                        executable.exec(helper.open_command_for_this_pdf(url))
+                    }
+                    else{
+                    Qt.openUrlExternally(url)
+                    }
                 } else {
                     visualModel.rootIndex = bookmarklist.model.modelIndex(
                                 bookmarklist.currentIndex)
@@ -191,6 +201,7 @@ PlasmaExtras.ScrollArea {
             itemmodel.ReadAllSources(true)
         }
     }
+
     function transfer_focus_from_searchfield_to_list() {
         if (bookmarklist.count == 0) {
             bookmarklist.footerItem.focus = true
