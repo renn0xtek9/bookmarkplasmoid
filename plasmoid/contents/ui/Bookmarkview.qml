@@ -134,7 +134,9 @@ PlasmaExtras.ScrollArea {
                     var url=bookmarklist.currentItem.tooltip
                     if (helper.is_this_file_a_pdf(url))
                     {
-                        executable.exec(helper.open_command_for_this_pdf(url))
+                        var command=helper.open_command_for_this_pdf(url)
+                        console.log("attmpet to launch okular with " +command)
+                        executable.exec(command)
                     }
                     else{
                     Qt.openUrlExternally(url)
