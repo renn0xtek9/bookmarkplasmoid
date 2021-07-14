@@ -6,10 +6,10 @@
   <kcfgfile name="main"/>
   <group name="Appearance">
     <entry name="konquerorpath" type="string">
-      <default>false</default>
+      <default>path/to/konqueror/bookmarks.xml</default>
     </entry>
     <entry name="okularpath" type="string">
-      <default>false</default>
+      <default>path/to/okular/bookmarks.xml</default>
     </entry>
     <entry name="firefoxpath" type="string">
       <default>false</default>

@@ -54,12 +54,14 @@ void Bookmarkmodel::setPathForChromeBookamarks(const QString& fullpath) {
   }
 }
 void Bookmarkmodel::ReadAllSources(bool forcereread) {
+    qDebug()<<"ReadAllSoruces";
   if (!forcereread) {
     if (!m_okularpathhaschangedsincelasteread && !m_firefoxpathhaschangedsincelastread &&
         !m_konquerorpathhaschangedsincelastread && !m_chromepathhaschnagedsincelastread) {
       return;  // If nothing has changed just leave it
     }
   }
+  qDebug()<<"Will clear the model";
   m_model->clear();
   if (FileExists(m_konquerorpath)) {
     m_currentlyparsed = BookmarkSource::Konqueror;
