@@ -6,7 +6,6 @@ import QtQuick 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
-//needd to give the Plasmoid attached properties
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
@@ -59,11 +58,9 @@ Item {
         Keys.onPressed: {
             switch (event.key) {
             case Qt.Key_Escape:
-                console.log("Escape");
                 plasmoid.expanded = false;
                 break;
             default:
-                console.log("key evnt: " + event.key);
             }
         }
         onActiveFocusChanged: {

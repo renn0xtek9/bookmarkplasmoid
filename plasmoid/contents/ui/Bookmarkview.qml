@@ -88,14 +88,16 @@ PlasmaExtras.ScrollArea {
             }
         }
         onCountChanged: {
-            if (bookmarklist.count == 0) {
-                bookmarklist.footerItem.visible = true;
-                if (bookmarklist.state != "searchhasfocus")
-                    bookmarklist.footerItem.focus = true;
+            if (bookmarklist.footerItem) {
+                if (bookmarklist.count == 0) {
+                    bookmarklist.footerItem.visible = true;
+                    if (bookmarklist.state != "searchhasfocus")
+                        bookmarklist.footerItem.focus = true;
 
-                show_the_footer();
-            } else {
-                hide_the_footer();
+                    show_the_footer();
+                } else {
+                    hide_the_footer();
+                }
             }
         }
         onVisibleChanged: {
