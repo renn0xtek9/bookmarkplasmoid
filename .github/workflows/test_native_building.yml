@@ -1,6 +1,6 @@
 name: Native Ubuntu 22.04 pipeline
 
-on: [push,pull_request]:
+on: [push,pull_request]
     
 jobs:
   ubuntu_native_test_pipeline:
