@@ -1,0 +1,23 @@
+name: Native Ubuntu 22.04 pipeline
+
+on:
+  push:
+    paths:
+      - ./**
+  pull_request:
+    paths:
+      - ./**
+
+jobs:
+  tests:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: install dependencies
+        run: ./.devcontainer/install_dependencies.sh
+      - name: build
+        run: ./scripts/build.sh
+      - name: test
+        run: ./scripts/test.sh
+      - name: installation
+        run: ./scripts/install.sh

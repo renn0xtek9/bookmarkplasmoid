@@ -1,0 +1,24 @@
+name: Devcontainer creation pipeline
+
+on:
+  push:
+    paths:
+      - .devcontainer/**
+  pull_request:
+    paths:
+      - .devcontainer/**
+
+jobs:
+  create_devcontainer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create empty ssh dir
+        run: mkdir -p ~/.ssh
+      - name: Create dummy bash_aliases
+        run: touch ~/.bash_aliases
+      - name: Create Decontainer
+        uses: devcontainers/ci@v0.3
+        with:
+            runCmd: echo Success
