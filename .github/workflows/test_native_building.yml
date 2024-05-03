@@ -5,6 +5,8 @@ on: [push,pull_request]
 jobs:
   ubuntu_native_test_pipeline:
     runs-on: ubuntu-20.04
+    env: 
+      QT_QPA_PLATFORM: "offscreen"
     steps:
       - uses: actions/checkout@v1
       - name: Install development dependencies
