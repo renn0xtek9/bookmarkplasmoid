@@ -1,0 +1,19 @@
+name: Native Ubuntu 20.04 pipeline
+
+on: [push,pull_request]
+    
+jobs:
+  ubuntu_native_test_pipeline:
+    runs-on: ubuntu-20.04
+    env: 
+      QT_QPA_PLATFORM: "offscreen"
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install development dependencies
+        run: ./.devcontainer/install_dependencies.sh
+      - name: Build
+        run: ./scripts/build.sh
+      - name: Tests
+        run: ./scripts/test.sh
+      - name: Local installation
+        run: ./scripts/install.sh

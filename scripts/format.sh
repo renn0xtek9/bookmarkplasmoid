@@ -6,10 +6,10 @@ QMLFORMAT=/usr/lib/qt5/bin/qmlformat
 CMAKEFORMAT=cmake-format
 
 IFS='' #If you want leading spaces to be kept. Remove it if not
-while read line 
-do 
-    $QMLFORMAT -i "$line"
-done < <(find -name "*.qml") 
+# while read line 
+# do 
+#     $QMLFORMAT -i "$line"
+# done < <(find -name "*.qml") 
 
 while read line 
 do 
