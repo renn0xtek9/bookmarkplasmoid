@@ -1,23 +1,17 @@
 name: Native Ubuntu 22.04 pipeline
 
-on:
-  push:
-    paths:
-      - ./**
-  pull_request:
-    paths:
-      - ./**
-
+on: [push,pull_request]:
+    
 jobs:
-  tests:
+  ubuntu_native_test_pipeline:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v1
-      - name: install dependencies
+      - name: Install development dependencies
         run: ./.devcontainer/install_dependencies.sh
-      - name: build
+      - name: Build
         run: ./scripts/build.sh
-      - name: test
+      - name: Tests
         run: ./scripts/test.sh
-      - name: installation
+      - name: Local installation
         run: ./scripts/install.sh
