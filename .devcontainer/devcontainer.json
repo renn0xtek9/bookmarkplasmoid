@@ -16,4 +16,5 @@
     "features": {
         "ghcr.io/rocker-org/devcontainer-features/apt-packages:1.0.2": {},
     },
+    "postCreateCommand": "pre-commit install",
 }
