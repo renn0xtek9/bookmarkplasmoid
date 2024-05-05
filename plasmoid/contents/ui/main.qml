@@ -6,10 +6,9 @@ import QtQuick 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.3
-import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.components 1.0 as PlasmaComponents
+import org.kde.plasma.core 1.0 as PlasmaCore
+import org.kde.plasma.extras 1.0 as PlasmaExtras
 
 Item {
     id: mainWindow
