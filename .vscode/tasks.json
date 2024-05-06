@@ -6,5 +6,12 @@
 			"label": "clean repository",
 			"command": "git clean -e '.vscode/*' -fxfd"
 		},
+		{
+			"type": "cmake",
+			"command": "build",
+			"targets": [
+				"all"
+			],
+		}
 	]
 }
