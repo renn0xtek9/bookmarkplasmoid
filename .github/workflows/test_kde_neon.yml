@@ -1,0 +1,14 @@
+name: KDE Neon pipeline
+
+on: [push,pull_request]
+    
+jobs:
+  kde_neon_build_pipeline:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build KDE Neon developer container
+        id: build_kde_neon_developer
+        uses: ./.github/actions/build_kde_neon_developer
+        with:
+          script: ./scripts/build.sh

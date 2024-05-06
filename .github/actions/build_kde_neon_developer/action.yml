@@ -1,0 +1,15 @@
+name: 'KDE Neon developer'
+description: 'Build a KDE Neon developer container with required dependenceies'
+inputs:
+  script:  # id of input
+    description: 'script to trigger'
+    required: false
+#     default: 'World'
+# outputs:
+#   time: # id of output
+#     description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.script }}
