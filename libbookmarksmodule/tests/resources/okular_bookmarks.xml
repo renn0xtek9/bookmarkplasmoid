@@ -2,7 +2,7 @@
 <!DOCTYPE xbel>
 <xbel folded="no" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv" dbusName="okular">
  <folder folded="no" href="file:///home/max/Library/Grundlagen Kraftfahrzeugtechnik 3.Auflage - Haken - Unknown.pdf">
-  <title>Making America Great Again</title>
+  <title>Folder one</title>
   <bookmark href="file:///home/Donald/mybook.pdf#:10">
    <title>Being true, always, again and again</title>
    <info>
@@ -21,25 +21,25 @@
   </bookmark>
  </folder>
  <folder folded="no" href="file:///home/max/Library/OpenDRIVE ® Format Specification, Rev. 1.4 - VIRES - 2015.pdf">
-  <title>Future of Feminism and Woman Empowerment By Vladimir Putin</title>
-  <bookmark href="file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:1">
-   <title>Gulag</title>
+  <title>Folder two</title>
+  <bookmark href="file:///home/RandomAuthor/Bullshit.pdf#20;C2:0.499632:0.302495:1">
+   <title>Bulshit one</title>
    <info>
     <metadata owner="http://freedesktop.org">
      <bookmark:icon name=""/>
     </metadata>
    </info>
   </bookmark>
-  <bookmark href="file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:2">
-   <title>I said Gulag !</title>
+  <bookmark href="file:///home/RandomAuthor/Bullshit.pdf#20;C2:0.499632:0.302495:2">
+   <title>Bullshit two</title>
    <info>
     <metadata owner="http://freedesktop.org">
      <bookmark:icon name=""/>
     </metadata>
    </info>
   </bookmark>
-  <bookmark href="file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:12">
-   <title>I saaiiiddd GULAG !</title>
+  <bookmark href="file:///home/RandomAuthor/Bullshit.pdf#20;C2:0.499632:0.302495:12">
+   <title>Bullshit three</title>
    <info>
     <metadata owner="http://freedesktop.org">
      <bookmark:icon name=""/>

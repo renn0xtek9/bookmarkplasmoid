@@ -23,8 +23,8 @@
      <bookmark:icon name="bookmark_folder"/>
     </metadata>
    </info>
-   <bookmark href="https://www.rt.com/">
-    <title>russia today</title>
+   <bookmark href="https://www.foobar.com/">
+    <title>foobar</title>
     <info>
      <metadata owner="http://freedesktop.org">
       <bookmark:icon name="www"/>

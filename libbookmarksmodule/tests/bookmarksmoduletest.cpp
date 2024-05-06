@@ -9,7 +9,7 @@ TwoDimensionTree KonquerorBookMarksTree() {
   konqueror_tree.append(qMakePair(0, QStringList{"google", "http://www.google.com"}));
   konqueror_tree.append(qMakePair(0, QStringList{"News", "Folder"}));
   konqueror_tree.append(qMakePair(1, QStringList{"TVs", "Folder"}));
-  konqueror_tree.append(qMakePair(2, QStringList{"russia today", "https://www.rt.com/"}));
+  konqueror_tree.append(qMakePair(2, QStringList{"foobar", "https://www.foobar.com/"}));
   konqueror_tree.append(qMakePair(2, QStringList{"CNN", "https://edition.cnn.com/"}));
   konqueror_tree.append(qMakePair(1, QStringList{"Washington post", "https://www.washingtonpost.com/"}));
   konqueror_tree.append(qMakePair(1, QStringList{"The intercept", "https://theintercept.com/"}));
@@ -27,18 +27,18 @@ TwoDimensionTree KonquerorBookMarksTree() {
 }
 TwoDimensionTree OkularBookMarksTree() {
   TwoDimensionTree okular_tree;
-  okular_tree.append(qMakePair(0, QStringList{"Making America Great Again", "Folder"}));
+  okular_tree.append(qMakePair(0, QStringList{"Folder one", "Folder"}));
   okular_tree.append(
       qMakePair(1, QStringList{"Being true, always, again and again", "file:///home/Donald/mybook.pdf#:10"}));
   okular_tree.append(
       qMakePair(1, QStringList{"How to tweet faster than anyone", "file:///home/Donald/mybook.pdf#:12"}));
-  okular_tree.append(qMakePair(0, QStringList{"Future of Feminism and Woman Empowerment By Vladimir Putin", "Folder"}));
+  okular_tree.append(qMakePair(0, QStringList{"Folder two", "Folder"}));
   okular_tree.append(
-      qMakePair(1, QStringList{"Gulag", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:1"}));
+      qMakePair(1, QStringList{"Bulshit one", "file:///home/RandomAuthor/Bullshit.pdf#20;C2:0.499632:0.302495:1"}));
   okular_tree.append(
-      qMakePair(1, QStringList{"I said Gulag !", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:2"}));
+      qMakePair(1, QStringList{"Bullshit two", "file:///home/RandomAuthor/Bullshit.pdf#20;C2:0.499632:0.302495:2"}));
   okular_tree.append(qMakePair(
-      1, QStringList{"I saaiiiddd GULAG !", "file:///home/VladimirPutin/Bullshit.pdf#20;C2:0.499632:0.302495:12"}));
+      1, QStringList{"Bullshit three", "file:///home/RandomAuthor/Bullshit.pdf#20;C2:0.499632:0.302495:12"}));
   return okular_tree;
 }
 TwoDimensionTree FoldTree(const QString folding_title, TwoDimensionTree tree) {
