@@ -6,3 +6,8 @@ repos:
         entry: cmake-format
         language: system
         types: [cmake]
+      - id: clang-format
+        name: Clang Format
+        entry: clang-format
+        language: system
+        files: '\.(c|cpp|h|hpp)$'
