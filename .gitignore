@@ -3,8 +3,8 @@
 *.qmlc
 build/*
 Release/*
-false 
+false
 false.bak
 falst.tbcache
-plasmoid/false 
+plasmoid/false
 plasmoid/false.tbcacche

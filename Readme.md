@@ -1,7 +1,7 @@
 # BookmarkWidgets
-This is a plasmoid for plasma 5. The original goal was to replace the bookmarkplasmoid of KDE4. 
+This is a plasmoid for plasma 5. The original goal was to replace the bookmarkplasmoid of KDE4.
 It can only display bookmark (in *bookmarks.xml* format). If you want to edit it, you will need **keditbookmark**
-It can displays the content of what used to be *konqueror* bookmarks, *as well as okular* (pdf) bookmarks. 
+It can displays the content of what used to be *konqueror* bookmarks, *as well as okular* (pdf) bookmarks.
 Support for any Software that uses *bookmarks.xml* structure to save its bookmarks (Marble, Konsole ... ?) should be pretty straightforward to implement
 
 If you like this plasmoid, up me on [opendesktop](https://www.opendesktop.org/c/1519558653)
@@ -9,25 +9,25 @@ If you like this plasmoid, up me on [opendesktop](https://www.opendesktop.org/c/
 ## Architecture
 It has a qml frontend (for the plasmoid in itself) and a C++ backend to analyze the bookmark repositories
 
-## TODO 
+## TODO
 * [ ] Support for Firefox bookmarks
 
-## Compile instruction 
+## Compile instruction
 Under ubuntu you will need
 
     git clone https://github.com/renn0xtek9/BookMarkWidgets.git
     cd BookMarkWidgets
     sudo apt install extra-cmake-modules plasma-framework-dev qtdeclarative5-dev libkf5iconthemes-dev build-essentials g++
     ./install.sh
-    
-## Known bugs 
 
-## Changelog 
-Version 2.0.2 
-Version 2.0.1 
+## Known bugs
+
+## Changelog
+Version 2.0.2
+Version 2.0.1
 Version 2.0.0
 - Added search feature
-- Add support for Google Chrome bookmarks 
+- Add support for Google Chrome bookmarks
 
 
 

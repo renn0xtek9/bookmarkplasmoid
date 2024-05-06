@@ -1,8 +1,24 @@
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
+    rev: v0.6.13
+    hooks:
+    - id: cmake-format
+    - id: cmake-lint
   - repo: local
     hooks:
-      - id: cmake-format
-        name: CMake Format
-        entry: cmake-format
+      - id: clang-format
+        name: Clang Format
+        entry: clang-format
         language: system
-        types: [cmake]
+        files: '\.(c|cpp|h|hpp)$'
+      - id: shellcheck
+        name: ShellCheck
+        entry: shellcheck
+        language: system
+        files: '\.sh$'
