@@ -9,7 +9,7 @@
 
 
 typedef QPair<int,QStringList> TreeElement;
-typedef QList<TreeElement> TwoDimensionTree ;    
+typedef QList<TreeElement> TwoDimensionTree ;
 
 QDebug operator<< (QDebug d, const TwoDimensionTree &tree) {
     for (const auto& row:tree)
@@ -41,7 +41,7 @@ char *toString(const TreeElement& treelement)
 
 
 
-class BookMarksModuleTest: public QObject 
+class BookMarksModuleTest: public QObject
 {
     Q_OBJECT
 public:
@@ -55,30 +55,30 @@ private Q_SLOTS:
     void init();
     // will be called after every testfunction.
     void cleanup();
-    
+
     void path_are_set_correctly();
-    
+
     void scan_complete_hierarchy_of_konqueror_model_bookmark();
     void scan_complete_hierarchy_of_okular_model_bookmark();
     void scan_complete_hierarchy_of_okular_model_bookmark_when_folded();
     void scan_complete_hierarchy_of_chrome_bookmark_model();
-    
+
     void filters_folder_and_items();
     void filters_folder_and_items_when_filtering_items_only();
     void filters_folder_are_not_shown_even_if_they_match_when_filtering_items_only();
-    
+
     void filters_order_of_setting_items_only_and_setting_search_field_has_no_impact();
-    
+
     void model_is_not_filter_when_searchfield_is_empty();
     void model_is_not_filtered_anymore_when_searchfield_is_empty_again();
-    
-private:   
+
+private:
     QSharedPointer<Bookmarkmodel> m_model{};
     TwoDimensionTree get_tree_of_data_model(QModelIndex parent, QSharedPointer<Bookmarkmodel> model, int col_start=0);
-    
+
     void load_model_with_konqueror_bookmarks();
     void load_model_with_okular_bookmarks();
-    
+
 };
 
 #endif // BOOKMARKSMODULE_TEST_HPP

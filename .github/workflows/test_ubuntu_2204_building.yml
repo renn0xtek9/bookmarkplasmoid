@@ -1,11 +1,11 @@
 name: Native Ubuntu 22.04 pipeline
 
 on: [push,pull_request]
-    
+
 jobs:
   ubuntu_22_native_test_pipeline:
     runs-on: ubuntu-22.04
-    env: 
+    env:
       QT_QPA_PLATFORM: "offscreen"
     steps:
       - uses: actions/checkout@v1

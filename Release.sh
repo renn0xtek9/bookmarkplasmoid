@@ -1,9 +1,9 @@
 #!/bin/bash
 version_number=$(grep "^Version number:" Readme.md |sed 's/Version number://g')
 
-if [ -z "$version_number" ] 
+if [ -z "$version_number" ]
 then
-	echo "Could not detect version number" 
+	echo "Could not detect version number"
 	exit 1
 fi
 # shellcheck disable=SC2001
