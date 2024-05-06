@@ -16,5 +16,18 @@
     "features": {
         "ghcr.io/rocker-org/devcontainer-features/apt-packages:1.0.2": {},
     },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cmake-tools",
+                "github.vscode-pull-request-github",
+                "github.copilot",
+                "github.copilot-chat",
+                "malcolmmielle.semantic-highlighting",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cpptools-themes"
+            ]
+        }
+    },
     "postCreateCommand": "pre-commit install",
 }
