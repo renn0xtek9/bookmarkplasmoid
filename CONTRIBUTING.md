@@ -1,28 +1,41 @@
-# CONTRIBUTING 
+# CONTRIBUTING
 
 We recommand the usage of the devcontainer with VSCode. This shall provide you with an environment that has all required dependencies.
 
+Please use pre-commit to format all the files of the repo on every commit
 
-Please use pre-commit to format all the files of the repo on every commit 
-
-```bash 
+```bash
 pre-commit install 
 ```
 
-## How to 
+## How to
+
+- Clean the repository
+
+```bash
+git clean -e ".vscode/*" -fxfd
+```
+
 - Format all files:
+
 ```bash
 pre-commit run --all-files
 ```
+
 - Build
-```bash 
+
+```bash
 ./scripts/build.sh 
-``` 
-- Run tests 
-```bash 
+```
+
+- Run tests
+
+```bash
 ./scripts/test.sh
-``` 
-- Install locally 
-```bash 
+```
+
+- Install locally
+
+```bash
 ./scripts/install.sh 
 ```

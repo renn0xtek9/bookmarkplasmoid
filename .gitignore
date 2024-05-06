@@ -1,11 +1,10 @@
 *.kdev4
 .kdev4/*
-.vscode/*
+*.qmlc
 build/*
 Release/*
 false 
 false.bak
 falst.tbcache
-*.qmlc
 plasmoid/false 
 plasmoid/false.tbcacche
