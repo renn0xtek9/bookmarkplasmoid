@@ -2,116 +2,136 @@
    "checksum": "58db9557bd9408ada3a6829d07b8af11",
    "roots": {
       "bookmark_bar": {
-         "children": [ {
-            "date_added": "13231170233353500",
-            "guid": "97f3ed41-5f3b-4057-801e-61d1322adacf",
-            "id": "5",
-            "name": "google",
-            "type": "url",
-            "url": "chrome://newtab/"
-         }, {
-            "children": [ {
-               "date_added": "13231170345194414",
-               "guid": "e97b1d27-599e-42a4-83ec-5354d3d386af",
-               "id": "8",
-               "name": "Router",
+         "children": [
+            {
+               "date_added": "13231170233353500",
+               "guid": "97f3ed41-5f3b-4057-801e-61d1322adacf",
+               "id": "5",
+               "name": "google",
                "type": "url",
-               "url": "http://192.168.0.1/"
-            }, {
-               "date_added": "13231170371914871",
-               "guid": "378d243a-10a7-4d68-b7ae-57a9d6a3be1c",
-               "id": "9",
-               "name": "Raspberry",
-               "type": "url",
-               "url": "http://192.168.0.2/"
-            }, {
-               "date_added": "13231170391564659",
-               "guid": "fdeec279-00d2-4d51-962e-a53130dc1b10",
-               "id": "10",
-               "name": "Drive",
-               "type": "url",
-               "url": "https://www.google.com/intl/en/drive/"
-            } ],
-            "date_added": "13231170274426275",
-            "date_modified": "13231170391564659",
-            "guid": "e374f258-b4ab-4b88-aa2c-282da2a254c4",
-            "id": "6",
-            "name": "Local",
-            "type": "folder"
-         }, {
-            "date_added": "13231170316217419",
-            "guid": "106db6a0-1781-45b8-ab07-5b8ad67aa533",
-            "id": "7",
-            "name": "YouTube",
-            "type": "url",
-            "url": "https://www.youtube.com/?gl=DE"
-         }, {
-            "children": [ {
-               "date_added": "13231170428158710",
-               "guid": "4ad16df5-3eec-4d48-bcbc-c64e79fa801e",
-               "id": "12",
-               "name": "Link1",
-               "type": "url",
-               "url": "https://de.wikipedia.org/wiki/GitHub"
-            }, {
-               "date_added": "13231170444164068",
-               "guid": "fd67898f-0f05-49e4-b03c-2e42a457ece9",
-               "id": "13",
-               "name": "Link2",
-               "type": "url",
-               "url": "https://en.wikipedia.org/wiki/GitHub"
-            }, {
-               "children": [ {
-                  "date_added": "13231170485922457",
-                  "guid": "51e9fffe-0c52-4b91-a2a5-64fa62edeb08",
-                  "id": "16",
-                  "name": "Subfolder1-Link1",
-                  "type": "url",
-                  "url": "https://github.blog/"
-               }, {
-                  "date_added": "13231170510610568",
-                  "guid": "09501a33-0e35-41f5-989b-d65c2db63686",
-                  "id": "17",
-                  "name": "Subfolder1-Link2",
-                  "type": "url",
-                  "url": "https://twitter.com/github"
-               } ],
-               "date_added": "13231170530123947",
-               "date_modified": "13231269683027166",
-               "guid": "ca6bab0c-593c-4c72-8052-70784b2cd08e",
-               "id": "18",
-               "name": "Subfolder2",
+               "url": "chrome://newtab/"
+            },
+            {
+               "children": [
+                  {
+                     "date_added": "13231170345194414",
+                     "guid": "e97b1d27-599e-42a4-83ec-5354d3d386af",
+                     "id": "8",
+                     "name": "Router",
+                     "type": "url",
+                     "url": "http://url_one/"
+                  },
+                  {
+                     "date_added": "13231170371914871",
+                     "guid": "378d243a-10a7-4d68-b7ae-57a9d6a3be1c",
+                     "id": "9",
+                     "name": "Raspberry",
+                     "type": "url",
+                     "url": "http://url_two/"
+                  },
+                  {
+                     "date_added": "13231170391564659",
+                     "guid": "fdeec279-00d2-4d51-962e-a53130dc1b10",
+                     "id": "10",
+                     "name": "Drive",
+                     "type": "url",
+                     "url": "https://www.foo.bar"
+                  }
+               ],
+               "date_added": "13231170274426275",
+               "date_modified": "13231170391564659",
+               "guid": "e374f258-b4ab-4b88-aa2c-282da2a254c4",
+               "id": "6",
+               "name": "Local",
                "type": "folder"
-            }, {
-               "children": [ {
-                  "date_added": "13231170552342482",
-                  "guid": "a062a2e4-66af-4180-ae22-b1a0c129890e",
-                  "id": "19",
-                  "name": "Subfolder2Link1",
-                  "type": "url",
-                  "url": "https://www.githubstatus.com/"
-               }, {
-                  "date_added": "13231170575345532",
-                  "guid": "9ce846de-f20d-4553-9e11-5fabf6c34a9e",
-                  "id": "20",
-                  "name": "Subfolder2Link2",
-                  "type": "url",
-                  "url": "https://git-scm.com/"
-               } ],
-               "date_added": "13231170459084844",
-               "date_modified": "13231170575345532",
-               "guid": "a6b0fec7-1555-4d0a-8699-a7f655299830",
-               "id": "14",
-               "name": "Subfolder2",
+            },
+            {
+               "date_added": "13231170316217419",
+               "guid": "106db6a0-1781-45b8-ab07-5b8ad67aa533",
+               "id": "7",
+               "name": "YouTube",
+               "type": "url",
+               "url": "https://www.youtube.com/"
+            },
+            {
+               "children": [
+                  {
+                     "date_added": "13231170428158710",
+                     "guid": "4ad16df5-3eec-4d48-bcbc-c64e79fa801e",
+                     "id": "12",
+                     "name": "Link1",
+                     "type": "url",
+                     "url": "https://de.wikipedia.org/wiki/GitHub"
+                  },
+                  {
+                     "date_added": "13231170444164068",
+                     "guid": "fd67898f-0f05-49e4-b03c-2e42a457ece9",
+                     "id": "13",
+                     "name": "Link2",
+                     "type": "url",
+                     "url": "https://en.wikipedia.org/wiki/GitHub"
+                  },
+                  {
+                     "children": [
+                        {
+                           "date_added": "13231170485922457",
+                           "guid": "51e9fffe-0c52-4b91-a2a5-64fa62edeb08",
+                           "id": "16",
+                           "name": "Subfolder1-Link1",
+                           "type": "url",
+                           "url": "https://github.blog/"
+                        },
+                        {
+                           "date_added": "13231170510610568",
+                           "guid": "09501a33-0e35-41f5-989b-d65c2db63686",
+                           "id": "17",
+                           "name": "Subfolder1-Link2",
+                           "type": "url",
+                           "url": "https://twitter.com/github"
+                        }
+                     ],
+                     "date_added": "13231170530123947",
+                     "date_modified": "13231269683027166",
+                     "guid": "ca6bab0c-593c-4c72-8052-70784b2cd08e",
+                     "id": "18",
+                     "name": "Subfolder2",
+                     "type": "folder"
+                  },
+                  {
+                     "children": [
+                        {
+                           "date_added": "13231170552342482",
+                           "guid": "a062a2e4-66af-4180-ae22-b1a0c129890e",
+                           "id": "19",
+                           "name": "Subfolder2Link1",
+                           "type": "url",
+                           "url": "https://www.githubstatus.com/"
+                        },
+                        {
+                           "date_added": "13231170575345532",
+                           "guid": "9ce846de-f20d-4553-9e11-5fabf6c34a9e",
+                           "id": "20",
+                           "name": "Subfolder2Link2",
+                           "type": "url",
+                           "url": "https://git-scm.com/"
+                        }
+                     ],
+                     "date_added": "13231170459084844",
+                     "date_modified": "13231170575345532",
+                     "guid": "a6b0fec7-1555-4d0a-8699-a7f655299830",
+                     "id": "14",
+                     "name": "Subfolder2",
+                     "type": "folder"
+                  }
+               ],
+               "date_added": "13231170402241618",
+               "date_modified": "13231170552342482",
+               "guid": "b132f210-0ff7-434b-8de2-381004ea6c54",
+               "id": "11",
+               "name": "Folder1",
                "type": "folder"
-            } ],
-            "date_added": "13231170402241618",
-            "date_modified": "13231170552342482",
-            "guid": "b132f210-0ff7-434b-8de2-381004ea6c54",
-            "id": "11",
-            "name": "Folder1",
-            "type": "folder"
-         } ],
+            }
+         ],
          "date_added": "13231170207806112",
          "date_modified": "13231170428158710",
          "guid": "00000000-0000-4000-A000-000000000002",
@@ -120,7 +140,7 @@
          "type": "folder"
       },
       "other": {
-         "children": [  ],
+         "children": [],
          "date_added": "13231170207806155",
          "date_modified": "0",
          "guid": "00000000-0000-4000-A000-000000000003",
@@ -129,7 +149,7 @@
          "type": "folder"
       },
       "synced": {
-         "children": [  ],
+         "children": [],
          "date_added": "13231170207806159",
          "date_modified": "0",
          "guid": "00000000-0000-4000-A000-000000000004",

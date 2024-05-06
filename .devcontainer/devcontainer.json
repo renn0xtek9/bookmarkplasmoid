@@ -25,7 +25,8 @@
                 "github.copilot-chat",
                 "malcolmmielle.semantic-highlighting",
                 "ms-vscode.cpptools-extension-pack",
-                "ms-vscode.cpptools-themes"
+                "ms-vscode.cpptools-themes",
+                "ms-azuretools.vscode-docker"
             ]
         }
     },

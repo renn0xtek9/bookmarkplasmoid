@@ -8,9 +8,8 @@ FEATURE_SUMMARY (WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 FIND_PACKAGE (ECM 1.0.0 REQUIRED NO_MODULE)
 SET (CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR}
                        ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-SET (CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build
-                                   # directories
-SET (CMAKE_AUTOMOC ON) # Instruct CMake to run moc automatically when needed.
+SET (CMAKE_INCLUDE_CURRENT_DIR ON)
+SET (CMAKE_AUTOMOC ON)
 
 SET (QT_MIN_VERSION "5.3.0")
 SET (KF5_MIN_VERSION "5.2.0")
@@ -29,27 +28,21 @@ PROJECT (
   VERSION "1.0"
   LANGUAGES CXX)
 
-# file (GLOB SRC "*.cpp" )
 INCLUDE_DIRECTORIES (./../)
 INCLUDE_DIRECTORIES (${CMAKE_SOURCE_DIR}${CMAKE_BINARY_DIR} ${QT_INCLUDES})
 
-# Copy qmldir file to build dir for running in QtCreator
 ADD_CUSTOM_TARGET (
   ${PROJECT_NAME}-qmldir ALL
   COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/qmldir
           ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}
   DEPENDS ${QMLFILES})
 
-# query_qmake(QT_INSTALL_PLUGINS QT_PLUGINS_DIR) query_qmake(QT_INSTALL_IMPORTS
-# QT_IMPORTS_DIR)
 SET (
-  QT_IMPORTS_DIR /usr/lib/x86_64-linux-gnu/qt5/qml/) # TODO this should be set
-                                                     # in platform independant
+  QT_IMPORTS_DIR /usr/lib/x86_64-linux-gnu/qt5/qml/)
 
 SET (LIBNAME bookmarkmodelplugin)
-SET (SRC ${SRC} bookmarkmodel.cpp)
 SET (CMAKE_CXX_VISIBILITY_PRESET)
-ADD_LIBRARY (${LIBNAME} SHARED ${SRC})
+ADD_LIBRARY (${LIBNAME} SHARED bookmarkmodel.cpp)
 QT5_USE_MODULES (${LIBNAME} Qml)
 SET_TARGET_PROPERTIES (
   ${LIBNAME}

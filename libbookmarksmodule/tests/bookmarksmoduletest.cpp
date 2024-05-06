@@ -129,10 +129,10 @@ void BookMarksModuleTest::scan_complete_hierarchy_of_chrome_bookmark_model() {
   expected.append(qMakePair(0, QStringList{"Chrome bookmarks bar", "Folder"}));
   expected.append(qMakePair(1, QStringList{"google", "chrome://newtab/"}));
   expected.append(qMakePair(1, QStringList{"Local", "Folder"}));
-  expected.append(qMakePair(2, QStringList{"Router", "http://192.168.0.1/"}));
-  expected.append(qMakePair(2, QStringList{"Raspberry", "http://192.168.0.2/"}));
-  expected.append(qMakePair(2, QStringList{"Drive", "https://www.google.com/intl/en/drive/"}));
-  expected.append(qMakePair(1, QStringList{"YouTube", "https://www.youtube.com/?gl=DE"}));
+  expected.append(qMakePair(2, QStringList{"Router", "http://url_one/"}));
+  expected.append(qMakePair(2, QStringList{"Raspberry", "http://url_two/"}));
+  expected.append(qMakePair(2, QStringList{"Drive", "https://www.foo.bar"}));
+  expected.append(qMakePair(1, QStringList{"YouTube", "https://www.youtube.com/"}));
   expected.append(qMakePair(1, QStringList{"Folder1", "Folder"}));
   expected.append(qMakePair(2, QStringList{"Link1", "https://de.wikipedia.org/wiki/GitHub"}));
   expected.append(qMakePair(2, QStringList{"Link2", "https://en.wikipedia.org/wiki/GitHub"}));
