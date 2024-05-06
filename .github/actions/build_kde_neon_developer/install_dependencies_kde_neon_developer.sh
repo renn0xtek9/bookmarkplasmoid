@@ -1,3 +1,4 @@
 #!/bin/bash 
 set -euxo pipefail
-DEBIBIAN_FRONTEND=noninteractive
+# shellcheck disable=SC2034
+DEBIAN_FRONTEND=noninteractive

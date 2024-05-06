@@ -11,3 +11,8 @@ repos:
         entry: clang-format
         language: system
         files: '\.(c|cpp|h|hpp)$'
+      - id: shellcheck
+        name: ShellCheck
+        entry: shellcheck
+        language: system
+        files: '\.sh$'
