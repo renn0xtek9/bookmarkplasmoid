@@ -12,11 +12,6 @@ repos:
     - id: cmake-lint
   - repo: local
     hooks:
-      - id: cmake-format
-        name: CMake Format
-        entry: cmake-format
-        language: system
-        types: [cmake]
       - id: clang-format
         name: Clang Format
         entry: clang-format

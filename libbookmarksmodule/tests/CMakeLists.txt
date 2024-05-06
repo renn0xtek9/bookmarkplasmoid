@@ -10,8 +10,8 @@ SET (
   resources/okular_bookmarks.xml
   resources/konqueror_bookmarks_same_name_for_folder_and_items.xml)
 
-FOREACH (_file ${TESTRC})
-  FILE (COPY ${_file} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+FOREACH (file ${TESTRC})
+  FILE (COPY ${file} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 ENDFOREACH ()
 
 ADD_EXECUTABLE (${TESTEXE} bookmarksmoduletest.cpp)
