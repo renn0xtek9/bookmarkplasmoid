@@ -22,3 +22,13 @@ repos:
         entry: shellcheck
         language: system
         files: '\.sh$'
+      - id: qmlformat
+        name: QML format
+        entry: /usr/lib/qt5/bin/qmlformat -V -i
+        language: system
+        files: '\.qml'
+      - id: qmllint
+        name: QML lint
+        entry: /usr/lib/qt5/bin/qmllint
+        language: system
+        files: '\.qml'
