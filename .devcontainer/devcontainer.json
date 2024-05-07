@@ -32,4 +32,8 @@
         }
     },
     "postCreateCommand": "pre-commit install",
+    "containerEnv": {
+        "QML_IMPORT_PATH": "/usr/lib/x86_64-linux-gnu/qt5/qml",
+        "QML2_IMPORT_PATH": "/usr/lib/x86_64-linux-gnu/qt5/qml"
+    }
 }
