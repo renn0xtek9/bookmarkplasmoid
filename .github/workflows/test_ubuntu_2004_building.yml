@@ -13,8 +13,6 @@ jobs:
         run: ./.devcontainer/install_dependencies_ubuntu_20.sh
       - name: Install pre-commit
         run: pre-commit install
-      - name: Format
-        run: ./scripts/format.sh
       - name: Build
         run: ./scripts/build.sh
       - name: Tests
