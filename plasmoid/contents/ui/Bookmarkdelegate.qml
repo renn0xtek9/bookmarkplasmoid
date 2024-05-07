@@ -19,7 +19,7 @@ PlasmaComponents.ListItem {
     signal remove(string uuid)
 
     width: parent.width - units.gridUnit * 2
-    height: itemheight
+    height: menuItem.itemheight
 
     Helper {
         id: helper
@@ -31,8 +31,8 @@ PlasmaComponents.ListItem {
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         onClicked: {
             if (mouse.button & Qt.LeftButton) {
-                if (!isFolder)
-                    helper.openURL(tooltip);
+                if (!menuItem.isFolder)
+                    helper.openURL(menuItem.tooltip);
                 else
                     visualModel.rootIndex = bookmarklist.model.modelIndex(index);
             }
@@ -42,7 +42,7 @@ PlasmaComponents.ListItem {
             if (TypeRole != 1)
                 menuItem.itemSelected(UuidRole);
             else
-                showInput = true;
+                menuItem.showInput = true;
         }
         onEntered: bookmarklist.currentIndex = index
         onExited: bookmarklist.currentIndex = -1
@@ -50,7 +50,7 @@ PlasmaComponents.ListItem {
         Item {
             id: label
 
-            height: itemheight
+            height: menuItem.itemheight
 
             anchors {
                 left: parent.left
@@ -62,8 +62,8 @@ PlasmaComponents.ListItem {
             PlasmaComponents.Label {
                 height: implicitHeight
                 maximumLineCount: 1
-                text: bookmarktext
-                visible: !showInput // TypeRole: 0: Text, 1: Image, 2: Url
+                text: menuItem.bookmarktext
+                visible: !menuItem.showInput // TypeRole: 0: Text, 1: Image, 2: Url
                 elide: Text.ElideRight
                 wrapMode: Text.Wrap
 
@@ -82,7 +82,7 @@ PlasmaComponents.ListItem {
                 width: units.iconSizes.small
                 height: width
                 z: 900
-                source: iconSource
+                source: menuItem.iconSource
                 enabled: true
                 visible: true
 
@@ -98,7 +98,7 @@ PlasmaComponents.ListItem {
         RowLayout {
             id: sessionnameditlayout
 
-            visible: showInput
+            visible: menuItem.showInput
             height: implicitHeight
 
             anchors {
@@ -116,7 +116,7 @@ PlasmaComponents.ListItem {
             PlasmaComponents.ToolButton {
                 iconSource: "dialog-cancel"
                 tooltip: i18n("Cancel session creation")
-                onClicked: showInput = false
+                onClicked: menuItem.showInput = false
             }
 
         }
@@ -131,7 +131,7 @@ PlasmaComponents.ListItem {
             }
 
             PlasmaComponents.ToolButton {
-                iconSource: isFolder ? "go-next-view" : ""
+                iconSource: menuItem.isFolder ? "go-next-view" : ""
                 tooltip: i18n("View content")
             }
 

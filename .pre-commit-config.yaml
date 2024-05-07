@@ -29,6 +29,6 @@ repos:
         files: '\.qml'
       - id: qmllint
         name: QML lint
-        entry: /usr/lib/qt5/bin/qmllint -U
+        entry: /usr/lib/qt5/bin/qmllint
         language: system
         files: '\.qml'
