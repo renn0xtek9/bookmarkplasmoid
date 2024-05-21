@@ -1,6 +1,6 @@
 name: KDE Neon pipeline
 
-on: [push,pull_request]
+on: pull_request
 
 jobs:
   kde_neon_build_pipeline:
