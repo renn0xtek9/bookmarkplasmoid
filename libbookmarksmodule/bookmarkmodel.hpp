@@ -1,6 +1,7 @@
 #ifndef BOOKMARKMODULE_HPP
 #define BOOKMARKMODULE_HPP
 #include <QtQml/qqml.h>
+
 #include <QtCore/QHash>
 #include <QtCore/QIODevice>
 #include <QtCore/QList>
@@ -130,10 +131,7 @@ class BookmarkmodelPlugin : public QQmlExtensionPlugin {
   void registerTypes(const char* uri) override {
     Q_ASSERT(uri == QLatin1String("Bookmarkmodelplugin"));
     qmlRegisterType<Bookmarkmodel, 1>(uri, 1, 0, "Bookmarkmodel");
-    // 		qmlRegisterType<Launcher,1>(uri,1,0,"Launcher");
   }
 };
-
-// undefined reference to `QQmlExtensionPlugin::qt_metacast(char const*)'
 
 #endif

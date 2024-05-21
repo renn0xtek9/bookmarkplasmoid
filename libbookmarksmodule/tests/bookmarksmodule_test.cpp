@@ -1,4 +1,4 @@
-#include <bookmarksmoduletest.h>
+#include <bookmarksmodule_test.h>
 #include <test_utils.h>
 
 #include <QtCore/QDebug>
@@ -50,4 +50,4 @@ void BookMarksModuleTest::filters_order_of_setting_items_only_and_setting_search
 }
 
 QTEST_MAIN(BookMarksModuleTest)
-#include "moc_bookmarksmoduletest.cpp"
+#include "moc_bookmarksmodule_test.cpp"
