@@ -3,7 +3,6 @@ FIND_PACKAGE (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets Qml
 
 FIND_PACKAGE (KF5IconThemes)
 
-SET (TESTEXE bookmarkmodeltest)
 SET (
   TESTRC
   resources/Bookmarks resources/konqueror_bookmarks.xml
@@ -14,7 +13,28 @@ FOREACH (file ${TESTRC})
   FILE (COPY ${file} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 ENDFOREACH ()
 
-ADD_EXECUTABLE (${TESTEXE} bookmarksmoduletest.cpp)
-ADD_TEST (bookmarkmodeltest ${TESTEXE})
+ADD_EXECUTABLE (bookmarksmodule_test bookmarksmodule_test.cpp)
+ADD_TEST (bookmarksmodule_test bookmarksmodule_test)
+TARGET_INCLUDE_DIRECTORIES (bookmarksmodule_test
+                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_LINK_LIBRARIES (bookmarksmodule_test PRIVATE ${LIBNAME} Qt5::Test)
 
-TARGET_LINK_LIBRARIES (${TESTEXE} PRIVATE ${LIBNAME} Qt5::Test)
+ADD_EXECUTABLE (bookmarksmodule_okular_test bookmarksmodule_okular_test.cpp)
+ADD_TEST (bookmarksmodule_okular_test bookmarksmodule_okular_test)
+TARGET_INCLUDE_DIRECTORIES (bookmarksmodule_okular_test
+                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_LINK_LIBRARIES (bookmarksmodule_okular_test PRIVATE ${LIBNAME} Qt5::Test)
+
+ADD_EXECUTABLE (bookmarksmodule_konqueror_test
+                bookmarksmodule_konqueror_test.cpp)
+ADD_TEST (bookmarksmodule_konqueror_test bookmarksmodule_konqueror_test)
+TARGET_INCLUDE_DIRECTORIES (bookmarksmodule_konqueror_test
+                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_LINK_LIBRARIES (bookmarksmodule_konqueror_test PRIVATE ${LIBNAME}
+                                                              Qt5::Test)
+
+ADD_EXECUTABLE (bookmarksmodule_chrome_test bookmarksmodule_chrome_test.cpp)
+ADD_TEST (bookmarksmodule_chrome_test bookmarksmodule_chrome_test)
+TARGET_INCLUDE_DIRECTORIES (bookmarksmodule_chrome_test
+                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_LINK_LIBRARIES (bookmarksmodule_chrome_test PRIVATE ${LIBNAME} Qt5::Test)

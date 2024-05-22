@@ -1,0 +1,16 @@
+{
+    "editor.formatOnSave": true,
+    "C_Cpp.default.includePath": [
+        "/usr/include/x86_64-linux-gnu/qt5/",
+    ],
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.hover": "default",
+    "C_Cpp.autocomplete": "default",
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.clang_format_sortIncludes": true,
+    "C_Cpp.commentContinuationPatterns": [
+        "/**"
+    ],
+}

@@ -1,6 +1,6 @@
 name: Native Ubuntu 20.04 pipeline
 
-on: [push,pull_request]
+on: pull_request
 
 jobs:
   ubuntu_20_native_test_pipeline:

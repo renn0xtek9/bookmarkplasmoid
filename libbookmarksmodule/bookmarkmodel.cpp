@@ -1,7 +1,7 @@
 #include "bookmarkmodel.hpp"
+
 #include <KF5/KIconThemes/KIconTheme>
 #include <QtCore/QAbstractItemModel>
-#include <QtCore/QDebug>
 #include <QtCore/QFile>
 #include <QtCore/QFileInfo>
 #include <QtCore/QJsonDocument>
@@ -54,14 +54,12 @@ void Bookmarkmodel::setPathForChromeBookamarks(const QString& fullpath) {
   }
 }
 void Bookmarkmodel::ReadAllSources(bool forcereread) {
-    qDebug()<<"ReadAllSoruces";
   if (!forcereread) {
     if (!m_okularpathhaschangedsincelasteread && !m_firefoxpathhaschangedsincelastread &&
         !m_konquerorpathhaschangedsincelastread && !m_chromepathhaschnagedsincelastread) {
-      return;  // If nothing has changed just leave it
+      return;
     }
   }
-  qDebug()<<"Will clear the model";
   m_model->clear();
   if (FileExists(m_konquerorpath)) {
     m_currentlyparsed = BookmarkSource::Konqueror;
@@ -296,12 +294,10 @@ void Bookmarkmodel::setSearchField(const QString& searchfield) {
   this->setFilterRegExp(QRegExp(m_searchfield, Qt::CaseInsensitive, QRegExp::FixedString));
   if (m_searchfield.length() == 0) {
     this->setSourceModel(m_model);
-  }
-  else{
-      if (m_filteritemsonly==true)
-      {
-          this->setSourceModel(&m_model_items_only);
-      }
+  } else {
+    if (m_filteritemsonly == true) {
+      this->setSourceModel(&m_model_items_only);
+    }
   }
   emit searchfieldchanged(m_searchfield);
 }
@@ -394,7 +390,6 @@ void Bookmarkmodel::updateModelItemsOnly() {
   m_model_items_only.clear();
   for (const auto& item : list) {
     if (item->data(BookmarkRoles::IsFolderRole) == false) {
-//         qDebug()<<"item: "<<item->data(BookmarkRoles::Displayrole) <<" "<<item->data(BookmarkRoles::IsFolderRole);
       QStandardItem* new_item = new QStandardItem;
       new_item->setData(item->data(BookmarkRoles::Iconpathrole), BookmarkRoles::Iconpathrole);
       new_item->setData(item->data(BookmarkRoles::Displayrole), BookmarkRoles::Displayrole);

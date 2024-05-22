@@ -1,6 +1,6 @@
 name: Native Ubuntu 24.04 pipeline
 
-on: [push,pull_request]
+on: pull_request
 
 jobs:
   ubuntu_24_native_test_pipeline:
