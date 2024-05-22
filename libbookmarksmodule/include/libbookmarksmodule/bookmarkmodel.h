@@ -1,6 +1,7 @@
 #ifndef BOOKMARKMODULE_HPP
 #define BOOKMARKMODULE_HPP
-#include <QtQml/qqml.h>
+
+#include <libbookmarksmodule/data_types.h>
 
 #include <QtCore/QHash>
 #include <QtCore/QIODevice>
@@ -29,13 +30,6 @@ class Bookmarkmodel : public QSortFilterProxyModel {
   Q_PROPERTY(bool okularBookarkFolded WRITE setOkularBookmarkFolded NOTIFY okularbookmarkfoldedChanged)
   Q_PROPERTY(bool filterItemsOnly WRITE setFilterItemsOnly NOTIFY filteritemonlyChanged)
 
-  enum class BookmarkSource {
-    Okular,    /**< We are currently parsing an okular bookmarks repository */
-    Konqueror, /**< We are currently parsing an konqueror bookmarks repository */
-    Firefox,   /**< We are currently parsing an firefox bookmarks repository */
-    Chrome     /**< We are currently parsing an chrome bookmarks repository */
-  };
-
  signals:
   void rowCountChanged(int newcount);
   void konquerorpathChanged(QString newpath);
@@ -50,13 +44,6 @@ class Bookmarkmodel : public QSortFilterProxyModel {
   Bookmarkmodel();
   virtual ~Bookmarkmodel();
 
-  enum BookmarkRoles {
-    Iconpathrole = Qt::UserRole,
-    Displayrole = Qt::DisplayRole,
-    Tooltiprole = Qt::ToolTipRole,
-    IsFolderRole = Qt::UserRole + 2,
-    SourceRole = Qt::UserRole + 3
-  };
   Q_INVOKABLE void setPathForKonquerorBookmarks(const QString& fullpath);
   Q_INVOKABLE void setPathForOkularBookmarks(const QString& fullpath);
   Q_INVOKABLE void setPathForFirefoxBookmarks(const QString& fullpath);
@@ -118,20 +105,6 @@ class Bookmarkmodel : public QSortFilterProxyModel {
   QList<QStandardItem*> parseChildsAndListItem(QModelIndex parent, int col_start = 0);
  private slots:
   void updateModelItemsOnly();
-};
-
-class BookmarkmodelPlugin : public QQmlExtensionPlugin {
-  Q_OBJECT
-  Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
- public:
-  BookmarkmodelPlugin() {
-  }
-  ~BookmarkmodelPlugin() {
-  }
-  void registerTypes(const char* uri) override {
-    Q_ASSERT(uri == QLatin1String("Bookmarkmodelplugin"));
-    qmlRegisterType<Bookmarkmodel, 1>(uri, 1, 0, "Bookmarkmodel");
-  }
 };
 
 #endif

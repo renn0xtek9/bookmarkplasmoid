@@ -1,7 +1,8 @@
 #ifndef BOOKMARKSMODULE_CHROME_TEST_H
 #define BOOKMARKSMODULE_CHROME_TEST_H
+#include <libbookmarksmodule/bookmarkmodel.h>
+
 #include <QtCore/QObject>
-#include <bookmarkmodel.hpp>
 class BookmarksmoduleChromeTest : public QObject {
   Q_OBJECT
  private Q_SLOTS:

@@ -1,4 +1,4 @@
-#include "bookmarkmodel.hpp"
+#include <libbookmarksmodule/bookmarkmodel.h>
 
 #include <KF5/KIconThemes/KIconTheme>
 #include <QtCore/QAbstractItemModel>

@@ -1,10 +1,10 @@
 #include <bookmarksmodule_test.h>
+#include <libbookmarksmodule/bookmarkmodel.h>
 #include <test_utils.h>
 
 #include <QtCore/QDebug>
 #include <QtCore/QModelIndex>
 #include <QtCore/QSharedPointer>
-#include <bookmarkmodel.hpp>
 
 void BookMarksModuleTest::init() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);

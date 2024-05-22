@@ -1,5 +1,8 @@
 #ifndef TEST_UTILS_H
 #define TEST_UTILS_H
+#include <libbookmarksmodule/bookmarkmodel.h>
+#include <libbookmarksmodule/data_types.h>
+
 #include <QDebug>
 #include <QtCore/QDebug>
 #include <QtCore/QList>
@@ -7,7 +10,6 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 #include <QtTest/QTest>
-#include <bookmarkmodel.hpp>
 
 typedef QPair<int, QStringList> TreeElement;
 typedef QList<TreeElement> TwoDimensionTree;
@@ -52,13 +54,11 @@ inline TwoDimensionTree get_tree_of_data_model(QModelIndex parent,
   for (int row = 0; row < model->rowCount(parent); ++row) {
     QModelIndex index = model->index(row, 0, parent);
     if (index.child(0, 0).isValid()) {
-      tree.append(qMakePair(col_start,
-                            QStringList({index.data(Bookmarkmodel::BookmarkRoles::Displayrole).toString(), "Folder"})));
+      tree.append(qMakePair(col_start, QStringList({index.data(BookmarkRoles::Displayrole).toString(), "Folder"})));
       tree.append(get_tree_of_data_model(index, model, col_start + 1));
     } else {
-      tree.append(
-          qMakePair(col_start, QStringList({index.data(Bookmarkmodel::BookmarkRoles::Displayrole).toString(),
-                                            index.data(Bookmarkmodel::BookmarkRoles::Tooltiprole).toString()})));
+      tree.append(qMakePair(col_start, QStringList({index.data(BookmarkRoles::Displayrole).toString(),
+                                                    index.data(BookmarkRoles::Tooltiprole).toString()})));
     }
   }
   return tree;
