@@ -79,5 +79,5 @@ void BookmarksmoduleKonquerorTest::scan_complete_hierarchy_of_konqueror_model_bo
   QCOMPARE(get_tree_of_data_model(QModelIndex(), m_model), KonquerorBookMarksTree());
 }
 
-QTEST_MAIN(BookmarksmoduleKonquerorTest)
+QTEST_GUILESS_MAIN(BookmarksmoduleKonquerorTest)
 #include "moc_bookmarksmodule_konqueror_test.cpp"

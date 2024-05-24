@@ -37,5 +37,5 @@ void BookmarksmoduleChromeTest::load_model_with_chrome_bookmarks() {
   m_model->ReadAllSources(true);
 }
 
-QTEST_MAIN(BookmarksmoduleChromeTest)
+QTEST_GUILESS_MAIN(BookmarksmoduleChromeTest)
 #include "moc_bookmarksmodule_chrome_test.cpp"

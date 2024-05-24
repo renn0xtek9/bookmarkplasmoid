@@ -125,5 +125,5 @@ void XbelReaderTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
             message + ": Iconpathrole does not match");
 }
 
-QTEST_MAIN(XbelReaderTest)
+QTEST_GUILESS_MAIN(XbelReaderTest)
 #include "moc_xbel_reader_test.cpp"
