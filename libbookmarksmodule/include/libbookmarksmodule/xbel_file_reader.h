@@ -1,13 +1,13 @@
 #ifndef XBEL_FILE_READER_H
 #define XBEL_FILE_READER_H
-#include <libbookmarksmodule/bookmark_source_reader_interface.h>
+#include <libbookmarksmodule/xml_bookmark_reader_interface.h>
 #include <libbookmarksmodule/data_types.h>
 
 #include <QtGui/QStandardItem>
 
-class XbelFileReader : public BookmarkSourceReaderInterface {
+class XbelFileReader : public XmlBookmarkReaderInterface {
  public:
-  explicit XbelFileReader(const BookmarkSource& bookmark_source);
+  XbelFileReader(XmlParserInterface& xml_parser,const BookmarkSource& bookmark_source);
   virtual ~XbelFileReader() = default;
 
   void setFilePath(const QString& file_path);

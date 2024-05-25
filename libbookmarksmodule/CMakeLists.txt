@@ -48,6 +48,7 @@ ADD_LIBRARY (
   src/bookmark_model_plugin.cpp
   src/xbel_parser.cpp
   src/utils.cpp
+  src/xbel_file_reader.cpp
   include/libbookmarksmodule/bookmark_model_plugin.h
   include/libbookmarksmodule/bookmarkmodel.h
   include/libbookmarksmodule/xbel_parser.h

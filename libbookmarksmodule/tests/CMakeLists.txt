@@ -44,3 +44,9 @@ ADD_TEST (xbel_parser_test xbel_parser_test)
 TARGET_INCLUDE_DIRECTORIES (xbel_parser_test
                             PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 TARGET_LINK_LIBRARIES (xbel_parser_test PRIVATE ${LIBNAME} Qt5::Test)
+
+ADD_EXECUTABLE (xbel_file_reader_test xbel_file_reader_test.cpp)
+ADD_TEST (xbel_file_reader_test xbel_file_reader_test)
+TARGET_INCLUDE_DIRECTORIES (xbel_file_reader_test
+                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_LINK_LIBRARIES (xbel_file_reader_test PRIVATE ${LIBNAME} Qt5::Test)

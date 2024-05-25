@@ -9,8 +9,30 @@ bool isFolder(const QStandardItem* item) {
   return item->data(BookmarkRoles::IsFolderRole).toBool();
 }
 
+
 XbelParser::XbelParser(const BookmarkSource bookmark_source, const AbstractEnvironmentThemeFacade& theme_facade)
-    : m_bookmark_source(bookmark_source), m_theme_facade{theme_facade} {
+    :  XmlParserInterface(bookmark_source, theme_facade),m_bookmark_source(bookmark_source), m_theme_facade{theme_facade} {
+}
+
+void XbelParser::read(QXmlStreamReader& xml_stream, QStandardItem* parent) {
+  while(!xml_stream.atEnd()&& !xml_stream.hasError())
+  {
+    QXmlStreamReader::TokenType token = xml_stream.readNext();
+        if (token == QXmlStreamReader::StartDocument) {
+            continue;
+        }
+        if (token == QXmlStreamReader::StartElement) {
+            if (xml_stream.name() == "bookmark") {
+              readXbelBookmark(xml_stream, parent);
+            } else if (xml_stream.name() == "folder") {
+              readXbelFolder(xml_stream, parent);
+            } else if (xml_stream.name() == "title") {
+              readXbelTitle(xml_stream, parent);
+            }
+        } else if (xml_stream.qualifiedName() == "bookmark:icon") {
+              readXbelIcon(xml_stream, parent);
+        }
+    }
 }
 
 void XbelParser::readXbelTitle(QXmlStreamReader& xml_stream, QStandardItem* parent) {
@@ -49,25 +71,4 @@ void XbelParser::readXbelFolder(QXmlStreamReader& xml_stream, QStandardItem* par
   folder->setData(true, BookmarkRoles::IsFolderRole);
   parent->setChild(parent->rowCount(),0,folder);
   read(xml_stream, folder);
-}
-
-void XbelParser::read(QXmlStreamReader& xml_stream, QStandardItem* parent) {
-  while(!xml_stream.atEnd()&& !xml_stream.hasError())
-  {
-    QXmlStreamReader::TokenType token = xml_stream.readNext();
-        if (token == QXmlStreamReader::StartDocument) {
-            continue;
-        }
-        if (token == QXmlStreamReader::StartElement) {
-            if (xml_stream.name() == "bookmark") {
-              readXbelBookmark(xml_stream, parent);
-            } else if (xml_stream.name() == "folder") {
-              readXbelFolder(xml_stream, parent);
-            } else if (xml_stream.name() == "title") {
-              readXbelTitle(xml_stream, parent);
-            }
-        } else if (xml_stream.qualifiedName() == "bookmark:icon") {
-              readXbelIcon(xml_stream, parent);
-        }
-    }
 }
