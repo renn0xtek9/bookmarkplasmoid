@@ -1,7 +1,7 @@
 #include <libbookmarksmodule/data_types.h>
-#include <libbookmarksmodule/xbel_reader.h>
+#include <libbookmarksmodule/xbel_parser.h>
 #include <mocks.h>
-#include <xbel_reader_test.h>
+#include <xbel_parser_test.h>
 
 #include <QtCore/QXmlStreamReader>
 #include <QtGui/QStandardItemModel>
@@ -123,7 +123,7 @@ void affect_expected_nested_folder_and_side_by_side(QStandardItem* item)
   affect_expected_second_empty_folder(item);
 }
 
-void XbelReaderTest::test_read_xbel_bookmark() {
+void XbelParserTest::test_read_xbel_bookmark() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<bookmark href="http://www.url.com">
 <title>bookmark 1</title>
@@ -137,7 +137,7 @@ void XbelReaderTest::test_read_xbel_bookmark() {
   fixture_test_xbel(xml_stream, affect_expected_bookmark_item, "<bookmark>");
 }
 
-void XbelReaderTest::test_empty_folder() {
+void XbelParserTest::test_empty_folder() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
    <title>Folder One</title>
@@ -146,7 +146,7 @@ void XbelReaderTest::test_empty_folder() {
   fixture_test_xbel(xml_stream, affect_expected_empty_folder, "Empty Folder");
 }
 
-void XbelReaderTest::test_folder_with_one_bookmark()
+void XbelParserTest::test_folder_with_one_bookmark()
 {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
@@ -163,7 +163,7 @@ void XbelReaderTest::test_folder_with_one_bookmark()
   fixture_test_xbel(xml_stream,affect_expected_folder_with_one_bookmark,"Folder with one bookmark");
 }
 
-void XbelReaderTest::test_folder_with_two_bookmark()
+void XbelParserTest::test_folder_with_two_bookmark()
 {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
@@ -188,21 +188,21 @@ void XbelReaderTest::test_folder_with_two_bookmark()
   fixture_test_xbel(xml_stream,affect_expected_folder_with_two_bookmark,"Folder with one bookmark");
 }
 
-void XbelReaderTest::test_read_xbel_icon() {
+void XbelParserTest::test_read_xbel_icon() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<bookmark:icon name="www"/>)");
 
   fixture_test_xbel(xml_stream, affect_expected_icon, "<bookmark:icon name>");
 }
 
-void XbelReaderTest::test_read_xbel_title() {
+void XbelParserTest::test_read_xbel_title() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<title>bookmark 1</title>)");
 
   fixture_test_xbel(xml_stream, affect_expected_title, "<title>");
 }
 
-void XbelReaderTest::test_two_folder_side_by_side()
+void XbelParserTest::test_two_folder_side_by_side()
 {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
@@ -214,7 +214,7 @@ void XbelReaderTest::test_two_folder_side_by_side()
   fixture_test_xbel(xml_stream,affect_expected_two_folder_side_by_side,"Two folder side by side");
 }
 
-void XbelReaderTest::test_nested_folder()
+void XbelParserTest::test_nested_folder()
 {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
@@ -226,7 +226,7 @@ void XbelReaderTest::test_nested_folder()
   fixture_test_xbel(xml_stream,affect_expected_nested_folder,"Nested folder");
 }
 
-void XbelReaderTest::test_nested_folder_and_side_by_side()
+void XbelParserTest::test_nested_folder_and_side_by_side()
 {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
@@ -241,13 +241,13 @@ void XbelReaderTest::test_nested_folder_and_side_by_side()
   fixture_test_xbel(xml_stream,affect_expected_nested_folder_and_side_by_side,"Nested folder and side by side");
 }
 
-void XbelReaderTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
+void XbelParserTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
                                        std::function<void(QStandardItem*)> expected_builder,
                                        const QString& message) {
   QStandardItem* parent=new QStandardItem();
   MockEnvironmentThemeFacade facade{};
-  XbelReader xbel_reader{BookmarkSource::Konqueror, facade};
-  xbel_reader.read(xml_stream, parent);
+  XbelParser xbel_parser{BookmarkSource::Konqueror, facade};
+  xbel_parser.read(xml_stream, parent);
 
   QStandardItem* expected= new QStandardItem();
   expected_builder(expected);
@@ -255,5 +255,5 @@ void XbelReaderTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
   assert_equal(parent, expected, message);
 }
 
-QTEST_GUILESS_MAIN(XbelReaderTest)
-#include "moc_xbel_reader_test.cpp"
+QTEST_GUILESS_MAIN(XbelParserTest)
+#include "moc_xbel_parser_test.cpp"
