@@ -38,3 +38,9 @@ ADD_TEST (bookmarksmodule_chrome_test bookmarksmodule_chrome_test)
 TARGET_INCLUDE_DIRECTORIES (bookmarksmodule_chrome_test
                             PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 TARGET_LINK_LIBRARIES (bookmarksmodule_chrome_test PRIVATE ${LIBNAME} Qt5::Test)
+
+ADD_EXECUTABLE (xbel_reader_test xbel_reader_test.cpp)
+ADD_TEST (xbel_reader_test xbel_reader_test)
+TARGET_INCLUDE_DIRECTORIES (xbel_reader_test
+                            PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+TARGET_LINK_LIBRARIES (xbel_reader_test PRIVATE ${LIBNAME} Qt5::Test)

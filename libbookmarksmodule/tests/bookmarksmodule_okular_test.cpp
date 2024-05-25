@@ -38,5 +38,5 @@ void BookmarksmoduleOkularTest::load_model_with_okular_bookmarks() {
   m_model->ReadAllSources(true);
 }
 
-QTEST_MAIN(BookmarksmoduleOkularTest)
+QTEST_GUILESS_MAIN(BookmarksmoduleOkularTest)
 #include "moc_bookmarksmodule_okular_test.cpp"

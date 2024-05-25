@@ -1,10 +1,10 @@
 #include <bookmarksmodule_test.h>
+#include <libbookmarksmodule/bookmarkmodel.h>
 #include <test_utils.h>
 
 #include <QtCore/QDebug>
 #include <QtCore/QModelIndex>
 #include <QtCore/QSharedPointer>
-#include <bookmarkmodel.hpp>
 
 void BookMarksModuleTest::init() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
@@ -49,5 +49,5 @@ void BookMarksModuleTest::filters_order_of_setting_items_only_and_setting_search
   QCOMPARE(items_only_before_searchfield, searchfield_before_items_only);
 }
 
-QTEST_MAIN(BookMarksModuleTest)
+QTEST_GUILESS_MAIN(BookMarksModuleTest)
 #include "moc_bookmarksmodule_test.cpp"

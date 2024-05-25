@@ -1,10 +1,10 @@
 #ifndef BOOKMARKSMODULE_KONQUEROR_TEST_H
 #define BOOKMARKSMODULE_KONQUEROR_TEST_H
+#include <libbookmarksmodule/bookmarkmodel.h>
 #include <test_utils.h>
 
 #include <QtCore/QSharedPointer>
 #include <QtTest/QTest>
-#include <bookmarkmodel.hpp>
 
 class BookmarksmoduleKonquerorTest : public QObject {
   Q_OBJECT

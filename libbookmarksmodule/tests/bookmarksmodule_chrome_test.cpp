@@ -1,9 +1,9 @@
 #include <bookmarksmodule_chrome_test.h>
+#include <libbookmarksmodule/bookmarkmodel.h>
 #include <test_utils.h>
 
 #include <QtCore/QSharedPointer>
 #include <QtTest/QTest>
-#include <bookmarkmodel.hpp>
 
 void BookmarksmoduleChromeTest::init() {
   m_model = QSharedPointer<Bookmarkmodel>(new Bookmarkmodel);
@@ -37,5 +37,5 @@ void BookmarksmoduleChromeTest::load_model_with_chrome_bookmarks() {
   m_model->ReadAllSources(true);
 }
 
-QTEST_MAIN(BookmarksmoduleChromeTest)
+QTEST_GUILESS_MAIN(BookmarksmoduleChromeTest)
 #include "moc_bookmarksmodule_chrome_test.cpp"

@@ -13,4 +13,15 @@
     "C_Cpp.commentContinuationPatterns": [
         "/**"
     ],
+    "files.associations": {
+        "CMakeLists": "cmake",
+        "qtest": "cpp",
+        "qxmlstreamreader": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "typeinfo": "cpp",
+        "qjsondocument": "cpp",
+        "qstandarditemmodel": "cpp"
+    },
 }

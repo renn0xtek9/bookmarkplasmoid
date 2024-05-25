@@ -1,7 +1,7 @@
 {
     "name": "Ubuntu",
     "runArgs": [
-        "--network=host",
+        "--network=host"
     ],
     "build": {
         "dockerfile": "Dockerfile",
@@ -11,10 +11,10 @@
     },
     "mounts": [
         "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
-        "source=${localEnv:HOME}/.bash_aliases,target=/home/vscode/.bash_aliases,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.bash_aliases,target=/home/vscode/.bash_aliases,type=bind,consistency=cached"
     ],
     "features": {
-        "ghcr.io/rocker-org/devcontainer-features/apt-packages:1.0.2": {},
+        "ghcr.io/rocker-org/devcontainer-features/apt-packages:1.0.2": {}
     },
     "customizations": {
         "vscode": {

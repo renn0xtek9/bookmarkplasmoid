@@ -42,7 +42,18 @@ SET (QT_IMPORTS_DIR /usr/lib/x86_64-linux-gnu/qt5/qml/)
 
 SET (LIBNAME bookmarkmodelplugin)
 SET (CMAKE_CXX_VISIBILITY_PRESET)
-ADD_LIBRARY (${LIBNAME} SHARED bookmarkmodel.cpp)
+ADD_LIBRARY (
+  ${LIBNAME} SHARED
+  src/bookmarkmodel.cpp
+  src/bookmark_model_plugin.cpp
+  src/xbel_reader.cpp
+  src/utils.cpp
+  include/libbookmarksmodule/bookmark_model_plugin.h
+  include/libbookmarksmodule/bookmarkmodel.h
+  include/libbookmarksmodule/xbel_reader.h
+  include/libbookmarksmodule/data_types.h
+  include/libbookmarksmodule/utils.h
+  include/libbookmarksmodule/environment_theme_facade.h)
 QT5_USE_MODULES (${LIBNAME} Qml)
 SET_TARGET_PROPERTIES (
   ${LIBNAME}
@@ -55,7 +66,7 @@ SET_TARGET_PROPERTIES (
 )
 
 TARGET_INCLUDE_DIRECTORIES (
-  ${LIBNAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  ${LIBNAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/include/
                     $<INSTALL_INTERFACE:include>)
 TARGET_LINK_LIBRARIES (${LIBNAME} Qt5::Core Qt5::Qml KF5::IconThemes)
 

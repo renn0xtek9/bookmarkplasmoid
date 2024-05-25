@@ -1,10 +1,10 @@
 #ifndef BOOKMARKSMODULE_TEST_HPP
 #define BOOKMARKSMODULE_TEST_HPP
+#include <libbookmarksmodule/bookmarkmodel.h>
 #include <test_utils.h>
 
 #include <QtCore/QSharedPointer>
 #include <QtTest/QTest>
-#include <bookmarkmodel.hpp>
 
 class BookMarksModuleTest : public QObject {
   Q_OBJECT

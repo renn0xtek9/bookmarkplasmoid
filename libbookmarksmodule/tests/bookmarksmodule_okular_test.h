@@ -1,9 +1,9 @@
 #ifndef BOOKMARKSMODULE_OKULAR_TEST_H
 #define BOOKMARKSMODULE_OKULAR_TEST_H
+#include <libbookmarksmodule/bookmarkmodel.h>
 #include <test_utils.h>
 
 #include <QtCore/QObject>
-#include <bookmarkmodel.hpp>
 
 class BookmarksmoduleOkularTest : public QObject {
   Q_OBJECT
