@@ -73,7 +73,8 @@ inline TwoDimensionTree get_tree_of_data_model(QModelIndex parent,
 
 inline void assert_equal(QStandardItem* actual,QStandardItem* expected, QString message)
 {
-  ASSERT_EQ(actual->hasChildren(), expected->hasChildren(), message + ": hasChildren does not match");
+  qDebug()<<"exped "<<expected;
+  qDebug()<<"children --- "<<expected->hasChildren();
   ASSERT_EQ(actual->text(), expected->text(), message + ": text does not match");
   ASSERT_EQ(actual->data(BookmarkRoles::IsFolderRole).toBool(), expected->data(BookmarkRoles::IsFolderRole).toBool(), message + ": isFolder does not match");
   ASSERT_EQ(actual->toolTip(), expected->toolTip(), message + ": tooltip does not match");
@@ -81,6 +82,8 @@ inline void assert_equal(QStandardItem* actual,QStandardItem* expected, QString 
   ASSERT_EQ(actual->data(BookmarkRoles::SourceRole).toInt(), expected->data(BookmarkRoles::SourceRole).toInt(), message + ": SourceRole does not match");
   ASSERT_EQ(actual->data(BookmarkRoles::Displayrole).toString(), expected->data(BookmarkRoles::Displayrole).toString(), message + ": Displayrole does not match");
   ASSERT_EQ(actual->data(BookmarkRoles::Iconpathrole).toString(), expected->data(BookmarkRoles::Iconpathrole).toString(), message + ": Iconpathrole does not match");
+
+  ASSERT_EQ(actual->hasChildren(), expected->hasChildren(), message + ": hasChildren does not match");
   for (int row_index = 0; row_index < actual->rowCount(); ++row_index) {
     assert_equal(actual->child(row_index,0),expected->child(row_index,0), "Children "+QString::number(row_index)+": "+ message);
   }

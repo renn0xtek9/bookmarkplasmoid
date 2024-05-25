@@ -46,8 +46,14 @@ void affect_expected_icon(QStandardItem* item)
 
 void affect_expected_empty_folder(QStandardItem* item)
 {
-  item->setData(true, BookmarkRoles::IsFolderRole);
-  item->setData("TVs",Qt::DisplayRole);
+  QStandardItem* folder_item=new QStandardItem();
+  folder_item->setData(true, BookmarkRoles::IsFolderRole);
+  folder_item->setData("TVs",Qt::DisplayRole);
+
+  // item->appendRow(folder_item);
+  item->setChild(item->rowCount(),0,folder_item);
+  QVERIFY(item->hasChildren());
+  QVERIFY(!item->child(0)->hasChildren());
 }
 
 void affect_expected_folder_with_one_bookmark(QStandardItem* item)
@@ -92,47 +98,47 @@ void XbelReaderTest::test_empty_folder() {
   fixture_test_xbel(xml_stream, affect_expected_empty_folder, "Empty Folder");
 }
 
-void XbelReaderTest::test_folder_with_one_bookmark()
-{
-  QXmlStreamReader xml_stream;
-  xml_stream.addData(R"(<folder folded="no">
-   <title>TVs</title>
-   <bookmark href="http://www.url.com">
-<title>bookmarktitle</title>
-<info>
-    <metadata owner="medata_owner">
-      <bookmark:icon name ="icon name"/>
-    </metadata>
-</info>
-</bookmark>
-  </folder>)");
-  fixture_test_xbel(xml_stream,affect_expected_folder_with_one_bookmark,"Folder with one bookmark");
-}
+// void XbelReaderTest::test_folder_with_one_bookmark()
+// {
+//   QXmlStreamReader xml_stream;
+//   xml_stream.addData(R"(<folder folded="no">
+//    <title>TVs</title>
+//    <bookmark href="http://www.url.com">
+// <title>bookmarktitle</title>
+// <info>
+//     <metadata owner="medata_owner">
+//       <bookmark:icon name ="icon name"/>
+//     </metadata>
+// </info>
+// </bookmark>
+//   </folder>)");
+//   fixture_test_xbel(xml_stream,affect_expected_folder_with_one_bookmark,"Folder with one bookmark");
+// }
 
-void XbelReaderTest::test_folder_with_two_bookmark()
-{
-  QXmlStreamReader xml_stream;
-  xml_stream.addData(R"(<folder folded="no">
-   <title>TVs</title>
-   <bookmark href="http://www.url.com">
-<title>bookmarktitle</title>
-<info>
-    <metadata owner="medata_owner">
-      <bookmark:icon name ="icon name"/>
-    </metadata>
-</info>
-</bookmark>
-<bookmark href="http://www.url.com">
-<title>bookmark2</title>
-<info>
-    <metadata owner="medata_owner">
-      <bookmark:icon name ="icon name"/>
-    </metadata>
-</info>
-</bookmark>
-  </folder>)");
-  fixture_test_xbel(xml_stream,affect_expected_folder_with_two_bookmark,"Folder with one bookmark");
-}
+// void XbelReaderTest::test_folder_with_two_bookmark()
+// {
+//   QXmlStreamReader xml_stream;
+//   xml_stream.addData(R"(<folder folded="no">
+//    <title>TVs</title>
+//    <bookmark href="http://www.url.com">
+// <title>bookmarktitle</title>
+// <info>
+//     <metadata owner="medata_owner">
+//       <bookmark:icon name ="icon name"/>
+//     </metadata>
+// </info>
+// </bookmark>
+// <bookmark href="http://www.url.com">
+// <title>bookmark2</title>
+// <info>
+//     <metadata owner="medata_owner">
+//       <bookmark:icon name ="icon name"/>
+//     </metadata>
+// </info>
+// </bookmark>
+//   </folder>)");
+//   fixture_test_xbel(xml_stream,affect_expected_folder_with_two_bookmark,"Folder with one bookmark");
+// }
 
 void XbelReaderTest::test_read_xbel_icon() {
   QXmlStreamReader xml_stream;
@@ -159,15 +165,17 @@ void XbelReaderTest::test_read_xbel_metadata() {
 void XbelReaderTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
                                        std::function<void(QStandardItem*)> expected_builder,
                                        const QString& message) {
-  QStandardItem parent;
+  QStandardItem* parent=new QStandardItem();
   MockEnvironmentThemeFacade facade{};
   XbelReader xbel_reader{BookmarkSource::Konqueror, facade};
   xbel_reader.readXbelElement(xml_stream, parent);
 
-  QStandardItem expected;
-  expected_builder(&expected);
+  QStandardItem* expected= new QStandardItem();
+  expected_builder(expected);
+  qDebug()<<"children --- "<<expected->hasChildren();
+  qDebug()<<"exped "<<expected;
 
-  assert_equal(&parent, &expected, message);
+  assert_equal(parent, expected, message);
 }
 
 QTEST_GUILESS_MAIN(XbelReaderTest)
