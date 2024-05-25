@@ -5,32 +5,27 @@ repos:
     - id: clang-format
   - repo: local
     hooks:
-      # - id: clang-format
-      #   name: Clang Format
-      #   entry: clang-format
-      #   language: system
-      #   files: '\.(c|cpp|h|hpp)$'
-      - id: shellcheck
-        name: ShellCheck
-        entry: shellcheck
-        language: system
-        files: '\.sh$'
-      - id: qmlformat
-        name: QML format
-        entry: /usr/lib/qt5/bin/qmlformat -V -i
-        language: system
-        files: '\.qml'
-      - id: qmllint
-        name: QML lint
-        entry: /usr/lib/qt5/bin/qmllint
-        language: system
-        files: '\.qml'
+    - id: shellcheck
+      name: ShellCheck
+      entry: shellcheck
+      language: system
+      files: '\.sh$'
+    - id: qmlformat
+      name: QML format
+      entry: /usr/lib/qt5/bin/qmlformat -V -i
+      language: system
+      files: '\.qml'
+    - id: qmllint
+      name: QML lint
+      entry: /usr/lib/qt5/bin/qmllint
+      language: system
+      files: '\.qml'
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
-      - id: check-yaml
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
   - repo: https://github.com/cheshirekow/cmake-format-precommit
     rev: v0.6.13
     hooks:
