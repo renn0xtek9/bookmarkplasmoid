@@ -1,6 +1,6 @@
 #ifndef MOCKS_H
 #define MOCKS_H
-#include <libbookmarksmodule/environment_theme_facade.h>
+#include <libbookmarksmodule/abstract_environment_theme_facade.h>
 #include <libbookmarksmodule/xml_parser_interface.h>
 
 class MockEnvironmentThemeFacade : public AbstractEnvironmentThemeFacade {

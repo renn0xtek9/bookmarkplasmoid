@@ -1,5 +1,6 @@
 #include <libbookmarksmodule/bookmarkmodel.h>
-
+#include <libbookmarksmodule/xbel_file_reader.h>
+#include <libbookmarksmodule/xbel_parser.h>
 #include <KF5/KIconThemes/KIconTheme>
 #include <QtCore/QAbstractItemModel>
 #include <QtCore/QFile>
@@ -61,20 +62,22 @@ void Bookmarkmodel::ReadAllSources(bool forcereread) {
     }
   }
   m_model->clear();
-  if (FileExists(m_konquerorpath)) {
-    m_currentlyparsed = BookmarkSource::Konqueror;
-    appendXBELFile(m_konquerorpath);
+
+  XbelParser konqueror_parser(BookmarkSource::Konqueror, m_theme_facade);
+  XbelFileReader konqueror_reader(konqueror_parser);
+  if (konqueror_reader.setFilePath(m_konquerorpath)) {
+    konqueror_reader.read(m_model->invisibleRootItem());
   }
-  if (FileExists(m_okularpath)) {
-    if (m_okular_bookmark_should_be_folded) {
-      QStandardItem* toplevelitem = new QStandardItem("Okular bookmarks");
-      toplevelitem->setData(getCustomOrThemeIconPath("okular", toplevelitem), Qt::UserRole);
-      m_item_to_append_to = toplevelitem;
-      m_model->invisibleRootItem()->appendRow(toplevelitem);
-    }
-    m_currentlyparsed = BookmarkSource::Okular;
-    appendXBELFile(m_okularpath);
+
+  XbelParser okular_parser(BookmarkSource::Okular, m_theme_facade);
+  XbelFileReader okular_reader(okular_parser);
+  if (okular_reader.setFilePath(m_okularpath)) {
+    QStandardItem* toplevelitem = new QStandardItem("Okular bookmarks");
+    toplevelitem->setData(m_theme_facade.getCustomOrThemeIconPath(true,BookmarkSource::Okular,"okular"), Qt::UserRole);
+    okular_reader.read(toplevelitem);
+    m_model->invisibleRootItem()->appendRow(toplevelitem);
   }
+
   if (FileExists(m_firefoxpath)) {
     m_currentlyparsed = BookmarkSource::Firefox;
     // TODO implement json bookmarks
@@ -97,121 +100,7 @@ QString Bookmarkmodel::getPathForOkularBookmarks() const {
 QString Bookmarkmodel::getPathForChromeBookmarks() const {
   return m_chromepath;
 }
-void Bookmarkmodel::appendXBELFile(QString path) {
-  QFile xbelfile(path);
-  if (xbelfile.open(QIODevice::OpenModeFlag::ReadOnly)) {
-    if (!(readXBEL(&xbelfile))) {
-    }
-  } else {
-  }
-}
-bool Bookmarkmodel::readXBEL(QIODevice* device) {
-  xml.setDevice(device);
-  if (xml.readNextStartElement()) {
-    if (xml.name() != "xbel") {
-      xml.raiseError(QObject::tr("The file is not an XBEL version 1.0 file."));
-      return false;
-    }
-  }
-  if (xml.error() != QXmlStreamReader::NoError) {
-    return false;
-  }
-  Q_ASSERT(xml.isStartElement() && xml.name() == "xbel");
-  if (m_item_to_append_to == nullptr) {
-    m_item_to_append_to = m_model->invisibleRootItem();
-  }
-  while (xml.readNextStartElement()) {
-    if (xml.name() == "folder") {
-      m_item_to_append_to->appendRow(readXBELFolder());
-    } else {
-      if (xml.name() == "bookmark") {
-        m_item_to_append_to->appendRow(readXBELBookmark());
-      } else {
-        if (xml.name() == "separator") {
-          readXBELSeparator();
-        } else {
-          xml.skipCurrentElement();
-        }
-      }
-    }
-  }
-  return !xml.error();
-}
-QStandardItem* Bookmarkmodel::readXBELFolder() {
-  QStandardItem* ret = new QStandardItem();
-  ret->setData(true, BookmarkRoles::IsFolderRole);
-  Q_ASSERT(xml.isStartElement() && xml.name() == "folder");
-  ret->setData(getStandardIcon(ret), Qt::UserRole);  // This ensure there is a default icon on the folder
-  if (m_currentlyparsed == BookmarkSource::Okular)   // Force icon for okular books
-  {
-    ret->setData(getCustomOrThemeIconPath("okular", ret), Qt::UserRole);
-  }
-  while (xml.readNextStartElement()) {
-    if (xml.name() == "title") {
-      QString title = readXBELTitle();
-      ret->setText(title);
-    } else {
-      if (xml.name() == "folder") {
-        ret->appendRow(readXBELFolder());  // TODO ensure that it affect this as parent of new bookmarkt
-      } else {
-        if (xml.name() == "bookmark") {
-          ret->appendRow(readXBELBookmark());
-        } else {
-          if (xml.name() == "info") {
-            readXBELInfoAndMetadata("info", ret);
-          } else {
-            if (xml.name() == "separator") {
-              readXBELSeparator();
-            } else {
-              xml.skipCurrentElement();
-            }
-          }
-        }
-      }
-    }
-  }
-  return ret;
-}
-QStandardItem* Bookmarkmodel::readXBELBookmark() {
-  Q_ASSERT(xml.isStartElement() && xml.name() == "bookmark");
-  QStandardItem* ret = new QStandardItem();  // This is the bookmark (not a folder) that we are going to build
-  ret->setData(false, BookmarkRoles::IsFolderRole);
-  ret->setToolTip(xml.attributes().value("href").toString());               // The link goes on the whatsthis
-  ret->setData(int(BookmarkSource::Konqueror), BookmarkRoles::SourceRole);  // We save the source in the item model
-  while (xml.readNextStartElement()) {
-    if (xml.name() == "title") {
-      ret->setText(readXBELTitle());
-    } else {
-      if (xml.name() == "info") {
-        readXBELInfoAndMetadata("info", ret);
-      } else {
-        xml.skipCurrentElement();
-      }
-    }
-  }
-  return ret;
-}
-void Bookmarkmodel::readXBELInfoAndMetadata(QString p_blockname, QStandardItem* p_item) {
-  Q_ASSERT(xml.isStartElement() && xml.name() == p_blockname);
-  while (xml.readNextStartElement()) {
-    if (xml.name() == "icon")  // we are at bookmark::icon
-    {
-      QString iconname = xml.attributes().value("name").toString();
-      QString customortheme = getCustomOrThemeIconPath(iconname, p_item);
-      p_item->setData(customortheme, Qt::UserRole);
-    }
-    readXBELInfoAndMetadata(xml.name().toString(), p_item);
-  }
-}
-QString Bookmarkmodel::readXBELTitle() {
-  Q_ASSERT(xml.isStartElement() && xml.name() == "title");
-  QString title = xml.readElementText();
-  return title;
-}
-void Bookmarkmodel::readXBELSeparator() {
-  Q_ASSERT(xml.isStartElement() && xml.name() == "separator");
-  xml.skipCurrentElement();
-}
+
 QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
   QHash<int, QByteArray> roles;
   roles[Iconpathrole] = "icon";
@@ -220,37 +109,7 @@ QHash<int, QByteArray> Bookmarkmodel::roleNames() const {
   roles[IsFolderRole] = "isFolder";
   return roles;
 }
-QString Bookmarkmodel::getCustomOrThemeIconPath(QString iconpathfromxml, QStandardItem* p_item) {
-  QFileInfo finfo(iconpathfromxml);
-  QString path, standard, iconsource;
-  QStringList themelist("hicolor");
-  iconsource = iconpathfromxml;
-  if (!finfo.isFile()) {
-    iconsource = "";
-    themelist.append(KIconTheme::current());
-    foreach (QString str, themelist) {
-      KIconTheme theme(str);
-      path = theme.iconPathByName(iconpathfromxml, 24, KIconLoader::MatchBest);
-      if (!path.isEmpty()) {
-        iconsource = path;
-        break;
-      }
-    }
-    if (iconsource.isEmpty()) {
-      themelist.append(KIconTheme::current());
-      standard = getStandardIcon(p_item);
-      foreach (QString str, themelist) {
-        KIconTheme theme(str);
-        path = theme.iconPathByName(standard, 24, KIconLoader::MatchBest);
-        if (!path.isEmpty()) {
-          iconsource = path;
-          break;
-        }
-      }
-    }
-  }
-  return iconsource;
-}
+
 QString Bookmarkmodel::getStandardIcon(const QStandardItem* p_item) const noexcept {
   if (p_item->data(BookmarkRoles::IsFolderRole).toBool() == true) {
     switch (m_currentlyparsed) {

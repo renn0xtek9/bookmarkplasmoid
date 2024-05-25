@@ -2,6 +2,7 @@
 #define BOOKMARKMODULE_HPP
 
 #include <libbookmarksmodule/data_types.h>
+#include <libbookmarksmodule/environment_theme_facade.h>
 
 #include <QtCore/QHash>
 #include <QtCore/QIODevice>
@@ -60,12 +61,11 @@ class Bookmarkmodel : public QSortFilterProxyModel {
   QHash<int, QByteArray> roleNames() const override;
 
  public slots:
-  // 	void itemSelectedAsRoot(int index);
-  // 	void parentItemSelectedAsRoot();
   Q_INVOKABLE void ReadAllSources(bool forcereread);
 
  private:
-  void appendXBELFile(QString path);  // TODO make it Q_INVOKABLE
+  EnvironmentThemeFacade m_theme_facade;
+
   void appendChromeBookmarks(QString path);
   QStandardItem* appendFolderFromJsonBookmark(QJsonObject obj, QString name);
   QModelIndex* m_rootmodelindex;
@@ -88,19 +88,9 @@ class Bookmarkmodel : public QSortFilterProxyModel {
 
   QString getStandardIcon(const QStandardItem* p_item) const noexcept;
   BookmarkSource m_currentlyparsed;
-  // Methods to read an xbel based bookmark fodlder
-  bool readXBEL(QIODevice* device);
-  QString readXBELTitle();
-  void readXBELSeparator();
-  QStandardItem* readXBELFolder();
-  QStandardItem* readXBELBookmark();
-  void readXBELInfoAndMetadata(QString p_blockname, QStandardItem* p_item);
-  QXmlStreamReader xml;
 
   QStandardItemModel* m_model;
   QStandardItemModel m_model_items_only{this};
-
-  QStandardItem* m_item_to_append_to{nullptr};
 
   QList<QStandardItem*> parseChildsAndListItem(QModelIndex parent, int col_start = 0);
  private slots:
