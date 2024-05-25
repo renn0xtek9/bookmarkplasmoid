@@ -28,6 +28,7 @@ class XbelReaderTest : public QObject {
   void test_empty_folder();
   void test_folder_with_one_bookmark();
   void test_folder_with_two_bookmark();
+  void test_two_folder_side_by_side();
 
  private:
   void fixture_test_xbel(QXmlStreamReader& xml_stream, std::function<void(QStandardItem*)> expected_builder, const QString& message);

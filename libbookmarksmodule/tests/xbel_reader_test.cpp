@@ -85,6 +85,27 @@ void affect_expected_folder_with_two_bookmark(QStandardItem* item)
   affect_expected_bookmark_item_two(folder_item);
 }
 
+void affect_expected_two_folder_side_by_side(QStandardItem* item)
+{
+  QStandardItem* folder_item=new QStandardItem();
+  folder_item->setData(true, BookmarkRoles::IsFolderRole);
+  folder_item->setData("TVs",Qt::DisplayRole);
+
+
+
+  item->setChild(item->rowCount(),0,folder_item);
+  QVERIFY(item->hasChildren());
+  QVERIFY(!item->child(0)->hasChildren());
+
+
+  QStandardItem* folder_item2=new QStandardItem();
+  folder_item2->setData(true, BookmarkRoles::IsFolderRole);
+  folder_item2->setData("Folder Two",Qt::DisplayRole);
+
+  item->setChild(item->rowCount(),0,folder_item2);
+  QVERIFY(!item->child(1)->hasChildren());
+}
+
 
 void XbelReaderTest::test_read_xbel_bookmark() {
   QXmlStreamReader xml_stream;
@@ -171,6 +192,18 @@ void XbelReaderTest::test_read_xbel_metadata() {
   <bookmark:icon name="bookmark_folder"/>
   </metadata>)");
   fixture_test_xbel(xml_stream, affect_expected_metdata, "<metadata>");
+}
+
+void XbelReaderTest::test_two_folder_side_by_side()
+{
+  QXmlStreamReader xml_stream;
+  xml_stream.addData(R"(<folder folded="no">
+   <title>TVs</title>
+  </folder>
+  <folder folded="no">
+   <title>Folder Two</title>
+  </folder>)");
+  fixture_test_xbel(xml_stream,affect_expected_two_folder_side_by_side,"Two folder side by side");
 }
 
 void XbelReaderTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
