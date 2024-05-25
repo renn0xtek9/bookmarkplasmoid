@@ -19,10 +19,14 @@ void XbelReader::readXbelTitle(QXmlStreamReader& xml_stream, QStandardItem& pare
 }
 
 void XbelReader::readXbelBookmark(QXmlStreamReader& xml_stream, QStandardItem& parent) {
-  parent.setData(false, BookmarkRoles::IsFolderRole);
-  parent.setToolTip(xml_stream.attributes().value("href").toString());
-  parent.setData(int(m_bookmark_source), BookmarkRoles::SourceRole);
+  QStandardItem* bookmark=new QStandardItem();
+  bookmark->setData(false, BookmarkRoles::IsFolderRole);
+  bookmark->setToolTip(xml_stream.attributes().value("href").toString());
+  bookmark->setData(int(m_bookmark_source), BookmarkRoles::SourceRole);
+  parent.appendRow(bookmark);
+  readXbelElement(xml_stream, *bookmark);
 }
+
 void XbelReader::readXbelMetadata(QXmlStreamReader& xml_stream, QStandardItem& parent) {
 
 }
