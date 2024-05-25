@@ -53,7 +53,8 @@ ADD_LIBRARY (
   include/libbookmarksmodule/xbel_parser.h
   include/libbookmarksmodule/data_types.h
   include/libbookmarksmodule/utils.h
-  include/libbookmarksmodule/environment_theme_facade.h)
+  include/libbookmarksmodule/environment_theme_facade.h
+  include/libbookmarksmodule/xbel_file_reader.h)
 QT5_USE_MODULES (${LIBNAME} Qml)
 SET_TARGET_PROPERTIES (
   ${LIBNAME}
