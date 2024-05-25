@@ -46,14 +46,16 @@ ADD_LIBRARY (
   ${LIBNAME} SHARED
   src/bookmarkmodel.cpp
   src/bookmark_model_plugin.cpp
-  src/xbel_reader.cpp
+  src/xbel_parser.cpp
   src/utils.cpp
+  src/xbel_file_reader.cpp
   include/libbookmarksmodule/bookmark_model_plugin.h
   include/libbookmarksmodule/bookmarkmodel.h
-  include/libbookmarksmodule/xbel_reader.h
+  include/libbookmarksmodule/xbel_parser.h
   include/libbookmarksmodule/data_types.h
   include/libbookmarksmodule/utils.h
-  include/libbookmarksmodule/environment_theme_facade.h)
+  include/libbookmarksmodule/environment_theme_facade.h
+  include/libbookmarksmodule/xbel_file_reader.h)
 QT5_USE_MODULES (${LIBNAME} Qml)
 SET_TARGET_PROPERTIES (
   ${LIBNAME}

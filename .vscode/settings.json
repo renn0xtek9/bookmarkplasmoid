@@ -22,6 +22,7 @@
         "string_view": "cpp",
         "typeinfo": "cpp",
         "qjsondocument": "cpp",
-        "qstandarditemmodel": "cpp"
+        "qstandarditemmodel": "cpp",
+        "qobject": "cpp"
     },
 }

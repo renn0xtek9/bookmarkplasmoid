@@ -5,7 +5,7 @@
             "name": "(gdb) Attach",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/libbookmarksmodule/tests/xbel_reader_test",
+            "program": "${workspaceFolder}/build/libbookmarksmodule/tests/xbel_parser_test",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",

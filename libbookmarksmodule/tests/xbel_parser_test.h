@@ -1,5 +1,5 @@
-#ifndef XBEL_READER_TEST_H
-#define XBEL_READER_TEST_H
+#ifndef xbel_parser_TEST_H
+#define xbel_parser_TEST_H
 
 #include <QtCore/QObject>
 #include <QtTest/QTest>
@@ -20,7 +20,7 @@ void affect_expected_nested_folder(QStandardItem* item);
 void affect_expected_nested_folder_and_side_by_side(QStandardItem* item);
 
 
-class XbelReaderTest : public QObject {
+class XbelParserTest : public QObject {
   Q_OBJECT
  private Q_SLOTS:
   void test_read_xbel_title();
@@ -37,4 +37,4 @@ class XbelReaderTest : public QObject {
   void fixture_test_xbel(QXmlStreamReader& xml_stream, std::function<void(QStandardItem*)> expected_builder, const QString& message);
 };
 
-#endif  // XBEL_READER_TEST_H
+#endif  // xbel_parser_TEST_H
