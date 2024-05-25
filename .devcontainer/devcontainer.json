@@ -1,40 +1,40 @@
 {
-    "name": "Ubuntu",
-    "runArgs": [
-        "--network=host"
-    ],
-    "build": {
-        "dockerfile": "Dockerfile",
-        "options": [
-            "--network=host"
-        ]
-    },
-    "mounts": [
-        "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
-        "source=${localEnv:HOME}/.bash_aliases,target=/home/vscode/.bash_aliases,type=bind,consistency=cached"
-    ],
-    "features": {
-        "ghcr.io/rocker-org/devcontainer-features/apt-packages:1.0.2": {}
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-vscode.cmake-tools",
-                "github.vscode-pull-request-github",
-                "github.vscode-github-actions",
-                "github.copilot",
-                "github.copilot-chat",
-                "malcolmmielle.semantic-highlighting",
-                "ms-vscode.cpptools-extension-pack",
-                "ms-vscode.cpptools-themes",
-                "ms-azuretools.vscode-docker",
-                "felgo.felgo"
-            ]
-        }
-    },
-    "postCreateCommand": "pre-commit install",
-    "containerEnv": {
-        "QML_IMPORT_PATH": "/usr/lib/x86_64-linux-gnu/qt5/qml",
-        "QML2_IMPORT_PATH": "/usr/lib/x86_64-linux-gnu/qt5/qml"
+  "name": "Ubuntu",
+  "runArgs": [
+    "--network=host"
+  ],
+  "build": {
+    "dockerfile": "Dockerfile",
+    "options": [
+      "--network=host"
+    ]
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.bash_aliases,target=/home/vscode/.bash_aliases,type=bind,consistency=cached"
+  ],
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1.0.2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cmake-tools",
+        "github.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "github.copilot",
+        "github.copilot-chat",
+        "malcolmmielle.semantic-highlighting",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-themes",
+        "ms-azuretools.vscode-docker",
+        "felgo.felgo"
+      ]
     }
+  },
+  "postCreateCommand": "pre-commit install",
+  "containerEnv": {
+    "QML_IMPORT_PATH": "/usr/lib/x86_64-linux-gnu/qt5/qml",
+    "QML2_IMPORT_PATH": "/usr/lib/x86_64-linux-gnu/qt5/qml"
+  }
 }

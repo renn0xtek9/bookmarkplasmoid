@@ -1,43 +1,43 @@
 {
-    "version": "0.2.0",
-    "configurations": [
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(gdb) Attach",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/libbookmarksmodule/tests/xbel_parser_test",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/build",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerArgs": "-x ${env:HOME}/.gdbinit",
+      "setupCommands": [
         {
-            "name": "(gdb) Attach",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/libbookmarksmodule/tests/xbel_parser_test",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/build",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerArgs": "-x ${env:HOME}/.gdbinit",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            // "preLaunchTask": "your_build_task_name", // Optional. Assumes you have a task that builds your application.
-            "linux": {
-                "MIMode": "gdb",
-                "miDebuggerPath": "/usr/bin/gdb",
-                "setupCommands": [
-                    {
-                        "description": "Enable pretty-printing for gdb",
-                        "text": "-enable-pretty-printing",
-                        "ignoreFailures": true
-                    }
-                ]
-            },
-            // "osx": {
-            //     "MIMode": "lldb"
-            // },
-            // "windows": {
-            //     "MIMode": "gdb"
-            // }
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ]
+      ],
+      // "preLaunchTask": "your_build_task_name", // Optional. Assumes you have a task that builds your application.
+      "linux": {
+        "MIMode": "gdb",
+        "miDebuggerPath": "/usr/bin/gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ]
+      },
+      // "osx": {
+      //     "MIMode": "lldb"
+      // },
+      // "windows": {
+      //     "MIMode": "gdb"
+      // }
+    }
+  ]
 }

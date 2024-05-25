@@ -4,7 +4,6 @@
 #include <QtCore/QObject>
 #include <QtTest/QTest>
 
-
 class XbelFileReaderTest : public QObject {
   Q_OBJECT
 

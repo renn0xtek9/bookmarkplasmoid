@@ -6,11 +6,12 @@
 
 class XmlBookmarkReaderInterface : public BookmarkSourceReaderInterface {
  public:
-    explicit XmlBookmarkReaderInterface(XmlParserInterface& xml_parser):m_xml_parser{xml_parser}{}
+  explicit XmlBookmarkReaderInterface(XmlParserInterface& xml_parser) : m_xml_parser{xml_parser} {
+  }
   virtual ~XmlBookmarkReaderInterface() = default;
-  protected:
-    XmlParserInterface& m_xml_parser;
+
+ protected:
+  XmlParserInterface& m_xml_parser;
 };
 
-
-#endif //XML_BOOKMARK_READER_INTERFACE_H
+#endif  // XML_BOOKMARK_READER_INTERFACE_H

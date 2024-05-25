@@ -1,17 +1,17 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "shell",
-			"label": "clean repository",
-			"command": "git clean -e '.vscode/*' -fxfd"
-		},
-		{
-			"type": "cmake",
-			"command": "build",
-			"targets": [
-				"all"
-			],
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "clean repository",
+      "command": "git clean -e '.vscode/*' -fxfd"
+    },
+    {
+      "type": "cmake",
+      "command": "build",
+      "targets": [
+        "all"
+      ],
+    }
+  ]
 }

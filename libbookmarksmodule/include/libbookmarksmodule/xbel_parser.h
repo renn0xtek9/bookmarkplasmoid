@@ -1,18 +1,19 @@
 #ifndef XBEL_PARSER_H
 #define XBEL_PARSER_H
+#include <libbookmarksmodule/abstract_environment_theme_facade.h>
 #include <libbookmarksmodule/bookmarkmodel.h>
 #include <libbookmarksmodule/xml_parser_interface.h>
-#include <libbookmarksmodule/abstract_environment_theme_facade.h>
 
 #include <QtCore/QXmlStreamReader>
 #include <QtGui/QStandardItemModel>
 #include <memory>
 
-class XbelParser :public XmlParserInterface {
+class XbelParser : public XmlParserInterface {
  public:
   explicit XbelParser(const BookmarkSource bookmark_source, const AbstractEnvironmentThemeFacade& theme_facade);
   virtual ~XbelParser() = default;
   virtual void read(QXmlStreamReader& xml_stream, QStandardItem* parent) final;
+
  private:
   void readXbelTitle(QXmlStreamReader& xml_stream, QStandardItem* parent);
   void readXbelInfo(QXmlStreamReader& xml_stream, QStandardItem* parent);

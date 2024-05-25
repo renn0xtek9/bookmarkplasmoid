@@ -1,6 +1,7 @@
 #include <libbookmarksmodule/bookmarkmodel.h>
 #include <libbookmarksmodule/xbel_file_reader.h>
 #include <libbookmarksmodule/xbel_parser.h>
+
 #include <KF5/KIconThemes/KIconTheme>
 #include <QtCore/QAbstractItemModel>
 #include <QtCore/QFile>
@@ -73,7 +74,8 @@ void Bookmarkmodel::ReadAllSources(bool forcereread) {
   XbelFileReader okular_reader(okular_parser);
   if (okular_reader.setFilePath(m_okularpath)) {
     QStandardItem* toplevelitem = new QStandardItem("Okular bookmarks");
-    toplevelitem->setData(m_theme_facade.getCustomOrThemeIconPath(true,BookmarkSource::Okular,"okular"), Qt::UserRole);
+    toplevelitem->setData(m_theme_facade.getCustomOrThemeIconPath(true, BookmarkSource::Okular, "okular"),
+                          Qt::UserRole);
     okular_reader.read(toplevelitem);
     m_model->invisibleRootItem()->appendRow(toplevelitem);
   }

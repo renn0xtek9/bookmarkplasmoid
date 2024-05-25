@@ -1,7 +1,7 @@
 #ifndef XBEL_FILE_READER_H
 #define XBEL_FILE_READER_H
-#include <libbookmarksmodule/xml_bookmark_reader_interface.h>
 #include <libbookmarksmodule/data_types.h>
+#include <libbookmarksmodule/xml_bookmark_reader_interface.h>
 
 #include <QtGui/QStandardItem>
 
@@ -13,7 +13,8 @@ class XbelFileReader : public XmlBookmarkReaderInterface {
   bool setFilePath(const QString& file_path);
 
   virtual void read(QStandardItem* root_item) final;
-  private:
+
+ private:
   QString m_file_path;
 };
 

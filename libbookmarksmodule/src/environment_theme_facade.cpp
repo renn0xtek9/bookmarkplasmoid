@@ -1,10 +1,11 @@
 #include <libbookmarksmodule/environment_theme_facade.h>
-#include <QtCore/QFileInfo>
-#include <KF5/KIconThemes/KIconTheme>
 
-QString EnvironmentThemeFacade::getStandardIcon(const bool is_folder, const BookmarkSource bookmark_source) const noexcept
-{
-    if (is_folder) {
+#include <KF5/KIconThemes/KIconTheme>
+#include <QtCore/QFileInfo>
+
+QString EnvironmentThemeFacade::getStandardIcon(const bool is_folder,
+                                                const BookmarkSource bookmark_source) const noexcept {
+  if (is_folder) {
     switch (bookmark_source) {
       case (BookmarkSource::Konqueror): {
         return QString("folder-bookmark");
@@ -38,10 +39,9 @@ QString EnvironmentThemeFacade::getStandardIcon(const bool is_folder, const Book
   return QString("text-html");
 }
 QString EnvironmentThemeFacade::getCustomOrThemeIconPath(const bool is_folder,
-                                           const BookmarkSource bookmark_source,
-                                           QString iconpathfromxml) const
-                                           {
-QFileInfo finfo(iconpathfromxml);
+                                                         const BookmarkSource bookmark_source,
+                                                         QString iconpathfromxml) const {
+  QFileInfo finfo(iconpathfromxml);
   QString path, standard, iconsource;
   QStringList themelist("hicolor");
   iconsource = iconpathfromxml;
@@ -70,4 +70,4 @@ QFileInfo finfo(iconpathfromxml);
     }
   }
   return iconsource;
-                                           }
+}

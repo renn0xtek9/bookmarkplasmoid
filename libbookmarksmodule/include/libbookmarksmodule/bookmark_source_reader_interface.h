@@ -9,4 +9,4 @@ class BookmarkSourceReaderInterface {
   virtual void read(QStandardItem* root_item) = 0;
 };
 
-#endif // BOOKMARK_SOURCE_READER_INTERFACE_H
+#endif  // BOOKMARK_SOURCE_READER_INTERFACE_H

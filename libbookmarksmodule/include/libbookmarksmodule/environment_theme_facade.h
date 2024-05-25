@@ -3,9 +3,9 @@
 
 #include <libbookmarksmodule/abstract_environment_theme_facade.h>
 
-class EnvironmentThemeFacade: public AbstractEnvironmentThemeFacade {
+class EnvironmentThemeFacade : public AbstractEnvironmentThemeFacade {
  public:
-    EnvironmentThemeFacade() = default;
+  EnvironmentThemeFacade() = default;
   virtual ~EnvironmentThemeFacade() = default;
   virtual QString getStandardIcon(const bool is_folder, const BookmarkSource bookmark_source) const noexcept final;
   virtual QString getCustomOrThemeIconPath(const bool is_folder,
@@ -13,5 +13,4 @@ class EnvironmentThemeFacade: public AbstractEnvironmentThemeFacade {
                                            QString iconpathfromxml) const final;
 };
 
-
-#endif //ENVIRONEMENT_THEME_FACADE_H
+#endif  // ENVIRONEMENT_THEME_FACADE_H

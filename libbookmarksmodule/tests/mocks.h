@@ -18,8 +18,10 @@ class MockEnvironmentThemeFacade : public AbstractEnvironmentThemeFacade {
 
 class MockXbelParserInterface : public XmlParserInterface {
  public:
-  explicit MockXbelParserInterface(const BookmarkSource bookmark_source, const AbstractEnvironmentThemeFacade& theme_facade)
-      : XmlParserInterface(bookmark_source, theme_facade) {}
+  explicit MockXbelParserInterface(const BookmarkSource bookmark_source,
+                                   const AbstractEnvironmentThemeFacade& theme_facade)
+      : XmlParserInterface(bookmark_source, theme_facade) {
+  }
   ~MockXbelParserInterface() = default;
   virtual void read(QXmlStreamReader& xml_stream, QStandardItem* parent) final {
     readCallCount++;
@@ -27,6 +29,5 @@ class MockXbelParserInterface : public XmlParserInterface {
   }
   int readCallCount{};
 };
-
 
 #endif  // MOCKS_H

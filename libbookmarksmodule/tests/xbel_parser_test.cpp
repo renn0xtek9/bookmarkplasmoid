@@ -7,10 +7,8 @@
 #include <QtGui/QStandardItemModel>
 #include <QtTest/QtTest>
 
-
-void affect_expected_bookmark_item(QStandardItem* item)
-{
-  QStandardItem* bookmark=new QStandardItem();
+void affect_expected_bookmark_item(QStandardItem* item) {
+  QStandardItem* bookmark = new QStandardItem();
   bookmark->setToolTip("http://www.url.com");
   bookmark->setData("bookmark 1", BookmarkRoles::Displayrole);
   bookmark->setData(false, BookmarkRoles::IsFolderRole);
@@ -19,9 +17,8 @@ void affect_expected_bookmark_item(QStandardItem* item)
   item->appendRow(bookmark);
 }
 
-void affect_expected_bookmark_item_two(QStandardItem* item)
-{
-  QStandardItem* bookmark=new QStandardItem();
+void affect_expected_bookmark_item_two(QStandardItem* item) {
+  QStandardItem* bookmark = new QStandardItem();
   bookmark->setToolTip("http://www.url.com");
   bookmark->setData("bookmark 2", BookmarkRoles::Displayrole);
   bookmark->setData(false, BookmarkRoles::IsFolderRole);
@@ -30,37 +27,33 @@ void affect_expected_bookmark_item_two(QStandardItem* item)
   item->appendRow(bookmark);
 }
 
-void affect_expected_title(QStandardItem* item)
-{
+void affect_expected_title(QStandardItem* item) {
   item->setData("bookmark 1", Qt::DisplayRole);
 }
-void affect_expected_metdata(QStandardItem* item)  {
+void affect_expected_metdata(QStandardItem* item) {
   item->setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
 }
 
-void affect_expected_icon(QStandardItem* item)
-{
+void affect_expected_icon(QStandardItem* item) {
   item->setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
 }
 
-void affect_expected_empty_folder(QStandardItem* item)
-{
-  QStandardItem* folder_item=new QStandardItem();
+void affect_expected_empty_folder(QStandardItem* item) {
+  QStandardItem* folder_item = new QStandardItem();
   folder_item->setData(true, BookmarkRoles::IsFolderRole);
-  folder_item->setData("Folder One",Qt::DisplayRole);
+  folder_item->setData("Folder One", Qt::DisplayRole);
 
-  item->setChild(item->rowCount(),0,folder_item);
+  item->setChild(item->rowCount(), 0, folder_item);
   QVERIFY(item->hasChildren());
   QVERIFY(!item->child(0)->hasChildren());
 }
 
-void affect_expected_folder_with_one_bookmark(QStandardItem* item)
-{
-  QStandardItem* folder_item=new QStandardItem();
+void affect_expected_folder_with_one_bookmark(QStandardItem* item) {
+  QStandardItem* folder_item = new QStandardItem();
   folder_item->setData(true, BookmarkRoles::IsFolderRole);
-  folder_item->setData("Folder One",Qt::DisplayRole);
+  folder_item->setData("Folder One", Qt::DisplayRole);
 
-  item->setChild(item->rowCount(),0,folder_item);
+  item->setChild(item->rowCount(), 0, folder_item);
   QVERIFY(item->hasChildren());
   QVERIFY(!item->child(0)->hasChildren());
 
@@ -68,14 +61,12 @@ void affect_expected_folder_with_one_bookmark(QStandardItem* item)
   QVERIFY(item->child(0)->hasChildren());
 }
 
-
-void affect_expected_folder_with_two_bookmark(QStandardItem* item)
-{
-  QStandardItem* folder_item=new QStandardItem();
+void affect_expected_folder_with_two_bookmark(QStandardItem* item) {
+  QStandardItem* folder_item = new QStandardItem();
   folder_item->setData(true, BookmarkRoles::IsFolderRole);
-  folder_item->setData("Folder One",Qt::DisplayRole);
+  folder_item->setData("Folder One", Qt::DisplayRole);
 
-  item->setChild(item->rowCount(),0,folder_item);
+  item->setChild(item->rowCount(), 0, folder_item);
   QVERIFY(item->hasChildren());
   QVERIFY(!item->child(0)->hasChildren());
 
@@ -84,41 +75,37 @@ void affect_expected_folder_with_two_bookmark(QStandardItem* item)
   affect_expected_bookmark_item_two(folder_item);
 }
 
-void affect_expected_second_empty_folder(QStandardItem* item)
-{
-  QStandardItem* folder_item2=new QStandardItem();
+void affect_expected_second_empty_folder(QStandardItem* item) {
+  QStandardItem* folder_item2 = new QStandardItem();
   folder_item2->setData(true, BookmarkRoles::IsFolderRole);
-  folder_item2->setData("Folder Two",Qt::DisplayRole);
+  folder_item2->setData("Folder Two", Qt::DisplayRole);
 
-  item->setChild(item->rowCount(),0,folder_item2);
+  item->setChild(item->rowCount(), 0, folder_item2);
   QVERIFY(!item->child(1)->hasChildren());
 }
 
-void affect_expected_two_folder_side_by_side(QStandardItem* item)
-{
+void affect_expected_two_folder_side_by_side(QStandardItem* item) {
   affect_expected_empty_folder(item);
   affect_expected_second_empty_folder(item);
 }
 
-void affect_expected_nested_folder(QStandardItem* item)
-{
-  QStandardItem* folder_item=new QStandardItem();
+void affect_expected_nested_folder(QStandardItem* item) {
+  QStandardItem* folder_item = new QStandardItem();
   folder_item->setData(true, BookmarkRoles::IsFolderRole);
-  folder_item->setData("Folder One",Qt::DisplayRole);
+  folder_item->setData("Folder One", Qt::DisplayRole);
 
-  item->setChild(item->rowCount(),0,folder_item);
+  item->setChild(item->rowCount(), 0, folder_item);
   QVERIFY(item->hasChildren());
 
-  QStandardItem* folder_item2=new QStandardItem();
+  QStandardItem* folder_item2 = new QStandardItem();
   folder_item2->setData(true, BookmarkRoles::IsFolderRole);
-  folder_item2->setData("Folder Nested",Qt::DisplayRole);
+  folder_item2->setData("Folder Nested", Qt::DisplayRole);
 
-  folder_item->setChild(folder_item->rowCount(),0,folder_item2);
+  folder_item->setChild(folder_item->rowCount(), 0, folder_item2);
   QVERIFY(item->child(0)->hasChildren());
 }
 
-void affect_expected_nested_folder_and_side_by_side(QStandardItem* item)
-{
+void affect_expected_nested_folder_and_side_by_side(QStandardItem* item) {
   affect_expected_nested_folder(item);
   affect_expected_second_empty_folder(item);
 }
@@ -146,8 +133,7 @@ void XbelParserTest::test_empty_folder() {
   fixture_test_xbel(xml_stream, affect_expected_empty_folder, "Empty Folder");
 }
 
-void XbelParserTest::test_folder_with_one_bookmark()
-{
+void XbelParserTest::test_folder_with_one_bookmark() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
    <title>Folder One</title>
@@ -160,11 +146,10 @@ void XbelParserTest::test_folder_with_one_bookmark()
 </info>
 </bookmark>
   </folder>)");
-  fixture_test_xbel(xml_stream,affect_expected_folder_with_one_bookmark,"Folder with one bookmark");
+  fixture_test_xbel(xml_stream, affect_expected_folder_with_one_bookmark, "Folder with one bookmark");
 }
 
-void XbelParserTest::test_folder_with_two_bookmark()
-{
+void XbelParserTest::test_folder_with_two_bookmark() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
    <title>Folder One</title>
@@ -185,7 +170,7 @@ void XbelParserTest::test_folder_with_two_bookmark()
 </info>
 </bookmark>
   </folder>)");
-  fixture_test_xbel(xml_stream,affect_expected_folder_with_two_bookmark,"Folder with one bookmark");
+  fixture_test_xbel(xml_stream, affect_expected_folder_with_two_bookmark, "Folder with one bookmark");
 }
 
 void XbelParserTest::test_read_xbel_icon() {
@@ -202,8 +187,7 @@ void XbelParserTest::test_read_xbel_title() {
   fixture_test_xbel(xml_stream, affect_expected_title, "<title>");
 }
 
-void XbelParserTest::test_two_folder_side_by_side()
-{
+void XbelParserTest::test_two_folder_side_by_side() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
    <title>Folder One</title>
@@ -211,11 +195,10 @@ void XbelParserTest::test_two_folder_side_by_side()
   <folder folded="no">
    <title>Folder Two</title>
   </folder>)");
-  fixture_test_xbel(xml_stream,affect_expected_two_folder_side_by_side,"Two folder side by side");
+  fixture_test_xbel(xml_stream, affect_expected_two_folder_side_by_side, "Two folder side by side");
 }
 
-void XbelParserTest::test_nested_folder()
-{
+void XbelParserTest::test_nested_folder() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
    <title>Folder One</title>
@@ -223,11 +206,10 @@ void XbelParserTest::test_nested_folder()
     <title>Folder Nested</title>
     </folder>
   </folder>)");
-  fixture_test_xbel(xml_stream,affect_expected_nested_folder,"Nested folder");
+  fixture_test_xbel(xml_stream, affect_expected_nested_folder, "Nested folder");
 }
 
-void XbelParserTest::test_nested_folder_and_side_by_side()
-{
+void XbelParserTest::test_nested_folder_and_side_by_side() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<folder folded="no">
    <title>Folder One</title>
@@ -238,18 +220,18 @@ void XbelParserTest::test_nested_folder_and_side_by_side()
   <folder folded="no">
    <title>Folder Two</title>
   </folder>)");
-  fixture_test_xbel(xml_stream,affect_expected_nested_folder_and_side_by_side,"Nested folder and side by side");
+  fixture_test_xbel(xml_stream, affect_expected_nested_folder_and_side_by_side, "Nested folder and side by side");
 }
 
 void XbelParserTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
                                        std::function<void(QStandardItem*)> expected_builder,
                                        const QString& message) {
-  QStandardItem* parent=new QStandardItem();
+  QStandardItem* parent = new QStandardItem();
   MockEnvironmentThemeFacade facade{};
   XbelParser xbel_parser{BookmarkSource::Konqueror, facade};
   xbel_parser.read(xml_stream, parent);
 
-  QStandardItem* expected= new QStandardItem();
+  QStandardItem* expected = new QStandardItem();
   expected_builder(expected);
 
   assert_equal(parent, expected, message);
