@@ -2,7 +2,7 @@
 #define XML_PARSER_INTERFACE_H
 #include <QtCore/QXmlStreamReader>
 #include <QtGui/QStandardItemModel>
-#include <libbookmarksmodule/environment_theme_facade.h>
+#include <libbookmarksmodule/abstract_environment_theme_facade.h>
 
 class XmlParserInterface {
  public:

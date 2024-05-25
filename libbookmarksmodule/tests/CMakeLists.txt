@@ -50,3 +50,5 @@ ADD_TEST (xbel_file_reader_test xbel_file_reader_test)
 TARGET_INCLUDE_DIRECTORIES (xbel_file_reader_test
                             PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 TARGET_LINK_LIBRARIES (xbel_file_reader_test PRIVATE ${LIBNAME} Qt5::Test)
+
+FILE (WRITE ${CMAKE_CURRENT_BINARY_DIR}/existing_file "Some content")

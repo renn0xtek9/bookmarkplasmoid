@@ -2,7 +2,7 @@
 #define XBEL_PARSER_H
 #include <libbookmarksmodule/bookmarkmodel.h>
 #include <libbookmarksmodule/xml_parser_interface.h>
-#include <libbookmarksmodule/environment_theme_facade.h>
+#include <libbookmarksmodule/abstract_environment_theme_facade.h>
 
 #include <QtCore/QXmlStreamReader>
 #include <QtGui/QStandardItemModel>

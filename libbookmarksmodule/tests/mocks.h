@@ -22,8 +22,10 @@ class MockXbelParserInterface : public XmlParserInterface {
       : XmlParserInterface(bookmark_source, theme_facade) {}
   ~MockXbelParserInterface() = default;
   virtual void read(QXmlStreamReader& xml_stream, QStandardItem* parent) final {
+    readCallCount++;
     return;
   }
+  int readCallCount{};
 };
 
 

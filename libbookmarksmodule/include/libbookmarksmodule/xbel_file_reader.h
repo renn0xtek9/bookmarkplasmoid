@@ -7,12 +7,14 @@
 
 class XbelFileReader : public XmlBookmarkReaderInterface {
  public:
-  XbelFileReader(XmlParserInterface& xml_parser,const BookmarkSource& bookmark_source);
+  XbelFileReader(XmlParserInterface& xml_parser);
   virtual ~XbelFileReader() = default;
 
-  void setFilePath(const QString& file_path);
+  bool setFilePath(const QString& file_path);
 
   virtual void read(QStandardItem* root_item) final;
+  private:
+  QString m_file_path;
 };
 
 #endif  // XBEL_FILE_READER_H
