@@ -50,7 +50,6 @@ void affect_expected_empty_folder(QStandardItem* item)
   folder_item->setData(true, BookmarkRoles::IsFolderRole);
   folder_item->setData("TVs",Qt::DisplayRole);
 
-  // item->appendRow(folder_item);
   item->setChild(item->rowCount(),0,folder_item);
   QVERIFY(item->hasChildren());
   QVERIFY(!item->child(0)->hasChildren());
@@ -58,20 +57,32 @@ void affect_expected_empty_folder(QStandardItem* item)
 
 void affect_expected_folder_with_one_bookmark(QStandardItem* item)
 {
-  item->setData(true, BookmarkRoles::IsFolderRole);
-  item->setData("TVs",Qt::DisplayRole);
+  QStandardItem* folder_item=new QStandardItem();
+  folder_item->setData(true, BookmarkRoles::IsFolderRole);
+  folder_item->setData("TVs",Qt::DisplayRole);
 
-  affect_expected_bookmark_item(item);
+  item->setChild(item->rowCount(),0,folder_item);
+  QVERIFY(item->hasChildren());
+  QVERIFY(!item->child(0)->hasChildren());
+
+  affect_expected_bookmark_item(folder_item);
+  QVERIFY(item->child(0)->hasChildren());
 }
 
 
 void affect_expected_folder_with_two_bookmark(QStandardItem* item)
 {
-  item->setData(true, BookmarkRoles::IsFolderRole);
-  item->setData("TVs",Qt::DisplayRole);
+  QStandardItem* folder_item=new QStandardItem();
+  folder_item->setData(true, BookmarkRoles::IsFolderRole);
+  folder_item->setData("TVs",Qt::DisplayRole);
 
-  affect_expected_bookmark_item(item);
-  affect_expected_bookmark_item_two(item);
+  item->setChild(item->rowCount(),0,folder_item);
+  QVERIFY(item->hasChildren());
+  QVERIFY(!item->child(0)->hasChildren());
+
+  affect_expected_bookmark_item(folder_item);
+  QVERIFY(item->child(0)->hasChildren());
+  affect_expected_bookmark_item_two(folder_item);
 }
 
 
@@ -98,47 +109,47 @@ void XbelReaderTest::test_empty_folder() {
   fixture_test_xbel(xml_stream, affect_expected_empty_folder, "Empty Folder");
 }
 
-// void XbelReaderTest::test_folder_with_one_bookmark()
-// {
-//   QXmlStreamReader xml_stream;
-//   xml_stream.addData(R"(<folder folded="no">
-//    <title>TVs</title>
-//    <bookmark href="http://www.url.com">
-// <title>bookmarktitle</title>
-// <info>
-//     <metadata owner="medata_owner">
-//       <bookmark:icon name ="icon name"/>
-//     </metadata>
-// </info>
-// </bookmark>
-//   </folder>)");
-//   fixture_test_xbel(xml_stream,affect_expected_folder_with_one_bookmark,"Folder with one bookmark");
-// }
+void XbelReaderTest::test_folder_with_one_bookmark()
+{
+  QXmlStreamReader xml_stream;
+  xml_stream.addData(R"(<folder folded="no">
+   <title>TVs</title>
+   <bookmark href="http://www.url.com">
+<title>bookmarktitle</title>
+<info>
+    <metadata owner="medata_owner">
+      <bookmark:icon name ="icon name"/>
+    </metadata>
+</info>
+</bookmark>
+  </folder>)");
+  fixture_test_xbel(xml_stream,affect_expected_folder_with_one_bookmark,"Folder with one bookmark");
+}
 
-// void XbelReaderTest::test_folder_with_two_bookmark()
-// {
-//   QXmlStreamReader xml_stream;
-//   xml_stream.addData(R"(<folder folded="no">
-//    <title>TVs</title>
-//    <bookmark href="http://www.url.com">
-// <title>bookmarktitle</title>
-// <info>
-//     <metadata owner="medata_owner">
-//       <bookmark:icon name ="icon name"/>
-//     </metadata>
-// </info>
-// </bookmark>
-// <bookmark href="http://www.url.com">
-// <title>bookmark2</title>
-// <info>
-//     <metadata owner="medata_owner">
-//       <bookmark:icon name ="icon name"/>
-//     </metadata>
-// </info>
-// </bookmark>
-//   </folder>)");
-//   fixture_test_xbel(xml_stream,affect_expected_folder_with_two_bookmark,"Folder with one bookmark");
-// }
+void XbelReaderTest::test_folder_with_two_bookmark()
+{
+  QXmlStreamReader xml_stream;
+  xml_stream.addData(R"(<folder folded="no">
+   <title>TVs</title>
+   <bookmark href="http://www.url.com">
+<title>bookmarktitle</title>
+<info>
+    <metadata owner="medata_owner">
+      <bookmark:icon name ="icon name"/>
+    </metadata>
+</info>
+</bookmark>
+<bookmark href="http://www.url.com">
+<title>bookmark2</title>
+<info>
+    <metadata owner="medata_owner">
+      <bookmark:icon name ="icon name"/>
+    </metadata>
+</info>
+</bookmark>
+  </folder>)");
+  fixture_test_xbel(xml_stream,affect_expected_folder_with_two_bookmark,"Folder with one bookmark");
+}
 
 void XbelReaderTest::test_read_xbel_icon() {
   QXmlStreamReader xml_stream;
