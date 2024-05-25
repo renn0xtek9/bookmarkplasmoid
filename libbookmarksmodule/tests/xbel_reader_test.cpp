@@ -3,7 +3,6 @@
 #include <mocks.h>
 #include <xbel_reader_test.h>
 
-#include <QDebug>
 #include <QtCore/QXmlStreamReader>
 #include <QtGui/QStandardItemModel>
 #include <QtTest/QtTest>
@@ -13,7 +12,7 @@ void affect_expected_bookmark_item(QStandardItem* item)
 {
   QStandardItem* bookmark=new QStandardItem();
   bookmark->setToolTip("http://www.url.com");
-  bookmark->setData("bookmarktitle", BookmarkRoles::Displayrole);
+  bookmark->setData("bookmark 1", BookmarkRoles::Displayrole);
   bookmark->setData(false, BookmarkRoles::IsFolderRole);
   bookmark->setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
   bookmark->setData(int(BookmarkSource::Konqueror), BookmarkRoles::SourceRole);
@@ -24,7 +23,7 @@ void affect_expected_bookmark_item_two(QStandardItem* item)
 {
   QStandardItem* bookmark=new QStandardItem();
   bookmark->setToolTip("http://www.url.com");
-  bookmark->setData("bookmark2", BookmarkRoles::Displayrole);
+  bookmark->setData("bookmark 2", BookmarkRoles::Displayrole);
   bookmark->setData(false, BookmarkRoles::IsFolderRole);
   bookmark->setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
   bookmark->setData(int(BookmarkSource::Konqueror), BookmarkRoles::SourceRole);
@@ -33,7 +32,7 @@ void affect_expected_bookmark_item_two(QStandardItem* item)
 
 void affect_expected_title(QStandardItem* item)
 {
-  item->setData("bookmarktitle", Qt::DisplayRole);
+  item->setData("bookmark 1", Qt::DisplayRole);
 }
 void affect_expected_metdata(QStandardItem* item)  {
   item->setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
@@ -127,7 +126,7 @@ void affect_expected_nested_folder_and_side_by_side(QStandardItem* item)
 void XbelReaderTest::test_read_xbel_bookmark() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<bookmark href="http://www.url.com">
-<title>bookmarktitle</title>
+<title>bookmark 1</title>
 <info>
     <metadata owner="medata_owner">
       <bookmark:icon name ="icon name"/>
@@ -153,7 +152,7 @@ void XbelReaderTest::test_folder_with_one_bookmark()
   xml_stream.addData(R"(<folder folded="no">
    <title>Folder One</title>
    <bookmark href="http://www.url.com">
-<title>bookmarktitle</title>
+<title>bookmark 1</title>
 <info>
     <metadata owner="medata_owner">
       <bookmark:icon name ="icon name"/>
@@ -170,7 +169,7 @@ void XbelReaderTest::test_folder_with_two_bookmark()
   xml_stream.addData(R"(<folder folded="no">
    <title>Folder One</title>
    <bookmark href="http://www.url.com">
-<title>bookmarktitle</title>
+<title>bookmark 1</title>
 <info>
     <metadata owner="medata_owner">
       <bookmark:icon name ="icon name"/>
@@ -178,7 +177,7 @@ void XbelReaderTest::test_folder_with_two_bookmark()
 </info>
 </bookmark>
 <bookmark href="http://www.url.com">
-<title>bookmark2</title>
+<title>bookmark 2</title>
 <info>
     <metadata owner="medata_owner">
       <bookmark:icon name ="icon name"/>
@@ -198,17 +197,9 @@ void XbelReaderTest::test_read_xbel_icon() {
 
 void XbelReaderTest::test_read_xbel_title() {
   QXmlStreamReader xml_stream;
-  xml_stream.addData(R"(<title>bookmarktitle</title>)");
+  xml_stream.addData(R"(<title>bookmark 1</title>)");
 
   fixture_test_xbel(xml_stream, affect_expected_title, "<title>");
-}
-
-void XbelReaderTest::test_read_xbel_metadata() {
-  QXmlStreamReader xml_stream;
-  xml_stream.addData(R"(<metadata owner="http://freedesktop.org">
-  <bookmark:icon name="bookmark_folder"/>
-  </metadata>)");
-  fixture_test_xbel(xml_stream, affect_expected_metdata, "<metadata>");
 }
 
 void XbelReaderTest::test_two_folder_side_by_side()
@@ -256,12 +247,10 @@ void XbelReaderTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
   QStandardItem* parent=new QStandardItem();
   MockEnvironmentThemeFacade facade{};
   XbelReader xbel_reader{BookmarkSource::Konqueror, facade};
-  xbel_reader.readXbelElement(xml_stream, parent);
+  xbel_reader.read(xml_stream, parent);
 
   QStandardItem* expected= new QStandardItem();
   expected_builder(expected);
-  qDebug()<<"children --- "<<expected->hasChildren();
-  qDebug()<<"exped "<<expected;
 
   assert_equal(parent, expected, message);
 }

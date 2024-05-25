@@ -73,8 +73,6 @@ inline TwoDimensionTree get_tree_of_data_model(QModelIndex parent,
 
 inline void assert_equal(QStandardItem* actual,QStandardItem* expected, QString message)
 {
-  qDebug()<<"exped "<<expected;
-  qDebug()<<"children --- "<<expected->hasChildren();
   ASSERT_EQ(actual->text(), expected->text(), message + ": text does not match");
   ASSERT_EQ(actual->data(BookmarkRoles::IsFolderRole).toBool(), expected->data(BookmarkRoles::IsFolderRole).toBool(), message + ": isFolder does not match");
   ASSERT_EQ(actual->toolTip(), expected->toolTip(), message + ": tooltip does not match");

@@ -8,10 +8,8 @@
 
 #include <test_utils.h>
 
-
 void affect_expected_bookmark_item(QStandardItem* item) ;
 void affect_expected_title(QStandardItem* item) ;
-void affect_expected_metdata(QStandardItem* item);
 void affect_expected_icon(QStandardItem* item);
 void affect_expected_empty_folder(QStandardItem* item);
 void affect_expected_second_empty_folder(QStandardItem* item);
@@ -27,7 +25,6 @@ class XbelReaderTest : public QObject {
  private Q_SLOTS:
   void test_read_xbel_title();
   void test_read_xbel_icon();
-  void test_read_xbel_metadata();
   void test_read_xbel_bookmark();
   void test_empty_folder();
   void test_folder_with_one_bookmark();
