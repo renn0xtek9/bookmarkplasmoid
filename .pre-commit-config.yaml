@@ -1,15 +1,4 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
-    hooks:
-      - id: check-yaml
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
-  - repo: https://github.com/cheshirekow/cmake-format-precommit
-    rev: v0.6.13
-    hooks:
-    - id: cmake-format
-    - id: cmake-lint
   - repo: local
     hooks:
       - id: clang-format
@@ -32,3 +21,14 @@ repos:
         entry: /usr/lib/qt5/bin/qmllint
         language: system
         files: '\.qml'
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/cheshirekow/cmake-format-precommit
+    rev: v0.6.13
+    hooks:
+    - id: cmake-format
+    - id: cmake-lint
