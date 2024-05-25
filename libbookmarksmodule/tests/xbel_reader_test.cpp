@@ -8,31 +8,71 @@
 #include <QtGui/QStandardItemModel>
 #include <QtTest/QtTest>
 
+
+QStandardItem* created_expected_bookmark_item()
+{
+  QStandardItem* expected_item=new QStandardItem();
+  expected_item->setToolTip("http://www.url.com");
+  expected_item->setData("bookmarktitle", BookmarkRoles::Displayrole);
+  expected_item->setData(false, BookmarkRoles::IsFolderRole);
+  expected_item->setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
+  expected_item->setData(int(BookmarkSource::Konqueror), BookmarkRoles::SourceRole);
+  return expected_item;
+}
+
+QStandardItem* created_expected_title()
+{
+  QStandardItem* expected_item=new QStandardItem();
+  expected_item->setData("bookmarktitle", Qt::DisplayRole);
+  return expected_item;
+}
+QStandardItem* created_expected_metdata()  {
+    QStandardItem* expected_item=new QStandardItem();
+
+  expected_item->setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
+  return expected_item;
+
+  }
+
+QStandardItem* created_expected_icon()
+{
+
+  QStandardItem* expected_item=new QStandardItem();
+  expected_item->setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
+  return expected_item;
+}
+
+QStandardItem* created_expected_empty_folder()
+{
+  QStandardItem* expected_item=new QStandardItem();
+  expected_item->setData(true, BookmarkRoles::IsFolderRole);
+  expected_item->setData("TVs",Qt::DisplayRole);
+  return expected_item;
+}
+
+
 void XbelReaderTest::test_read_xbel_bookmark() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<bookmark href="http://www.url.com">
 <title>bookmarktitle</title>
 <info>
     <metadata owner="medata_owner">
-      <bookmark: icon name ="icon name"/>
+      <bookmark:icon name ="icon name"/>
     </metadata>
 </info>
 </bookmark>)");
-  xml_stream.readNextStartElement();
 
-  QStandardItem parent_item{};
-  MockEnvironmentThemeFacade facade{};
-  XbelReader xbel_reader{BookmarkSource::Konqueror, facade};
-  xbel_reader.readXbelBookmark(xml_stream, parent_item);
-  QVERIFY2(parent_item.data(BookmarkRoles::IsFolderRole).toBool() == false, "The bookmark is a folder");
-  QVERIFY2(parent_item.toolTip() == QString("http://www.url.com"),
-           QString("The tooltip is not correct: " + parent_item.toolTip()).toStdString().c_str());
-  QVERIFY2(parent_item.data(BookmarkRoles::Displayrole).toString() == QString("bookmarktitle"),
-           QString("The title is notcorrect: " + parent_item.data(BookmarkRoles::Displayrole).toString())
-               .toStdString()
-               .c_str());
+  fixture_test_xbel(xml_stream, created_expected_bookmark_item, "<bookmark>");
 }
 
+void XbelReaderTest::test_empty_folder() {
+  QXmlStreamReader xml_stream;
+  xml_stream.addData(R"(<folder folded="no">
+   <title>TVs</title>
+  </folder>)");
+
+  fixture_test_xbel(xml_stream, created_expected_empty_folder, "Empty Folder");
+}
 // void XbelReaderTest::test_read_xbel_folder() {
 //   QXmlStreamReader xml_stream;
 //   xml_stream.addData(
@@ -62,31 +102,36 @@ void XbelReaderTest::test_read_xbel_bookmark() {
 //   </folder>)");
 //   xml_stream.readNextStartElement();
 
-//   QStandardItem parent_item{};
-//   XbelReader xbel_reader{BookmarkSource::Konqueror};
-//   xbel_reader.readXbelFolder(xml_stream, parent_item);
-//   QVERIFY2(parent_item.data(BookmarkRoles::IsFolderRole).toBool() == true, "The bookmark is not a folder");
-//   QVERIFY2(parent_item.text() == "TVs", "Title is wrong");
-//   // QVERIFY2(parent_item.hasChildren() == true, "Did not read children element");
-//   QVERIFY2(parent_item.rowCount() > 0, "Did not read children element");
+//   MockEnvironmentThemeFacade facade{};
+//   XbelReader xbel_reader{BookmarkSource::Konqueror,facade};
+
+//   QStandardItem expected_item{};
+//   expected_item.setText("TVs");
+//   expected_item.setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
+
+
+
+
+
+//   fixture_test_xbel(xml_stream, expected_item, "Folder");
+//   // QVERIFY2(parent_item.data(BookmarkRoles::IsFolderRole).toBool() == true, "BookmarkRoles::IsFolderRole does not match");
+//   // QVERIFY2(parent_item.text() == "TVs", "Title is wrong");
+//   // // QVERIFY2(parent_item.hasChildren() == true, "Did not read children element");
+//   // QVERIFY2(parent_item.rowCount() > 0, "Did not read children element");
 // }
 
 void XbelReaderTest::test_read_xbel_icon() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<bookmark:icon name="www"/>)");
-  xml_stream.readNextStartElement();
 
-  QStandardItem expected;
-  expected.setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
-  fixture_test_xbel(xml_stream, expected, "<bookmark: icon name>");
+  fixture_test_xbel(xml_stream, created_expected_icon, "<bookmark:icon name>");
 }
 
 void XbelReaderTest::test_read_xbel_title() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<title>bookmarktitle</title>)");
-  xml_stream.readNextStartElement();
 
-  fixture_test_xbel(xml_stream, QStandardItem("bookmarktitle"), "<title>");
+  fixture_test_xbel(xml_stream, created_expected_title, "<title>");
 }
 
 void XbelReaderTest::test_read_xbel_metadata() {
@@ -94,35 +139,33 @@ void XbelReaderTest::test_read_xbel_metadata() {
   xml_stream.addData(R"(<metadata owner="http://freedesktop.org">
   <bookmark:icon name="bookmark_folder"/>
   </metadata>)");
-  xml_stream.readNextStartElement();
-
-  QStandardItem expected{};
-  QStandardItem child{};
-  child.setData("mocked_getCustomOrThemeIconPath", Qt::UserRole);
-  expected.setChild(0, 0, &child);
-
-  fixture_test_xbel(xml_stream, expected, "<metadata>");
+  fixture_test_xbel(xml_stream, created_expected_metdata, "<metadata>");
 }
 
 void XbelReaderTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
-                                       const QStandardItem& expected,
+                                       std::function<QStandardItem*()> expecatance_builder,
                                        const QString& message) {
   QStandardItem parent;
   MockEnvironmentThemeFacade facade{};
   XbelReader xbel_reader{BookmarkSource::Konqueror, facade};
   xbel_reader.readXbelElement(xml_stream, parent);
 
-  ASSERT_EQ(parent.text(), expected.text(), message + ": text does not match");
-  ASSERT_EQ(parent.data(BookmarkRoles::IsFolderRole).toBool(), expected.data(BookmarkRoles::IsFolderRole).toBool(),
+  QStandardItem* expected = expecatance_builder();
+
+
+  ASSERT_EQ(parent.text(), expected->text(), message + ": text does not match");
+  ASSERT_EQ(parent.data(BookmarkRoles::IsFolderRole).toBool(), expected->data(BookmarkRoles::IsFolderRole).toBool(),
             message + ": isFolder does not match");
-  ASSERT_EQ(parent.toolTip(), expected.toolTip(), message + ": tooltip does not match");
-  ASSERT_EQ(parent.data(Qt::UserRole), expected.data(Qt::UserRole), message + ": UserRole does not match");
-  ASSERT_EQ(parent.data(BookmarkRoles::SourceRole).toInt(), expected.data(BookmarkRoles::SourceRole).toInt(),
+  ASSERT_EQ(parent.toolTip(), expected->toolTip(), message + ": tooltip does not match");
+  ASSERT_EQ(parent.data(Qt::UserRole), expected->data(Qt::UserRole), message + ": UserRole does not match");
+  ASSERT_EQ(parent.data(BookmarkRoles::SourceRole).toInt(), expected->data(BookmarkRoles::SourceRole).toInt(),
             message + ": SourceRole does not match");
-  ASSERT_EQ(parent.data(BookmarkRoles::Displayrole).toString(), expected.data(BookmarkRoles::Displayrole).toString(),
+  ASSERT_EQ(parent.data(BookmarkRoles::Displayrole).toString(), expected->data(BookmarkRoles::Displayrole).toString(),
             message + ": Displayrole does not match");
-  ASSERT_EQ(parent.data(BookmarkRoles::Iconpathrole).toString(), expected.data(BookmarkRoles::Iconpathrole).toString(),
+  ASSERT_EQ(parent.data(BookmarkRoles::Iconpathrole).toString(), expected->data(BookmarkRoles::Iconpathrole).toString(),
             message + ": Iconpathrole does not match");
+
+  delete (expected);
 }
 
 QTEST_GUILESS_MAIN(XbelReaderTest)
