@@ -36,6 +36,7 @@ void XbelParser::read(QXmlStreamReader& xml_stream, QStandardItem* parent) {
 }
 
 void XbelParser::readXbelTitle(QXmlStreamReader& xml_stream, QStandardItem* parent) {
+  qDebug() << "Text:" << xml_stream.readElementText();
   parent->setText(xml_stream.readElementText());
 }
 

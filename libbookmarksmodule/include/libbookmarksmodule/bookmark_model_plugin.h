@@ -2,7 +2,6 @@
 #define BOOKMARKSMODULE_BOOKMARK_MODEL_PLUGIN_H
 #include <QtQml/qqml.h>
 #include <libbookmarksmodule/bookmarkmodel.h>
-
 class BookmarkmodelPlugin : public QQmlExtensionPlugin {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)

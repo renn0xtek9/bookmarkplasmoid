@@ -39,3 +39,8 @@ pre-commit run --all-files
 ```bash
 ./scripts/install.sh
 ```
+
+
+## TODO 
+- Fix this test: XbelParserTest::test_single_bookmark_in_complete_file() it is a test where a complete xml file is read that contains a single bookmark.
+It does not pass and has result subsequent module are failing. Attention, may be the expected value is wrong (since we call read with invisilbe root item), maybe we shall not expect the first elment to be the bookmark itself, but instead it shall be the child

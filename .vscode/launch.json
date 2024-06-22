@@ -6,7 +6,9 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/build/libbookmarksmodule/tests/xbel_parser_test",
-      "args": [],
+      "args": [
+        "test_single_bookmark_in_complete_file"
+      ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}/build",
       "environment": [],
