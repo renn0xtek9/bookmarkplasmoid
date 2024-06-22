@@ -110,6 +110,12 @@ void affect_expected_nested_folder_and_side_by_side(QStandardItem* item) {
   affect_expected_second_empty_folder(item);
 }
 
+void affect_expected_bookmark_plain_item(QStandardItem* item) {
+  item->setData(false, BookmarkRoles::IsFolderRole);
+  item->setData("google", Qt::DisplayRole);
+  item->setData("http://www.google.com", Qt::ToolTipRole);
+}
+
 void XbelParserTest::test_read_xbel_bookmark() {
   QXmlStreamReader xml_stream;
   xml_stream.addData(R"(<bookmark href="http://www.url.com">
@@ -235,6 +241,23 @@ void XbelParserTest::fixture_test_xbel(QXmlStreamReader& xml_stream,
   expected_builder(expected);
 
   assert_equal(parent, expected, message);
+}
+
+void XbelParserTest::test_single_bookmark_in_complete_file() {
+  QXmlStreamReader xml_stream;
+  xml_stream.addData(R"(<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<xbel xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" dbusName="konqueror" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" folded="no">
+ <bookmark href="http://www.google.com">
+  <title>google</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name="www"/>
+   </metadata>
+  </info>
+ </bookmark>
+ </xbel>)");
+  fixture_test_xbel(xml_stream, affect_expected_bookmark_plain_item, "One single plain bookmark in a complete file");
 }
 
 QTEST_GUILESS_MAIN(XbelParserTest)

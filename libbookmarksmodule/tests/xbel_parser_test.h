@@ -19,6 +19,8 @@ void affect_expected_two_folder_side_by_side(QStandardItem* item);
 void affect_expected_nested_folder(QStandardItem* item);
 void affect_expected_nested_folder_and_side_by_side(QStandardItem* item);
 
+void affect_expected_bookmark_plain_item(QStandardItem* item);
+
 class XbelParserTest : public QObject {
   Q_OBJECT
  private Q_SLOTS:
@@ -31,6 +33,8 @@ class XbelParserTest : public QObject {
   void test_two_folder_side_by_side();
   void test_nested_folder();
   void test_nested_folder_and_side_by_side();
+
+  void test_single_bookmark_in_complete_file();
 
  private:
   void fixture_test_xbel(QXmlStreamReader& xml_stream,
