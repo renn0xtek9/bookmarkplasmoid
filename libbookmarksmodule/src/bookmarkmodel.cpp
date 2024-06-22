@@ -152,7 +152,8 @@ bool Bookmarkmodel::FileExists(const QString& path) const noexcept {
 }
 void Bookmarkmodel::setSearchField(const QString& searchfield) {
   m_searchfield = searchfield;
-  this->setFilterRegExp(QRegExp(m_searchfield, Qt::CaseInsensitive, QRegExp::FixedString));
+  qDebug() << m_model->rowCount(QModelIndex());
+  this->setFilterRegExp(m_searchfield);
   if (m_searchfield.length() == 0) {
     this->setSourceModel(m_model);
   } else {
